@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Milestone1_Milestone__c.Project_Tasks__r$Name</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Milestone1_Milestone__c.Project_Tasks__r.Project_Times__r$Hours__c</field>
+    </columns>
+    <columns>
+        <field>Milestone1_Milestone__c.Project_Tasks__r.Project_Times__r$Date__c</field>
+    </columns>
+    <columns>
+        <field>Milestone1_Milestone__c.Project_Tasks__r.Project_Times__r$Incurred_By__c</field>
+    </columns>
+    <columns>
+        <field>Milestone1_Milestone__c.Project_Tasks__r.Project_Times__r$Description__c</field>
+    </columns>
+    <description>The times entered for tasks on milestones.</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Milestone1_Milestone__c$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Milestone Times Summary</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Milestones_with_Tasks_with_Times__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Milestone1_Milestone__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

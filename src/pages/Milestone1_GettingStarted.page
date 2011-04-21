@@ -1,0 +1,110 @@
+<!-- 
+Copyright (c) 2011, salesforce.com, Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+    this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, 
+    this list of conditions and the following disclaimer in the documentation 
+    and/or other materials provided with the distribution.
+    * Neither the name of the salesforce.com, Inc. nor the names of its contributors 
+    may be used to endorse or promote products derived from this software 
+    without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE 
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
+OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<apex:page controller="Milestone1_GettingStartedController">
+
+    <apex:form >
+        
+    <apex:pageBlock title="Welcome to Milestones PM - Project Management">
+    
+    <h2>Your Next Steps</h2>
+    
+    <p>Your next few steps are easy.</p>
+    
+    <p>1. Initialize your configuration using the button below.</p>
+    
+    <p>2. View the "Getting Started" project created as part of your initial configuration.</p>
+    
+    <p>3. Start creating your first project.</p>
+
+    <p>&nbsp;</p>
+    
+    <apex:outputPanel id="step1panel">
+        
+    <apex:outputPanel id="step1" rendered="{!settingsReady == false}">   
+    
+    <h2>Initial Configuration</h2>
+    
+    <p>&nbsp;</p>
+    
+     <apex:actionStatus id="executeStatus">
+         <apex:facet name="start">
+             <apex:outputPanel id="executeStatusWorking" layout="none">
+                 <img src = "{!URLFOR($Resource.Milestone1_Resource_Bundle,'images/Milestone1_Load_Wheel_Img')}"/>
+             </apex:outputPanel>
+         </apex:facet>
+         <apex:facet name="stop"  >
+             <apex:outputPanel id="executeStatusNotworking" layout="none">
+                 <apex:commandButton action="{!setupStandardSettings}" value="Click here to initialize this app" status="executeStatus" rerender="step1panel"/>
+             </apex:outputPanel>
+         </apex:facet>
+     </apex:actionStatus>
+    
+    <p>&nbsp;</p>
+    
+    <p>Clicking the button will:</p>
+    
+    <ul>
+        <li>Initialize custom app settings.</li>
+        <li>Import a default project that will help you with your next steps.</li>
+    </ul>
+
+    
+    </apex:outputPanel>
+    
+    <apex:outputPanel id="step2" rendered="{!settingsReady == true && projectReady != true}">
+    
+    <p>&nbsp;</p>
+    
+    <h2>Initialization Complete!</h2>
+    
+    <p>You can now go to your project summary page to see the sample project we installed.<br/>&nbsp;</p>
+    
+    <h2>IMPORTANT</h2>
+    
+    <p>Be sure to explore the sample project, "HOWTO: Get Started with Milestones PM". This sample project includes the remaining configuration steps as well as ideas on how you can get the most out of Milestones PM.</p>
+    
+    <p>Click Here:&nbsp;<apex:outputLink value="{!$Page.Milestone1_Summary2}">Project Summary Page</apex:outputLink> to start using Milestones PM.</p>
+    
+    <p>&nbsp;</p>
+    
+    
+    </apex:outputPanel>
+    
+    </apex:outputPanel>
+    
+    </apex:pageBlock>
+    
+    
+    
+    
+    
+    
+
+
+    </apex:form>
+</apex:page>

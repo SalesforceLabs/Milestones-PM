@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Task</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Tasks</value>
+    </caseValues>
+    <fields>
+        <help><!-- The user responsible for completing the task. Defaults to current user if left blank. --></help>
+        <label><!-- Assigned To --></label>
+        <name>Assigned_To__c</name>
+        <relationshipLabel><!-- Tasks --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- If blocked, why? --></help>
+        <label><!-- Reason --></label>
+        <name>Blocked_Reason__c</name>
+    </fields>
+    <fields>
+        <help><!-- Is this task blocked for some reason? --></help>
+        <label><!-- Blocked --></label>
+        <name>Blocked__c</name>
+    </fields>
+    <fields>
+        <help><!-- Classify this task as appropriate for your use. --></help>
+        <label><!-- Class --></label>
+        <name>Class__c</name>
+        <picklistValues>
+            <masterLabel>Ad Hoc</masterLabel>
+            <translation><!-- Ad Hoc --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defect</masterLabel>
+            <translation><!-- Defect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rework</masterLabel>
+            <translation><!-- Rework --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The status of this task. A task is either in-complete or complete. --></help>
+        <label><!-- Complete --></label>
+        <name>Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Days Late Formula --></label>
+        <name>Days_Late_Formula__c</name>
+    </fields>
+    <fields>
+        <help><!-- How many days late is this task? --></help>
+        <label><!-- Days Late --></label>
+        <name>Days_Late__c</name>
+    </fields>
+    <fields>
+        <help><!-- The general description of the task. For example, what is the purpose of the task. --></help>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date this task is due to be completed. Defaults to milestone due date if left blank. --></help>
+        <label><!-- Due Date --></label>
+        <name>Due_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email GUID --></label>
+        <name>Email_GUID__c</name>
+    </fields>
+    <fields>
+        <help><!-- The estimated amount of expenses which will be incurred during the task. --></help>
+        <label><!-- Estimated Expense --></label>
+        <name>Estimated_Expense__c</name>
+    </fields>
+    <fields>
+        <help><!-- The estimated time to complete the task. --></help>
+        <label><!-- Estimated Hours --></label>
+        <name>Estimated_Hours__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated as estimated expense - total expense --></help>
+        <label><!-- Expense Balance --></label>
+        <name>Expense_Balance__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated as estimated hours - total hours --></help>
+        <label><!-- Hours Balance --></label>
+        <name>Hours_Balance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Import ID --></label>
+        <name>ImportID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Index Helper --></label>
+        <name>Index_Helper__c</name>
+    </fields>
+    <fields>
+        <label><!-- Index --></label>
+        <name>Index__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date the last email was attached to this task. A task can be created via an email, and additional emails can be attached to the task in the notes section. --></help>
+        <label><!-- Last Email Received --></label>
+        <name>Last_Email_Received__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestone Grandparent --></label>
+        <name>Milestone_Grandparent__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated field indicating if the task is complete, open, late, blocked or late and blocked. --></help>
+        <label><!-- Overall Status --></label>
+        <name>Overall_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- OwnerId --></label>
+        <name>OwnerId__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is the priority of the task. 0,1,2,3 or 4. --></help>
+        <label><!-- Priority --></label>
+        <name>Priority__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- ProjectId --></label>
+        <name>ProjectId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ProjectStatus --></label>
+        <name>ProjectStatus__c</name>
+    </fields>
+    <fields>
+        <help><!-- The milestone that this task is assigned to. --></help>
+        <label><!-- Milestone --></label>
+        <name>Project_Milestone__c</name>
+        <relationshipLabel><!-- Tasks --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- A link to the Project which this task is included in via its milestone. --></help>
+        <label><!-- Project --></label>
+        <name>Project__c</name>
+    </fields>
+    <fields>
+        <help><!-- Unique number for each task and across all projects. --></help>
+        <label><!-- Short ID --></label>
+        <name>Short_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- When should this task start by? --></help>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Unique number for each task and across all projects. --></help>
+        <label><!-- Task Short ID --></label>
+        <name>Task_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- Where is this task on the road to completion? --></help>
+        <label><!-- Stage --></label>
+        <name>Task_Stage__c</name>
+        <picklistValues>
+            <masterLabel>Close</masterLabel>
+            <translation><!-- Close --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resolved</masterLabel>
+            <translation><!-- Resolved --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Calculated from all child expense records --></help>
+        <label><!-- Total Expense --></label>
+        <name>Total_Expense__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from all child time records --></help>
+        <label><!-- Total Hours --></label>
+        <name>Total_Hours__c</name>
+    </fields>
+    <layouts>
+        <layout>Project Task Layout</layout>
+        <sections>
+            <label><!-- Blocked --></label>
+            <section>Blocked</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Estimates --></label>
+            <section>Estimates</section>
+        </sections>
+        <sections>
+            <label><!-- Metrics: Hours &amp; Expenses --></label>
+            <section>Metrics: Hours &amp; Expenses</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You cannot mark a completed task as blocked. --></errorMessage>
+        <name>CannotBeBlockedIfComplete</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot complete a task marked as blocked. --></errorMessage>
+        <name>CannotBeCompleteIfBlocked</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Due Date should be smaller than Milestone Deadline --></errorMessage>
+        <name>Due_Date_Greater_Than_Milestone_Deadline</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Due Date should be greater than Milestone Kickoff Date --></errorMessage>
+        <name>Due_Date_Smaller_Than_Milestone_Kickoff</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Must be blank if &quot;blocked&quot; is not checked. --></errorMessage>
+        <name>Must_be_blank_if_not_blocked</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If this task is blocked you must enter a reason. --></errorMessage>
+        <name>Must_not_be_blank_if_blocked</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Due Date should be greater than Start Date --></errorMessage>
+        <name>Start_Date_More_Than_Due_Date</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Change_Milestone --></label>
+        <name>Change_Milestone</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Move_to_New_Milestone --></label>
+        <name>Move_to_New_Milestone</name>
+    </webLinks>
+</CustomObjectTranslation>

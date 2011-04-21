@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Milestone</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Milestones</value>
+    </caseValues>
+    <fields>
+        <help><!-- Calculated from expense records related to tasks on child milestones --></help>
+        <label><!-- Actual Expense From Sub-Milestones --></label>
+        <name>Actual_Expense_From_Sub_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from expense records related to tasks on this milestone --></help>
+        <label><!-- Actual Expense From Tasks --></label>
+        <name>Actual_Expense_From_Tasks__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from time records related to tasks on child milestones --></help>
+        <label><!-- Actual Hours From Sub-Milestones --></label>
+        <name>Actual_Hours_From_Sub_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from time records related to tasks on this milestone --></help>
+        <label><!-- Actual Hours From Tasks --></label>
+        <name>Actual_Hours_From_Tasks__c</name>
+    </fields>
+    <fields>
+        <help><!-- An alias helps you associate a task to a milestone using the single line entry home page component. --></help>
+        <label><!-- Milestone Alias --></label>
+        <name>Alias__c</name>
+    </fields>
+    <fields>
+        <help><!-- How many tasks are blocked in sub-milestones? --></help>
+        <label><!-- Blocked Tasks (in Sub-Milestones) --></label>
+        <name>Blocked_Tasks_in_Sub_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- How many tasks are flagged as blocked? --></help>
+        <label><!-- Blocked Tasks (in Tasks) --></label>
+        <name>Blocked_Tasks_in_Tasks__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of complete tasks related to sub-milestones --></help>
+        <label><!-- Complete Tasks (in Sub-Milestones) --></label>
+        <name>Complete_Tasks_in_Sub_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of complete tasks related to this milestone --></help>
+        <label><!-- Complete Tasks (in Tasks) --></label>
+        <name>Complete_Tasks_in_Tasks__c</name>
+    </fields>
+    <fields>
+        <help><!-- This signifies that this milestone has been completed. --></help>
+        <label><!-- Complete --></label>
+        <name>Complete__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date that this deadline needs to be finished by. --></help>
+        <label><!-- Deadline --></label>
+        <name>Deadline__c</name>
+    </fields>
+    <fields>
+        <help><!-- A general description of the milestone. --></help>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- Days between Kickoff and Deadline. --></help>
+        <label><!-- Duration --></label>
+        <name>Duration__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from tasks on child milestones --></help>
+        <label><!-- Estimated Expense From Sub-Milestones --></label>
+        <name>Estimated_Expense_From_Sub_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from tasks on this milestone --></help>
+        <label><!-- Estimated Expense From Tasks --></label>
+        <name>Estimated_Expense_From_Tasks__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from tasks on child milestones --></help>
+        <label><!-- Estimated Hours From Sub-Milestones --></label>
+        <name>Estimated_Hours_From_Sub_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from tasks on this milestone --></help>
+        <label><!-- Estimated Hours From Tasks --></label>
+        <name>Estimated_Hours_From_Tasks__c</name>
+    </fields>
+    <fields>
+        <help><!-- The expense budget for the milestone. --></help>
+        <label><!-- Milestone Expense Budget --></label>
+        <name>Expense_Budget__c</name>
+    </fields>
+    <fields>
+        <help><!-- The expense budget all the sub milestones of this milestone. --></help>
+        <label><!-- Expense Budget from Sub-Milestones --></label>
+        <name>Expense_Budget_from_Sub_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- The hours budget for the milestone. --></help>
+        <label><!-- Milestone Hours Budget --></label>
+        <name>Hours_Budget__c</name>
+    </fields>
+    <fields>
+        <help><!-- The total hours budget for all the sub milestones for this milestone. --></help>
+        <label><!-- Hours Budget from Sub-Milestones --></label>
+        <name>Hours_Budget_from_Sub_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- An Import ID used during the XML export/import process only. --></help>
+        <label><!-- Import ID --></label>
+        <name>ImportID__c</name>
+    </fields>
+    <fields>
+        <help><!-- When should this milestone kickoff? --></help>
+        <label><!-- Kickoff --></label>
+        <name>Kickoff__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of incomplete and overdue tasks related to child milestones --></help>
+        <label><!-- Late Tasks (in Sub-Milestones) --></label>
+        <name>Late_Tasks_in_Sub_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- How many tasks are late? --></help>
+        <label><!-- Late Tasks (in Tasks)2 --></label>
+        <name>Late_Tasks_in_Tasks_2__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of incomplete and overdue tasks related to this milestone --></help>
+        <label><!-- Late Tasks (in Tasks) --></label>
+        <name>Late_Tasks_in_Tasks__c</name>
+    </fields>
+    <fields>
+        <label><!-- NameClean --></label>
+        <name>NameClean__c</name>
+    </fields>
+    <fields>
+        <label><!-- Okay to Reparent --></label>
+        <name>Okay_to_Reparent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open, Late &amp; Blocked Tasks --></label>
+        <name>Open_Late_Blocked_Tasks__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of incomplete tasks related to child milestones --></help>
+        <label><!-- Open Tasks (in Sub-Milestones) --></label>
+        <name>Open_Tasks_in_Sub_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of incomplete tasks related to this milestone --></help>
+        <label><!-- Open Tasks (in Tasks) --></label>
+        <name>Open_Tasks_in_Tasks__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open vs. Complete Tasks --></label>
+        <name>Open_vs_Complete_Tasks__c</name>
+    </fields>
+    <fields>
+        <help><!-- The parent milestone for this milestone if applicable. --></help>
+        <label><!-- Parent Milestone --></label>
+        <name>Parent_Milestone__c</name>
+        <relationshipLabel><!-- Milestones --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- How many days after project kickoff does this milestone kickoff? --></help>
+        <label><!-- Project Kickoff Offset --></label>
+        <name>Project_Kickoff_Offset__c</name>
+    </fields>
+    <fields>
+        <help><!-- The project this milestone is assigned to. If this is a sub-milestone this field is empty. --></help>
+        <label><!-- Project --></label>
+        <name>Project__c</name>
+        <relationshipLabel><!-- Milestones --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Calculated from expense records on tasks for this milestone and all child milestones --></help>
+        <label><!-- Total Actual Expense --></label>
+        <name>Total_Actual_Expense__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from time records on tasks for this milestone and all child milestones --></help>
+        <label><!-- Total Actual Hours --></label>
+        <name>Total_Actual_Hours__c</name>
+    </fields>
+    <fields>
+        <help><!-- How many tasks are flagged as blocked? --></help>
+        <label><!-- Total Blocked Tasks --></label>
+        <name>Total_Blocked_Tasks__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Complete Tasks --></label>
+        <name>Total_Complete_Tasks__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from task records for this milestone and all child milestones --></help>
+        <label><!-- Total Estimated Expense --></label>
+        <name>Total_Estimated_Expense__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from task records for this milestone and all child milestones --></help>
+        <label><!-- Total Estimated Hours --></label>
+        <name>Total_Estimated_Hours__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated as total estimated expense - total actual expense --></help>
+        <label><!-- Total Expense Balance --></label>
+        <name>Total_Expense_Balance__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated as expense budget + expense budget from sub milestones --></help>
+        <label><!-- Total Expense Budget --></label>
+        <name>Total_Expense_Budget__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated as total estimated hours - total actual hours --></help>
+        <label><!-- Total Hours Balance --></label>
+        <name>Total_Hours_Balance__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated as hours budget + hours budget from sub milestones --></help>
+        <label><!-- Total Hours Budget --></label>
+        <name>Total_Hours_Budget__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of incomplete and overdue tasks related to this milestone and its child milestones --></help>
+        <label><!-- Total Late Tasks --></label>
+        <name>Total_Late_Tasks__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of incomplete tasks related to this milestone and its child milestones --></help>
+        <label><!-- Total Open Tasks --></label>
+        <name>Total_Open_Tasks__c</name>
+    </fields>
+    <layouts>
+        <layout>Project Milestone Layout</layout>
+        <sections>
+            <label><!-- Budget --></label>
+            <section>Budget</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Expense Information (Calculated) --></label>
+            <section>Expense Information (Calculated)</section>
+        </sections>
+        <sections>
+            <label><!-- Hours Information (Calculated) --></label>
+            <section>Hours Information (Calculated)</section>
+        </sections>
+        <sections>
+            <label><!-- Project Tasks Gantt View --></label>
+            <section>Project Tasks Gantt View</section>
+        </sections>
+        <sections>
+            <label><!-- Status Summary --></label>
+            <section>Status Summary</section>
+        </sections>
+        <sections>
+            <label><!-- Summary Metrics (Calculated) --></label>
+            <section>Summary Metrics (Calculated)</section>
+        </sections>
+        <sections>
+            <label><!-- Task Information (Calculated) --></label>
+            <section>Task Information (Calculated)</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- The Milestone Alias cannot contain spaces. --></errorMessage>
+        <name>Alias_must_not_contain_spaces</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can not add milestones to parent milestones with status completed. --></errorMessage>
+        <name>CanNotAddSubmilestoneToParentCompleted</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot mark a milestone as complete if it has open tasks. --></errorMessage>
+        <name>CannotBeCompleteWithOpenTasks</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Deadline must be less than or equal to the project deadline. --></errorMessage>
+        <name>Deadline_within_project_boundaries</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Kickoff must be less or equal than the deadline --></errorMessage>
+        <name>Kickoff_before_deadline</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Milestone kickoff must be grater or equal than project kickoff and milestone deadline must be less or equal than project deadline --></errorMessage>
+        <name>Milestone_between_Project_duration</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select a parent Project, a parent Milestone, or both. --></errorMessage>
+        <name>Milestone_must_have_parent_record</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Change_Project --></label>
+        <name>Change_Project</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Move_to_New_Project --></label>
+        <name>Move_to_New_Project</name>
+    </webLinks>
+</CustomObjectTranslation>

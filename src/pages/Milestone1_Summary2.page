@@ -1,0 +1,218 @@
+<!-- 
+Copyright (c) 2011, salesforce.com, Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+    this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, 
+    this list of conditions and the following disclaimer in the documentation 
+    and/or other materials provided with the distribution.
+    * Neither the name of the salesforce.com, Inc. nor the names of its contributors 
+    may be used to endorse or promote products derived from this software 
+    without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE 
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
+OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<apex:page controller="Milestone1_Summary2" action="{!initialize}">
+
+<apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-1.4.4.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'date.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-ui-1.8.7.custom.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery.ganttView.js')}"/>
+
+<apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-ui-1.8.4.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'reset.css')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'jquery.ganttView.css')}"/>
+
+<style type="text/css">
+.quickSearchText { 
+    background: none repeat scroll 0 0 white;
+    border: 2px solid #C3E5F7;
+    color: #666666;
+    font-family: Arial,Helvetica,Verdana,sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 20px;
+    margin: 10px 10px;
+    padding: 9px 0 9px 5px;
+    width: 615px;
+}
+</style>
+
+<script type="text/javascript">
+
+var searchTargetId = '';
+var objectMap = [
+        <apex:repeat var="item" value="{!recentItems}">
+            {'label':'{!JSENCODE(item.key)}','value':'{!JSENCODE(item.value)}'},
+        </apex:repeat>
+];
+$.noConflict();
+jQuery(document).ready(function() {
+   var searchTextField = jQuery('input[name$="MileStoneSearchInput"]');
+   searchTextField.autocomplete({
+       source: objectMap,
+       minLength: 3,
+       select: function(event, ui) {
+           event.preventDefault();
+           this.value = ui.item.label;
+           document.location.href = '/' + ui.item.value;
+       },
+       focus: function(event, ui) {
+           event.preventDefault();
+           this.value = ui.item.label;
+       }
+       
+   });
+});
+
+</script>
+
+<apex:form >
+
+<apex:outputPanel id="projectSummary_noProjects" rendered="{!projects.size == 0}">
+
+    <h1>No projects!</h1>
+     
+</apex:outputPanel>
+
+<apex:outputPanel id="mySearch">
+
+    <apex:pageBlock title="Quick Search - Project Components" >
+        <apex:inputText value="{!searchText}" styleClass="quickSearchText" id="MileStoneSearchInput"/>
+     <apex:actionStatus id="executeStatus">
+         <apex:facet name="start">
+             <apex:outputPanel id="executeStatusWorking" layout="none">
+                 <img src = "{!URLFOR($Resource.Milestone1_Resource_Bundle,'images/Milestone1_Load_Wheel_Img')}"/>
+             </apex:outputPanel>
+         </apex:facet>
+         <apex:facet name="stop"  >
+             <apex:outputPanel id="executeStatusNotworking" layout="none">
+                 <apex:commandButton value="Search" id="searchProjects" action="{!searchProjects}" style="font-size: 20px;" status="executeStatus" rerender="searchResults" />
+             </apex:outputPanel>
+         </apex:facet>
+     </apex:actionStatus>
+
+    
+        <apex:outputPanel id="searchResults" >
+            <apex:pageBlockSection rendered="{!hasProjectResults}" title="Matching Projects" >
+            <apex:pageBlockTable value="{!projectResults}" var="projectRecord">
+                <apex:column headerValue="Project Name"> <apex:outputLink value="/{!projectRecord.Id}"> {!projectRecord.Name}</apex:outputLink>  </apex:column>
+                <apex:column value="{!projectRecord.Owner.Name}" />
+                <apex:column value="{!projectRecord.Status__c}" />
+            </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection rendered="{!hasMilestoneResults}" title="Matching Milestones">
+            <apex:pageBlockTable value="{!milestoneResults}" var="milestoneRecord">
+                <apex:column headerValue="Milestone Name"> <apex:outputLink value="/{!milestoneRecord.Id}"> {!milestoneRecord.Name}</apex:outputLink>  </apex:column>
+                <apex:column value="{!milestoneRecord.Project__r.Name}" />
+            </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection rendered="{!hasTaskResults}" title="Matching Tasks">
+            <apex:pageBlockTable value="{!taskResults}" var="taskRecord">
+                <apex:column headerValue="Task Name"> <apex:outputLink value="/{!taskRecord.Id}"> {!taskRecord.Name}</apex:outputLink>  </apex:column>
+                <apex:column value="{!taskRecord.Project_Milestone__r.Name}" />
+            </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:outputPanel id="searchResultsError" rendered="{!hasSearchResultsError}">
+                <apex:pageMessage summary="No results found" severity="error" strength="1" />
+            </apex:outputPanel>
+        </apex:outputPanel>
+    </apex:pageBlock>
+
+</apex:outputPanel>
+
+<apex:outputPanel id="mySummary" >
+
+<apex:pageBlock title="My Incomplete Tasks">
+    <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!incompleteTasksByProject}" value="Incomplete Tasks By Projects" >
+                    </apex:commandButton>                 
+                    &nbsp;
+                    <apex:commandButton action="{!incompleteTasksByPriority}" value="Incomplete Tasks By Priority" >
+                    </apex:commandButton>
+                                        &nbsp;
+                    <apex:commandButton action="{!summaryMyLateTasks}" value="Late Tasks" >
+                    </apex:commandButton> 
+                                        &nbsp;
+                    <apex:commandButton action="{!summaryMyBlockedTasks}" value="Blocked Tasks" >
+                    </apex:commandButton> 
+                    
+                     
+    </apex:pageBlockButtons>
+</apex:pageBlock>
+
+</apex:outputPanel>
+
+<apex:outputPanel id="projectSummary" rendered="{!projects.size != 0}" layout="none">
+
+<apex:repeat value="{!projects}" var="currentProject" id="projectList" >
+
+<apex:pageBlock title="{!currentProject.name}">
+<apex:pageBlockButtons location="top">
+                <apex:commandLink action="{!view}" value="Project Detail" >
+                    <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
+                    </apex:commandLink>                 
+                    &nbsp;
+                    <apex:commandLink action="{!viewMilestoneOpenTasks}" value="Milestones & Open Tasks" >
+                        <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
+                    </apex:commandLink> 
+                    &nbsp;
+                    <apex:commandLink action="{!viewOpenTasks}" value="All Open Tasks" >
+                        <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
+                    </apex:commandLink> 
+                    &nbsp;
+                    <apex:commandLink action="{!viewMyTasks}" value="My Tasks" >
+                        <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
+                    </apex:commandLink>      
+                    &nbsp;
+                    <apex:commandLink action="{!viewBlockedTasks}" value="Blocked Tasks" >
+                        <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
+                    </apex:commandLink>    
+                    &nbsp;  
+                    <apex:commandLink action="{!viewOverdueTasks}" value="Overdue Tasks" >
+                        <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
+                    </apex:commandLink>                      
+            </apex:pageBlockButtons>
+
+    <apex:image value="{!HTMLENCODE(currentProject.Status_TasksOpenComplete__c)}"/>
+    
+
+
+
+    <apex:image value="{!HTMLENCODE(currentProject.Status_TasksOpenBlockedLate__c)}"/>
+    
+ 
+
+    <apex:image value="{!HTMLENCODE(currentProject.Status_BudgetMiletoneEstimate__c)}"/>
+    
+    <br/>
+    
+    
+    <c:Milestone1_Charts_GanttComponent readonly="true" target="{!currentProject.Id}" />
+    
+
+
+
+</apex:pageBlock>
+
+</apex:repeat>
+
+</apex:outputPanel>
+
+</apex:form>
+
+
+</apex:page>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Logs</value>
+    </caseValues>
+    <fields>
+        <help><!-- The details about the log. This is freeform text for user to capture whatever data they want to keep track of in the log. --></help>
+        <label><!-- Detail --></label>
+        <name>Detail__c</name>
+    </fields>
+    <fields>
+        <help><!-- A project expense we want to log some information about. --></help>
+        <label><!-- Project Expense --></label>
+        <name>Project_Expense__c</name>
+        <relationshipLabel><!-- Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- A milestone we want to log about. --></help>
+        <label><!-- Project Milestone --></label>
+        <name>Project_Milestone__c</name>
+        <relationshipLabel><!-- Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- A project task we want to log some information about. --></help>
+        <label><!-- Project Task --></label>
+        <name>Project_Task__c</name>
+        <relationshipLabel><!-- Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- A time entry we want to log some information about. --></help>
+        <label><!-- Project Time --></label>
+        <name>Project_Time__c</name>
+        <relationshipLabel><!-- Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The project which we want to keep this log record for. --></help>
+        <label><!-- Project --></label>
+        <name>Project__c</name>
+        <relationshipLabel><!-- Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The subject of this log entry. --></help>
+        <label><!-- Subject --></label>
+        <name>Subject__c</name>
+    </fields>
+    <fields>
+        <help><!-- The type of log. This can be used to order logs into different types. --></help>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Decision</masterLabel>
+            <translation><!-- Decision --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General</masterLabel>
+            <translation><!-- General --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk</masterLabel>
+            <translation><!-- Risk --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Project Log Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Detail Information --></label>
+            <section>Detail Information</section>
+        </sections>
+        <sections>
+            <label><!-- Related Records --></label>
+            <section>Related Records</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

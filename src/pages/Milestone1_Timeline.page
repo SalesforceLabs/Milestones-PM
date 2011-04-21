@@ -1,0 +1,191 @@
+<!-- 
+Copyright (c) 2011, salesforce.com, Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+    this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, 
+    this list of conditions and the following disclaimer in the documentation 
+    and/or other materials provided with the distribution.
+    * Neither the name of the salesforce.com, Inc. nor the names of its contributors 
+    may be used to endorse or promote products derived from this software 
+    without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE 
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
+OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<apex:page sidebar="false" showheader="true" standardController="Milestone1_Milestone__c" extensions="Milestone1_TimelineCon" >
+ 
+	 <!-- Include the MIT timeline library and CSS this version adds xmlParse to go from xml to timeline format	 ron hess , rhess@salesforce.com 11/14/2010	 -->
+	
+	<apex:stylesheet value="{!URLFOR($Resource.Milestone1_Timeline, '/Timeline_style.css')}" />
+
+	<!--	for ajax()-->
+	<script type='text/javascript' src="{!URLFOR($Resource.Milestone1_Timeline,'/jquery/js/jquery-1.4.1.min.js')}"></script><script>jQuery.noConflict();</script>
+
+	<apex:includescript value="{!URLFOR($Resource.Milestone1_Timeline, 'Timeline_mit_lib.js')}" />  
+	
+<apex:outputPanel id="main" > 
+	<div id="my-timelinecomp" class="timeline-default expandoFeedContainer" 
+		style="height:250px; border: 1px solid #aaa" >Loading, please wait...</div>
+</apex:outputPanel>
+
+<script> 
+  	var theTimeLine = null; 
+	
+    function loadTimeline() { 	
+    	
+    	if ( theTimeLine != null ) { return; } 
+    	
+    	var theme = Timeline.ClassicTheme.create();
+    	
+		theme.event.label.width = 300; 
+ 		theme.ether.backgroundColors.unshift("transparent");
+ 		
+ 		theme.mouseWheel =  'default'; // 'scroll'; // 'default', 'scroll'	'zoom'
+ 		var eventSource = new Timeline.DefaultEventSource();
+ 	
+    	var bandInfos = [
+		    Timeline.createBandInfo({
+		    	eventSource: eventSource,
+		        width:          "80%", 
+		        intervalUnit:   Timeline.DateTime.DAY, 
+		        theme: theme,
+		        intervalPixels: 50
+		        }),
+		    Timeline.createBandInfo({
+		    	eventSource: eventSource,
+		        showEventText: false,
+				trackHeight: 0.5, 
+				trackGap: 0.2,
+				width:          "20%",  
+		        intervalUnit:   Timeline.DateTime.WEEK, 
+		        theme: theme,
+		        intervalPixels: 100
+		    	})		
+		];
+		
+		bandInfos[1].syncWith = 0;
+		bandInfos[1].highlight = true;
+		
+		for (var i = 0; i < bandInfos.length; i++) {
+				
+                bandInfos[i].decorators = [
+                    new Timeline.SpanHighlightDecorator({
+                        startDate:  "{!tod_ay}",
+                        endDate:    "{!tomorr_ow}",
+                        color:      "#FFC080", // set color explicitly
+                        //color: "#CCFFFF",
+                        opacity:    70,
+                        startLabel: "",
+                        endLabel:   "today", 
+                        theme:      theme 
+                    })
+                ];
+            }
+
+		theTimeLine = Timeline.create( document.getElementById("my-timelinecomp"), bandInfos );
+		
+		eventSource.loadXML( XML.parse(	
+			jQuery.ajax({
+		 		type: "GET", 
+		 		url: "/apex/Milestone1_TimelineData?id={!con.id}", 
+		 		async: false }).responseText 
+		 	),
+	    "{!JSENCODE($CurrentPage.URL)}" );  
+		
+		var minDate = theTimeLine.getBand(0).getMinVisibleDate();
+	   	var maxDate = theTimeLine.getBand(0).getMaxVisibleDate();	  
+	
+		//setTimeout("jQuery('#about').slideUp('slow');",5*1000); // show the about for a few seconds
+		jQuery('#about').slideUp('slow'); // this skips showing the about block
+	}  
+	
+    var resizeTimerID = null;
+	window.onResize = function() {
+	    if (resizeTimerID == null) {
+	        resizeTimerID = window.setTimeout(function() {
+	            resizeTimerID = null;
+	            theTimeLine.layout();
+	        }, 500);
+	    }
+	} 
+
+	/**
+	function addLoadEvent(func) { 
+       var oldonload = window.onload;
+       if (typeof window.onload != 'function') {
+          window.onload = func;
+       } else {
+          window.onload = function() {
+             oldonload();
+             func();
+            }
+        }
+     }
+	
+    addLoadEvent( loadTimeline );    				
+    */
+    
+    jQuery(document).ready(function(){
+   	 loadTimeline();
+    });
+    
+</script>
+
+<style>
+#about { padding-top: 4px; }
+#aboutMessage { display: none; }
+.timeline-band-layer-inner td { 
+	color: #cccccc; 
+ 	background: url("/img/alohaSkin/feeds/cloud.png") no-repeat scroll right top transparent;
+}
+#timeline-band-layer-inner { background: transparent; }
+.timeline-band-inner { overflow-x:hidden; overflow-y:scroll;}
+
+/* bubble styles */
+.bubble-bottom-arrow  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/bubble-bottom-arrow.png')}) repeat scroll 0 0 transparent;	}
+.bubble-bottom-left  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/bubble-bottom-left.png')}) repeat scroll 0 0 transparent;	}
+.bubble-bottom  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/bubble-bottom.png')}) repeat scroll 0 0 transparent;	}
+.bubble-left-arrow  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/bubble-left-arrow.png')}) repeat scroll 0 0 transparent;	}
+.bubble-right-arrow  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/bubble-right-arrow.png')}) repeat scroll 0 0 transparent;	}
+.bubble-left  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/bubble-left.png')}) repeat scroll 0 0 transparent;	}
+.bubble-top-left  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/bubble-top-left.png')}) repeat scroll 0 0 transparent;	}
+.bubble-top  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/bubble-top.png')}) repeat scroll 0 0 transparent;	}
+.bubble-top-arrow  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/bubble-top-arrow.png')}) repeat scroll 0 0 transparent;	}
+.bubble-top-right  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/bubble-top-right.png')}) repeat scroll 0 0 transparent;	}
+.bubble-bottom-right  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/bubble-bottom-right.png')}) repeat scroll 0 0 transparent;	}
+.bubble-right  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/bubble-right.png')}) repeat scroll 0 0 transparent;	}
+.close-button  {  background:url({!URLFOR($Resource.Milestone1_timeline,'images/close-button.png')}) repeat scroll 0 0 transparent;	}
+.timeline-copyright  {  
+	background:url({!URLFOR($Resource.Milestone1_timeline,'images/copyright-vertical.png')}) repeat scroll 0 0 transparent;	
+	opacity: 0.3;
+	height: 82px;
+	width: 16px;
+	}
+.kickoff {
+	background-image:url("/img/icon/trophy16.png");
+	background-position:0 0;
+	height:16px;
+	width:16px;
+}
+.deadline {
+	background-image:url("/img/icon/trophy16.png");
+	background-position:0 0;
+	height:16px;
+	width:16px;
+}
+</style>
+ 
+</apex:page>

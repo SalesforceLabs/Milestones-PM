@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Project</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Projects</value>
+    </caseValues>
+    <fields>
+        <help><!-- The date by which the project is scheduled to be completed by. --></help>
+        <label><!-- Deadline --></label>
+        <name>Deadline__c</name>
+    </fields>
+    <fields>
+        <help><!-- A general description of the project. --></help>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of days between Kickoff and Deadline. --></help>
+        <label><!-- Duration --></label>
+        <name>Duration__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated. --></help>
+        <label><!-- GoogleGanntUrl --></label>
+        <name>GoogleGanntUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- Import ID --></label>
+        <name>ImportID__c</name>
+    </fields>
+    <fields>
+        <help><!-- What date should this project start? --></help>
+        <label><!-- Kickoff --></label>
+        <name>Kickoff__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated as the next incomplete task with a due date in this project. This includes sub-milestones. --></help>
+        <label><!-- Next Project Milestone Due Date --></label>
+        <name>Next_Project_Milestone_Due_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The next incomplete milestone due date. This does not include sub-milestones. --></help>
+        <label><!-- Next Project Top Milestone Due Date --></label>
+        <name>Next_Project_Top_Milestone_Due_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated sum of the number of incomplete milestones assigned to this project. This includes sub-milestones in the project. --></help>
+        <label><!-- Number of Incomplete Milestones --></label>
+        <name>Number_of_Incomplete_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- The number of incomplete milestones that are in this project. This does not count sub-milestones. --></help>
+        <label><!-- Number of Incomplete Top Milestones --></label>
+        <name>Number_of_Incomplete_Top_Milestones__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expense Summary --></label>
+        <name>Status_BudgetExpenseSummary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hours Summary --></label>
+        <name>Status_BudgetMiletoneEstimate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hours Summary (chart) --></label>
+        <name>Status_Image_HoursSummary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open vs. Complete Tasks (chart) --></label>
+        <name>Status_Image_OpenVComplete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open, Late &amp; Blocked Tasks (chart) --></label>
+        <name>Status_Img_OpenLateBlocked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open, Late &amp; Blocked Tasks --></label>
+        <name>Status_TasksOpenBlockedLate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open vs. Complete Tasks --></label>
+        <name>Status_TasksOpenComplete__c</name>
+    </fields>
+    <fields>
+        <help><!-- The current status of the project. --></help>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Hold</masterLabel>
+            <translation><!-- On Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Planning</masterLabel>
+            <translation><!-- Planning --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- How many tasks associated with this project are blocked? (Calculated) --></help>
+        <label><!-- Total Blocked Task Count --></label>
+        <name>Total_Blocked_Task_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- How many complete tasks are there in this project?  (Calculated.) --></help>
+        <label><!-- Total Complete Task Count --></label>
+        <name>Total_Complete_Task_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- The total expense budget for this project. --></help>
+        <label><!-- Total Expense Budget --></label>
+        <name>Total_Expense_Budget__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from the milestone expense budgets assigned to this project. --></help>
+        <label><!-- Total Expense Budget from Milestones --></label>
+        <name>Total_Expense_Budget_from_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from expense estimates on all child milestones --></help>
+        <label><!-- Total Expense Estimate --></label>
+        <name>Total_Expense_Estimate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from expense records related to tasks on all child milestones --></help>
+        <label><!-- Total Expense Incurred --></label>
+        <name>Total_Expense_Incurred__c</name>
+    </fields>
+    <fields>
+        <help><!-- The total hours budget for this project. --></help>
+        <label><!-- Total Hours Budget --></label>
+        <name>Total_Hours_Budget__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from hours budgets for milestones in this project. --></help>
+        <label><!-- Total Hours Budget from Milestones --></label>
+        <name>Total_Hours_Budget_from_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from hours estimates on all child milestones --></help>
+        <label><!-- Total Hours Estimate --></label>
+        <name>Total_Hours_Estimate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from time records related to tasks on all child milestones --></help>
+        <label><!-- Total Hours Incurred --></label>
+        <name>Total_Hours_Incurred__c</name>
+    </fields>
+    <fields>
+        <help><!-- How many tasks associated with this project are late?  (Calculated) --></help>
+        <label><!-- Total Late Task Count --></label>
+        <name>Total_Late_Task_Count__c</name>
+    </fields>
+    <fields>
+        <help><!-- How many open tasks are there in this project? (Calculated. Includes Late and Blocked tasks.) --></help>
+        <label><!-- Total Open Task Count --></label>
+        <name>Total_Open_Task_Count__c</name>
+    </fields>
+    <layouts>
+        <layout>Project Layout</layout>
+        <sections>
+            <label><!-- Budgets --></label>
+            <section>Budgets</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label><!-- Metrics: Hours &amp; Expenses (Calculated) --></label>
+            <section>Metrics: Hours &amp; Expenses (Calculated)</section>
+        </sections>
+        <sections>
+            <label><!-- Metrics: Milestone Information (Calculated) --></label>
+            <section>Metrics: Milestone Information (Calculated)</section>
+        </sections>
+        <sections>
+            <label><!-- Project Milestones Gantt View --></label>
+            <section>Project Milestones Gantt View</section>
+        </sections>
+        <sections>
+            <label><!-- Status at a Glance --></label>
+            <section>Status at a Glance</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Kickoff must be less or equal than the deadline --></errorMessage>
+        <name>Kickoff_before_deadline</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This value should be a positive number --></errorMessage>
+        <name>Total_Expense_Budget_Negative_Numbers</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This value should be a positive number --></errorMessage>
+        <name>Total_Hours_Budget_Negative_Numbers</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Export_Template --></label>
+        <name>Export_Template</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Import_Template --></label>
+        <name>Import_Template</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Update --></label>
+        <name>Update</name>
+    </webLinks>
+</CustomObjectTranslation>

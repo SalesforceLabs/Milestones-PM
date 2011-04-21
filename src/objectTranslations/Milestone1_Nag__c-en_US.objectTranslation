@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Nag</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Nags</value>
+    </caseValues>
+    <fields>
+        <label><!-- Assigned To Running User --></label>
+        <name>Assigned_To_Running_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To --></label>
+        <name>Assigned_To__c</name>
+        <relationshipLabel><!-- Nags --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Deadline --></label>
+        <name>Deadline__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Link --></label>
+        <name>Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nag Reason --></label>
+        <name>Nag_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Budget</masterLabel>
+            <translation><!-- Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Date</masterLabel>
+            <translation><!-- Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hours</masterLabel>
+            <translation><!-- Hours --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Nag Status --></label>
+        <name>Nag_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent ID --></label>
+        <name>Parent_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Name --></label>
+        <name>Parent_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Owner Id --></label>
+        <name>Parent_Owner_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Complete Status --></label>
+        <name>Parent_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Type --></label>
+        <name>Parent_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Milestone --></label>
+        <name>Project_Milestone__c</name>
+        <relationshipLabel><!-- Nags --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Project Task --></label>
+        <name>Project_Task__c</name>
+        <relationshipLabel><!-- Nags --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Project --></label>
+        <name>Project__c</name>
+        <relationshipLabel><!-- Nags --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Project Nag Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- There must be one parent record selected. --></errorMessage>
+        <name>Must_have_a_parent</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only one parent object is currently allowed. For example, If Project is set as the lookup, then Milestone and Task must be empty. --></errorMessage>
+        <name>Only_one_parent_allowed</name>
+    </validationRules>
+</CustomObjectTranslation>

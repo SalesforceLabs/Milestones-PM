@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Expense</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Expenses</value>
+    </caseValues>
+    <fields>
+        <help><!-- The amount of the expense. --></help>
+        <label><!-- Amount --></label>
+        <name>Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date the expense was charged. Defaults to today if left blank. --></help>
+        <label><!-- Date Incurred --></label>
+        <name>Date_Incurred__c</name>
+    </fields>
+    <fields>
+        <help><!-- A description about the expense. For example, why was the expense incurred. --></help>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- The user who charged the expense. Defaults to current user if left blank. --></help>
+        <label><!-- Incurred By --></label>
+        <name>Incurred_By__c</name>
+        <relationshipLabel><!-- Expenses --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The task to charge the expense against. --></help>
+        <label><!-- Project Task --></label>
+        <name>Project_Task__c</name>
+        <relationshipLabel><!-- Expenses --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Project Expense Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

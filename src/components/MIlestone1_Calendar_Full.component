@@ -1,0 +1,69 @@
+<apex:Component controller="Milestone1_repeatCon" id="thePage">
+<apex:form id="theForm">
+<table cellspacing="0" cellpadding="6" border="0">
+ 	<tr>
+ 		<td colspan="3">
+ 			<h1>Calendar Legend</h1>
+ 		</td>
+ 		<td>Filter Calendar By: </td>
+ 		<td><apex:selectList size="1" value="{!filterItem}">
+ 			<apex:selectOptions value="{!filterList}"/>
+ 		</apex:selectList></td>
+ 		<td><apex:commandButton action="{!filter}" value="Filter" id="FilterButton" /></td>
+ 		<td><apex:commandLink action="{!fiveDayView}" value="This Weeks View"/></td>
+ 		<td><apex:commandLink action="{!monthView}" value="Full Month"/></td>
+ 	</tr>
+ 	<tr>
+		 <td style="color:maroon">Projects </td>
+		 <td style="color:navy">Milestones </td>
+		 <td style="color:green">Tasks </td>
+ 	</tr>
+ </table>
+<apex:outputPanel id="theCalendar">
+<div class="bCalendar">
+<table class="calendarMonthView" width="100%">
+<caption>
+<div class="calHeader"><apex:commandLink action="{!prev}"
+rerender="theCalendar">
+<img title="Previous Month" class="prevCalArrow"
+alt="Previous Month" src="/s.gif" />
+</apex:commandLink>
+&nbsp;&nbsp;{!month.monthname}&nbsp;&nbsp;{!month.yearname}&nbsp;&nbsp;
+<apex:commandLink action="{!next}" rerender="theCalendar">
+<img title="Next Month" class="nextCalArrow" alt="Next Month"
+src="/s.gif" />
+</apex:commandLink></div>
+</caption>
+<tbody>
+<tr class="headerRow">
+<th scope="col" class="calDays">Sunday</th>
+<th scope="col" class="calDays">Monday</th>
+<th scope="col" class="calDays">Tuesday</th>
+<th scope="col" class="calDays">Wednesday</th>
+<th scope="col" class="calDays">Thursday</th>
+<th scope="col" class="calDays">Friday</th>
+<th scope="col" class="calDays">Saturday</th>
+</tr>
+
+<apex:repeat value="{!weeks}" var="wk" id="foreachWeek">
+<tr>
+<apex:repeat value="{!wk.days}" var="day" id="foreachday">
+<td class="{!day.cssname}" height="90" valign="top">
+<div class="date">{!day.dayofmonth}</div>
+<div><apex:repeat value="{!day.eventstoday}" var="v"
+id="foreachevent">
+<a href="/{!v.aid}" target="_top" style="{!IF(v.theType = 'PROJECT_TYPE','color:maroon',IF(v.theType = 'MILESTONE_TYPE','color:navy','color:green'))}">{!v.Name}</a> 
+<br />
+</apex:repeat></div>
+</td>
+</apex:repeat>
+</tr>
+</apex:repeat>
+
+</tbody>
+</table>
+</div>
+</apex:outputPanel>
+
+</apex:form>
+</apex:Component>

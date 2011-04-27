@@ -353,28 +353,28 @@ private class Milestone1_Test_Move {
       Milestone1_Task__c task1 = Milestone1_Test_Utility.sampleTask(ms1);
       insert task1;
 	
-      System.assert(task1.Due_Date__c            != null);
-      System.assert(task1.Start_Date__c          != null);
-      System.assert(task1.Estimated_Expense__c   != null);
-      System.assert(task1.Estimated_Hours__c     != null);
-      System.assert(task1.Priority__c            != null);
-      System.assert(task1.Class__c               != null);
-      System.assert(task1.Task_Stage__c          != null);
-      System.assert(task1.Blocked__c             != null);
-      System.assert(task1.Last_Email_Received__c != null);
+      System.assert(task1.Due_Date__c            != null, 'Due Date is null');
+      System.assert(task1.Start_Date__c          != null, 'Start Date is null');
+      System.assert(task1.Estimated_Expense__c   != null, 'Estimated Expense is null');
+      System.assert(task1.Estimated_Hours__c     != null, 'Estimated Hours is null');
+      System.assert(task1.Priority__c            != null, 'Priority is null');
+      System.assert(task1.Class__c               != null, 'Class is null');
+      System.assert(task1.Task_Stage__c          != null, 'Task Stage is null');
+      System.assert(task1.Blocked__c             != null, 'Blocked is null');
+      System.assert(task1.Last_Email_Received__c != null, 'Last email is null');
 
       // Validate basic clone
       Milestone1_Task__c cloneOfTask1 = task1.clone(false, false);
-      System.assert(cloneOfTask1.Due_Date__c            == task1.Due_Date__c);
-      System.assert(cloneOfTask1.Start_Date__c          == task1.Start_Date__c);
-      System.assert(cloneOfTask1.Estimated_Expense__c   == task1.Estimated_Expense__c);
-      System.assert(cloneOfTask1.Estimated_Hours__c     == task1.Estimated_Hours__c);
-      System.assert(cloneOfTask1.Priority__c            == task1.Priority__c);
-      System.assert(cloneOfTask1.Class__c               == task1.Class__c);
-      System.assert(cloneOfTask1.Task_Stage__c          == task1.Task_Stage__c);
-      System.assert(cloneOfTask1.Blocked__c             == task1.Blocked__c);
-      System.assert(cloneOfTask1.Blocked_Reason__c      == task1.Blocked_Reason__c);
-      System.assert(cloneOfTask1.Last_Email_Received__c == task1.Last_Email_Received__c);
+      System.assert(cloneOfTask1.Due_Date__c            == task1.Due_Date__c, 'Due Date fail');
+      System.assert(cloneOfTask1.Start_Date__c          == task1.Start_Date__c, 'Start Date fail');
+      System.assert(cloneOfTask1.Estimated_Expense__c   == task1.Estimated_Expense__c, 'Estimated Expense fail');
+      System.assert(cloneOfTask1.Estimated_Hours__c     == task1.Estimated_Hours__c, 'Estimated Hours fail');
+      System.assert(cloneOfTask1.Priority__c            == task1.Priority__c, 'Priority fail');
+      System.assert(cloneOfTask1.Class__c               == task1.Class__c, 'Class fail');
+      System.assert(cloneOfTask1.Task_Stage__c          == task1.Task_Stage__c, 'Task Stage fail');
+      System.assert(cloneOfTask1.Blocked__c             == task1.Blocked__c, 'Blocked fail');
+      System.assert(cloneOfTask1.Blocked_Reason__c      == task1.Blocked_Reason__c, 'Blocked Reason fail');
+      System.assert(cloneOfTask1.Last_Email_Received__c == task1.Last_Email_Received__c, 'Last Email Received fail');
       
       // Move
       ApexPages.StandardController   stc  = new ApexPages.StandardController(task1);
@@ -399,18 +399,18 @@ private class Milestone1_Test_Move {
                                                  WHERE Project_Milestone__c = :ms2.Id 
                                                       AND Name = :task1.Name];
 
-      System.assertEquals(1, tasks_moved.size());
+      System.assertEquals(1, tasks_moved.size(), 'Tasks moved comparison failed');
 
-      System.assert(task1.Due_Date__c            == tasks_moved.get(0).Due_Date__c);
-      System.assert(task1.Start_Date__c          == tasks_moved.get(0).Start_Date__c);
-      System.assert(task1.Estimated_Expense__c   == tasks_moved.get(0).Estimated_Expense__c);
-      System.assert(task1.Estimated_Hours__c     == tasks_moved.get(0).Estimated_Hours__c);
-      System.assert(task1.Priority__c            == tasks_moved.get(0).Priority__c);
-      System.assert(task1.Class__c               == tasks_moved.get(0).Class__c);
-      System.assert(task1.Task_Stage__c          == tasks_moved.get(0).Task_Stage__c);
-      System.assert(task1.Blocked__c             == tasks_moved.get(0).Blocked__c);
-      System.assert(task1.Blocked_Reason__c      == tasks_moved.get(0).Blocked_Reason__c);
-      System.assert(task1.Last_Email_Received__c == tasks_moved.get(0).Last_Email_Received__c);
+      System.assert(task1.Due_Date__c            == tasks_moved.get(0).Due_Date__c, 'Due date failed');
+      System.assert(task1.Start_Date__c          == tasks_moved.get(0).Start_Date__c, 'Start date failed');
+      System.assert(task1.Estimated_Expense__c   == tasks_moved.get(0).Estimated_Expense__c, 'Estimated date failed');
+      System.assert(task1.Estimated_Hours__c     == tasks_moved.get(0).Estimated_Hours__c, 'Estimated hours failed');
+      System.assert(task1.Priority__c            == tasks_moved.get(0).Priority__c, 'Priority failed');
+      System.assert(task1.Class__c               == tasks_moved.get(0).Class__c, 'Class failed');
+      System.assert(task1.Task_Stage__c          == tasks_moved.get(0).Task_Stage__c, 'Task Stage failed');
+      System.assert(task1.Blocked__c             == tasks_moved.get(0).Blocked__c, 'Blocked failed');
+      System.assert(task1.Blocked_Reason__c      == tasks_moved.get(0).Blocked_Reason__c, 'Blocked reason failed');
+      System.assert(task1.Last_Email_Received__c == tasks_moved.get(0).Last_Email_Received__c, 'Last email received failed');
     }
     
 

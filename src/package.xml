@@ -61,7 +61,8 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>*</members>
+        <members>MIlestone1_Calendar_Full</members>
+        <members>Milestone1_Charts_GanttComponent</members>
         <name>ApexComponent</name>
     </types>
     <types>
@@ -86,7 +87,11 @@
         <name>ApexPage</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Milestone1_Expense_Trigger</members>
+        <members>Milestone1_Milestone_Trigger</members>
+        <members>Milestone1_Project_Trigger</members>
+        <members>Milestone1_Task_Trigger</members>
+        <members>Milestone1_Time_Trigger</members>
         <name>ApexTrigger</name>
     </types>
     <types>
@@ -94,15 +99,31 @@
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Milestone1_Expense__c</members>
+        <members>Milestone1_Log__c</members>
+        <members>Milestone1_Milestone__c</members>
+        <members>Milestone1_Nag__c</members>
+        <members>Milestone1_Project__c</members>
+        <members>Milestone1_Settings__c</members>
+        <members>Milestone1_Task__c</members>
+        <members>Milestone1_Time__c</members>
+        <members>Project_Snapshot__c</members>
         <name>CustomObject</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Milestone1_Expense__c-en_US</members>
+        <members>Milestone1_Log__c-en_US</members>
+        <members>Milestone1_Milestone__c-en_US</members>
+        <members>Milestone1_Nag__c-en_US</members>
+        <members>Milestone1_Project__c-en_US</members>
+        <members>Milestone1_Settings__c-en_US</members>
+        <members>Milestone1_Task__c-en_US</members>
+        <members>Milestone1_Time__c-en_US</members>
+        <members>Project_Snapshot__c-en_US</members>
         <name>CustomObjectTranslation</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Milestone1_Getting_Started</members>
         <name>CustomPageWebLink</name>
     </types>
     <types>
@@ -131,7 +152,7 @@
         <name>Document</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Add A Task %28alias---task%29</members>
         <name>HomePageComponent</name>
     </types>
     <types>
@@ -176,11 +197,20 @@
         <name>Report</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Milestone1_Milestones_Tasks</members>
+        <members>Milestone1_Projects</members>
+        <members>Milestone1_Projects_Milestones</members>
+        <members>Milestone1_Tasks</members>
+        <members>MilestoneTaskExp</members>
+        <members>Milestones_with_Tasks_with_Expenses</members>
+        <members>Milestones_with_Tasks_with_Times</members>
+        <members>Projects_Milestones_Tasks</members>
         <name>ReportType</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Milestone1_Charts</members>
+        <members>Milestone1_Resource_Bundle</members>
+        <members>Milestone1_Timeline</members>
         <name>StaticResource</name>
     </types>
     <version>20.0</version>

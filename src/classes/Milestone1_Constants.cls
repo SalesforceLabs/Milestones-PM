@@ -28,6 +28,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 public with sharing class Milestone1_Constants {
     
+    static public String TEST3 = 'Github1';
     static public String XML_VERSION = '1.0';
     static public String XML_EXPORT_VERSION_VAL = '1.0';
     static public String XML_EXPORT_VERSION = 'exportVersion';

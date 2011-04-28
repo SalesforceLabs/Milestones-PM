@@ -212,8 +212,8 @@ IF( Project_Task__c &lt;&gt; null, &apos;Task&apos;,&apos;&apos;)))</formula>
     <pluralLabel>Nags</pluralLabel>
     <searchLayouts>
         <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>New</excludedStandardButtons>
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>New</excludedStandardButtons>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>

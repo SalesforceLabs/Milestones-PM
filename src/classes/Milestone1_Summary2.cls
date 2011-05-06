@@ -95,15 +95,18 @@ public with sharing class Milestone1_Summary2 {
     private List<Pair> createPairObjects(List<SObject> records, String namePrefix) {
         List<Pair> newPairs = new List<Pair>(); 
         for (SObject record: records) {
-            newPairs.add(new Pair(namePrefix + (String)record.get('name'), (String)record.id));
+        	//RSC 2011-05-06 am getting occassional script exceptions
+        	if (record != null && record.get('name') != null) {
+            	newPairs.add(new Pair(namePrefix + (String)record.get('name'), (String)record.id));
+        	}
         }
         return newPairs;
     }
     
     public List<Milestone1_Project__c> getProjects() {
         
-        List<Milestone1_Project__c> activeProjects = [Select m.Status_TasksOpenComplete__c, m.Status_TasksOpenBlockedLate__c, 
-        m.Status_BudgetMiletoneEstimate__c, m.Status_BudgetExpenseSummary__c, m.Name, m.Id, m.Deadline__c, m.Kickoff__c, 
+        List<Milestone1_Project__c> activeProjects = [Select m.Id, m.Status_TasksOpenComplete__c, m.Status_TasksOpenBlockedLate__c, 
+        m.Status_BudgetMiletoneEstimate__c, m.Status_BudgetExpenseSummary__c, m.Name, m.Deadline__c, m.Kickoff__c, 
         m.Duration__c, m.GoogleGanntUrl__c
         From Milestone1_Project__c m where m.status__c = 'Active'];
 

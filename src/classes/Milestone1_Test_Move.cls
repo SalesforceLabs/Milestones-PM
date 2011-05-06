@@ -258,7 +258,7 @@ private class Milestone1_Test_Move {
         
         //load log back and make sure it points to clone,not original
         log = [SELECT Id FROM Milestone1_Log__c WHERE Project_Task__c = :tasks2[0].Id];
-        System.assertNotEquals(null, log);
+        System.assertNotEquals(null, log, 'Found a log for new Project_Task__c when we should not have.');
         
     }
  

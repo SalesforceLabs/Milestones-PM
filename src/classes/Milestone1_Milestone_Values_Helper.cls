@@ -59,18 +59,19 @@ public with sharing class Milestone1_Milestone_Values_Helper {
         newRecord.Actual_Expense_From_Sub_Milestones__c += child.Total_Actual_Expense__c;
         newRecord.Estimated_Hours_From_Sub_Milestones__c += child.Total_Estimated_Hours__c;
         newRecord.Estimated_Expense_From_Sub_Milestones__c += child.Total_Estimated_Expense__c;
+        newRecord.Open_Tasks_in_Sub_Milestones__c += child.Total_Open_Tasks__c;
+        newRecord.Late_Tasks_in_Sub_Milestones__c += child.Total_Late_Tasks__c;
+        newRecord.Complete_Tasks_in_Sub_Milestones__c += child.Total_Complete_Tasks__c;
+        newRecord.Blocked_Tasks_in_Sub_Milestones__c += child.Total_Blocked_Tasks__c;
+                        
         if (child.Hours_Budget__c != null)
         	newRecord.Hours_Budget_from_Sub_Milestones__c += child.Hours_Budget__c;
         
         if (child.Expense_Budget__c != null)	
         	newRecord.Expense_Budget_from_Sub_Milestones__c += child.Expense_Budget__c;
         	
-        newRecord.Open_Tasks_in_Sub_Milestones__c += child.Total_Open_Tasks__c;
-        newRecord.Late_Tasks_in_Sub_Milestones__c += child.Total_Late_Tasks__c;
         //2011-03-01 Based on comment from user.
         //newRecord.Complete_Tasks_in_Sub_Milestones__c += child.Total_Late_Tasks__c;
-        newRecord.Complete_Tasks_in_Sub_Milestones__c += child.Total_Complete_Tasks__c;
-        newRecord.Blocked_Tasks_in_Sub_Milestones__c += child.Total_Blocked_Tasks__c;
         
         System.debug('*** New values are: ' + newRecord);
     }

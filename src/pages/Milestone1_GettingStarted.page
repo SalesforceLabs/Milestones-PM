@@ -33,6 +33,12 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
     
     <h2>Your Next Steps</h2>
     
+    <p><strong>Important:</strong> you must <strong>deploy</strong> Milestones before continuing.  
+    If you have not done this, please visit <a href="/0A3?setupid=ImportedPackage">Setup > App Setup > View Installed Packages</a>,
+    click on <strong>Milestones PM</strong> and click on the deploy button.</p>
+    
+  
+    
     <p>Your next few steps are easy.</p>
     
     <p>1. Initialize your configuration using the button below.</p>

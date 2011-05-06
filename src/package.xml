@@ -17,6 +17,7 @@
         <members>Milestone1_Email_Handler_Tst</members>
         <members>Milestone1_Email_Utility</members>
         <members>Milestone1_Email_Utility_Tst</members>
+        <members>Milestone1_Exception</members>
         <members>Milestone1_Expense_Trigger_Tst</members>
         <members>Milestone1_Expense_Trigger_Utility</members>
         <members>Milestone1_Export_Project_Controller</members>

@@ -61,6 +61,10 @@ public with sharing class Milestone1_Export_Project_Controller {
         else{
 	        String exportName = rec.Name;
 	        String description = rec.Description__c;
+	        //description max length on Milestone1_Project__c is 5000, but description on Documents has a maxlength of 255
+	        if (description != null && description.length() > 250) {
+	        	description=description.substring(0,250);
+	        }
 	        doc = saveToDocument(exportName,xmlString,description); 
         }
     }

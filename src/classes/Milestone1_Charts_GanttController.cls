@@ -75,6 +75,8 @@ public with sharing class Milestone1_Charts_GanttController {
 	    		nameFieldName = 'Name';
 	    		filterFieldName = 'Project_Milestone__c';
 	    		objectType = 'Milestone1_Task__c';
+	    	} else {
+	    		throw new Milestone1_Exception('[initFieldNames] Unable to generate JSON for ' + mytarget);
 	    	}
 	    	idFieldName = 'Id';
 	    	completedFieldName = 'Complete__c';	
@@ -85,6 +87,7 @@ public with sharing class Milestone1_Charts_GanttController {
     * 	Retrieve the data doing a dynamic query by object type.
     */
     private void retrieveData(){
+    	
     	String query = 'Select '+idFieldName+','+startDateFieldName+','+endDateFieldName+','+nameFieldName+','+completedFieldName+
     				   ' from '+objectType+ ' where '+filterFieldName+'=\''+mytarget+'\' order by Name';
     	sobjectList = Database.query(query);

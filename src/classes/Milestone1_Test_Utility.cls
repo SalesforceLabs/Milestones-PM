@@ -86,7 +86,7 @@ public with sharing class Milestone1_Test_Utility {
         } else {
         	rec.Blocked_Reason__c = 'Blocked Task Test';
         }
-        rec.Last_Email_Received__c = Date.today();
+        rec.Last_Email_Received__c = Datetime.now();
         return rec;		
 	}
 

@@ -299,12 +299,12 @@ private class Milestone1_Test_Clone {
 	   	for(Milestone1_Milestone__c milestoneOriginal : milestonesOriginal.values()){
    			milestone = milestones.get(milestoneOriginal.Name);
    			System.assert(milestone != null,milestoneOriginal.Name);
-   			System.assert(milestoneOriginal.Name == milestone.Name, 'MILESTONE name not equal');
-   			System.assert(milestoneOriginal.Kickoff__c == milestone.Kickoff__c, 'MILESTONE kickoff not equal');
-   			System.assert(milestoneOriginal.Deadline__c == milestone.Deadline__c, 'MILESTONE deadline not equal');
-   			System.assert(milestoneOriginal.Description__c == milestone.Description__c, 'MILESTONE description not equal');
-   			System.assert(milestoneOriginal.Expense_Budget__c == milestone.Expense_Budget__c, 'MILESTONE expense budget not equal');
-			System.assert(milestoneOriginal.Hours_Budget__c == milestone.Hours_Budget__c, 'MILESTONE hours budget not equal');   			
+   			System.assertEquals(milestoneOriginal.Name , milestone.Name, 'MILESTONE name not equal');
+   			System.assertEquals(milestoneOriginal.Kickoff__c , milestone.Kickoff__c, 'MILESTONE kickoff not equal');
+   			System.assertEquals(milestoneOriginal.Deadline__c , milestone.Deadline__c, 'MILESTONE deadline not equal');
+   			System.assertEquals(milestoneOriginal.Description__c , milestone.Description__c, 'MILESTONE description not equal');
+   			System.assertEquals(milestoneOriginal.Expense_Budget__c , milestone.Expense_Budget__c, 'MILESTONE expense budget not equal');
+			System.assertEquals(milestoneOriginal.Hours_Budget__c , milestone.Hours_Budget__c, 'MILESTONE hours budget not equal');   			
    		}
 	}
     
@@ -315,16 +315,16 @@ private class Milestone1_Test_Clone {
 	   	for(Milestone1_Task__c taskOriginal : tasksOriginal.values()){
    			task = tasks.get(taskOriginal.Name);
    			System.assert(task != null,taskOriginal.Name);
-   			System.assert(taskOriginal.Name == task.Name, 'TASK Name not equal');
-   			System.assert(taskOriginal.Due_Date__c == task.Due_Date__c, 'TASK Due date not equal');
-   			System.assert(taskOriginal.Start_Date__c == task.Start_Date__c, 'TASK Start date not equal');
-   			System.assert(taskOriginal.Description__c == task.Description__c, 'TASK Description not equal');
-   			System.assert(taskOriginal.Estimated_Expense__c == task.Estimated_Expense__c,'TASK Estimated expense not equal');
-			System.assert(taskOriginal.Estimated_Hours__c == task.Estimated_Hours__c, 'TASK Estimated hours not equal');
-			System.assert(taskOriginal.Last_Email_Received__c == task.Last_Email_Received__c, 'TASK Last email received not equal');
-   			System.assert(taskOriginal.Assigned_To__c == task.Assigned_To__c, 'TASK Assigned to not equal');
-   			System.assert(taskOriginal.Priority__c == task.Priority__c, 'TASK Priority not equal');
-			System.assert(taskOriginal.Class__c == task.Class__c, 'TASK Class not equal');   			
+   			System.assertEquals(taskOriginal.Name , task.Name, 'TASK Name not equal');
+   			System.assertEquals(taskOriginal.Due_Date__c , task.Due_Date__c, 'TASK Due date not equal');
+   			System.assertEquals(taskOriginal.Start_Date__c , task.Start_Date__c, 'TASK Start date not equal');
+   			System.assertEquals(taskOriginal.Description__c ,task.Description__c, 'TASK Description not equal');
+   			System.assertEquals(taskOriginal.Estimated_Expense__c , task.Estimated_Expense__c,'TASK Estimated expense not equal');
+			System.assertEquals(taskOriginal.Estimated_Hours__c , task.Estimated_Hours__c, 'TASK Estimated hours not equal');
+			System.assertEquals(taskOriginal.Last_Email_Received__c , task.Last_Email_Received__c, 'TASK Last email received not equal');
+   			System.assertEquals(taskOriginal.Assigned_To__c , task.Assigned_To__c, 'TASK Assigned to not equal');
+   			System.assertEquals(taskOriginal.Priority__c , task.Priority__c, 'TASK Priority not equal');
+			System.assertEquals(taskOriginal.Class__c , task.Class__c, 'TASK Class not equal');   			
    		}
 	}
 }

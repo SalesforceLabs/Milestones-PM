@@ -401,16 +401,16 @@ private class Milestone1_Test_Move {
 
       System.assertEquals(1, tasks_moved.size(), 'Tasks moved comparison failed');
 
-      System.assert(task1.Due_Date__c            == tasks_moved.get(0).Due_Date__c, 'Due date failed');
-      System.assert(task1.Start_Date__c          == tasks_moved.get(0).Start_Date__c, 'Start date failed');
-      System.assert(task1.Estimated_Expense__c   == tasks_moved.get(0).Estimated_Expense__c, 'Estimated date failed');
-      System.assert(task1.Estimated_Hours__c     == tasks_moved.get(0).Estimated_Hours__c, 'Estimated hours failed');
-      System.assert(task1.Priority__c            == tasks_moved.get(0).Priority__c, 'Priority failed');
-      System.assert(task1.Class__c               == tasks_moved.get(0).Class__c, 'Class failed');
-      System.assert(task1.Task_Stage__c          == tasks_moved.get(0).Task_Stage__c, 'Task Stage failed');
-      System.assert(task1.Blocked__c             == tasks_moved.get(0).Blocked__c, 'Blocked failed');
-      System.assert(task1.Blocked_Reason__c      == tasks_moved.get(0).Blocked_Reason__c, 'Blocked reason failed');
-      System.assert(task1.Last_Email_Received__c == tasks_moved.get(0).Last_Email_Received__c, 'Last email received failed');
+      System.assertEquals(task1.Due_Date__c            , tasks_moved.get(0).Due_Date__c, 'Due date failed');
+      System.assertEquals(task1.Start_Date__c          , tasks_moved.get(0).Start_Date__c, 'Start date failed');
+      System.assertEquals(task1.Estimated_Expense__c   , tasks_moved.get(0).Estimated_Expense__c, 'Estimated date failed');
+      System.assertEquals(task1.Estimated_Hours__c     , tasks_moved.get(0).Estimated_Hours__c, 'Estimated hours failed');
+      System.assertEquals(task1.Priority__c            , tasks_moved.get(0).Priority__c, 'Priority failed');
+      System.assertEquals(task1.Class__c               , tasks_moved.get(0).Class__c, 'Class failed');
+      System.assertEquals(task1.Task_Stage__c          , tasks_moved.get(0).Task_Stage__c, 'Task Stage failed');
+      System.assertEquals(task1.Blocked__c             , tasks_moved.get(0).Blocked__c, 'Blocked failed');
+      System.assertEquals(task1.Blocked_Reason__c      , tasks_moved.get(0).Blocked_Reason__c, 'Blocked reason failed');
+      System.assertEquals(task1.Last_Email_Received__c, tasks_moved.get(0).Last_Email_Received__c, 'Last email received failed orig ' + task1.Last_Email_Received__c + ' moved ' + tasks_moved.get(0).Last_Email_Received__c);
     }
     
 

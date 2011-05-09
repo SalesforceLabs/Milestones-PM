@@ -162,7 +162,10 @@ public with sharing class Milestone1_Charts_GanttController {
         
         System.assert(ret.indexOf('ganttData') > -1);
         System.assert(ret.indexOf(m1.Name) > -1);    
-        System.assert(ret.indexOf(Date.today().format().substring(5)) > -1); // Test today's
+        //RSC 2011-05-09 bad test -- fails when there is an interesting dateformat.
+        //System.assert(ret.indexOf(Date.today().format().substring(5)) > -1); // Test today's
+        String testDateString = 'new Date(' +m1.Kickoff__c.year() +',' + (m1.Kickoff__c.month()-1) +',' + m1.Kickoff__c.day() +')';
+    	System.assert(ret.indexOf(testDateString) > -1, 'expected: ' + testDateString + ': in: ' + ret);
     
         m1.Complete__c = true;
         update m1;

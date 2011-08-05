@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AnalyticSnapshot xmlns="http://soap.sforce.com/2006/04/metadata">
     <mappings>
-        <sourceField>Milestone1_Project__c$Name</sourceField>
-        <sourceType>tabular</sourceType>
-        <targetField>Project_Snapshot__c.Project_Name__c</targetField>
-    </mappings>
-    <mappings>
-        <sourceField>Milestone1_Project__c$Total_Open_Task_Count__c</sourceField>
-        <sourceType>tabular</sourceType>
-        <targetField>Project_Snapshot__c.Open_Task_Count__c</targetField>
-    </mappings>
-    <mappings>
-        <sourceField>Milestone1_Project__c$Total_Late_Task_Count__c</sourceField>
-        <sourceType>tabular</sourceType>
-        <targetField>Project_Snapshot__c.Late_Task_Count__c</targetField>
-    </mappings>
-    <mappings>
         <sourceField>Milestone1_Project__c$Total_Blocked_Task_Count__c</sourceField>
         <sourceType>tabular</sourceType>
         <targetField>Project_Snapshot__c.Blocked_Task_Count__c</targetField>
@@ -75,8 +60,23 @@
         <sourceType>tabular</sourceType>
         <targetField>Project_Snapshot__c.Status__c</targetField>
     </mappings>
+    <mappings>
+        <sourceField>Milestone1_Project__c$Name</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>Project_Snapshot__c.Project_Name__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>Milestone1_Project__c$Total_Open_Task_Count__c</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>Project_Snapshot__c.Open_Task_Count__c</targetField>
+    </mappings>
+    <mappings>
+        <sourceField>Milestone1_Project__c$Total_Late_Task_Count__c</sourceField>
+        <sourceType>tabular</sourceType>
+        <targetField>Project_Snapshot__c.Late_Task_Count__c</targetField>
+    </mappings>
     <name>Project Status Analytic Snapshot</name>
-    <runningUser>projmgmt@labs.package</runningUser>
+    <runningUser>j164g@labs.com</runningUser>
     <sourceReport>Milestone_Project_Management/Project_Snapshot</sourceReport>
     <targetObject>Project_Snapshot__c</targetObject>
 </AnalyticSnapshot>

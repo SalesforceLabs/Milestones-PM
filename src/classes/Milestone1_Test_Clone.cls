@@ -36,7 +36,7 @@ private class Milestone1_Test_Clone {
         Milestone1_Test_Utility.createDefaultCustomChatterSettings(false);
         
         //create a project
-        Milestone1_Project__c proj = Milestone1_Test_Utility.sampleProject('proj');
+        Milestone1_Project__c proj = Milestone1_Test_Utility.sampleProjectActive('proj');
         insert proj;
         
         //create a couple of top-level milestones
@@ -84,6 +84,7 @@ private class Milestone1_Test_Clone {
         System.assertEquals('Copy of ' + proj.Name, proj2.Name, 'Name failed');
         System.assertEquals(proj.Deadline__c, proj2.Deadline__c, 'Deadline failed');
         System.assertEquals(proj.Description__c, proj2.Description__c, 'Description failed');
+        System.assert(proj2.Status__c != null);
         System.assertEquals(proj.Status__c, proj2.Status__c, 'Status failed');
         
         List<Milestone1_Milestone__c> milestones2 = [SELECT 

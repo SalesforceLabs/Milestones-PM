@@ -128,6 +128,7 @@
         <name>CustomPageWebLink</name>
     </types>
     <types>
+        <members>Getting_Started</members>
         <members>Milestone1_Expense__c</members>
         <members>Milestone1_Getting_Started</members>
         <members>Milestone1_Import_Project_Template</members>

@@ -8,6 +8,10 @@ trigger Milestone1_Milestone_Trigger on Milestone1_Milestone__c (before insert, 
 		else if(Trigger.isUpdate){
 			//prevent manual reparenting of Milestones
 			Milestone1_Milestone_Trigger_Utility.checkMilestoneManualReparent(trigger.oldMap, trigger.newMap);
+            //shift children Milestone dates if Milestone dates are shifted
+            //Milestone1_Milestone_Trigger_Utility.checkChildDependencies(trigger.oldMap, trigger.newMap); //currently breaks due to Parent > Child > Parent update loop
+            //shift Task dates if Milestone dates are shifted
+            Milestone1_Milestone_Trigger_Utility.checkTaskDependencies(trigger.oldMap, trigger.newMap);
 		} 
 		else {
 			//insert

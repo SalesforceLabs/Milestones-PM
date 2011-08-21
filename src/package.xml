@@ -49,6 +49,7 @@
         <members>Milestone1_Test_Field_Values</members>
         <members>Milestone1_Test_Import_Export</members>
         <members>Milestone1_Test_Move</members>
+        <members>Milestone1_Test_Task_Dependency</members>
         <members>Milestone1_Test_Utility</members>
         <members>Milestone1_Time_Trigger_Tst</members>
         <members>Milestone1_Time_Trigger_Utility</members>

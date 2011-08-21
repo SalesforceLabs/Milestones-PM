@@ -171,6 +171,12 @@
         <relationshipLabel><!-- Milestones --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- The predecessor milestone for this milestone if applicable. --></help>
+        <label><!-- Predecessor Milestone --></label>
+        <name>Predecessor_Milestone__c</name>
+        <relationshipLabel><!-- Successor Milestones --></relationshipLabel>
+    </fields>
+    <fields>
         <help><!-- How many days after project kickoff does this milestone kickoff? --></help>
         <label><!-- Project Kickoff Offset --></label>
         <name>Project_Kickoff_Offset__c</name>

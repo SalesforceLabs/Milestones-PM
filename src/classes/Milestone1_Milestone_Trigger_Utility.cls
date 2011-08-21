@@ -31,6 +31,8 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
     public static final String INSUFFICIENT_PRIVILEGES_TO_ACCESS_PARENT_MILESTONE = 'Insufficient privileges to access parent milestone.';
     public static final String INSUFFICIENT_PRIVILEGES_TO_ACCESS_PROJECT = 'Insufficient privileges to access project.';
     
+    public static Boolean alreadyMadeParent = false;
+    
     public static void handleMilestoneDeleteTrigger(Map<Id, Milestone1_Milestone__c> oldMap){
         
         //query for list of child milestones that are NOT part of the recs collection
@@ -70,6 +72,31 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
         }
     }
     
+    public static void checkSuccessorDependencies(Map<Id, Milestone1_Milestone__c> oldMap, Map<Id, Milestone1_Milestone__c> newMap) {
+        Map<Id, Set<Milestone1_Milestone__c>> successorMap = new Map<Id, Set<Milestone1_Milestone__c>>();
+        for(Milestone1_Milestone__c successor: [SELECT Id, Kickoff__c, Deadline__c, Predecessor_Milestone__c FROM Milestone1_Milestone__c WHERE Predecessor_Milestone__c IN :newMap.keySet()]) {
+            if(!successorMap.containsKey(successor.Predecessor_Milestone__c)) {
+                successorMap.put(successor.Predecessor_Milestone__c, new Set<Milestone1_Milestone__c>());
+            }
+            successorMap.get(successor.Predecessor_Milestone__c).add(successor);
+        }
+        List<Milestone1_Milestone__c> successorsToUpdate = new List<Milestone1_Milestone__c>();
+        for(Milestone1_Milestone__c newRec : newMap.values()) {
+            Milestone1_Milestone__c oldRec = oldMap.get(newRec.Id);
+            if(oldRec.Deadline__c != null && newRec.Deadline__c != null) {
+                Integer deadlineShift = oldRec.Deadline__c.daysBetween(newRec.Deadline__c);
+                if(deadlineShift != 0 && successorMap.containsKey(newRec.Id)) {
+                    for(Milestone1_Milestone__c successor: successorMap.get(newRec.Id)) {
+                        successor.Kickoff__c = successor.Kickoff__c.addDays(deadlineShift);
+                        successor.Deadline__c = successor.Deadline__c.addDays(deadlineShift);
+                    }
+                    successorsToUpdate.addAll(successorMap.get(newRec.Id));
+                }
+            }
+        }
+        update successorsToUpdate;
+    }
+    
     public static void checkChildDependencies(Map<Id, Milestone1_Milestone__c> oldMap, Map<Id, Milestone1_Milestone__c> newMap) {
         Map<Id, Set<Milestone1_Milestone__c>> childMap = new Map<Id, Set<Milestone1_Milestone__c>>();
         for(Milestone1_Milestone__c child: [SELECT Id, Kickoff__c, Deadline__c, Parent_Milestone__c FROM Milestone1_Milestone__c WHERE Parent_Milestone__c IN :newMap.keySet()]) {
@@ -81,17 +108,19 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
         List<Milestone1_Milestone__c> childrenToUpdate = new List<Milestone1_Milestone__c>();
         for(Milestone1_Milestone__c newRec : newMap.values()) {
             Milestone1_Milestone__c oldRec = oldMap.get(newRec.Id);
-            Integer oldDateRange = oldRec.Kickoff__c.daysBetween(oldRec.Deadline__c);
-            Integer newDateRange = newRec.Kickoff__c.daysBetween(newRec.Deadline__c);
-            Integer dateRangeShift = oldRec.Kickoff__c.daysBetween(newRec.Kickoff__c);
-            if(oldDateRange == newDateRange && dateRangeShift != 0 && childMap.containsKey(newRec.Id)) {
-                for(Milestone1_Milestone__c child: childMap.get(newRec.Id)) {
-                    child.Kickoff__c = child.Kickoff__c.addDays(dateRangeShift);
-                    child.Deadline__c = child.Deadline__c.addDays(dateRangeShift);
-                }
-                childrenToUpdate.addAll(childMap.get(newRec.Id));
+            if(oldRec.Kickoff__c != null && oldRec.Deadline__c != null && newRec.Kickoff__c != null && newRec.Deadline__c != null) {
+	            Integer kickoffShift = oldRec.Kickoff__c.daysBetween(newRec.Kickoff__c);
+                Integer deadlineShift = oldRec.Deadline__c.daysBetween(newRec.Deadline__c);
+	            if(kickoffShift == deadlineShift && deadlineShift != 0 &&childMap.containsKey(newRec.Id)) {
+	                for(Milestone1_Milestone__c child: childMap.get(newRec.Id)) {
+	                    child.Kickoff__c = child.Kickoff__c.addDays(deadlineShift);
+	                    child.Deadline__c = child.Deadline__c.addDays(deadlineShift);
+	                }
+	                childrenToUpdate.addAll(childMap.get(newRec.Id));
+	            }
             }
         }
+        alreadyMadeParent = true;
         update childrenToUpdate;
     }
     
@@ -106,15 +135,16 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
         List<Milestone1_Task__c> tasksToUpdate = new List<Milestone1_Task__c>();
         for(Milestone1_Milestone__c newRec : newMap.values()) {
             Milestone1_Milestone__c oldRec = oldMap.get(newRec.Id);
-            Integer oldDateRange = oldRec.Kickoff__c.daysBetween(oldRec.Deadline__c);
-            Integer newDateRange = newRec.Kickoff__c.daysBetween(newRec.Deadline__c);
-            Integer dateRangeShift = oldRec.Kickoff__c.daysBetween(newRec.Kickoff__c);
-            if(oldDateRange == newDateRange && dateRangeShift != 0) {
-                for(Milestone1_Task__c task: taskMap.get(newRec.Id)) {
-                    task.Start_Date__c = task.Start_Date__c.addDays(dateRangeShift);
-                    task.Due_Date__c = task.Due_Date__c.addDays(dateRangeShift);
+            if(oldRec.Kickoff__c != null && oldRec.Deadline__c != null && newRec.Kickoff__c != null && newRec.Deadline__c != null) {
+                Integer kickoffShift = oldRec.Kickoff__c.daysBetween(newRec.Kickoff__c);
+                Integer deadlineShift = oldRec.Deadline__c.daysBetween(newRec.Deadline__c);
+                if(kickoffShift == deadlineShift && deadlineShift != 0 && taskMap.containsKey(newRec.Id)) {
+                    for(Milestone1_Task__c task: taskMap.get(newRec.Id)) {
+                        task.Start_Date__c = task.Start_Date__c.addDays(deadlineShift);
+                        task.Due_Date__c = task.Due_Date__c.addDays(deadlineShift);
+                    }
+                    tasksToUpdate.addAll(taskMap.get(newRec.Id));
                 }
-                tasksToUpdate.addAll(taskMap.get(newRec.Id));
             }
         }
         update tasksToUpdate;
@@ -334,7 +364,7 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
             }
         }
         
-        if(milestoneUpdateSet.size() > 0){
+        if(milestoneUpdateSet.size() > 0 && !alreadyMadeParent){
             updateMilestones(milestoneUpdateSet);
         }
         //TODO force projects to go out and true themselves up, top down style

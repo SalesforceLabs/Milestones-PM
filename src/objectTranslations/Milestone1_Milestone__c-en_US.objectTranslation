@@ -299,6 +299,14 @@
         <name>Deadline_within_project_boundaries</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Milestone Kickoff must not be earlier than Parent Kickoff and Milestone Deadline must not be later than Parent Deadline. --></errorMessage>
+        <name>KickoffDeadlineWithinParentBoundaries</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Milestone Kickoff must not be earlier than its Predecessor&apos;s Deadline. --></errorMessage>
+        <name>Kickoff_after_Predecessor_Deadline</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- Kickoff must be less or equal than the deadline --></errorMessage>
         <name>Kickoff_before_deadline</name>
     </validationRules>

@@ -139,7 +139,6 @@
         <members>Milestone1_Task__c</members>
         <members>Milestone1_Time__c</members>
         <members>Milestone_Calendar</members>
-        <members>Milestones1_Main_Menu</members>
         <name>CustomTab</name>
     </types>
     <types>

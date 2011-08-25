@@ -85,6 +85,7 @@
         <members>Milestone1_TestProjectPage</members>
         <members>Milestone1_Timeline</members>
         <members>Milestone1_TimelineData</members>
+        <members>Milestones1_SinglePageMenu</members>
         <name>ApexPage</name>
     </types>
     <types>
@@ -128,7 +129,6 @@
         <name>CustomPageWebLink</name>
     </types>
     <types>
-        <members>Getting_Started</members>
         <members>Milestone1_Expense__c</members>
         <members>Milestone1_Getting_Started</members>
         <members>Milestone1_Import_Project_Template</members>
@@ -139,7 +139,7 @@
         <members>Milestone1_Task__c</members>
         <members>Milestone1_Time__c</members>
         <members>Milestone_Calendar</members>
-        <members>Summary</members>
+        <members>Milestones1_Main_Menu</members>
         <name>CustomTab</name>
     </types>
     <types>

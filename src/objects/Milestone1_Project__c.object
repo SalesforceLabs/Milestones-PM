@@ -429,28 +429,8 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
     <label>Project</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Status__c</columns>
-        <columns>OWNER.FIRST_NAME</columns>
-        <columns>OWNER.LAST_NAME</columns>
-        <columns>Deadline__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>My_Active_Projects</fullName>
-        <columns>NAME</columns>
-        <columns>Deadline__c</columns>
-        <columns>Total_Blocked_Task_Count__c</columns>
-        <columns>Total_Late_Task_Count__c</columns>
-        <columns>Total_Open_Task_Count__c</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>Status__c</field>
-            <operation>equals</operation>
-            <value>Active</value>
-        </filters>
-        <label>My Active Projects</label>
     </listViews>
     <nameField>
         <label>Project Name</label>

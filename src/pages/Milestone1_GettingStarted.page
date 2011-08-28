@@ -1,5 +1,5 @@
 <!-- 
-Copyright (c) 2011, salesforce.com, Inc.
+Copyright (c) 2011, salesforce.com, inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -31,7 +31,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
         
     <apex:pageBlock title="Welcome to Milestones PM - Project Management">
     
-    <h2>Your Next Steps</h2>
+    <h2>Next Steps</h2>
     
     <p><strong>Important:</strong> you must <strong>deploy</strong> Milestones before continuing.  
     If you have not done this, please visit <a href="/0A3?setupid=ImportedPackage">Setup > App Setup > View Installed Packages</a>,
@@ -53,8 +53,12 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
     
     <p>Milestones PM is unsupported.  For community assistance with Milestones PM, please visit <a href="http://success.salesforce.com/answers">Salesforce Answers</a>.  
     To submit ideas or issues, please visit <a href="https://github.com/ForceDotComLabs/Milestones-PM">Milestones PM on Github</a>.</p>
+
+    <p>&nbsp;</p>
     
-    <p>Milestones PM is Open Source software.  We welcome your feedback and your contributions.  
+    <h2>Community</h2>
+
+    <p>Milestones PM is Open Source software.  We welcome your issue reports, ideas, documentation, code tweaks and all other participation.  
     <a href="http://blogs.developerforce.com/labs/2011/08/howto-contribute-to-milestones-pm-code-not-required-opensource.html">Learn more</a>.</p>
 
     <p>&nbsp;</p>

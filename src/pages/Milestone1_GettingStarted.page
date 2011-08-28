@@ -1,5 +1,5 @@
 <!-- 
-Copyright (c) 2011, salesforce.com, Inc.
+Copyright (c) 2011, salesforce.com, inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -31,7 +31,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
         
     <apex:pageBlock title="Welcome to Milestones PM - Project Management">
     
-    <h2>Hello from Dreamforce!!! Your Next Steps</h2>
+    <h2>Next Steps</h2>
     
     <p><strong>Important:</strong> you must <strong>deploy</strong> Milestones before continuing.  
     If you have not done this, please visit <a href="/0A3?setupid=ImportedPackage">Setup > App Setup > View Installed Packages</a>,

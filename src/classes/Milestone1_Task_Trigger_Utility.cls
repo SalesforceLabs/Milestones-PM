@@ -98,7 +98,7 @@ public class Milestone1_Task_Trigger_Utility {
         }
         catch(Exception e){
         	//TODO Validate the type of exception
-			recs[0].addError('and hello!' + e.getMessage());
+			recs[0].addError(e.getMessage());
         }
         
         

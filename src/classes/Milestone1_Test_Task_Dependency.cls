@@ -41,6 +41,7 @@ private class Milestone1_Test_Task_Dependency {
         for(Integer i = 0; i < NUMBER_OF_TASKS; i++){
             Id parentMilestoneId = milestones[(Math.random() * milestones.size()).intValue()].Id;
             Milestone1_Task__c taskRec = Milestone1_Test_Utility.sampleTask(parentMilestoneId);
+            if(i > 0) taskRec.Predecessor_Task__c = tasks.values()[(Math.random() * tasks.size()).intValue()].Id;
             tasks.put(taskRec.Name,taskRec);
         }
         insert tasks.values();

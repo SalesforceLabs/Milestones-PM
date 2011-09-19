@@ -171,6 +171,12 @@
         <relationshipLabel><!-- Milestones --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- The predecessor milestone for this milestone if applicable. --></help>
+        <label><!-- Predecessor Milestone --></label>
+        <name>Predecessor_Milestone__c</name>
+        <relationshipLabel><!-- Successor Milestones --></relationshipLabel>
+    </fields>
+    <fields>
         <help><!-- How many days after project kickoff does this milestone kickoff? --></help>
         <label><!-- Project Kickoff Offset --></label>
         <name>Project_Kickoff_Offset__c</name>
@@ -291,6 +297,14 @@
     <validationRules>
         <errorMessage><!-- Deadline must be less than or equal to the project deadline. --></errorMessage>
         <name>Deadline_within_project_boundaries</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Milestone Kickoff must not be earlier than Parent Kickoff and Milestone Deadline must not be later than Parent Deadline. --></errorMessage>
+        <name>KickoffDeadlineWithinParentBoundaries</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Milestone Kickoff must not be earlier than its Predecessor&apos;s Deadline. --></errorMessage>
+        <name>Kickoff_after_Predecessor_Deadline</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Kickoff must be less or equal than the deadline --></errorMessage>

@@ -59,7 +59,6 @@ public with sharing class Milestone1_Test_Utility {
         rec.Parent_Milestone__c = parentMSId;
         rec.Project__c = projectId;
         rec.Complete__c = false; //getRandomBool(.25);
-        rec.Deadline__c = Date.today().addDays(1);
         rec.Description__c = 'Description for ' + name;
         rec.Expense_Budget__c = Math.floor(Math.random() * 50000 * 100) / 100;
         rec.Hours_Budget__c = Math.floor(Math.random() * 500 * 100) / 100;
@@ -167,7 +166,7 @@ public with sharing class Milestone1_Test_Utility {
     	return res;
     }
     
-        /**
+    /**
     * 	Create a batch of milestones
     */
     public static Map<String,Milestone1_Milestone__c> manyMilestones(Milestone1_Project__c project,
@@ -185,6 +184,49 @@ public with sharing class Milestone1_Test_Utility {
         }
         insert milestonesMap.values();
         return milestonesMap;	
+    }    
+    
+    /**
+    *   Create a batch of milestones with Parent
+    */
+    public static Map<String,Milestone1_Milestone__c> manyMilestonesParent(Milestone1_Project__c project, Milestone1_Milestone__c parentMilestone, Integer size){
+        Map<String,Milestone1_Milestone__c> milestonesMap = new Map<String,Milestone1_Milestone__c>();
+        Milestone1_Milestone__c milestone;
+        List<Milestone1_Milestone__c> milestones = new List<Milestone1_Milestone__c>();
+        Id projectId;
+        if(project != null){
+            projectId = project.Id; 
+        }
+        for(Integer i = 0; i < size; i++){
+            milestone = Milestone1_Test_Utility.sampleMilestone(projectId, parentMilestone.Id, 'ms'+i);
+            milestone.Kickoff__c = parentMilestone.Kickoff__c;
+            milestone.Deadline__c = parentMilestone.Deadline__c;
+            milestonesMap.put(milestone.Name,milestone);
+        }
+        insert milestonesMap.values();
+        return milestonesMap;   
+    }    
+    
+    /**
+    *   Create a batch of milestones with Predecessor
+    */
+    public static Map<String,Milestone1_Milestone__c> manyMilestonesPredecessor(Milestone1_Project__c project, Milestone1_Milestone__c predecessorMilestone, Integer size){
+        Map<String,Milestone1_Milestone__c> milestonesMap = new Map<String,Milestone1_Milestone__c>();
+        Milestone1_Milestone__c milestone;
+        List<Milestone1_Milestone__c> milestones = new List<Milestone1_Milestone__c>();
+        Id projectId;
+        if(project != null){
+            projectId = project.Id; 
+        }
+        for(Integer i = 0; i < size; i++){
+            milestone = Milestone1_Test_Utility.sampleMilestone(projectId, null, 'ms'+i);
+            milestone.Predecessor_Milestone__c = predecessorMilestone.Id;
+            milestone.Kickoff__c = predecessorMilestone.Deadline__c.addDays(1);
+            milestone.Deadline__c = milestone.Kickoff__c.addDays(1);
+            milestonesMap.put(milestone.Name,milestone);
+        }
+        insert milestonesMap.values();
+        return milestonesMap;   
     }    
     
 }

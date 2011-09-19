@@ -104,6 +104,31 @@ public class Milestone1_Task_Trigger_Utility {
         
     }
     
+    public static void checkSuccessorDependencies(Map<Id, Milestone1_Task__c> oldMap, Map<Id, Milestone1_Task__c> newMap) {
+        Map<Id, Set<Milestone1_Task__c>> successorMap = new Map<Id, Set<Milestone1_Task__c>>();
+        for(Milestone1_Task__c successor: [SELECT Id, Start_Date__c, Due_Date__c, Predecessor_Task__c FROM Milestone1_Task__c WHERE Predecessor_Task__c IN :newMap.keySet() AND Id NOT IN :newMap.keySet()]) {
+            if(!successorMap.containsKey(successor.Predecessor_Task__c)) {
+                successorMap.put(successor.Predecessor_Task__c, new Set<Milestone1_Task__c>());
+            }
+            successorMap.get(successor.Predecessor_Task__c).add(successor);
+        }
+        List<Milestone1_Task__c> successorsToUpdate = new List<Milestone1_Task__c>();
+        for(Milestone1_Task__c newRec : newMap.values()) {
+            Milestone1_Task__c oldRec = oldMap.get(newRec.Id);
+            if(oldRec.Due_Date__c != null && newRec.Due_Date__c != null) {
+                Integer deadlineShift = oldRec.Due_Date__c.daysBetween(newRec.Due_Date__c);
+                if(deadlineShift != 0 && successorMap.containsKey(newRec.Id)) {
+                    for(Milestone1_Task__c successor: successorMap.get(newRec.Id)) {
+                        successor.Start_Date__c = successor.Start_Date__c.addDays(deadlineShift);
+                        successor.Due_Date__c = successor.Due_Date__c.addDays(deadlineShift);
+                    }
+                    successorsToUpdate.addAll(successorMap.get(newRec.Id));
+                }
+            }
+        }
+        update successorsToUpdate;
+    }
+    
     public static EntitySubscription getSubscriptionForUserAndRec(Milestone1_Task__c rec, List<EntitySubscription> existingSubscriptionList, Map<String,List<EntitySubscription>> userSubscriptionMap)
     {
         EntitySubscription existingSubscription = null;

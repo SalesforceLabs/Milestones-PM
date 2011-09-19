@@ -441,6 +441,17 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Predecessor_Milestone__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The predecessor milestone for this milestone if applicable.</inlineHelpText>
+        <label>Predecessor Milestone</label>
+        <referenceTo>Milestone1_Milestone__c</referenceTo>
+        <relationshipLabel>Successor Milestones</relationshipLabel>
+        <relationshipName>Successor_Milestones</relationshipName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Project_Kickoff_Offset__c</fullName>
         <externalId>false</externalId>
         <formula>NULLVALUE(Kickoff__c -  Project__r.Kickoff__c,0)</formula>
@@ -699,6 +710,20 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <errorConditionFormula>if ( and (Deadline__c &lt;&gt; null, Project__r.Deadline__c &lt;&gt;  null, Deadline__c &gt; Project__r.Deadline__c) , true, false)</errorConditionFormula>
         <errorDisplayField>Deadline__c</errorDisplayField>
         <errorMessage>Deadline must be less than or equal to the project deadline.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>KickoffDeadlineWithinParentBoundaries</fullName>
+        <active>false</active>
+        <errorConditionFormula>(NOT(ISNULL(Kickoff__c)) &amp;&amp; NOT(ISNULL(Parent_Milestone__r.Kickoff__c)) &amp;&amp; Kickoff__c &lt; Parent_Milestone__r.Kickoff__c) || (NOT(ISNULL(Deadline__c)) &amp;&amp; NOT(ISNULL(Parent_Milestone__r.Deadline__c)) &amp;&amp; Deadline__c &gt; Parent_Milestone__r.Deadline__c)</errorConditionFormula>
+        <errorDisplayField>Kickoff__c</errorDisplayField>
+        <errorMessage>Milestone Kickoff must not be earlier than Parent Kickoff and Milestone Deadline must not be later than Parent Deadline.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Kickoff_after_Predecessor_Deadline</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISNULL(Kickoff__c)) &amp;&amp; NOT(ISNULL(Predecessor_Milestone__r.Deadline__c)) &amp;&amp; Kickoff__c &lt; Predecessor_Milestone__r.Deadline__c</errorConditionFormula>
+        <errorDisplayField>Kickoff__c</errorDisplayField>
+        <errorMessage>Milestone Kickoff must not be earlier than its Predecessor&apos;s Deadline.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Kickoff_before_deadline</fullName>

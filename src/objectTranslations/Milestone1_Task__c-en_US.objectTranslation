@@ -120,6 +120,12 @@
         <name>OwnerId__c</name>
     </fields>
     <fields>
+        <help><!-- The predecessor task for this task if applicable. --></help>
+        <label><!-- Predecessor Task --></label>
+        <name>Predecessor_Task__c</name>
+        <relationshipLabel><!-- Successor Tasks --></relationshipLabel>
+    </fields>
+    <fields>
         <help><!-- This is the priority of the task. 0,1,2,3 or 4. --></help>
         <label><!-- Priority --></label>
         <name>Priority__c</name>

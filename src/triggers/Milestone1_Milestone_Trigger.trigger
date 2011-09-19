@@ -18,6 +18,15 @@ trigger Milestone1_Milestone_Trigger on Milestone1_Milestone__c (before insert, 
 		if(Trigger.isDelete){
 			Milestone1_Milestone_Trigger_Utility.handleMilestoneAfterTrigger(trigger.oldMap);
 		} 
+        else if(Trigger.isUpdate){
+            Milestone1_Milestone_Trigger_Utility.handleMilestoneAfterTrigger(trigger.newMap);
+            //shift Deadline of successor Milestones if Milestone Deadline is shifted
+            Milestone1_Milestone_Trigger_Utility.checkSuccessorDependencies(trigger.oldMap, trigger.newMap);
+            //shift children Milestone dates if Milestone dates are shifted
+            Milestone1_Milestone_Trigger_Utility.checkChildDependencies(trigger.oldMap, trigger.newMap);
+            //shift Task dates if Milestone dates are shifted
+            Milestone1_Milestone_Trigger_Utility.checkTaskDependencies(trigger.oldMap, trigger.newMap);
+        } 
 		else {
 			Milestone1_Milestone_Trigger_Utility.handleMilestoneAfterTrigger(trigger.newMap);
 		}

@@ -284,6 +284,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Predecessor_Task__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The predecessor task for this task if applicable.</inlineHelpText>
+        <label>Predecessor Task</label>
+        <referenceTo>Milestone1_Task__c</referenceTo>
+        <relationshipLabel>Successor Tasks</relationshipLabel>
+        <relationshipName>Successor_Tasks</relationshipName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Priority__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>This is the priority of the task. 0,1,2,3 or 4.</inlineHelpText>
@@ -443,6 +454,19 @@
         <trackFeedHistory>false</trackFeedHistory>
         <type>Text</type>
     </nameField>
+    <namedFilters>
+        <fullName>nf_01IU00000000WpxMAE_00NU0000000IK2lMAG</fullName>
+        <active>true</active>
+        <field>Milestone1_Task__c.Predecessor_Task__c</field>
+        <filterItems>
+            <field>Milestone1_Task__c.Project_Milestone__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Project_Milestone__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Task_Predecessor Task</name>
+        <sourceObject>Milestone1_Task__c</sourceObject>
+    </namedFilters>
     <pluralLabel>Tasks</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Project__c</customTabListAdditionalFields>

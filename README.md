@@ -16,6 +16,7 @@ Milestones PM was originally designed by Reid Carlberg.
 Contributors include:
 
 * Ganesh Mathrubootham, gmathrubootham@salesforce.com
+* Ron Hess, https://github.com/vnehess
 
 Todo List
 ---------

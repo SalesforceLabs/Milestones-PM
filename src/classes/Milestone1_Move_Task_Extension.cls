@@ -29,10 +29,18 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 public with sharing class Milestone1_Move_Task_Extension {
     
     public List<Milestone1_Task__c> recs {get; set;}
+    
+    //RSC 2011-09-20 Added to support successor / predecessor notes
+    private Set<Id> recIds {get;set;}
+    
     public Milestone1_Task__c dummyTask {get; set;}
     public Boolean showSave {get; set;}
     public Boolean anySelected {get; set;}
+    
     public Boolean hasChildren {get; set;}
+    public Boolean hasMultipleMilestones {get;set;}
+    public Boolean hasPredecessorTasks {get;set;}
+    
     private String taskId;
     private ApexPages.Standardsetcontroller stc;
 
@@ -53,10 +61,12 @@ public with sharing class Milestone1_Move_Task_Extension {
     
     private void processSelection(List<Milestone1_Task__c> processList)
     {
+    	Set<Id> milestones = new Set<Id>();
+    	
         recs = processList;
         anySelected = recs.size() > 0;
         
-        Set<Id> recIds = new Set<Id>();
+        recIds = new Set<Id>();
         for(Milestone1_Task__c rec : recs){
             recIds.add(rec.Id);
         }
@@ -78,6 +88,7 @@ public with sharing class Milestone1_Move_Task_Extension {
                        Blocked__c,
                        Blocked_Reason__c,
                        Last_Email_Received__c,
+                       Predecessor_Task__c,
                        (SELECT Id FROM Project_Times__r),
                        (SELECT Id FROM Project_Expenses__r),
                        (SELECT Id FROM Notes),
@@ -88,6 +99,8 @@ public with sharing class Milestone1_Move_Task_Extension {
                ];
         
         hasChildren = false;
+        hasPredecessorTasks = false;
+        hasMultipleMilestones = false;
         
         for(Milestone1_Task__c rec : recs){
             if(rec.Project_Times__r.size() > 0 ||
@@ -97,19 +110,53 @@ public with sharing class Milestone1_Move_Task_Extension {
                rec.NotesAndAttachments.size() > 0){
                 hasChildren = true;
             }
+            milestones.add(rec.Project_Milestone__c);
+            if (rec.Predecessor_Task__c != null) {
+            	hasPredecessorTasks = true;
+            }
         }
+        
+        hasMultipleMilestones = milestones.size() > 1;
         
         showSave = anySelected && !hasChildren;
         
         dummyTask = new Milestone1_Task__c();
     }
     
-    
+    //tested in Milestone1 Test Move
     public PageReference moveTasks(){
         
         try
         {
+		//fail if their are multiple milestones and preds involved. too complex.
+		if (hasMultipleMilestones && hasPredecessorTasks) {
+			throw new Milestone1_Move_Exception('Cannot move when you are selecting tasks with precessors from multiple milestones.  Reduce your list and try again.');
+		}
+		
+		//future parent.
         Milestone1_Milestone__c ms = [SELECT Id, Complete__c FROM Milestone1_Milestone__c WHERE Id = :dummyTask.Project_Milestone__c];
+
+		//if we move tasks with successors, and we move ALL of those tasks, we're fine.
+		//however, if we have successors, and we don't move all of them, data gets terrible.      	
+        /*
+            assume this structure:
+            Task    Pred
+            t1      [none]
+            t2      t1
+            t3      t2
+            t4      [none]
+            
+            If user selects t1 and t2, those should fail since t2 is listed as a predecessor for t3
+            if user selected t1, t2 and t3, that should succeed. since no tasks are listed as predecessors for these
+        */
+        List<Milestone1_Task__c> successors = [Select Id From Milestone1_Task__c WHERE 
+            Predecessor_Task__c in :recIds AND Id not in :recIds];
+        
+       if (successors.size() > 0) {
+           throw new Milestone1_Move_Exception('Selected tasks have successors which are not selected. Clear those and try again OR select only tasks which have no successors.');
+       } 
+       
+       //OK nothing immediately wrong so let's give it a shot.
         
         Map<String, Milestone1_Task__c> newTasksMap = Milestone1_Clone_Utility.cloneTasksIntoMap(recs);
         
@@ -120,6 +167,7 @@ public with sharing class Milestone1_Move_Task_Extension {
             if( ms.Complete__c ){
             	throw new Milestone1_Move_Exception(Milestone1_Move_Exception.ERROR_MILESTONE_COMPLETE);
             }
+            
             newTask.Project_Milestone__c = ms.Id;
         }
         

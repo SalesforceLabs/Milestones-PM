@@ -169,6 +169,16 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Project__c</fields>
+        <fields>Project_Milestone__c</fields>
+        <fields>Assigned_To__c</fields>
+        <fields>Due_Date__c</fields>
+        <fields>Complete__c</fields>
+        <fields>Priority__c</fields>
+        <relatedList>Milestone1_Task__c.Predecessor_Task__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>Date__c</fields>
         <fields>Hours__c</fields>
         <fields>Incurred_By__c</fields>
@@ -200,7 +210,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hA000000QJIaB</masterLabel>
+        <masterLabel>00h300000046m3V</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

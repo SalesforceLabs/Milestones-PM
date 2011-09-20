@@ -30,6 +30,9 @@ public with sharing class Milestone1_Move_Milestone_Extension {
     
     public List<Milestone1_Milestone__c> recs {get; set;}
     private Map<Id, Milestone1_Milestone__c> recsById {get; set;}
+    //RSC 2011-09-20 Added to handled successors.
+    private Set<id> topRecs { get; set;}
+    
     private List<Milestone1_Milestone__c> subMilestones {get; set;}
     private List<Milestone1_Task__c> tasks {get; set;}
     public Milestone1_Milestone__c dummyMS {get; set;}
@@ -66,8 +69,10 @@ public with sharing class Milestone1_Move_Milestone_Extension {
 	        anySelected = recs.size() > 0;
 	        if(anySelected){
 	            Set<Id> recIds = new Set<Id>();
+	            topRecs = new Set<Id>();
 	            for(Milestone1_Milestone__c rec : recs){
 	                recIds.add(rec.Id);
+	                topRecs.add(rec.Id);
 	            }
 	            recs = [SELECT Id,
 	                           Name,
@@ -113,6 +118,20 @@ public with sharing class Milestone1_Move_Milestone_Extension {
         try
         {
             Milestone1_Project__c proj = [SELECT Id FROM Milestone1_Project__c WHERE Id = :dummyMS.Project__c];
+            
+            //check to see if move candidates have successor tasks.  If so, they should fail.
+            List<Milestone1_Milestone__c> candidateSuccessors = [Select Id From Milestone1_Milestone__c Where 
+            	Predecessor_Milestone__c in :topRecs];
+            if (candidateSuccessors.size() > 0) {
+            	throw new Milestone1_Move_Exception(Milestone1_Move_Exception.ERROR_MILESTONE_HAS_SUCCESSORS);
+            }
+            
+            //check to see if move candidates have predecessor tasks.
+            List<Milestone1_Milestone__c> candidateWithPredecessors = [Select Predecessor_Milestone__c From Milestone1_Milestone__c Where 
+            	Id in :topRecs AND Predecessor_Milestone__c != null];
+            if (candidateWithPredecessors.size() > 0) {
+            	throw new Milestone1_Move_Exception(Milestone1_Move_Exception.ERROR_MILESTONE_HAS_PREDECESSOR);
+            }
             
             List<Milestone1_Milestone__c> topMilestones = new List<Milestone1_Milestone__c>();
             List<Milestone1_Milestone__c> bottomMilestones = new List<Milestone1_Milestone__c>();

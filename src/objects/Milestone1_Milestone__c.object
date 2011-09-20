@@ -435,7 +435,7 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <inlineHelpText>The parent milestone for this milestone if applicable.</inlineHelpText>
         <label>Parent Milestone</label>
         <referenceTo>Milestone1_Milestone__c</referenceTo>
-        <relationshipLabel>Milestones</relationshipLabel>
+        <relationshipLabel>Child Milestones</relationshipLabel>
         <relationshipName>Child_Milestones</relationshipName>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Lookup</type>
@@ -443,7 +443,7 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
     <fields>
         <fullName>Predecessor_Milestone__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>The predecessor milestone for this milestone if applicable.</inlineHelpText>
+        <inlineHelpText>The milestone which must be complete before you start this one. The Predecessor Milestone end date must be before the current Milestone start date.</inlineHelpText>
         <label>Predecessor Milestone</label>
         <referenceTo>Milestone1_Milestone__c</referenceTo>
         <relationshipLabel>Successor Milestones</relationshipLabel>
@@ -657,6 +657,25 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <trackFeedHistory>false</trackFeedHistory>
         <type>Text</type>
     </nameField>
+    <namedFilters>
+        <fullName>nf_01I300000022xdvEAA_00N30000007czjLEAQ</fullName>
+        <active>true</active>
+        <field>Milestone1_Milestone__c.Parent_Milestone__c</field>
+        <filterItems>
+            <field>Milestone1_Milestone__c.Project__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Project__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>Milestone1_Milestone__c.Parent_Milestone__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </filterItems>
+        <infoMessage>Parent Milestones must be part of the same project as the child milestone.  Also, Parent Milestone cannot also be a Child Milestone.</infoMessage>
+        <isOptional>false</isOptional>
+        <name>Milestone_Parent Milestone</name>
+        <sourceObject>Milestone1_Milestone__c</sourceObject>
+    </namedFilters>
     <pluralLabel>Milestones</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Project__c</customTabListAdditionalFields>

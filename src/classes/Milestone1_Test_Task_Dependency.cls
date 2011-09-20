@@ -68,7 +68,20 @@ private class Milestone1_Test_Task_Dependency {
                                             OR Project_Milestone__r.Parent_Milestone__c = :ms2.Id
                                             OR Project_Milestone__r.Predecessor_Milestone__c = :ms2.Id
                                            ]);
-        areShiftedTasks(tasks2, tasks, NUMBER_OF_DAYS_SHIFTED);
+        
+        //RSC 2011-09-20 This was original in a method, refactored here for a clean security scan from http://security.force.com
+        
+        Milestone1_Task__c task;
+        for(Milestone1_Task__c taskOriginal : tasks2.values()){
+            task = tasks.get(taskOriginal.Name);
+            
+            if(taskOriginal.Due_Date__c != null && task.Due_Date__c != null && taskOriginal.Start_Date__c != null && task.Start_Date__c != null) {
+                System.assertEquals(task.Due_Date__c.daysBetween(taskOriginal.Due_Date__c) , NUMBER_OF_DAYS_SHIFTED, 'TASK date not shifted');
+                System.assertEquals(task.Start_Date__c.daysBetween(taskOriginal.Start_Date__c) , NUMBER_OF_DAYS_SHIFTED, 'TASK date not shifted');
+            }
+        }
+        
+        
         
     }
     
@@ -102,17 +115,5 @@ private class Milestone1_Test_Task_Dependency {
         }
     }
     
-    public static void areShiftedTasks (Map<String,Milestone1_Task__c> tasksOriginal,
-                                                Map<String,Milestone1_Task__c> tasks, Integer numberOfDaysShifted){
-    
-        Milestone1_Task__c task;
-        for(Milestone1_Task__c taskOriginal : tasksOriginal.values()){
-            task = tasks.get(taskOriginal.Name);
-            
-            if(taskOriginal.Due_Date__c != null && task.Due_Date__c != null && taskOriginal.Start_Date__c != null && task.Start_Date__c != null) {
-                System.assertEquals(task.Due_Date__c.daysBetween(taskOriginal.Due_Date__c) , numberOfDaysShifted, 'TASK date not shifted');
-                System.assertEquals(task.Start_Date__c.daysBetween(taskOriginal.Start_Date__c) , numberOfDaysShifted, 'TASK date not shifted');
-            }
-        }
-    }
+
 }

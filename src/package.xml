@@ -82,11 +82,11 @@
         <members>Milestone1_Move_Task_Detail</members>
         <members>Milestone1_One_Line_Create</members>
         <members>Milestone1_Post_Install_Instruction</members>
+        <members>Milestone1_SinglePageMenu</members>
         <members>Milestone1_Summary2</members>
         <members>Milestone1_TestProjectPage</members>
         <members>Milestone1_Timeline</members>
         <members>Milestone1_TimelineData</members>
-        <members>Milestones1_SinglePageMenu</members>
         <name>ApexPage</name>
     </types>
     <types>

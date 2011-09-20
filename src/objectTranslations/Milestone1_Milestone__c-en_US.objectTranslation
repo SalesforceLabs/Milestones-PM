@@ -168,10 +168,10 @@
         <help><!-- The parent milestone for this milestone if applicable. --></help>
         <label><!-- Parent Milestone --></label>
         <name>Parent_Milestone__c</name>
-        <relationshipLabel><!-- Milestones --></relationshipLabel>
+        <relationshipLabel><!-- Child Milestones --></relationshipLabel>
     </fields>
     <fields>
-        <help><!-- The predecessor milestone for this milestone if applicable. --></help>
+        <help><!-- The milestone which must be complete before you start this one. The Predecessor Milestone end date must be before the current Milestone start date. --></help>
         <label><!-- Predecessor Milestone --></label>
         <name>Predecessor_Milestone__c</name>
         <relationshipLabel><!-- Successor Milestones --></relationshipLabel>

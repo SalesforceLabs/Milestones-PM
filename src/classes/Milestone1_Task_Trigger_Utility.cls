@@ -104,6 +104,11 @@ public class Milestone1_Task_Trigger_Utility {
         
     }
     
+    /* 
+    handles successor dependencies.
+    looks at changes to predecessor task due date and adjusts successor tasks start and due date by the same number of days.
+    */
+    
     public static void checkSuccessorDependencies(Map<Id, Milestone1_Task__c> oldMap, Map<Id, Milestone1_Task__c> newMap) {
         Map<Id, Set<Milestone1_Task__c>> successorMap = new Map<Id, Set<Milestone1_Task__c>>();
         for(Milestone1_Task__c successor: [SELECT Id, Start_Date__c, Due_Date__c, Predecessor_Task__c FROM Milestone1_Task__c WHERE Predecessor_Task__c IN :newMap.keySet() AND Id NOT IN :newMap.keySet()]) {

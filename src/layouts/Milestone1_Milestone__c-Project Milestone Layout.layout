@@ -309,6 +309,15 @@
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Project__c</fields>
+        <fields>Parent_Milestone__c</fields>
+        <fields>OWNER.FIRST_NAME</fields>
+        <fields>OWNER.LAST_NAME</fields>
+        <fields>Deadline__c</fields>
+        <relatedList>Milestone1_Milestone__c.Predecessor_Milestone__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>Deadline__c</fields>
         <fields>Total_Open_Tasks__c</fields>
         <fields>Total_Hours_Balance__c</fields>
@@ -343,7 +352,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hC000000ILDds</masterLabel>
+        <masterLabel>00h300000046m3S</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

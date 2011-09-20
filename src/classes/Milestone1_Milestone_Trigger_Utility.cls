@@ -57,14 +57,17 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
         
     }
     
+    
     public static void checkMilestoneManualReparent(Map<Id, Milestone1_Milestone__c> oldMap, Map<Id, Milestone1_Milestone__c> newMap){
         Boolean allPassed = true;
         for(Milestone1_Milestone__c newRec : newMap.values()){
             Milestone1_Milestone__c oldRec = oldMap.get(newRec.Id);
+            
             if(oldRec.Project__c != newRec.Project__c && newRec.Okay_to_Reparent__c == false){
+            	//don't want to reparent if not OK to reparent.
                 allPassed = false;
                 newRec.Project__c.addError('Milestones should not be moved to different Projects, except through the "Move to New Project" button in Milestone list view.');
-            }
+            } 
         }
         
         if(allPassed){
@@ -72,6 +75,9 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
         }
     }
     
+    /*
+    	uses changes in milestone deadline to modify successor task kickoff and deadline dates.
+    */
     public static void checkSuccessorDependencies(Map<Id, Milestone1_Milestone__c> oldMap, Map<Id, Milestone1_Milestone__c> newMap) {
         Map<Id, Set<Milestone1_Milestone__c>> successorMap = new Map<Id, Set<Milestone1_Milestone__c>>();
         for(Milestone1_Milestone__c successor: [SELECT Id, Kickoff__c, Deadline__c, Predecessor_Milestone__c FROM Milestone1_Milestone__c WHERE Predecessor_Milestone__c IN :newMap.keySet()]) {
@@ -160,6 +166,7 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
 	        //ensure parent project IDs for all records
 	        Set<Id> parentMilestoneIds = new Set<Id>();
 	        for(Milestone1_Milestone__c rec : recs){
+	        	//reset to false--only set to true temporarily.
 	            rec.Okay_to_Reparent__c = false;
 	            if(rec.Parent_Milestone__c != null){
 	                parentMilestoneIds.add(rec.Parent_Milestone__c);

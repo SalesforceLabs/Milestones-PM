@@ -32,8 +32,8 @@ Get to know Milestones PM. https://github.com/ForceDotComLabs/Milestones-PM/wiki
 
 Add PE Compatibility.  https://github.com/ForceDotComLabs/Milestones-PM/wiki/PE-Compatibility
 
-Add Task and Milestone dependency.
+DONE! Add Task and Milestone dependency.
 
-Add date change cascading.
+DONE! Add date change cascading.
 
 Add resource management.

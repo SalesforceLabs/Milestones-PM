@@ -64,17 +64,26 @@ public with sharing class Milestone1_Charts_GanttController {
     private void initFieldNames(){
     	if(mytarget != null){
     		if(mytarget.startsWith(Schema.SObjectType.Milestone1_Project__c.getKeyPrefix())){
-	    		startDateFieldName = 'Kickoff__c';
+	    		/*startDateFieldName = 'Kickoff__c';
 	    		endDateFieldName = 'Deadline__c';
 	    		nameFieldName = 'NameClean__c';
-	    		filterFieldName = 'Project__c';
-	    		objectType = 'Milestone1_Milestone__c';
+	    		filterFieldName = 'Project__c';*/
+	    		
+	    		startDateFieldName = Milestone1_Milestone__c.Kickoff__c.getDescribe().getName();
+				endDateFieldName = Milestone1_Milestone__c.Deadline__c.getDescribe().getName();
+	    		nameFieldName = Milestone1_Milestone__c.NameClean__c.getDescribe().getName();
+	    		filterFieldName = Milestone1_Milestone__c.Project__c.getDescribe().getName();
+	    			    		
+	    		//objectType = 'Milestone1_Milestone__c';
+	    		objectType = Schema.SObjectType.Milestone1_Milestone__c.getName();
 	    	}else if(mytarget.startsWith(Schema.SObjectType.Milestone1_Milestone__c.getKeyPrefix())){
-	    		startDateFieldName = 'Start_Date__c';
-	    		endDateFieldName = 'Due_Date__c';
-	    		nameFieldName = 'Name';
-	    		filterFieldName = 'Project_Milestone__c';
-	    		objectType = 'Milestone1_Task__c';
+
+	    		startDateFieldName = Milestone1_Task__c.Start_Date__c.getDescribe().getName();
+				endDateFieldName = Milestone1_Task__c.Due_Date__c.getDescribe().getName();
+	    		nameFieldName = Milestone1_Task__c.Name.getDescribe().getName();
+	    		filterFieldName = Milestone1_Task__c.Project_Milestone__c.getDescribe().getName();
+	    			    		
+	    		objectType = Schema.SObjectType.Milestone1_Task__c.getName();
 	    	} else {
 	    		throw new Milestone1_Exception('[initFieldNames] Unable to generate JSON for ' + mytarget);
 	    	}

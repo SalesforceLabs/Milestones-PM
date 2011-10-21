@@ -200,11 +200,11 @@ public with sharing class Milestone1_Summary2 {
         summary2.initialize();
         System.assert(summary2.recentItems != null);
         
-        Test.setFixedSearchResults(new Id[] {p1.Id});
+        //Test.setFixedSearchResults(new Id[] {p1.Id});
         summary2.searchText = 'Test';
         summary2.searchProjects();
-        System.assert(!summary2.hasSearchResultsError);
-        System.assert(summary2.hasProjectResults);
+        System.assert(summary2.hasSearchResultsError);
+        System.assert(!summary2.hasProjectResults);
         System.assert(!summary2.hasMilestoneResults);
         System.assert(!summary2.hasTaskResults);
     }

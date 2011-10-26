@@ -73,6 +73,7 @@ public with sharing class Milestone1_Summary2 {
         this.recentItems.addAll(createPairObjects(recentMilestones, 'Milestone: '));
         this.recentItems.addAll(createPairObjects(recentTasks, 'Task: '));
     }
+
     
     public void searchProjects() {
         List<List<SObject>> searchList = [FIND :searchText in all fields returning 
@@ -105,7 +106,9 @@ public with sharing class Milestone1_Summary2 {
     
     public List<Milestone1_Project__c> getProjects() {
         
-        List<Milestone1_Project__c> activeProjects = [Select m.Id, m.Status_TasksOpenComplete__c, m.Status_TasksOpenBlockedLate__c, 
+        List<Milestone1_Project__c> activeProjects = [Select m.Id, m.Total_Open_Task_Count__c, m.Total_Complete_Task_Count__c, 
+        m.Total_Blocked_Task_Count__c, m.Total_Late_Task_Count__c, m.Status_TasksOpenBlockedLate__c,
+        m.Total_Hours_Budget__c, m.Total_Hours_Budget_from_Milestones__c, m.Total_Hours_Estimate__c, m.Total_Hours_Incurred__c, 
         m.Status_BudgetMiletoneEstimate__c, m.Status_BudgetExpenseSummary__c, m.Name, m.Deadline__c, m.Kickoff__c, 
         m.Duration__c, m.GoogleGanntUrl__c
         From Milestone1_Project__c m where m.status__c = 'Active'];

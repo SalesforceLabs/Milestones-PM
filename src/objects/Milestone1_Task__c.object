@@ -35,7 +35,6 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Force.com Labs - PM - An activity that has hours, budget, and is assigned to a User.</description>
     <enableActivities>false</enableActivities>
-    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>true</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
@@ -46,6 +45,7 @@
         <label>Assigned To</label>
         <referenceTo>User</referenceTo>
         <relationshipName>Project_Tasks_Assigned</relationshipName>
+        <required>false</required>
         <trackFeedHistory>true</trackFeedHistory>
         <type>Lookup</type>
     </fields>
@@ -291,6 +291,7 @@
         <referenceTo>Milestone1_Task__c</referenceTo>
         <relationshipLabel>Successor Tasks</relationshipLabel>
         <relationshipName>Successor_Tasks</relationshipName>
+        <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Lookup</type>
     </fields>

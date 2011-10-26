@@ -35,7 +35,6 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Force.com Labs - PM - A time entry record which allows users to log times against milestone tasks.</description>
     <enableActivities>false</enableActivities>
-    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
@@ -83,6 +82,7 @@
         <label>Incurred By</label>
         <referenceTo>User</referenceTo>
         <relationshipName>Project_Times_Incurred</relationshipName>
+        <required>false</required>
         <type>Lookup</type>
     </fields>
     <fields>

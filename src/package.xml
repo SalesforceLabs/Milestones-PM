@@ -5,141 +5,66 @@
         <name>AnalyticSnapshot</name>
     </types>
     <types>
-        <members>DNP_Milestone1_Test_Move_LongRunning</members>
-        <members>Milestone1_Calendar_Item</members>
-        <members>Milestone1_Charts_GanttController</members>
-        <members>Milestone1_Charts_Gantt_Helper</members>
-        <members>Milestone1_Clone_Milestone_Controller</members>
-        <members>Milestone1_Clone_Project_Controller</members>
-        <members>Milestone1_Clone_Utility</members>
-        <members>Milestone1_Constants</members>
-        <members>Milestone1_Email_Handler</members>
-        <members>Milestone1_Email_Handler_Tst</members>
-        <members>Milestone1_Email_Utility</members>
-        <members>Milestone1_Email_Utility_Tst</members>
-        <members>Milestone1_Exception</members>
-        <members>Milestone1_Expense_Trigger_Tst</members>
-        <members>Milestone1_Expense_Trigger_Utility</members>
-        <members>Milestone1_Export_Project_Controller</members>
-        <members>Milestone1_Export_Project_Controller_Tst</members>
-        <members>Milestone1_General_Utility</members>
-        <members>Milestone1_GettingStartedController</members>
-        <members>Milestone1_Import_Exception</members>
-        <members>Milestone1_Import_Project_Controller</members>
-        <members>Milestone1_Import_Project_Controller_Tst</members>
-        <members>Milestone1_Milestone_Batch_Delete</members>
-        <members>Milestone1_Milestone_Batch_Update</members>
-        <members>Milestone1_Milestone_Trigger_Utility</members>
-        <members>Milestone1_Milestone_Values_Helper</members>
-        <members>Milestone1_Month</members>
-        <members>Milestone1_Move_Exception</members>
-        <members>Milestone1_Move_Milestone_Extension</members>
-        <members>Milestone1_Move_Task_Extension</members>
-        <members>Milestone1_One_Line_Controller</members>
-        <members>Milestone1_One_Liner_Controller_Tst</members>
-        <members>Milestone1_Project_Active_Sched_Update</members>
-        <members>Milestone1_Project_Batch_Update</members>
-        <members>Milestone1_Project_Trigger_Utility</members>
-        <members>Milestone1_Summary2</members>
-        <members>Milestone1_Task_Chatter_Tst</members>
-        <members>Milestone1_Task_Trigger_Utility</members>
-        <members>Milestone1_Task_Trigger_Utility_Test</members>
-        <members>Milestone1_TestProjectBuilder</members>
-        <members>Milestone1_Test_Clone</members>
-        <members>Milestone1_Test_Field_Values</members>
-        <members>Milestone1_Test_Import_Export</members>
-        <members>Milestone1_Test_Move</members>
-        <members>Milestone1_Test_Task_Dependency</members>
-        <members>Milestone1_Test_Utility</members>
-        <members>Milestone1_Time_Trigger_Tst</members>
-        <members>Milestone1_Time_Trigger_Utility</members>
-        <members>Milestone1_TimelineCon</members>
-        <members>Milestone1_TimelineCon_Test</members>
-        <members>Milestone1_XML_Export_Utility</members>
-        <members>Milestone1_XML_Export_Utility_Test</members>
-        <members>Milestone1_XML_Import_Utility</members>
-        <members>Milestone1_XML_Import_Utility_Test</members>
-        <members>Milestone1_repeatCon</members>
+        <members>*</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>MIlestone1_Calendar_Full</members>
-        <members>Milestone1_Charts_GanttComponent</members>
+        <members>*</members>
         <name>ApexComponent</name>
     </types>
     <types>
-        <members>Milestone1_Calendar_Large</members>
-        <members>Milestone1_Charts_GanttMilestones</members>
-        <members>Milestone1_Charts_GanttTasks</members>
-        <members>Milestone1_Clone_Milestone</members>
-        <members>Milestone1_Clone_Project</members>
-        <members>Milestone1_Export_Project</members>
-        <members>Milestone1_GettingStarted</members>
-        <members>Milestone1_Import_Project</members>
-        <members>Milestone1_Move_Milestone</members>
-        <members>Milestone1_Move_Milestone_Detail</members>
-        <members>Milestone1_Move_Task</members>
-        <members>Milestone1_Move_Task_Detail</members>
-        <members>Milestone1_One_Line_Create</members>
-        <members>Milestone1_Post_Install_Instruction</members>
-        <members>Milestone1_SinglePageMenu</members>
-        <members>Milestone1_Summary2</members>
-        <members>Milestone1_TestProjectPage</members>
-        <members>Milestone1_Timeline</members>
-        <members>Milestone1_TimelineData</members>
+        <members>*</members>
         <name>ApexPage</name>
     </types>
     <types>
-        <members>Milestone1_Expense_Trigger</members>
-        <members>Milestone1_Milestone_Trigger</members>
-        <members>Milestone1_Project_Trigger</members>
-        <members>Milestone1_Task_Trigger</members>
-        <members>Milestone1_Time_Trigger</members>
+        <members>*</members>
         <name>ApexTrigger</name>
     </types>
     <types>
-        <members>Project_Mgmt_Labs</members>
+        <members>*</members>
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>Milestone1_Expense__c</members>
-        <members>Milestone1_Log__c</members>
-        <members>Milestone1_Milestone__c</members>
-        <members>Milestone1_Nag__c</members>
-        <members>Milestone1_Project__c</members>
-        <members>Milestone1_Settings__c</members>
-        <members>Milestone1_Task__c</members>
-        <members>Milestone1_Time__c</members>
-        <members>Project_Snapshot__c</members>
+        <members>*</members>
+        <members>Account</members>
+        <members>AccountContactRole</members>
+        <members>Activity</members>
+        <members>Asset</members>
+        <members>Campaign</members>
+        <members>CampaignMember</members>
+        <members>Case</members>
+        <members>CaseContactRole</members>
+        <members>Contact</members>
+        <members>ContentVersion</members>
+        <members>Contract</members>
+        <members>ContractContactRole</members>
+        <members>Event</members>
+        <members>Idea</members>
+        <members>JigsawSavedSearch</members>
+        <members>Lead</members>
+        <members>Opportunity</members>
+        <members>OpportunityContactRole</members>
+        <members>OpportunityLineItem</members>
+        <members>PartnerRole</members>
+        <members>Product2</members>
+        <members>Site</members>
+        <members>SocialPersona</members>
+        <members>Solution</members>
+        <members>Task</members>
+        <members>User</members>
+        <members>UserLicense</members>
         <name>CustomObject</name>
     </types>
     <types>
-        <members>Milestone1_Expense__c-en_US</members>
-        <members>Milestone1_Log__c-en_US</members>
-        <members>Milestone1_Milestone__c-en_US</members>
-        <members>Milestone1_Nag__c-en_US</members>
-        <members>Milestone1_Project__c-en_US</members>
-        <members>Milestone1_Settings__c-en_US</members>
-        <members>Milestone1_Task__c-en_US</members>
-        <members>Milestone1_Time__c-en_US</members>
-        <members>Project_Snapshot__c-en_US</members>
+        <members>*</members>
         <name>CustomObjectTranslation</name>
     </types>
     <types>
-        <members>Milestone1_Getting_Started</members>
+        <members>*</members>
         <name>CustomPageWebLink</name>
     </types>
     <types>
-        <members>Milestone1_Expense__c</members>
-        <members>Milestone1_Getting_Started</members>
-        <members>Milestone1_Import_Project_Template</members>
-        <members>Milestone1_Log__c</members>
-        <members>Milestone1_Milestone__c</members>
-        <members>Milestone1_Project__c</members>
-        <members>Milestone1_Summary</members>
-        <members>Milestone1_Task__c</members>
-        <members>Milestone1_Time__c</members>
-        <members>Milestone_Calendar</members>
+        <members>*</members>
         <name>CustomTab</name>
     </types>
     <types>
@@ -150,23 +75,32 @@
     </types>
     <types>
         <members>Project_Management_Folder</members>
-        <members>Project_Management_Folder/LPM1_Starter_Project.xml</members>
         <members>Project_Management_Folder/Starter_Project_LPM1a.xml</members>
         <name>Document</name>
     </types>
     <types>
-        <members>Add A Task %28alias---task%29</members>
+        <members>unfiled$public</members>
+        <members>unfiled$public/MarketingProductInquiryResponse</members>
+        <members>unfiled$public/SUPPORTSelfServiceNewCommentNotificationSAMPLE</members>
+        <members>unfiled$public/SUPPORTSelfServiceNewUserLoginInformationSAMPLE</members>
+        <members>unfiled$public/SUPPORTSelfServiceResetPasswordSAMPLE</members>
+        <members>unfiled$public/SalesNewCustomerEmail</members>
+        <members>unfiled$public/SupportCaseAssignmentNotification</members>
+        <members>unfiled$public/SupportCaseCreatedPhoneInquiries</members>
+        <members>unfiled$public/SupportCaseCreatedWebInquiries</members>
+        <members>unfiled$public/SupportCaseResponse</members>
+        <members>unfiled$public/SupportEscalatedCaseNotification</members>
+        <members>unfiled$public/SupportEscalatedCaseReassignment</members>
+        <members>unfiled$public/SupportSelfServiceNewLoginandPassword</members>
+        <members>unfiled$public/SupportSelfServiceResetPassword</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+        <members>*</members>
         <name>HomePageComponent</name>
     </types>
     <types>
-        <members>Milestone1_Expense__c-Project Expense Layout</members>
-        <members>Milestone1_Log__c-Project Log Layout</members>
-        <members>Milestone1_Milestone__c-Project Milestone Layout</members>
-        <members>Milestone1_Nag__c-Project Nag Layout</members>
-        <members>Milestone1_Project__c-Project Layout</members>
-        <members>Milestone1_Task__c-Project Task Layout</members>
-        <members>Milestone1_Time__c-Project Time Layout</members>
-        <members>Project_Snapshot__c-Project Snapshot Layout</members>
+        <members>*</members>
         <name>Layout</name>
     </types>
     <types>
@@ -197,23 +131,15 @@
         <members>Milestone_Project_Management/Tasks_By_Project_LPM1</members>
         <members>Milestone_Project_Management/User_Expense_Incurred</members>
         <members>Milestone_Project_Management/User_Time_Incurred</members>
+        <members>unfiled$public</members>
         <name>Report</name>
     </types>
     <types>
-        <members>Milestone1_Milestones_Tasks</members>
-        <members>Milestone1_Projects</members>
-        <members>Milestone1_Projects_Milestones</members>
-        <members>Milestone1_Tasks</members>
-        <members>MilestoneTaskExp</members>
-        <members>Milestones_with_Tasks_with_Expenses</members>
-        <members>Milestones_with_Tasks_with_Times</members>
-        <members>Projects_Milestones_Tasks</members>
+        <members>*</members>
         <name>ReportType</name>
     </types>
     <types>
-        <members>Milestone1_Charts</members>
-        <members>Milestone1_Resource_Bundle</members>
-        <members>Milestone1_Timeline</members>
+        <members>*</members>
         <name>StaticResource</name>
     </types>
     <version>20.0</version>

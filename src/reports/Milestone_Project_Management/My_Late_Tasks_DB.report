@@ -33,7 +33,7 @@
         <criteriaItems>
             <column>Milestone1_Project__c.Project_Milestones__r.Project_Tasks__r$Days_Late__c</column>
             <operator>greaterThan</operator>
-            <value>0.0</value>
+            <value>0</value>
         </criteriaItems>
         <criteriaItems>
             <column>Milestone1_Project__c.Project_Milestones__r.Project_Tasks__r$Complete__c</column>

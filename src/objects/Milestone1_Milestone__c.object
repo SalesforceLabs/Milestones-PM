@@ -36,7 +36,6 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Force.com Labs - PM - Milestones are significant events in the life-cycle of a Project. Milestones can have tasks and sub-milestones associated with them.</description>
     <enableActivities>false</enableActivities>
-    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>true</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
@@ -384,7 +383,7 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
 &quot;|Blocked (&quot; &amp; TEXT(Total_Blocked_Tasks__c) &amp; &quot;)&quot;&amp;
 &quot;&amp;chd=t:&quot;&amp; TEXT(Total_Open_Tasks__c/ max(Total_Open_Tasks__c, Total_Blocked_Tasks__c, Total_Late_Tasks__c) * 100)&amp;&quot;|&quot;&amp; TEXT(Total_Late_Tasks__c / max(Total_Open_Tasks__c, Total_Blocked_Tasks__c, Total_Late_Tasks__c) * 100) &amp;&quot;|&quot; &amp; TEXT(Total_Blocked_Tasks__c/ max(Total_Open_Tasks__c, Total_Blocked_Tasks__c, Total_Late_Tasks__c) * 100) , &quot;Project Status, Open Tasks, Late Tasks &amp; Blocked Tasks&quot;),&apos;&apos;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Open, Late &amp; Blocked Tasks</label>
+        <label>Open, Late &amp; Blocked Tasks  - Deprecated</label>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -424,7 +423,7 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
 &quot;|Complete%20Tasks (&quot; &amp; TEXT(Total_Complete_Tasks__c) &amp;&quot;)&quot;
 ,&quot;Open vs. Complete Tasks&quot;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Open vs. Complete Tasks</label>
+        <label>Open vs. Complete Tasks - Deprecated</label>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -437,6 +436,7 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <referenceTo>Milestone1_Milestone__c</referenceTo>
         <relationshipLabel>Child Milestones</relationshipLabel>
         <relationshipName>Child_Milestones</relationshipName>
+        <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Lookup</type>
     </fields>
@@ -448,6 +448,7 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <referenceTo>Milestone1_Milestone__c</referenceTo>
         <relationshipLabel>Successor Milestones</relationshipLabel>
         <relationshipName>Successor_Milestones</relationshipName>
+        <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Lookup</type>
     </fields>
@@ -472,6 +473,7 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <referenceTo>Milestone1_Project__c</referenceTo>
         <relationshipLabel>Milestones</relationshipLabel>
         <relationshipName>Project_Milestones</relationshipName>
+        <required>false</required>
         <trackFeedHistory>true</trackFeedHistory>
         <type>Lookup</type>
     </fields>

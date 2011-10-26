@@ -31,7 +31,6 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 <apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'date.js')}"/>
 <apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-ui-1.8.7.custom.min.js')}"/>
 <apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery.ganttView.js')}"/>
-
 <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-ui-1.8.4.css')}"/>
 <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'reset.css')}"/>
 <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'jquery.ganttView.css')}"/>
@@ -51,7 +50,11 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 }
 </style>
 
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
 <script type="text/javascript">
+var data;    
+google.load("visualization", "1", {packages:["corechart"]});
+
 
 var searchTargetId = '';
 var objectMap = [
@@ -161,58 +164,96 @@ jQuery(document).ready(function() {
 <apex:repeat value="{!projects}" var="currentProject" id="projectList" >
 
 <apex:pageBlock title="{!currentProject.name}">
-<apex:pageBlockButtons location="top">
-                <apex:commandLink action="{!view}" value="Project Detail" >
-                    <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
-                    </apex:commandLink>                 
-                    &nbsp;
-                    <apex:commandLink action="{!viewMilestoneOpenTasks}" value="Milestones & Open Tasks" >
-                        <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
-                    </apex:commandLink> 
-                    &nbsp;
-                    <apex:commandLink action="{!viewOpenTasks}" value="All Open Tasks" >
-                        <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
-                    </apex:commandLink> 
-                    &nbsp;
-                    <apex:commandLink action="{!viewMyTasks}" value="My Tasks" >
-                        <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
-                    </apex:commandLink>      
-                    &nbsp;
-                    <apex:commandLink action="{!viewBlockedTasks}" value="Blocked Tasks" >
-                        <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
-                    </apex:commandLink>    
-                    &nbsp;  
-                    <apex:commandLink action="{!viewOverdueTasks}" value="Overdue Tasks" >
-                        <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
-                    </apex:commandLink>                      
-            </apex:pageBlockButtons>
+	<apex:pageBlockButtons location="top">
+         <apex:commandLink action="{!view}" value="Project Detail" >
+             <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
+             </apex:commandLink>                 
+             &nbsp;
+             <apex:commandLink action="{!viewMilestoneOpenTasks}" value="Milestones & Open Tasks" >
+                 <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
+             </apex:commandLink> 
+             &nbsp;
+             <apex:commandLink action="{!viewOpenTasks}" value="All Open Tasks" >
+                 <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
+             </apex:commandLink> 
+             &nbsp;
+             <apex:commandLink action="{!viewMyTasks}" value="My Tasks" >
+                 <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
+             </apex:commandLink>      
+             &nbsp;
+             <apex:commandLink action="{!viewBlockedTasks}" value="Blocked Tasks" >
+                 <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
+             </apex:commandLink>    
+             &nbsp;  
+             <apex:commandLink action="{!viewOverdueTasks}" value="Overdue Tasks" >
+                 <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
+             </apex:commandLink>                      
+     </apex:pageBlockButtons>
 
-    <apex:image value="{!HTMLENCODE(currentProject.Status_TasksOpenComplete__c)}"/>
-    
-
-
-
-    <apex:image value="{!HTMLENCODE(currentProject.Status_TasksOpenBlockedLate__c)}"/>
-    
- 
-
-    <apex:image value="{!HTMLENCODE(currentProject.Status_BudgetMiletoneEstimate__c)}"/>
-    
-    <br/>
-    
-    
-    <c:Milestone1_Charts_GanttComponent readonly="true" target="{!currentProject.Id}" />
-    
-
-
-
+    <table class="detailList" cellspacing="0" cellpadding="0" border="0">
+    <tr><td width="25%">
+        <div id="chart_div0_{!currentProject.id}"></div>
+    </td><td width="25%">    
+	    <div id="chart_div1_{!currentProject.id}"></div>
+	</td><td width="25%">    
+	    <div id="chart_div2_{!currentProject.id}"></div>
+	</td><td width="25%">     
+	  <script>
+	      function drawChart_{!currentProject.id}() {
+			data = new google.visualization.DataTable();
+	        data.addColumn('string', 'Task Status');
+	        data.addColumn('number', 'No. of Tasks');
+	        data.addRows(2);
+	        data.setValue(0, 0, 'Open Tasks');
+	        data.setValue(0, 1, {!currentProject.Total_Open_Task_Count__c});
+	        data.setValue(1, 0, 'Complete Tasks');
+	        data.setValue(1, 1, {!currentProject.Total_Complete_Task_Count__c});
+	        var chart = new google.visualization.PieChart(document.getElementById('chart_div0_{!currentProject.id}'));
+	        chart.draw(data, {width: 400, height: 240, title: 'Task Analysis',pieSliceText:'value', colors:['eeaa66','2299bb'], chartArea:{left:30,top:30,width:"90%",height:"70%"}});
+	    
+	        data = new google.visualization.DataTable();
+	        data.addColumn('string', 'Task Status');
+	        data.addColumn('number', 'Open');
+	        data.addColumn('number', 'Late');
+	        data.addColumn('number', 'Blocked');
+	        data.addRows(1);
+	        data.setValue(0, 0, 'No. of Tasks');
+	        data.setValue(0, 1, {!currentProject.Total_Open_Task_Count__c});
+	        data.setValue(0, 2, {!currentProject.Total_Late_Task_Count__c});
+	        data.setValue(0, 3, {!currentProject.Total_Blocked_Task_Count__c});
+	        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div1_{!currentProject.id}'));
+	        chart.draw(data, {width: 400, height: 240, title: 'Open Task Analysis', colors:['eeaa66','2299bb','ee3322'], chartArea:{left:30,top:30,width:"70%",height:"80%"}});
+	    
+	        // we need a table to act as the datasource for the chart
+	        data = new google.visualization.DataTable();
+	        data.addColumn('string', 'Task Status');
+	        data.addColumn('number', 'Budget');
+	        data.addColumn('number', 'Planned');
+	        data.addColumn('number', 'Estimated');
+	        data.addColumn('number', 'Incurred');
+	        data.addRows(1);
+	        data.setValue(0, 0, 'No. of Tasks');
+	        data.setValue(0, 1, {!currentProject.Total_Hours_Budget__c});
+	        data.setValue(0, 2, {!currentProject.Total_Hours_Budget_from_Milestones__c});
+	        data.setValue(0, 3, {!currentProject.Total_Hours_Estimate__c});
+	        data.setValue(0, 4, {!currentProject.Total_Hours_Incurred__c});        
+	        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2_{!currentProject.id}'));
+	        chart.draw(data, {width: 400, height: 240, title: 'Task Time Budget Analysis', colors:['eeaa66','2299bb','ee3322','666666'], chartArea:{left:30,top:30,width:"70%",height:"80%"}});
+	     }
+	     
+	     google.setOnLoadCallback(drawChart_{!currentProject.id});
+		</script>  
+	</td></tr>
+	<tr><td colspan="4">
+		<c:Milestone1_Charts_GanttComponent readonly="true" target="{!currentProject.Id}" />
+	</td></tr>
+    </table>
 </apex:pageBlock>
-
+<br/>
 </apex:repeat>
 
 </apex:outputPanel>
 
 </apex:form>
-
 
 </apex:page>

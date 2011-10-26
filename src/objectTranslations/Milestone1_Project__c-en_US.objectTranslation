@@ -58,31 +58,31 @@
         <name>Number_of_Incomplete_Top_Milestones__c</name>
     </fields>
     <fields>
-        <label><!-- Expense Summary --></label>
+        <label><!-- Expense Summary - Deprecated --></label>
         <name>Status_BudgetExpenseSummary__c</name>
     </fields>
     <fields>
-        <label><!-- Hours Summary --></label>
+        <label><!-- Hours Summary - Deprecated --></label>
         <name>Status_BudgetMiletoneEstimate__c</name>
     </fields>
     <fields>
-        <label><!-- Hours Summary (chart) --></label>
+        <label><!-- Hours Summary (chart) - Deprecated --></label>
         <name>Status_Image_HoursSummary__c</name>
     </fields>
     <fields>
-        <label><!-- Open vs. Complete Tasks (chart) --></label>
+        <label><!-- Open vs. Complete Tasks (chart) - Deprec --></label>
         <name>Status_Image_OpenVComplete__c</name>
     </fields>
     <fields>
-        <label><!-- Open, Late &amp; Blocked Tasks (chart) --></label>
+        <label><!-- Open, Late &amp; Blocked Tasks (chart) - Dep --></label>
         <name>Status_Img_OpenLateBlocked__c</name>
     </fields>
     <fields>
-        <label><!-- Open, Late &amp; Blocked Tasks --></label>
+        <label><!-- Open, Late &amp; Blocked Tasks - Deprecated --></label>
         <name>Status_TasksOpenBlockedLate__c</name>
     </fields>
     <fields>
-        <label><!-- Open vs. Complete Tasks --></label>
+        <label><!-- Open vs. Complete Tasks - Deprecated --></label>
         <name>Status_TasksOpenComplete__c</name>
     </fields>
     <fields>

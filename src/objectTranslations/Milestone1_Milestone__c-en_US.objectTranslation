@@ -147,7 +147,7 @@
         <name>Okay_to_Reparent__c</name>
     </fields>
     <fields>
-        <label><!-- Open, Late &amp; Blocked Tasks --></label>
+        <label><!-- Open, Late &amp; Blocked Tasks  - Deprecated --></label>
         <name>Open_Late_Blocked_Tasks__c</name>
     </fields>
     <fields>
@@ -161,7 +161,7 @@
         <name>Open_Tasks_in_Tasks__c</name>
     </fields>
     <fields>
-        <label><!-- Open vs. Complete Tasks --></label>
+        <label><!-- Open vs. Complete Tasks - Deprecated --></label>
         <name>Open_vs_Complete_Tasks__c</name>
     </fields>
     <fields>

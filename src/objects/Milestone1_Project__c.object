@@ -36,7 +36,6 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Force.com Labs - PM - A collaborative enterprise which has a planned goal. A project can have many milestones.</description>
     <enableActivities>false</enableActivities>
-    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>true</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>false</enableReports>
@@ -164,7 +163,7 @@ TEXT( Total_Expense_Estimate__c / max( Total_Expense_Budget__c,Total_Expense_Bud
 TEXT(  Total_Expense_Incurred__c / max( Total_Expense_Budget__c,Total_Expense_Budget_from_Milestones__c,Total_Expense_Estimate__c, Total_Expense_Incurred__c) * 100) 
 , &quot;Project Expense - Budget, Planned, Estimated, Incurred&quot;), &apos;&apos;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Expense Summary</label>
+        <label>Expense Summary - Deprecated</label>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -187,7 +186,7 @@ TEXT( Total_Hours_Budget_from_Milestones__c / max( Total_Hours_Budget__c,Total_H
 TEXT( Total_Hours_Estimate__c / max( Total_Hours_Budget__c,Total_Hours_Budget_from_Milestones__c,Total_Hours_Estimate__c, Total_Hours_Incurred__c) * 100 ) &amp;&quot;|&quot; &amp; 
 TEXT(  Total_Hours_Incurred__c / max( Total_Hours_Budget__c,Total_Hours_Budget_from_Milestones__c,Total_Hours_Estimate__c, Total_Hours_Incurred__c) * 100)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Hours Summary</label>
+        <label>Hours Summary - Deprecated</label>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -198,7 +197,7 @@ TEXT(  Total_Hours_Incurred__c / max( Total_Hours_Budget__c,Total_Hours_Budget_f
         <formula>IF( Total_Hours_Budget__c &gt; 0, 
 IMAGE(Status_BudgetMiletoneEstimate__c, &quot;Hours Summary: Budgeted, Planned, Estimated and Incurred.&quot;),&apos;&apos;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Hours Summary (chart)</label>
+        <label>Hours Summary (chart) - Deprecated</label>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -209,7 +208,7 @@ IMAGE(Status_BudgetMiletoneEstimate__c, &quot;Hours Summary: Budgeted, Planned, 
         <formula>IF( Status_TasksOpenComplete__c != &apos;&apos;,
 IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apos;&apos;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Open vs. Complete Tasks (chart)</label>
+        <label>Open vs. Complete Tasks (chart) - Deprec</label>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -219,7 +218,7 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <externalId>false</externalId>
         <formula>IMAGE( Status_TasksOpenBlockedLate__c , &quot;Open, Late &amp; Blocked Tasks.&quot;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Open, Late &amp; Blocked Tasks (chart)</label>
+        <label>Open, Late &amp; Blocked Tasks (chart) - Dep</label>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -236,7 +235,7 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
 &quot;|Blocked (&quot; &amp; TEXT(Total_Blocked_Task_Count__c) &amp; &quot;)&quot;&amp;
 &quot;&amp;chd=t:&quot;&amp; TEXT(Total_Open_Task_Count__c / max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ) *100)&amp;&quot;|&quot;&amp; TEXT(Total_Late_Task_Count__c/ max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ) *100) &amp;&quot;|&quot; &amp; TEXT(Total_Blocked_Task_Count__c/ max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ) *100), &apos;/s.gif&apos;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Open, Late &amp; Blocked Tasks</label>
+        <label>Open, Late &amp; Blocked Tasks - Deprecated</label>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -250,7 +249,7 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
 &quot;Open%20Tasks (&quot; &amp; TEXT (Total_Open_Task_Count__c) &amp; &quot;)&quot;&amp;
 &quot;|Complete%20Tasks (&quot; &amp; TEXT (Total_Complete_Task_Count__c) &amp; &quot;)&quot;</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Open vs. Complete Tasks</label>
+        <label>Open vs. Complete Tasks - Deprecated</label>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>

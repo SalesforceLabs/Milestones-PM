@@ -35,7 +35,6 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Force.com Labs - PM - Log items contain general information for a Project that a user may want to keep an informal record of.</description>
     <enableActivities>false</enableActivities>
-    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>false</enableReports>
@@ -56,6 +55,7 @@
         <referenceTo>Milestone1_Expense__c</referenceTo>
         <relationshipLabel>Logs</relationshipLabel>
         <relationshipName>Project_Logs</relationshipName>
+        <required>false</required>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -66,6 +66,7 @@
         <referenceTo>Milestone1_Milestone__c</referenceTo>
         <relationshipLabel>Logs</relationshipLabel>
         <relationshipName>Project_Logs</relationshipName>
+        <required>false</required>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -76,6 +77,7 @@
         <referenceTo>Milestone1_Task__c</referenceTo>
         <relationshipLabel>Logs</relationshipLabel>
         <relationshipName>Project_Logs</relationshipName>
+        <required>false</required>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -86,6 +88,7 @@
         <referenceTo>Milestone1_Time__c</referenceTo>
         <relationshipLabel>Logs</relationshipLabel>
         <relationshipName>Project_Logs</relationshipName>
+        <required>false</required>
         <type>Lookup</type>
     </fields>
     <fields>

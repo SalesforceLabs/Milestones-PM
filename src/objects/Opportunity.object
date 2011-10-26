@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <enableFeeds>true</enableFeeds>
+    <fields>
+        <fullName>CurrentGenerators__c</fullName>
+        <externalId>false</externalId>
+        <label>Current Generator(s)</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DeliveryInstallationStatus__c</fullName>
+        <externalId>false</externalId>
+        <label>Delivery/Installation Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>In progress</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yet to begin</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>LeadSource</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Phone Inquiry</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>MainCompetitors__c</fullName>
+        <externalId>false</externalId>
+        <label>Main Competitor(s)</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OrderNumber__c</fullName>
+        <externalId>false</externalId>
+        <label>Order Number</label>
+        <length>8</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>StageName</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Prospecting</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>10</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Qualification</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>10</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Needs Analysis</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>20</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Value Proposition</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>50</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Id. Decision Makers</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>60</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Perception Analysis</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>70</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Proposal/Price Quote</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>75</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Negotiation/Review</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>90</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed Won</fullName>
+                <closed>true</closed>
+                <default>false</default>
+                <forecastCategory>Closed</forecastCategory>
+                <probability>100</probability>
+                <won>true</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed Lost</fullName>
+                <closed>true</closed>
+                <default>false</default>
+                <forecastCategory>Omitted</forecastCategory>
+                <probability>0</probability>
+                <won>false</won>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>TrackingNumber__c</fullName>
+        <externalId>false</externalId>
+        <label>Tracking Number</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Existing Customer - Upgrade</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Existing Customer - Replacement</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Existing Customer - Downgrade</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New Customer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <listViews>
+        <fullName>AllOpportunities</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All Opportunities</label>
+    </listViews>
+    <listViews>
+        <fullName>ClosingNextMonth</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.CLOSE_DATE</field>
+            <operation>equals</operation>
+            <value>NEXT_MONTH</value>
+        </filters>
+        <label>Closing Next Month</label>
+    </listViews>
+    <listViews>
+        <fullName>ClosingThisMonth</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.CLOSE_DATE</field>
+            <operation>equals</operation>
+            <value>THIS_MONTH</value>
+        </filters>
+        <label>Closing This Month</label>
+    </listViews>
+    <listViews>
+        <fullName>MyOpportunities</fullName>
+        <filterScope>Mine</filterScope>
+        <label>My Opportunities</label>
+    </listViews>
+    <listViews>
+        <fullName>NewLastWeek</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>LAST_WEEK</value>
+        </filters>
+        <label>New Last Week</label>
+    </listViews>
+    <listViews>
+        <fullName>NewThisWeek</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>THIS_WEEK</value>
+        </filters>
+        <label>New This Week</label>
+    </listViews>
+    <listViews>
+        <fullName>Private</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.PRIVATE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Private</label>
+    </listViews>
+    <listViews>
+        <fullName>Won</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.CLOSED</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.WON</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Won</label>
+    </listViews>
+    <webLinks>
+        <fullName>DeliveryStatus</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <hasMenubar>true</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>true</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Delivery Status</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>true</showsLocation>
+        <showsStatus>true</showsStatus>
+        <url>http://www.fedex.com/cgi-bin/tracking?tracknumbers={!Opportunity_Tracking_Number}&amp;action=track&amp;language=english&amp;cntry_code=us</url>
+    </webLinks>
+</CustomObject>

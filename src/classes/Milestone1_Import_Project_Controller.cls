@@ -38,7 +38,7 @@ public with sharing class Milestone1_Import_Project_Controller {
     public Integer maxFileSize {get; set;}
     public static Integer MAX_FILE_SIZE = 500000;
     
-    private static String CONTENT_ERROR = 'Content is not allowed in prolog.';
+    private static String CONTENT_ERROR = system.label.ContentIsNotAllowedInProlog;
     
     public Milestone1_Import_Project_Controller(ApexPages.StandardSetController ssc)
     {

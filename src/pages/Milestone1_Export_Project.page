@@ -29,7 +29,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
            extensions="Milestone1_Export_Project_Controller"
            action="{!createExportXML}">
            
-    <apex:pageBlock title="Project XML Export Process">
+    <apex:pageBlock title="{!$Label.ProjectXML}">
         <table>
             <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(errorMessage))}">
                 <tr>
@@ -38,25 +38,25 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
             </apex:outputPanel>
             <apex:outputPanel layout="none" rendered="{!AND(ISNULL(errorMessage),ISNULL(doc))}">
                 <tr>
-                    <td>Your project could not successfully be exported to an XML document.</td>
+                    <td>{!$Label.YourProjectCouldNotSuccessfully}</td>
                 </tr>   
                 </apex:outputPanel>
                 <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(doc))}">
                 <tr>
-                    <td>The XML file for your project has been successfully created, and can be found in the My Personal Documents folder.</td>
+                    <td>{!$Label.TheXMLFileForYourProjectHasBeenSuccessfully}</td>
                 </tr>
                 <tr>
                     <td><br/></td>
                 </tr>
                 <tr>
-                    <td><a href="/{!doc.Id}">Click here</a> to view the XML file in the My Personal Documents folder.</td>
+                    <td><a href="/{!doc.Id}">{!$Label.ToViewXML_FirstHalf}</a> {!$Label.ToViewXML_SecondHalf}</td>
                 </tr>
             </apex:outputPanel>
             <tr>
                 <td><br/></td>
             </tr>
             <tr>
-                <td><a href="/{!rec.Id}">Click here</a> to return to your project.</td>
+                <td><a href="/{!rec.Id}">{!$Label.ToYourProject_FirstHalf}</a> {!$Label.ToYourProject_SecondHalf}</td>
             </tr>
         </table> 
     </apex:pageBlock>

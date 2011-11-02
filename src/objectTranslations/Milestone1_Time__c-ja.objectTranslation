@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Time</value>
+    </caseValues>
+    <fields>
+        <help>この時間が発生した日時。デフォルトではその日が入る。</help>
+        <label>発生日</label>
+        <name>Date__c</name>
+    </fields>
+    <fields>
+        <help>この時間の説明。どうした発生するのか、など。</help>
+        <label>説明</label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help>割り当てられている時間。24時間以内にする必要がある。</help>
+        <label>時間</label>
+        <name>Hours__c</name>
+    </fields>
+    <fields>
+        <label>インポートID</label>
+        <name>ImportID__c</name>
+    </fields>
+    <fields>
+        <help>この時間を使うユーザ。デフォルトでは現在のユーザ。</help>
+        <label>作成者</label>
+        <name>Incurred_By__c</name>
+        <relationshipLabel>時間</relationshipLabel>
+    </fields>
+    <fields>
+        <help>この時間を使うタスク。</help>
+        <label>プロジェクトタスク</label>
+        <name>Project_Task__c</name>
+        <relationshipLabel>時間</relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Project Time Layout</layout>
+        <sections>
+            <label>カスタムリンク</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage>時間に負の数を入力しないでください。</errorMessage>
+        <name>Hours_Not_Negative</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>時間は24を超えてはいけません。</errorMessage>
+        <name>Validation_Time_Hours_Less_Than_24_Hours</name>
+    </validationRules>
+</CustomObjectTranslation>

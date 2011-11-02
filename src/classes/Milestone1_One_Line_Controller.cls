@@ -62,17 +62,17 @@ public with sharing class Milestone1_One_Line_Controller {
                     line = '';
                 }catch(Exception e)
                 {
-                    ApexPages.Message errorMsg = new ApexPages.Message(ApexPages.Severity.FATAL, 'There was a Salesforce DML Error: ' + e.getMessage());
+                    ApexPages.Message errorMsg = new ApexPages.Message(ApexPages.Severity.FATAL, system.label.SalesforceDMLError + e.getMessage());
                     ApexPages.addMessage(errorMsg);
                 }
             }else
             {
-                ApexPages.Message errorMsg = new ApexPages.Message(ApexPages.Severity.FATAL, 'The alias( ' + milestoneAlias + ') did not match any milestone.');
+                ApexPages.Message errorMsg = new ApexPages.Message(ApexPages.Severity.FATAL, system.label.Thealias + milestoneAlias + system.label.DidNotMatch);
                 ApexPages.addMessage(errorMsg);
             }
         }else
         {
-            ApexPages.Message errorMsg = new ApexPages.Message(ApexPages.Severity.FATAL, 'The line command was incorrect. Please use format <Alias> --- <DESCRIPTION>');
+            ApexPages.Message errorMsg = new ApexPages.Message(ApexPages.Severity.FATAL, system.label.PleaseUseFormat);
             ApexPages.addMessage(errorMsg);
         }   
     }

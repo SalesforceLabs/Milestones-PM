@@ -1,18 +1,18 @@
 <apex:page >
 
-    <apex:pageBlock title="Milestones PM - Main Menu" >
+    <apex:pageBlock title="{!$Label.MainMenu}" >
     
         <ul>
-        <li><apex:outputLink value="{!URLFOR('apex/Milestones1_GettingStarted')}" >Getting Started</apex:outputLink></li>
-        <li><apex:outputLink value="{!URLFOR('apex/Milestones1_Summary2')}" >Summary</apex:outputLink></li>
-        <li><apex:outputLink value="{!URLFOR($Action.Milestone1_Project__c.List, $ObjectType.Milestone1_Project__c)}" >Projects</apex:outputLink></li>
-        <li><apex:outputLink value="{!URLFOR($Action.Milestone1_Milestone__c.List, $ObjectType.Milestone1_Milestone__c)}" >Milestones</apex:outputLink></li>
-        <li><apex:outputLink value="{!URLFOR($Action.Milestone1_Task__c.List, $ObjectType.Milestone1_Task__c)}" >Tasks</apex:outputLink></li>
-        <li><apex:outputLink value="{!URLFOR($Action.Milestone1_Time__c.List, $ObjectType.Milestone1_Time__c)}" >Times</apex:outputLink></li>
-        <li><apex:outputLink value="{!URLFOR($Action.Milestone1_Expense__c.List, $ObjectType.Milestone1_Expense__c)}" >Expenses</apex:outputLink></li>
-        <li><apex:outputLink value="{!URLFOR($Action.Milestone1_Log__c.List, $ObjectType.Milestone1_Log__c)}" >Logs</apex:outputLink></li>
-        <li><apex:outputLink value="{!URLFOR('apex/Milestones1_Calendar_Large')}" >Calendar</apex:outputLink></li>
-        <li><apex:outputLink value="{!URLFOR('apex/Milestones1_Import_Project')}" >Import Template</apex:outputLink></li>
+        <li><apex:outputLink value="{!URLFOR('apex/Milestones1_GettingStarted')}" >{!$Label.GettingStarted}</apex:outputLink></li>
+        <li><apex:outputLink value="{!URLFOR('apex/Milestones1_Summary2')}" >{!$Label.Summary}</apex:outputLink></li>
+        <li><apex:outputLink value="{!URLFOR($Action.Milestone1_Project__c.List, $ObjectType.Milestone1_Project__c)}" >{!$Label.Projects}</apex:outputLink></li>
+        <li><apex:outputLink value="{!URLFOR($Action.Milestone1_Milestone__c.List, $ObjectType.Milestone1_Milestone__c)}" >{!$Label.Milestones}</apex:outputLink></li>
+        <li><apex:outputLink value="{!URLFOR($Action.Milestone1_Task__c.List, $ObjectType.Milestone1_Task__c)}" >{!$Label.Tasks}</apex:outputLink></li>
+        <li><apex:outputLink value="{!URLFOR($Action.Milestone1_Time__c.List, $ObjectType.Milestone1_Time__c)}" >{!$Label.Times}</apex:outputLink></li>
+        <li><apex:outputLink value="{!URLFOR($Action.Milestone1_Expense__c.List, $ObjectType.Milestone1_Expense__c)}" >{!$Label.Expenses}</apex:outputLink></li>
+        <li><apex:outputLink value="{!URLFOR($Action.Milestone1_Log__c.List, $ObjectType.Milestone1_Log__c)}" >{!$Label.Logs}</apex:outputLink></li>
+        <li><apex:outputLink value="{!URLFOR('apex/Milestones1_Calendar_Large')}" >{!$Label.Calendar}</apex:outputLink></li>
+        <li><apex:outputLink value="{!URLFOR('apex/Milestones1_Import_Project')}" >{!$Label.ImportTemplate}</apex:outputLink></li>
         </ul>
     
     

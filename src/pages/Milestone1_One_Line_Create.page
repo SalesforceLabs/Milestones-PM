@@ -43,7 +43,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
             </tr>
             <tr align="center">
                 <td>
-                    <apex:inputTextArea rows="3" title="Enter a command in the form 'alias --- description'" value="{!line}"/>
+                    <apex:inputTextArea rows="3" title="{!$Label.EnterAcommand}" value="{!line}"/>
                 </td>
             </tr>
             <tr align="center">
@@ -56,7 +56,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
                         </apex:facet>
                         <apex:facet name="stop">
                             <apex:outputPanel layout="none">
-                                <apex:commandButton action="{!executeLine}" value="Submit" status="executeStatus" rerender="oneLineFormId"/>
+                                <apex:commandButton action="{!executeLine}" value="{!$Label.Submit}" status="executeStatus" rerender="oneLineFormId"/>
                             </apex:outputPanel>
                         </apex:facet>
                     </apex:actionStatus>

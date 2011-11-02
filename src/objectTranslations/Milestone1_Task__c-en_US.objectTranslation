@@ -12,7 +12,7 @@
         <help><!-- The user responsible for completing the task. Defaults to current user if left blank. --></help>
         <label><!-- Assigned To --></label>
         <name>Assigned_To__c</name>
-        <relationshipLabel><!-- Tasks --></relationshipLabel>
+        <relationshipLabel><!-- Task --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- If blocked, why? --></help>
@@ -238,6 +238,7 @@
             <section>Metrics: Hours &amp; Expenses</section>
         </sections>
     </layouts>
+    <nameFieldLabel><!-- Project Task Name --></nameFieldLabel>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- You cannot mark a completed task as blocked. --></errorMessage>

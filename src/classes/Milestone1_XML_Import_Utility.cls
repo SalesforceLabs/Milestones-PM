@@ -85,7 +85,7 @@ public with sharing class Milestone1_XML_Import_Utility {
         //System.debug('Number of Tasks: ' + this.tasks.size());
         if(project == null || project.Name == null || project.ImportID__c == null || project.ImportID__c.length() < 15)
         {
-            throw new Milestone1_Import_Exception('The Project cannot be null. This is a critical error during import of XML. Please try exporting and re-importing.');
+            throw new Milestone1_Import_Exception(system.label.ProjectCannotBeNull);
         }
         
         //attempt to validate 10 variations of the name
@@ -174,7 +174,7 @@ public with sharing class Milestone1_XML_Import_Utility {
                 reader.next();
                 project.Name = getDecodedString(reader);
                 if (project.Name.length() == 0) {
-                    throw new Milestone1_Import_Exception('Invalid name (length cannot be zero)');
+                    throw new Milestone1_Import_Exception(system.label.InvalidName);
                 } 
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Description__c') {
@@ -399,7 +399,7 @@ public with sharing class Milestone1_XML_Import_Utility {
                 if(metadata.ExportVersion != Milestone1_Constants.XML_EXPORT_VERSION_VAL)
                 {
                     //system.debug('Throw the Exception');
-                    throw new Milestone1_Import_Exception('Invalid Version. This project was exported from a different version(' + metadata.ExportVersion + ') than this organizations version(' + Milestone1_Constants.XML_EXPORT_VERSION_VAL + '). Projects must be exported and imported in same version. ');
+                    throw new Milestone1_Import_Exception(system.label.InvalidVersion + metadata.ExportVersion + system.label.OrganizationsVersion + Milestone1_Constants.XML_EXPORT_VERSION_VAL + system.label.ProjectsMustBeExported);
                 }
             }   
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == Milestone1_Constants.XML_EXPORT_PACKAGE) {

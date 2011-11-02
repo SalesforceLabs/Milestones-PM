@@ -4,101 +4,95 @@
         <plural>false</plural>
         <value>Nag</value>
     </caseValues>
-    <caseValues>
-        <plural>true</plural>
-        <value>Nags</value>
-    </caseValues>
     <fields>
-        <label><!-- Assigned To Running User --></label>
+        <label>実行中ユーザへの割り当て</label>
         <name>Assigned_To_Running_User__c</name>
     </fields>
     <fields>
-        <label><!-- Assigned To --></label>
+        <label>割り当て</label>
         <name>Assigned_To__c</name>
-        <relationshipLabel><!-- Nag --></relationshipLabel>
+        <relationshipLabel>お知らせ</relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Deadline --></label>
+        <label>期限</label>
         <name>Deadline__c</name>
     </fields>
     <fields>
-        <label><!-- Description --></label>
+        <label>説明</label>
         <name>Description__c</name>
     </fields>
     <fields>
-        <label><!-- Link --></label>
+        <label>リンク</label>
         <name>Link__c</name>
     </fields>
     <fields>
-        <label><!-- Nag Reason --></label>
+        <label>お知らせ理由</label>
         <name>Nag_Reason__c</name>
         <picklistValues>
             <masterLabel>Budget</masterLabel>
-            <translation><!-- Budget --></translation>
+            <translation>予算</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Date</masterLabel>
-            <translation><!-- Date --></translation>
+            <translation>日付</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Hours</masterLabel>
-            <translation><!-- Hours --></translation>
+            <translation>時間</translation>
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Nag Status --></label>
+        <label>お知らせ状態</label>
         <name>Nag_Status__c</name>
     </fields>
     <fields>
-        <label><!-- Parent ID --></label>
+        <label>親のID</label>
         <name>Parent_ID__c</name>
     </fields>
     <fields>
-        <label><!-- Parent Name --></label>
+        <label>親の名前</label>
         <name>Parent_Name__c</name>
     </fields>
     <fields>
-        <label><!-- Parent Owner Id --></label>
+        <label>親所有者ID</label>
         <name>Parent_Owner_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Parent Complete Status --></label>
+        <label>親の完了状態</label>
         <name>Parent_Status__c</name>
     </fields>
     <fields>
-        <label><!-- Parent Type --></label>
+        <label>親タイプ</label>
         <name>Parent_Type__c</name>
     </fields>
     <fields>
-        <label><!-- Project Milestone --></label>
+        <label>プロジェクトマイルストーン</label>
         <name>Project_Milestone__c</name>
-        <relationshipLabel><!-- Nag --></relationshipLabel>
+        <relationshipLabel>お知らせ</relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Project Task --></label>
+        <label>プロジェクトタスク</label>
         <name>Project_Task__c</name>
-        <relationshipLabel><!-- Nag --></relationshipLabel>
+        <relationshipLabel>お知らせ</relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Project --></label>
+        <label>プロジェクト</label>
         <name>Project__c</name>
-        <relationshipLabel><!-- Nag --></relationshipLabel>
+        <relationshipLabel>お知らせ</relationshipLabel>
     </fields>
     <layouts>
         <layout>Project Nag Layout</layout>
         <sections>
-            <label><!-- Custom Links --></label>
+            <label>カスタムリンク</label>
             <section>Custom Links</section>
         </sections>
     </layouts>
-    <nameFieldLabel><!-- Project Nag Name --></nameFieldLabel>
-    <startsWith>Consonant</startsWith>
     <validationRules>
-        <errorMessage><!-- There must be one parent record selected. --></errorMessage>
+        <errorMessage>一つの親レコードが選択されている必要があります。</errorMessage>
         <name>Must_have_a_parent</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Only one parent object is currently allowed. For example, If Project is set as the lookup, then Milestone and Task must be empty. --></errorMessage>
+        <errorMessage>一つの親オブジェクトだけが許可されています。例えば、プロジェクトが参照先として設定された場合はマイルストーンとタスクが空になります。</errorMessage>
         <name>Only_one_parent_allowed</name>
     </validationRules>
 </CustomObjectTranslation>

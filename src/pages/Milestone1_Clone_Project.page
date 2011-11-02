@@ -29,17 +29,17 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
            extensions="Milestone1_Clone_Project_Controller">
            
     <apex:form >
-        <apex:pageBlock title="Project Clone">
+        <apex:pageBlock title="{!$Label.ProjectClone}">
             <apex:pageBlockButtons >
-                <apex:commandButton value="Save"
+                <apex:commandButton value="{!$Label.Save}"
                                     action="{!createClone}"/>
-                <apex:commandButton value="Cancel"
+                <apex:commandButton value="{!$Label.Cancel}"
                                     action="{!cancel}"/>
             </apex:pageBlockButtons>
             
             <apex:pageBlockSection columns="1">
                 <apex:pageBlockSectionItem > 
-                    <apex:outputLabel value="New Project Name"
+                    <apex:outputLabel value="{!$Label.NewProjectName}"
                                       for="new_name"/> 
                     <apex:inputText id="new_name"
                                     value="{!dummyProj.name}"

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Expense</value>
+    </caseValues>
+    <fields>
+        <help>費用の合計額。</help>
+        <label>合計</label>
+        <name>Amount__c</name>
+    </fields>
+    <fields>
+        <help>費用が発生した日付。デフォルトでは今日の日付が入る。</help>
+        <label>発生日</label>
+        <name>Date_Incurred__c</name>
+    </fields>
+    <fields>
+        <help>費用の説明。例えば、なぜこの費用が発生したのか、など。</help>
+        <label>説明</label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help>この費用を利用した人。デフォルトでは現在のユーザが入る。</help>
+        <label>利用者</label>
+        <name>Incurred_By__c</name>
+        <relationshipLabel>費用</relationshipLabel>
+    </fields>
+    <fields>
+        <help>この費用が発生したタスク。</help>
+        <label>プロジェクトタスク</label>
+        <name>Project_Task__c</name>
+        <relationshipLabel>費用</relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Project Expense Layout</layout>
+        <sections>
+            <label>カスタムリンク</label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

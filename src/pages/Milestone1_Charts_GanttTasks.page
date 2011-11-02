@@ -29,10 +29,10 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 
 	<apex:form >
 		<apex:commandLink target="_self" action="{!cancel}" 
-					 rendered="{!!allowView}" >Back</apex:commandLink>
+					 rendered="{!!allowView}" >{!$Label.Back}</apex:commandLink>
 	  	<c:Milestone1_Charts_GanttComponent target="{!myId}"/>
 		<apex:outputLink target="_top" value="{!$Page.Milestone1_Charts_GanttTasks}?Id={!myId}&p" 
-						rendered="{!allowView}">[Full View]</apex:outputLink>	
+						rendered="{!allowView}">{!$Label.FullView}</apex:outputLink>	
 	</apex:form>
 	
 </apex:page>

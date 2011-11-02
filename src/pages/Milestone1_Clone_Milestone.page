@@ -29,7 +29,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
            extensions="Milestone1_Clone_Milestone_Controller">
 	<apex:messages id="CloneMessages" />
     <apex:form >
-        <apex:pageBlock title="Milestone Clone">
+        <apex:pageBlock title="{!$Label.MilestoneClone}">
             <apex:pageBlockButtons >
                 <apex:commandButton value="Save"
                                     action="{!createClone}"/>
@@ -39,7 +39,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
             
             <apex:pageBlockSection columns="1">
                 <apex:pageBlockSectionItem > 
-                    <apex:outputLabel value="New Milestone Name"
+                    <apex:outputLabel value="{!$Label.NewMilestoneName}"
                                       for="ms_name"/> 
                     <apex:inputText id="ms_name"
                                     value="{!dummyMS.name}"

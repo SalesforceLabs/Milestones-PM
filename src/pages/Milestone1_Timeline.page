@@ -38,7 +38,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 	
 <apex:outputPanel id="main" > 
 	<div id="my-timelinecomp" class="timeline-default expandoFeedContainer" 
-		style="height:250px; border: 1px solid #aaa" >Loading, please wait...</div>
+		style="height:250px; border: 1px solid #aaa" >{!$Label.Loading}</div>
 </apex:outputPanel>
 
 <script> 

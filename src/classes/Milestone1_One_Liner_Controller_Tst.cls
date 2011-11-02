@@ -79,7 +79,7 @@ private class Milestone1_One_Liner_Controller_Tst {
         System.assert(controller.task == null);
         List<ApexPages.Message> messages = ApexPages.getMessages();
         system.assertEquals(messages.size(),1);
-        system.assertEquals(messages.get(0).getDetail(),'The alias( XY()BC#1?) did not match any milestone.');
+        system.assertEquals(messages.get(0).getDetail(),system.label.Thealias + 'XY()BC#1?' + system.label.DidNotMatch);
     }
     
     static testMethod void testInvalidLineFound()
@@ -91,7 +91,7 @@ private class Milestone1_One_Liner_Controller_Tst {
         System.assert(controller.task == null);
         List<ApexPages.Message> messages = ApexPages.getMessages();
         system.assertEquals(messages.size(),1);
-        system.assertEquals(messages.get(0).getDetail(),'The line command was incorrect. Please use format <Alias> --- <DESCRIPTION>');
+        system.assertEquals(messages.get(0).getDetail(),system.label.PleaseUseFormat);
     }
 
 }

@@ -30,10 +30,10 @@ public with sharing class Milestone1_repeatCon {
 
  public List<SelectOption> filterList {get;set;}
  public String filterItem {get;set;}
- private final String ALL_ITEMS = 'All Items';
- private final String MY_TASKS = 'My Tasks Only';
- private final String MY_MILESTONES_ONLY = 'My Milestones Only';
- private final String MY_PROJECTS_AND_ITEMS = 'My Projects And Sub-Project Items';
+ private final String ALL_ITEMS = system.label.AllItems;
+ private final String MY_TASKS = system.label.MyTasksOnly;
+ private final String MY_MILESTONES_ONLY = system.label.MyMilestonesOnly;
+ private final String MY_PROJECTS_AND_ITEMS = system.label.MyProjectsAndSubProjectItems;
  private Date currentDay;
   public void next() { 
     addMonth(1);

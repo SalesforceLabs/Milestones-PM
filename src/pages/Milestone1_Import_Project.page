@@ -31,17 +31,17 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
     <style>
     .xmlImportError { color: red; font-weight: strong;}
     </style>
-    <apex:pageBlock title="Project XML Import Process">
+    <apex:pageBlock title="{!$Label.ProjectXMLImport}">
         <apex:messages styleClass="xmlImportError" />
 		<apex:form >
-		<apex:pageBlockSection title="Import Local Template XML" collapsible="false">
+		<apex:pageBlockSection title="{!$Label.ImportLocalTemplateXML}" collapsible="false">
 			<apex:inputFile style="width:100%" fileSize="{!maxFileSize}" id="fileToUpload" value="{!fileBody}" 
 				contentType="{!contentType}" filename="{!fileName}" />
-			<apex:commandButton action="{!importTemplateXML}" value="Import"></apex:commandButton>
+			<apex:commandButton action="{!importTemplateXML}" value="{!$Label.Import}"></apex:commandButton>
 		</apex:pageBlockSection> 
-        <apex:pageBlockSection title="Import Template XML from My Personal Documents" rendered="{!IF(docsSize > 0, "true", "false")}" collapsible="false">
+        <apex:pageBlockSection title="{!$Label.ImportTemplateXML}" rendered="{!IF(docsSize > 0, "true", "false")}" collapsible="false">
         	<apex:selectRadio value="{!docId}" layout="pageDirection"><apex:selectOptions value="{!docOptions}"/></apex:selectRadio>
-        	<apex:commandButton action="{!importTemplateXML}" value="Import"></apex:commandButton>
+        	<apex:commandButton action="{!importTemplateXML}" value="{!$Label.Import}"></apex:commandButton>
         	</apex:pageBlockSection>
         </apex:form>
      </apex:pageBlock>

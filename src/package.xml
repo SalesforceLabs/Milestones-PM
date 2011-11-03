@@ -69,10 +69,8 @@
     </types>
     <types>
         <members>Milestone1_Calendar_Large</members>
-        <members>Milestone1_Charts_GVMilestines</members>
         <members>Milestone1_Charts_GVMilestones</members>
         <members>Milestone1_Charts_GVTasks</members>
-        <members>Milestone1_Charts_GVTaskspage</members>
         <members>Milestone1_Charts_GanttMilestones</members>
         <members>Milestone1_Charts_GanttTasks</members>
         <members>Milestone1_Clone_Milestone</members>

@@ -1,0 +1,108 @@
+<!-- 
+Copyright (c) 2011, salesforce.com, Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+    this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, 
+    this list of conditions and the following disclaimer in the documentation 
+    and/or other materials provided with the distribution.
+    * Neither the name of the salesforce.com, Inc. nor the names of its contributors 
+    may be used to endorse or promote products derived from this software 
+    without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE 
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
+OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<apex:page standardController="Milestone1_Project__c" sidebar="false">
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <apex:outputPanel >
+    <table class="detailList" cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr><td width="50%">    
+    <div id="chart_div0"></div>
+    </td><td width="50%">
+    <div id="chart_div1"></div>
+    </td></tr>
+    <tr><td>    
+    <div id="chart_div2"></div>
+    </td><td>
+    <div id="chart_div3"></div>
+    </td></tr>    
+    </table>
+    <script>
+    var data;    
+    google.load("visualization", "1", {packages:["corechart"]});
+    
+      function drawChart() {
+        data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task Status');
+        data.addColumn('number', 'No. of Tasks');
+        data.addRows(2);
+        data.setValue(0, 0, 'Open Tasks');
+        data.setValue(0, 1, <apex:outputText value="{!Milestone1_Project__c.Total_Open_Task_Count__c}"/>);
+        data.setValue(1, 0, 'Complete Tasks');
+        data.setValue(1, 1, <apex:outputText value="{!Milestone1_Project__c.Total_Complete_Task_Count__c}"/>);
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div0'));
+        chart.draw(data, {width: 400, height: 240, title: 'Task Analysis',pieSliceText:'value', colors:['eeaa66','2299bb'],chartArea:{left:40,top:40,width:"80%",height:"60%"}});
+    
+        data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task Status');
+        data.addColumn('number', 'Open');
+        data.addColumn('number', 'Late');
+        data.addColumn('number', 'Blocked');
+        data.addRows(1);
+        data.setValue(0, 0, 'No. of Tasks');
+        data.setValue(0, 1, <apex:outputText value="{!Milestone1_Project__c.Total_Open_Task_Count__c}"/>);
+        data.setValue(0, 2, <apex:outputText value="{!Milestone1_Project__c.Total_Late_Task_Count__c}"/>);
+        data.setValue(0, 3, <apex:outputText value="{!Milestone1_Project__c.Total_Blocked_Task_Count__c}"/>);
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div1'));
+        chart.draw(data, {width: 400, height: 240, title: 'Open Task Analysis', colors:['eeaa66','2299bb','ee3322'],chartArea:{left:40,top:40}});
+    
+        // we need a table to act as the datasource for the chart
+        data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task Status');
+        data.addColumn('number', 'Budget');
+        data.addColumn('number', 'Planned');
+        data.addColumn('number', 'Estimated');
+        data.addColumn('number', 'Incurred');
+        data.addRows(1);
+        data.setValue(0, 0, 'Hours');
+        data.setValue(0, 1, <apex:outputText value="{!Milestone1_Project__c.Total_Hours_Budget__c}"/>);
+        data.setValue(0, 2, <apex:outputText value="{!Milestone1_Project__c.Total_Hours_Budget_from_Milestones__c}"/>);
+        data.setValue(0, 3, <apex:outputText value="{!Milestone1_Project__c.Total_Hours_Estimate__c}"/>);
+        data.setValue(0, 4, <apex:outputText value="{!Milestone1_Project__c.Total_Hours_Incurred__c}"/>);        
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+        chart.draw(data, {width: 400, height: 240, title: 'Task Time Budget Analysis', colors:['eeaa66','2299bb','ee3322','666666'],chartArea:{left:40,top:40}});
+        
+        // we need a table to act as the datasource for the chart
+        data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task Status');
+        data.addColumn('number', 'Budget');
+        data.addColumn('number', 'Planned');
+        data.addColumn('number', 'Estimated');
+        data.addColumn('number', 'Incurred');
+        data.addRows(1);
+        data.setValue(0, 0, 'Expense');
+        data.setValue(0, 1, <apex:outputText value="{!Milestone1_Project__c.Total_Expense_Budget__c}"/>);
+        data.setValue(0, 2, <apex:outputText value="{!Milestone1_Project__c.Total_Expense_Budget_from_Milestones__c}"/>);
+        data.setValue(0, 3, <apex:outputText value="{!Milestone1_Project__c.Total_Expense_Estimate__c}"/>);
+        data.setValue(0, 4, <apex:outputText value="{!Milestone1_Project__c.Total_Expense_Incurred__c}"/>);        
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+        chart.draw(data, {width: 400, height: 240, title: 'Task Expense Budget Analysis', colors:['eeaa66','2299bb','ee3322','666666'],chartArea:{left:40,top:40}});        
+     }
+     
+     google.setOnLoadCallback(drawChart);
+    </script>                          
+    </apex:outputPanel>
+</apex:page>

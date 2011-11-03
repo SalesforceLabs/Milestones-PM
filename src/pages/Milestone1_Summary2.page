@@ -232,7 +232,7 @@ jQuery(document).ready(function() {
 	        data.addColumn('number', 'Estimated');
 	        data.addColumn('number', 'Incurred');
 	        data.addRows(1);
-	        data.setValue(0, 0, 'No. of Tasks');
+	        data.setValue(0, 0, 'Hours');
 	        data.setValue(0, 1, <apex:outputText value="{!currentProject.Total_Hours_Budget__c}" />);
 	        data.setValue(0, 2, <apex:outputText value="{!currentProject.Total_Hours_Budget_from_Milestones__c}" />);
 	        data.setValue(0, 3, <apex:outputText value="{!currentProject.Total_Hours_Estimate__c}" />);

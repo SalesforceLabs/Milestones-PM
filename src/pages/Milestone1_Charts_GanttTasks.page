@@ -27,12 +27,12 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page standardController="Milestone1_Milestone__c" extensions="Milestone1_Charts_Gantt_Helper" sidebar="false">
 
-	<apex:form >
-		<apex:commandLink target="_self" action="{!cancel}" 
-					 rendered="{!!allowView}" >Back</apex:commandLink>
-	  	<c:Milestone1_Charts_GanttComponent target="{!myId}"/>
-		<apex:outputLink target="_top" value="{!$Page.Milestone1_Charts_GanttTasks}?Id={!myId}&p" 
-						rendered="{!allowView}">[Full View]</apex:outputLink>	
-	</apex:form>
-	
+    <apex:form >
+        <apex:commandLink target="_self" action="{!cancel}" 
+                     rendered="{!!allowView}" >Back</apex:commandLink>
+        <c:Milestone1_Charts_GanttComponent target="{!myId}"/>
+        <apex:outputLink target="_top" value="{!$Page.Milestone1_Charts_GanttTasks}?Id={!myId}&p" 
+                        rendered="{!allowView}">[Full View]</apex:outputLink>   
+    </apex:form>
+    
 </apex:page>

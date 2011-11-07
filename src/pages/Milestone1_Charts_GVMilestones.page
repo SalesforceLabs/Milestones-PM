@@ -27,25 +27,25 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page standardController="Milestone1_Project__c" sidebar="false">
 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-	<apex:outputPanel >
+    <apex:outputPanel >
     <table class="detailList" cellspacing="0" cellpadding="0" border="0" width="100%">
-    <tr><td width="50%">	
+    <tr><td width="50%">    
     <div id="chart_div0"></div>
     </td><td width="50%">
     <div id="chart_div1"></div>
     </td></tr>
-    <tr><td>	
+    <tr><td>    
     <div id="chart_div2"></div>
     </td><td>
     <div id="chart_div3"></div>
     </td></tr>    
-	</table>
+    </table>
     <script>
     var data;    
-	google.load("visualization", "1", {packages:["corechart"]});
-	
+    google.load("visualization", "1", {packages:["corechart"]});
+    
       function drawChart() {
-		data = new google.visualization.DataTable();
+        data = new google.visualization.DataTable();
         data.addColumn('string', 'Task Status');
         data.addColumn('number', 'No. of Tasks');
         data.addRows(2);
@@ -77,7 +77,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
         data.addColumn('number', 'Estimated');
         data.addColumn('number', 'Incurred');
         data.addRows(1);
-        data.setValue(0, 0, 'No. of Tasks');
+        data.setValue(0, 0, 'Hours');
         data.setValue(0, 1, <apex:outputText value="{!Milestone1_Project__c.Total_Hours_Budget__c}"/>);
         data.setValue(0, 2, <apex:outputText value="{!Milestone1_Project__c.Total_Hours_Budget_from_Milestones__c}"/>);
         data.setValue(0, 3, <apex:outputText value="{!Milestone1_Project__c.Total_Hours_Estimate__c}"/>);
@@ -93,7 +93,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
         data.addColumn('number', 'Estimated');
         data.addColumn('number', 'Incurred');
         data.addRows(1);
-        data.setValue(0, 0, 'Total Expense');
+        data.setValue(0, 0, 'Expense');
         data.setValue(0, 1, <apex:outputText value="{!Milestone1_Project__c.Total_Expense_Budget__c}"/>);
         data.setValue(0, 2, <apex:outputText value="{!Milestone1_Project__c.Total_Expense_Budget_from_Milestones__c}"/>);
         data.setValue(0, 3, <apex:outputText value="{!Milestone1_Project__c.Total_Expense_Estimate__c}"/>);
@@ -103,6 +103,6 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
      }
      
      google.setOnLoadCallback(drawChart);
-	</script>                          
-	</apex:outputPanel>
+    </script>                          
+    </apex:outputPanel>
 </apex:page>

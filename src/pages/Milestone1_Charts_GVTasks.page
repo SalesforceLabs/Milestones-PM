@@ -1,5 +1,5 @@
 <!-- 
-Copyright (c) 2011, salesforce.com, Inc.
+Copyright (c) 2011 salesforce.com, Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
@@ -27,20 +27,20 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page standardController="Milestone1_Milestone__c" sidebar="false">
 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-	<apex:outputPanel >
+    <apex:outputPanel >
     <table class="detailList" cellspacing="0" cellpadding="0" border="0" width="100%">
-    <tr><td width="50%">	
+    <tr><td width="50%">    
     <div id="chart_div0"></div>
     </td><td width="50%">
     <div id="chart_div1"></div>
     </td></tr>
-	</table>
+    </table>
     <script>
     var data;    
-	google.load("visualization", "1", {packages:["corechart"]});
-	
+    google.load("visualization", "1", {packages:["corechart"]});
+    
       function drawChart() {
-		data = new google.visualization.DataTable();
+        data = new google.visualization.DataTable();
         data.addColumn('string', 'Task Status');
         data.addColumn('number', 'No. of Tasks');
         data.addRows(2);
@@ -66,6 +66,6 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
      }
      
      google.setOnLoadCallback(drawChart);
-	</script>                          
-	</apex:outputPanel>
+    </script>                          
+    </apex:outputPanel>
 </apex:page>

@@ -1,7 +1,0 @@
-Dear {!Contact.FirstName},
-
-Your {!Organization.Name} Self-Service portal login and password information is below.
-
-Thank you,
-
-{!Organization.Name} Customer Support

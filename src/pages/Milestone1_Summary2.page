@@ -205,9 +205,9 @@ jQuery(document).ready(function() {
 	        data.addColumn('number', 'No. of Tasks');
 	        data.addRows(2);
 	        data.setValue(0, 0, 'Open Tasks');
-	        data.setValue(0, 1, {!currentProject.Total_Open_Task_Count__c});
+	        data.setValue(0, 1, <apex:outputText value="{!currentProject.Total_Open_Task_Count__c}" />);
 	        data.setValue(1, 0, 'Complete Tasks');
-	        data.setValue(1, 1, {!currentProject.Total_Complete_Task_Count__c});
+	        data.setValue(1, 1, <apex:outputText value="{!currentProject.Total_Complete_Task_Count__c}" />);
 	        var chart = new google.visualization.PieChart(document.getElementById('chart_div0_{!currentProject.id}'));
 	        chart.draw(data, {width: 400, height: 240, title: 'Task Analysis',pieSliceText:'value', colors:['eeaa66','2299bb'], chartArea:{left:30,top:30,width:"90%",height:"70%"}});
 	    
@@ -218,9 +218,9 @@ jQuery(document).ready(function() {
 	        data.addColumn('number', 'Blocked');
 	        data.addRows(1);
 	        data.setValue(0, 0, 'No. of Tasks');
-	        data.setValue(0, 1, {!currentProject.Total_Open_Task_Count__c});
-	        data.setValue(0, 2, {!currentProject.Total_Late_Task_Count__c});
-	        data.setValue(0, 3, {!currentProject.Total_Blocked_Task_Count__c});
+	        data.setValue(0, 1, <apex:outputText value="{!currentProject.Total_Open_Task_Count__c}" />);
+	        data.setValue(0, 2, <apex:outputText value="{!currentProject.Total_Late_Task_Count__c}" />);
+	        data.setValue(0, 3, <apex:outputText value="{!currentProject.Total_Blocked_Task_Count__c}" />);
 	        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div1_{!currentProject.id}'));
 	        chart.draw(data, {width: 400, height: 240, title: 'Open Task Analysis', colors:['eeaa66','2299bb','ee3322'], chartArea:{left:30,top:30,width:"70%",height:"80%"}});
 	    
@@ -232,11 +232,11 @@ jQuery(document).ready(function() {
 	        data.addColumn('number', 'Estimated');
 	        data.addColumn('number', 'Incurred');
 	        data.addRows(1);
-	        data.setValue(0, 0, 'No. of Tasks');
-	        data.setValue(0, 1, {!currentProject.Total_Hours_Budget__c});
-	        data.setValue(0, 2, {!currentProject.Total_Hours_Budget_from_Milestones__c});
-	        data.setValue(0, 3, {!currentProject.Total_Hours_Estimate__c});
-	        data.setValue(0, 4, {!currentProject.Total_Hours_Incurred__c});        
+	        data.setValue(0, 0, 'Hours');
+	        data.setValue(0, 1, <apex:outputText value="{!currentProject.Total_Hours_Budget__c}" />);
+	        data.setValue(0, 2, <apex:outputText value="{!currentProject.Total_Hours_Budget_from_Milestones__c}" />);
+	        data.setValue(0, 3, <apex:outputText value="{!currentProject.Total_Hours_Estimate__c}" />);
+	        data.setValue(0, 4, <apex:outputText value="{!currentProject.Total_Hours_Incurred__c}" />);        
 	        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2_{!currentProject.id}'));
 	        chart.draw(data, {width: 400, height: 240, title: 'Task Time Budget Analysis', colors:['eeaa66','2299bb','ee3322','666666'], chartArea:{left:30,top:30,width:"70%",height:"80%"}});
 	     }

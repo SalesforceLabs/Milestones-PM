@@ -55,6 +55,7 @@
         <label>Assigned To</label>
         <referenceTo>User</referenceTo>
         <relationshipName>Project_Nags</relationshipName>
+        <required>false</required>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -185,6 +186,7 @@ IF( Project_Task__c &lt;&gt; null, &apos;Task&apos;,&apos;&apos;)))</formula>
         <label>Project Milestone</label>
         <referenceTo>Milestone1_Milestone__c</referenceTo>
         <relationshipName>Project_Nags</relationshipName>
+        <required>false</required>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -193,6 +195,7 @@ IF( Project_Task__c &lt;&gt; null, &apos;Task&apos;,&apos;&apos;)))</formula>
         <label>Project Task</label>
         <referenceTo>Milestone1_Task__c</referenceTo>
         <relationshipName>Project_Nags</relationshipName>
+        <required>false</required>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -201,6 +204,7 @@ IF( Project_Task__c &lt;&gt; null, &apos;Task&apos;,&apos;&apos;)))</formula>
         <label>Project</label>
         <referenceTo>Milestone1_Project__c</referenceTo>
         <relationshipName>Project_Nags</relationshipName>
+        <required>false</required>
         <type>Lookup</type>
     </fields>
     <label>Nag</label>
@@ -212,8 +216,8 @@ IF( Project_Task__c &lt;&gt; null, &apos;Task&apos;,&apos;&apos;)))</formula>
     <pluralLabel>Nags</pluralLabel>
     <searchLayouts>
         <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>New</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>

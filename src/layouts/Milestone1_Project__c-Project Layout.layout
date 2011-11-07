@@ -54,7 +54,7 @@
         <layoutColumns>
             <layoutItems>
                 <height>450</height>
-                <page>Milestone1_Charts_GVMilestines</page>
+                <page>Milestone1_Charts_GVMilestones</page>
                 <showLabel>false</showLabel>
                 <showScrollbars>false</showScrollbars>
                 <width>100%</width>

@@ -227,6 +227,25 @@ public with sharing class Milestone1_Test_Utility {
         }
         insert milestonesMap.values();
         return milestonesMap;   
+    }   
+    
+
+    /**
+    *   Create a batch of tasks
+    */
+    public static Map<String,Milestone1_Task__c> manyTasks(Milestone1_Milestone__c parentMilestone, Integer size){
+        
+        Map<String,Milestone1_Task__c> tasksMap = new Map<String,Milestone1_Task__c>();
+        Milestone1_Task__c task;
+        List<Milestone1_Task__c> tasks = new List<Milestone1_Task__c>();
+        for(Integer i = 0; i < size; i++){
+            task = sampleTask(parentMilestone.Id);
+            task.Name =  'ts'+i;
+            tasksMap.put(task.Name,task);
+        }
+        insert tasksMap.values();
+        return tasksMap;        
     }    
+     
     
 }

@@ -28,16 +28,23 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 public with sharing class Milestone1_Charts_GanttController {
 
-    public String mytarget {get; set;}
+    public String mytarget {get; 
+    	set{
+    		this.mytarget = value;
+    		init();
+    	}
+    	}
     public String objectType {get;set;}
     public String startDateFieldName {get;set;}
     public String endDateFieldName {get;set;}
     public String idFieldName {get;set;}
     public String fullViewURL {get;set;}
+ 	public String projectGanttJson{get;set;}
  
     private String nameFieldName;
     private String completedFieldName;
     private String filterFieldName;
+    
     
     private List<Sobject> sobjectList;
     private static final String REGEXP_QUOTES    = '(?<!\\\\)"';
@@ -47,14 +54,26 @@ public with sharing class Milestone1_Charts_GanttController {
     public static final String COLOR_FUTURE = '#666666';
     public static final String COLOR_CURRENT = '#2299bb';
     
+    public Milestone1_Charts_GanttController()
+    {
+    	init();
+    }
+    
+    private void init()
+    {
+    	if (myTarget != null)
+    	{
+         initFieldNames();
+       	 retrieveData();
+        projectGanttJson = toJSon();
+        
+    	}
+    }
+    
     public String getProjectGanttJson() {
         
-        String ret;
-        initFieldNames();
-        retrieveData();
-        ret = toJSon();
-        
-        return ret;
+        init();
+        return projectGanttJson;
     }
     
     /*
@@ -209,7 +228,7 @@ public with sharing class Milestone1_Charts_GanttController {
         Milestone1_Charts_GanttController cls = new Milestone1_Charts_GanttController();
         cls.mytarget = m2.Id;
         String ret = cls.getProjectGanttJson();
-        
+                   
         System.debug(LoggingLevel.Info, '12345:' + ret);
         
         System.assert(ret.indexOf(COLOR_FUTURE) > -1);

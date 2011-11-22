@@ -36,7 +36,6 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Force.com Labs - PM - A collaborative enterprise which has a planned goal. A project can have many milestones.</description>
     <enableActivities>false</enableActivities>
-    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>true</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>false</enableReports>

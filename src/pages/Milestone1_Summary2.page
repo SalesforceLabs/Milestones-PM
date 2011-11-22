@@ -91,6 +91,13 @@ jQuery(document).ready(function() {
      
 </apex:outputPanel>
 
+<apex:outputPanel rendered="{!isDeployed == false}">
+	<h1>Please deploy Milestones PM first.  See Getting Started for more information.</h1>
+</apex:outputPanel>
+
+
+<apex:outputPanel rendered="{!isDeployed}" >
+
 <apex:outputPanel id="mySearch">
 
     <apex:pageBlock title="Quick Search - Project Components" >
@@ -127,10 +134,13 @@ jQuery(document).ready(function() {
             <apex:pageBlockTable value="{!taskResults}" var="taskRecord">
                 <apex:column headerValue="Task Name"> <apex:outputLink value="/{!taskRecord.Id}"> {!taskRecord.Name}</apex:outputLink>  </apex:column>
                 <apex:column value="{!taskRecord.Project_Milestone__r.Name}" />
-            </apex:pageBlockTable>
+            </apex:pageBlockTable> 
             </apex:pageBlockSection>
             <apex:outputPanel id="searchResultsError" rendered="{!hasSearchResultsError}">
                 <apex:pageMessage summary="No results found" severity="error" strength="1" />
+            </apex:outputPanel>
+            <apex:outputPanel id="searchLengthError" rendered="{!hasSearchLengthError}">
+                <apex:pageMessage summary="Search Term must be longer than 1 character." severity="error" strength="1" />
             </apex:outputPanel>
         </apex:outputPanel>
     </apex:pageBlock>
@@ -139,7 +149,7 @@ jQuery(document).ready(function() {
 
 <apex:outputPanel id="mySummary" >
 
-<apex:pageBlock title="My Incomplete Tasks">
+<apex:pageBlock title="My Incomplete Tasks" rendered="{!hasSettings}">
     <apex:pageBlockButtons location="top">
                 <apex:commandButton action="{!incompleteTasksByProject}" value="Incomplete Tasks By Projects" >
                     </apex:commandButton>                 
@@ -160,6 +170,13 @@ jQuery(document).ready(function() {
 </apex:outputPanel>
 
 <apex:outputPanel id="projectSummary" rendered="{!projects.size != 0}" layout="none">
+
+   <apex:panelGrid columns="3">
+    <apex:commandLink action="{!previous}" rendered="{!hasPrevious}">Previous</apex:commandlink>
+    <apex:outputText > &nbsp;Page {!pageNumber} of {!totalPages}&nbsp;</apex:outputText>
+    <apex:commandLink action="{!next}" rendered="{!hasNext}">Next</apex:commandlink>
+    </apex:panelGrid>
+
 
 <apex:repeat value="{!projects}" var="currentProject" id="projectList" >
 
@@ -254,6 +271,7 @@ jQuery(document).ready(function() {
 
 </apex:outputPanel>
 
+</apex:outputPanel>
 </apex:form>
 
 </apex:page>

@@ -146,8 +146,14 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
                 Integer deadlineShift = oldRec.Deadline__c.daysBetween(newRec.Deadline__c);
                 if(kickoffShift == deadlineShift && deadlineShift != 0 && taskMap.containsKey(newRec.Id)) {
                     for(Milestone1_Task__c task: taskMap.get(newRec.Id)) {
-                        task.Start_Date__c = task.Start_Date__c.addDays(deadlineShift);
-                        task.Due_Date__c = task.Due_Date__c.addDays(deadlineShift);
+                    	if (task.Start_Date__c != null)
+                    	{
+                        	task.Start_Date__c = task.Start_Date__c.addDays(deadlineShift);
+                    	}
+                    	if (task.Due_Date__c != null)
+                    	{
+                        	task.Due_Date__c = task.Due_Date__c.addDays(deadlineShift);
+                    	}
                     }
                     tasksToUpdate.addAll(taskMap.get(newRec.Id));
                 }

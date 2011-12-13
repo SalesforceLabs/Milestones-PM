@@ -31,7 +31,8 @@ private class Milestone1_Task_Chatter_Tst
 {
     static testMethod void testChatterTaskFollows()
     {
-        
+        if(!Milestone1_Schema_Helper.isOrgChatterEnabled())
+        	return; //chatter is disabled - we can't run this test. 
         Milestone1_Settings__c settings = Milestone1_Test_Utility.createDefaultCustomChatterSettings(true);
         System.assert(settings.Auto_Follow_Task__c, 'Auto Follow Task must be true for this test to work.');
         
@@ -46,14 +47,14 @@ private class Milestone1_Task_Chatter_Tst
         testTask.Complete__c = false;
         insert testTask;
         
-        EntitySubscription subscription = [Select Id, ParentId, SubscriberId from EntitySubscription where ParentId =: testTask.Id];
+        sObject subscription = Database.query('Select Id, ParentId, SubscriberId from EntitySubscription where ParentId = \''+testTask.Id+'\'');
         //assert that the user is following this object
-        system.assertEquals(UserInfo.getUserId(),subscription.SubscriberId);
+        system.assertEquals(UserInfo.getUserId(),(id) subscription.get('SubscriberId'));
         
         testTask.Complete__c = true;
         update testTask;
         
-        List<EntitySubscription> subscriptionList = [Select Id, ParentId, SubscriberId from EntitySubscription where ParentId =: testTask.Id];
+        List<sObject> subscriptionList = Database.query('Select Id, ParentId, SubscriberId from EntitySubscription where ParentId = \''+testTask.Id+'\'');
         //assert that no one is following this object after its marked as complete
         system.assertEquals(0,subscriptionList.size());
         
@@ -61,10 +62,10 @@ private class Milestone1_Task_Chatter_Tst
     
     static testMethod void testChatterTaskReassignment()
     {
-       // List<User> otherUserList = [Select Id from User where Id <> :UserInfo.getUserId() limit 1];
+    	if(!Milestone1_Schema_Helper.isOrgChatterEnabled())
+        	return; //chatter is disabled - we can't run this test. 
         List<User> otherUserList = [Select Id from User where Id <> :UserInfo.getUserId() and IsActive = true limit 1];
         User otherUser = null;
-        //if(otherUserList.size() == 0)
         if(otherUserList.size() == 0)
         {
             List<Profile> prof = [Select Id from Profile limit 1]; 
@@ -81,20 +82,20 @@ private class Milestone1_Task_Chatter_Tst
         
         Milestone1_Milestone__c testMilestone = Milestone1_Test_Utility.sampleMilestone(testProject.Id,null,'UNIT TEST MILESTONE NAME ACB123XYZ UNIQUE' + System.now());
         insert testMilestone;
-
+        
         Milestone1_Task__c testTask = Milestone1_Test_Utility.sampleTask(testMilestone.Id);
         testTask.Assigned_To__c = UserInfo.getUserId();
         testTask.Complete__c = false;
         insert testTask;
         
-        EntitySubscription subscription = [Select Id, ParentId, SubscriberId from EntitySubscription where ParentId =: testTask.Id];
+        sObject subscription = Database.query('Select Id, ParentId, SubscriberId from EntitySubscription where ParentId = \''+testTask.Id+'\'');
         //assert that the user is following this object
-        system.assertEquals(UserInfo.getUserId(),subscription.SubscriberId);
+        system.assertEquals(UserInfo.getUserId(),(id)subscription.get('SubscriberId'));
         system.debug('Other User Id == ' + otherUser.Id + 'Task Assigned Id ==' + testTask.Assigned_To__c);
         testTask.Assigned_To__c = otherUser.Id;
         update testTask;
         
-        List<EntitySubscription> subscriptionList = [Select Id, ParentId, SubscriberId from EntitySubscription where ParentId =: testTask.Id and SubscriberId =: UserInfo.getUserId()];
+        List<sObject> subscriptionList = Database.query('Select Id, ParentId, SubscriberId from EntitySubscription where ParentId = \''+testTask.Id+'\' and SubscriberId = \''+UserInfo.getUserId()+'\'');
         //assert that no one is following this object after its marked as complete
         system.assertEquals(0,subscriptionList.size());
         

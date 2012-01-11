@@ -123,8 +123,8 @@ public with sharing class Milestone1_repeatCon {
   private List<Milestone1_Calendar_Item> getAllItems(Date[] da)
   {
     List<Milestone1_Project__c> projects = [Select Id, Deadline__c, Name from Milestone1_Project__c where Deadline__c >=:da[0] and Deadline__c <= :da[1]];
-    List<Milestone1_Milestone__c> milestones = [Select Id, Deadline__c, Name from Milestone1_Milestone__c where Deadline__c >=:da[0] and Deadline__c <= :da[1]];
-    List<Milestone1_Task__c> tasks = [Select Id, Due_Date__c, Name from Milestone1_Task__c where Due_Date__c >=:da[0] and Due_Date__c <= :da[1]];
+    List<Milestone1_Milestone__c> milestones = [Select Id, Deadline__c, Name from Milestone1_Milestone__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] LIMIT 300];
+    List<Milestone1_Task__c> tasks = [Select Id, Due_Date__c, Name from Milestone1_Task__c where Due_Date__c >=:da[0] and Due_Date__c <= :da[1] LIMIT 300];
     List<Milestone1_Calendar_Item> events = new List<Milestone1_Calendar_Item>();
     for(Milestone1_Project__c proj : projects)
     {

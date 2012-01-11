@@ -10,7 +10,7 @@
  			<apex:selectOptions value="{!filterList}"/>
  		</apex:selectList></td>
  		<td><apex:commandButton action="{!filter}" value="Filter" id="FilterButton" /></td>
- 		<td><apex:commandLink action="{!fiveDayView}" value="This Weeks View"/></td>
+ 		<td><apex:commandLink action="{!fiveDayView}" value="Week"/></td>
  		<td><apex:commandLink action="{!monthView}" value="Full Month"/></td>
  	</tr>
  	<tr>

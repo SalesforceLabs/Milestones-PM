@@ -29,12 +29,12 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <apex:form >
      
-    <p>Milestones: <apex:inputText value="{!numberMilestones}"  /></p>
-    <p>Tasks / Milestone: <apex:inputText value="{!numberTasks}" /></p>
+    <p>{!$Label.TestProjectMilestones}: <apex:inputText value="{!numberMilestones}"  /></p>
+    <p>{!$Label.TasksMilestone}: <apex:inputText value="{!numberTasks}" /></p>
     
-    <p><apex:commandButton action="{!buildProject}" status="projectCreation" value="Go!" /></p>
+    <p><apex:commandButton action="{!buildProject}" status="projectCreation" value="{!$Label.Go}" /></p>
     
-    <p><apex:actionStatus id="projectCreation" startText="Working" stoptext="Done!" /></p>
+    <p><apex:actionStatus id="projectCreation" startText="Working" stoptext="{!$Label.Done}" /></p>
     
     </apex:form>
 

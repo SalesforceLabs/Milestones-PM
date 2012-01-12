@@ -28,9 +28,9 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 public with sharing class Milestone1_Email_Utility 
 {
-    public static final String EMAIL_SENDER_NAME = 'Project Milestone Nag Engine';
-    public static final String EMAIL_SUBJECT = 'Project Milestone Notification - Items require attention.';
-    public static final String EMAIL_BODY_START = 'The following Salesforce Project Milestone items are nagging you for attention: \n';
+    public static final String EMAIL_SENDER_NAME = system.label.ProjectMilestoneNagEngine;
+    public static final String EMAIL_SUBJECT = system.label.ProjectMilestoneNotification;
+    public static final String EMAIL_BODY_START = system.label.TheFollowingSalesforceProjectMilestoneItems;
 
     public static Messaging.SingleEmailMessage buildEmail(List<Milestone1_Nag__c> nags, User recipient)
     {

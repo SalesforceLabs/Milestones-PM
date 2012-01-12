@@ -29,8 +29,8 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 public with sharing class Milestone1_Export_Project_Controller { 
     
     private final String ERROR_STRING_FILE_TOO_LONG = 
-    	'Project is too large to export. Total characters must be less than ' + Milestone1_Import_Project_Controller.MAX_FILE_SIZE + 
-    	'. Current export would be $1 characters long. Please edit your project and try again';
+    	system.label.ProjectIsTooLarge + Milestone1_Import_Project_Controller.MAX_FILE_SIZE + 
+    	system.label.CurrentExport;
     
     public Milestone1_Project__c rec {get; set;}
     public Boolean exportSuccess{get;set;}

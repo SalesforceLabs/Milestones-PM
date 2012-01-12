@@ -201,6 +201,7 @@
             <section>Status at a Glance</section>
         </sections>
     </layouts>
+    <nameFieldLabel><!-- Project Name --></nameFieldLabel>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Kickoff must be less or equal than the deadline --></errorMessage>

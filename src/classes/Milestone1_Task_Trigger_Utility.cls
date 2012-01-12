@@ -28,7 +28,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 public class Milestone1_Task_Trigger_Utility {
 	
-	public static final string SUBSCRIPTION_LIMIT_EXCEEDED = 'Maximum per user chatter subscription limit has been exceeded';
+	public static final string SUBSCRIPTION_LIMIT_EXCEEDED = system.label.MaximumPer;
     
     public static void handleTaskAfterTrigger(List<Milestone1_Task__c> recs, List<Milestone1_Task__c> oldRecs) {
         Milestone1_Task__c oldRec;

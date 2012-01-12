@@ -27,7 +27,7 @@
         <help><!-- The user who charged the expense. Defaults to current user if left blank. --></help>
         <label><!-- Incurred By --></label>
         <name>Incurred_By__c</name>
-        <relationshipLabel><!-- Expenses --></relationshipLabel>
+        <relationshipLabel><!-- Expense --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- The task to charge the expense against. --></help>
@@ -42,5 +42,6 @@
             <section>Custom Links</section>
         </sections>
     </layouts>
+    <nameFieldLabel><!-- Project Expense Name --></nameFieldLabel>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

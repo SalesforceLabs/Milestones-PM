@@ -27,7 +27,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page controller="Milestone1_repeatCon" id="thePage" showHeader="true" sidebar="true">
 <apex:stylesheet value="/sCSS/Theme2/default/homeCalendar.css" />
-    <apex:pageBlock title="Calendar">
+    <apex:pageBlock title="{!$Label.Calendar}">
         <c:MIlestone1_Calendar_Full />
     </apex:pageBlock>
 </apex:page>

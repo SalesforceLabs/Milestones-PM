@@ -26,7 +26,7 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
-public with sharing class Milestone1_Import_Project_Controller {
+global with sharing class Milestone1_Import_Project_Controller {
     public Milestone1_Project__c project {get; set;}
     public List<Document> docs {get;set;}
     public List<SelectOption> docOptions {get;set;}

@@ -26,7 +26,7 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
-public with sharing class Milestone1_Clone_Utility {
+global with sharing class Milestone1_Clone_Utility {
 
     public static Milestone1_Project__c cloneProject(Milestone1_Project__c rec){
         Milestone1_Project__c newRec = rec.clone(false);

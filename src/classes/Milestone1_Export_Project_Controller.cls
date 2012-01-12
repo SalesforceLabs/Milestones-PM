@@ -26,7 +26,7 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
-public with sharing class Milestone1_Export_Project_Controller { 
+global with sharing class Milestone1_Export_Project_Controller { 
     
     private final String ERROR_STRING_FILE_TOO_LONG = 
     	system.label.ProjectIsTooLarge + Milestone1_Import_Project_Controller.MAX_FILE_SIZE + 

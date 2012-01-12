@@ -45,9 +45,9 @@ public with sharing class Milestone1_Summary2 {
     }
     
     public boolean hasSearchLengthError{
-        get{
-            return searchLengthError != null && searchLengthError == true;
-        }
+    	get{
+    		return searchLengthError != null && searchLengthError == true;
+    	}
     }
     
     public boolean hasProjectResults {
@@ -261,7 +261,6 @@ public with sharing class Milestone1_Summary2 {
     }
 
     public Pagereference viewBlockedTasks() {
-        
         return new Pagereference('/' + settings.Report_Id_Blocked_Tasks_by_Project__c + '?pv0=' + String.valueOf(targetProject).substring(0,15) );
     }
 
@@ -283,17 +282,14 @@ public with sharing class Milestone1_Summary2 {
     }
 
     public Pagereference incompleteTasksByPriority() {
-    
         return new Pagereference('/' + settings.Report_Id_My_Tasks_By_Priority_Project__c + '?pv0=' + Encodingutil.urlEncode(''+UserInfo.getName(), 'UTF-8' ) );
     }
 
     public Pagereference summaryMyLateTasks() {
-    
         return new Pagereference('/' + settings.Report_Id_My_Late_Tasks__c + '?pv0=' + Encodingutil.urlEncode(''+UserInfo.getName(), 'UTF-8' ) );
     }
     
     public Pagereference summaryMyBlockedTasks() {
-    
         return new Pagereference('/' + settings.Report_Id_My_Blocked_Tasks__c + '?pv0=' + Encodingutil.urlEncode(''+UserInfo.getName(), 'UTF-8' ) );
     }
     
@@ -330,6 +326,7 @@ public with sharing class Milestone1_Summary2 {
 
         
         
+        
         //make sure we get page references back
         summary2.targetProject = p1.id;
         
@@ -361,40 +358,13 @@ public with sharing class Milestone1_Summary2 {
         
         if(summary2.hasNext == true)
         {
-            summary2.next();
+        	summary2.next();
         }
         if(summary2.hasPrevious == true)
         {
-            summary2.previous();
+        	summary2.previous();
         }
         
-    }
-    
-    static TestMethod void testProjectPagination() {
-    
-        Integer i = 0;
-        
-        List<Milestone1_Project__c> projects = new List<Milestone1_Project__c>();
-        while (i < 25) {
-            Milestone1_Project__c p1 = Milestone1_Test_Utility.sampleProjectActive('Controller Test'+i);
-            projects.add(p1);
-            i++;
-        }
-        
-        insert projects;
-        
-        //make sure it shows active projects
-        
-        Test.startTest();
-        
-        Milestone1_Summary2 summary2 = new Milestone1_Summary2();
-        
-        Integer i2 = summary2.getProjects().size();
-        
-        System.assertEquals(20, i2, 'Project count is wrong.');
-        
-        Test.stopTest();
-    
     }
 
 }

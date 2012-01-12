@@ -27,7 +27,8 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 public class Milestone1_Task_Trigger_Utility {
-	
+
+	private static final Schema.SObjectType entitySubscriptionType = Milestone1_Schema_Helper.getGlobalDescribe().get('entitysubscription');
 	public static final string SUBSCRIPTION_LIMIT_EXCEEDED = system.label.MaximumPer;
     
     public static void handleTaskAfterTrigger(List<Milestone1_Task__c> recs, List<Milestone1_Task__c> oldRecs) {
@@ -36,14 +37,20 @@ public class Milestone1_Task_Trigger_Utility {
         List<String> recIds = new List<String>();
         for(Milestone1_Task__c rec : recs) { recIds.add(rec.Id); }
         
+        List<sObject> existingSubscriptions = new List<sObject>();
         //Retrieve existing list of Subscriptions for the Task(s) and store in Map by User. Salesforce does not allow user to subscribe to same object more than once so we can store in map.
-        List<EntitySubscription> existingSubscriptions = [Select Id, ParentId, SubscriberId from EntitySubscription where ParentId in :recIds];
-         
+        if(Milestone1_Schema_Helper.isOrgChatterEnabled()){
+        	String queryString = 'Select Id, ParentId, SubscriberId from EntitySubscription where ParentId in (';
+	        for(Id recId:recIds)
+	        	queryString += '\''+recId+'\',';
+	        queryString = queryString.substring(0,queryString.length()-1) + ')'; //trim the trailing comma 
+	        existingSubscriptions= Database.query(queryString);
+        }
         //Create a Map of Users to Subscriptions
-        Map<String,List<EntitySubscription>> userSubscriptionMap = Milestone1_Task_Trigger_Utility.buildUserSubscriptionMap(existingSubscriptions);
+        Map<String,List<sObject>> userSubscriptionMap = Milestone1_Task_Trigger_Utility.buildUserSubscriptionMap(existingSubscriptions);
 
-        List<EntitySubscription> subscriptionsAddList = new List<EntitySubscription>();
-        List<EntitySubscription> subscriptionsDeleteList = new List<EntitySubscription>();
+        List<sObject> subscriptionsAddList = new List<sObject>();
+        List<sObject> subscriptionsDeleteList = new List<sObject>();
         
         //Iterate over the list of Tasks and evaluate the Chatter rules to follow/unfollow based on Custom Settings for Users/Profiles
         Integer i = 0;
@@ -57,17 +64,19 @@ public class Milestone1_Task_Trigger_Utility {
             //If the Task is Assigned to a User then we can proceed
             if(rec.Assigned_To__c != null)
             {
-                List<EntitySubscription> existingSubscriptionList = userSubscriptionMap.get(rec.Assigned_To__c);
-                EntitySubscription existingSubscription = getSubscriptionForUserAndRec(rec,existingSubscriptionList,userSubscriptionMap);
+                List<sObject> existingSubscriptionList = userSubscriptionMap.get(rec.Assigned_To__c);
+                sObject existingSubscription = getSubscriptionForUserAndRec(rec,existingSubscriptionList,userSubscriptionMap);
                 
                 AutoChatterSetting chatterSettings = new AutoChatterSetting(rec.Assigned_To__c, rec.Assigned_To__r.ProfileId);
                 //If the custom setting for automatically following is true, lets perform auto chatter logic
                 if(chatterSettings.autoFollow)
                 {
                     //If the there is not an existing subscription for the user, go ahead and follow the object. This prevents DUPLICATE_VALUE exception on subscription insert.
-                    if(existingSubscription == null)
+                    if(existingSubscription == null && entitySubscriptionType != null)
                     {
-                        EntitySubscription subscription = new EntitySubscription(parentId=rec.id, SubscriberId=rec.Assigned_To__c);
+                        sObject subscription = entitySubscriptionType.newSObject();
+                        subscription.put('parentId',rec.id);
+                        subscription.put('SubscriberId',rec.Assigned_To__c);
                         subscriptionsAddList.add(subscription);
                     }
                 }
@@ -82,8 +91,8 @@ public class Milestone1_Task_Trigger_Utility {
             {
                 system.debug('Unfollow..');
                 AutoChatterSetting chatterSettings = new AutoChatterSetting(oldRec.Assigned_To__c, oldRec.Assigned_To__r.ProfileId);
-                List<EntitySubscription> existingSubscriptionList = userSubscriptionMap.get(oldRec.Assigned_To__c);
-                EntitySubscription existingSubscription = getSubscriptionForUserAndRec(oldRec,existingSubscriptionList,userSubscriptionMap);
+                List<sObject> existingSubscriptionList = userSubscriptionMap.get(oldRec.Assigned_To__c);
+                sObject existingSubscription = getSubscriptionForUserAndRec(oldRec,existingSubscriptionList,userSubscriptionMap);
                 if(chatterSettings.autoUnassignFollow && existingSubscription != null)
                 {
                     subscriptionsDeleteList.add(existingSubscription);
@@ -134,14 +143,14 @@ public class Milestone1_Task_Trigger_Utility {
         update successorsToUpdate;
     }
     
-    public static EntitySubscription getSubscriptionForUserAndRec(Milestone1_Task__c rec, List<EntitySubscription> existingSubscriptionList, Map<String,List<EntitySubscription>> userSubscriptionMap)
+    public static sObject getSubscriptionForUserAndRec(Milestone1_Task__c rec, List<sObject> existingSubscriptionList, Map<String,List<sObject>> userSubscriptionMap)
     {
-        EntitySubscription existingSubscription = null;
+        sObject existingSubscription = null;
         if(userSubscriptionMap.get(rec.Assigned_To__c) != null)
         {   
-            for(EntitySubscription tempSubscription : existingSubscriptionList)
+            for(sObject tempSubscription : existingSubscriptionList)
             {
-                if(tempSubscription.SubscriberId == rec.Assigned_To__c && tempSubscription.ParentId == rec.Id)
+                if( (id)tempSubscription.get('SubscriberId') == rec.Assigned_To__c && (id) tempSubscription.get('ParentId') == rec.Id)
                 {
                     existingSubscription = tempSubscription;
                     break;
@@ -151,19 +160,19 @@ public class Milestone1_Task_Trigger_Utility {
         return existingSubscription;
     }
     
-    public static Map<String,List<EntitySubscription>> buildUserSubscriptionMap(List<EntitySubscription> existingSubscriptions)
+    public static Map<String,List<sObject>> buildUserSubscriptionMap(List<sObject> existingSubscriptions)
     {
-        Map<String,List<EntitySubscription>> userSubscriptionMap = new Map<String,List<EntitySubscription>>();
-        for(EntitySubscription aSubscription : existingSubscriptions)
+        Map<String,List<sObject>> userSubscriptionMap = new Map<String,List<sObject>>();
+        for(sObject aSubscription : existingSubscriptions)
         {
-            if(userSubscriptionMap.get(aSubscription.SubscriberId) == null)
+            if(userSubscriptionMap.get( (id)aSubscription.get('SubscriberId')) == null)
             {
-                userSubscriptionMap.put(aSubscription.SubscriberId,new List<EntitySubscription>());
+                userSubscriptionMap.put( (id)aSubscription.get('SubscriberId'),new List<sObject>());
                 
             }
-            List<EntitySubscription> tempList = userSubscriptionMap.get(aSubscription.SubscriberId);
+            List<sObject> tempList = userSubscriptionMap.get( (id)aSubscription.get('SubscriberId'));
             tempList.add(aSubscription);
-            userSubscriptionMap.put(aSubscription.SubscriberId,tempList);
+            userSubscriptionMap.put( (id)aSubscription.get('SubscriberId'),tempList);
         }
         return userSubscriptionMap;
     }

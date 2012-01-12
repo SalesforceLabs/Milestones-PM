@@ -27,7 +27,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page standardController="Milestone1_Project__c"
            extensions="Milestone1_Clone_Project_Controller">
-           
+	<apex:pageMessages />
     <apex:form >
         <apex:pageBlock title="{!$Label.ProjectClone}">
             <apex:pageBlockButtons >

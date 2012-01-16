@@ -29,37 +29,32 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <apex:form >
         
-    <apex:pageBlock title="Welcome to Milestones PM - Project Management">
+    <apex:pageBlock title="{!$Label.WelcomeToMilestonesPM}">
     
-    <h2>Next Steps</h2>
+    <h2>{!$Label.NextSteps}</h2>
     
-    <p><strong>Important:</strong> you must <strong>deploy</strong> Milestones before continuing.  
-    If you have not done this, please visit <a href="/0A3?setupid=ImportedPackage">Setup > App Setup > View Installed Packages</a>,
-    click on <strong>Milestones PM</strong> and click on the deploy button.</p>
+    <p><strong>{!$Label.Important}:</strong> <apex:outputText value="{!$Label.YouMustDeploy} {!$Label.IfYouHaveNotDoneThis}" escape="false" /></p>
     
-  
+    <p>{!$Label.YourNextFewSteps}</p>
     
-    <p>Your next few steps are easy.</p>
+    <p>1. {!$Label.InitializeYourConfiguration}</p>
     
-    <p>1. Initialize your configuration using the button below.</p>
+    <p>2. {!$Label.ViewTheGettingStartedProject}</p>
     
-    <p>2. View the "Getting Started" project created as part of your initial configuration.</p>
-    
-    <p>3. Start creating your first project.</p>
+    <p>3. {!$Label.StartCreatingYourFirstProject}</p>
     
     <p>&nbsp;</p>
     
-    <h2>Getting Help</h2>
+    <h2>{!$Label.GettingHelp}</h2>
     
-    <p>Milestones PM is unsupported.  For community assistance with Milestones PM, please visit <a href="http://success.salesforce.com/answers">Salesforce Answers</a>.  
-    To submit ideas or issues, please visit <a href="https://github.com/ForceDotComLabs/Milestones-PM">Milestones PM on Github</a>.</p>
+    <p><apex:outputText value="{!$Label.MilestonesPMIsUnsupported}  {!$Label.ForCommunityAssistance}  
+    {!$Label.ToSubmitIdeasOrIssues}" escape="false" /></p>
 
     <p>&nbsp;</p>
     
-    <h2>Community</h2>
+    <h2>{!$Label.Community}</h2>
 
-    <p>Milestones PM is Open Source software.  We welcome your issue reports, ideas, documentation, code tweaks and all other participation.  
-    <a href="http://blogs.developerforce.com/labs/2011/08/howto-contribute-to-milestones-pm-code-not-required-opensource.html">Learn more</a>.</p>
+    <p><apex:outputText value="{!$Label.MilestonesPMISOpenSource}  {!$Label.WeWelcomeYourIssueReports} {!$Label.LearnMore}." escape="false" /></p>
 
     <p>&nbsp;</p>
     
@@ -67,7 +62,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
         
     <apex:outputPanel id="step1" rendered="{!settingsReady == false}">   
     
-    <h2>Initial Configuration</h2>
+    <h2>{!$Label.InitialConfiguration}</h2>
     
     <p>&nbsp;</p>
     
@@ -79,18 +74,18 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
          </apex:facet>
          <apex:facet name="stop"  >
              <apex:outputPanel id="executeStatusNotworking" layout="none">
-                 <apex:commandButton action="{!setupStandardSettings}" value="Click here to initialize this app" status="executeStatus" rerender="step1panel"/>
+                 <apex:commandButton action="{!setupStandardSettings}" value="{!$Label.ClickHereToInitializeThisApp}" status="executeStatus" rerender="step1panel"/>
              </apex:outputPanel>
          </apex:facet>
      </apex:actionStatus>
     
     <p>&nbsp;</p>
     
-    <p>Clicking the button will:</p>
+    <p>{!$Label.ClickingTheButtonWill}:</p>
     
     <ul>
-        <li>Initialize custom app settings.</li>
-        <li>Import a default project that will help you with your next steps.</li>
+        <li>{!$Label.InitializeCustomAppSettings}</li>
+        <li>{!$Label.ImportDefaultProject}</li>
     </ul>
 
     
@@ -100,15 +95,15 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
     
     <p>&nbsp;</p>
     
-    <h2>Initialization Complete!</h2>
+    <h2>{!$Label.InitializationComplete}</h2>
     
-    <p>You can now go to your project summary page to see the sample project we installed.<br/>&nbsp;</p>
+    <p>{!$Label.YouCanNowGoTo}<br/>&nbsp;</p>
     
-    <h2>IMPORTANT</h2>
+    <h2>{!$Label.ImportantUpper}</h2>
     
-    <p>Be sure to explore the sample project, "HOWTO: Get Started with Milestones PM". This sample project includes the remaining configuration steps as well as ideas on how you can get the most out of Milestones PM.</p>
+    <p>{!$Label.BeSureToExploreTheSampleProject} {!$Label.ThisSampleProjectIncludes}</p>
     
-    <p>Click Here:&nbsp;<apex:outputLink value="{!$Page.Milestone1_Summary2}">Project Summary Page</apex:outputLink> to start using Milestones PM.</p>
+    <p>{!$Label.ClickHere}:&nbsp;<apex:outputLink value="{!$Page.Milestone1_Summary2}">{!$Label.ProjectSummary_FirstHalf}</apex:outputLink> {!$Label.ProjectSummary_SecondHalf}</p>
     
     <p>&nbsp;</p>
     

@@ -28,11 +28,11 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 public with sharing class Milestone1_Move_Exception extends Exception{
     
-    public static final String ERROR_MILESTONE_ALREADY_ASSIGNED_PROJECT = 'A milestone you are attempting to move is already assigned to this project. Please review your selection and try again.';
-    public static final String ERROR_TASK_ALREADY_ASSIGNED_MILESTONE = 'A task you are attempting to move is already assigned to this milestone. Please review your selection and try again.';
-    public static final String ERROR_MILESTONE_COMPLETE = 'Milestone is Complete, the Task can not be moved';
-    public static final String ERROR_MILESTONE_HAS_SUCCESSORS = 'Top Level Milestone has successors and cannot be moved.  Redirect those successors and try again.';
-    public static final String ERROR_MILESTONE_HAS_PREDECESSOR = 'Top Level Milestone has predecessor and cannot be moved.  Remove that predecessor and try again.';
+    public static final String ERROR_MILESTONE_ALREADY_ASSIGNED_PROJECT = system.label.MilestoneYouAreAttempting;
+    public static final String ERROR_TASK_ALREADY_ASSIGNED_MILESTONE = system.label.TaskYouAreAttempting;
+    public static final String ERROR_MILESTONE_COMPLETE = system.label.MilestoneIsComplete;
+    public static final String ERROR_MILESTONE_HAS_SUCCESSORS = system.label.TopLevelMilestoneHasSuccessors;
+    public static final String ERROR_MILESTONE_HAS_PREDECESSOR = system.label.TopLevelMilestoneHasPredecessor;
     
     static testMethod void testConstants() 
     {

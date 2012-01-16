@@ -1,61 +1,61 @@
 <apex:component controller="Milestone1_Charts_GanttController">
-	<apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-1.4.4.min.js')}"/>
-	<apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'date.js')}"/>
-	<apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-ui-1.8.7.custom.min.js')}"/>
-	<apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery.ganttView.js')}"/>
-	<apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-ui-1.8.4.css')}"/>
-	<apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'reset.css')}"/>
-	<apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'jquery.ganttView.css')}"/>
-	<apex:includeScript value="/soap/ajax/20.0/connection.js"/>
-	
-	<apex:attribute name="target" type="String" required="true" 
-					description="The Project This is For" assignTo="{!mytarget}" />
-	<apex:attribute name="readonly" type="String"
-					description="enable the event handlers like resizing and moving."/>
-	<br/><br/>			
-	<div id="ganttChart{!target}"></div>
-	
-	<script type="text/javascript">
-		<apex:outputText value="{!projectGanttJson}" />
-		var g{!target} = jQuery.noConflict();
-		
-		g{!target}(function () {
-			var dropEvent = function (data) {
-						var startDate = data["start"];
-						var endDate = data["end"];
-						var id = data["id"];
-						var sobject; 
-						sobject = new sforce.SObject("{!objectType}");
-						sobject["{!idFieldName}"] = id;
-						sobject["{!startDateFieldName}"] = startDate;
-						sobject["{!endDateFieldName}"] = endDate;
-							
-						sforce.connection.sessionId = "{!$Api.Session_ID}";
-						sforce.connection.update([sobject],{
-								onSuccess : function(result){
-											},
-								onFailure : function(result){
-												alert('An error has ocurred: '+result);
-											}
-						})
-					}
-			var readonly = "{!readonly}" != "true";
-			g{!target}("#ganttChart{!target}").ganttView({ 
-				data: ganttData{!target},
-				slideWidth: 900,
-				behavior: {
-					draggable: readonly,
-					resizable: readonly, 
-					onClick: function (data) {
-						if(data && data.id){
-							parent.location.href = '/'+data.id;
-						}
-					},
-					onResize: dropEvent,
-					onDrag: dropEvent
-				}
-			});
-		});
-	</script>
+    <apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-1.4.4.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'date.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-ui-1.8.7.custom.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery.ganttView.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-ui-1.8.4.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'reset.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'jquery.ganttView.css')}"/>
+    <apex:includeScript value="/soap/ajax/20.0/connection.js"/>
+    
+    <apex:attribute name="target" type="String" required="true" 
+                    description="The Project This is For" assignTo="{!mytarget}" />
+    <apex:attribute name="readonly" type="String"
+                    description="enable the event handlers like resizing and moving."/>
+    <br/><br/>          
+    <div id="ganttChart{!target}"></div>
+    
+    <script type="text/javascript">
+        <apex:outputText value="{!projectGanttJson}" />
+        var g{!target} = jQuery.noConflict();
+        
+        g{!target}(function () {
+            var dropEvent = function (data) {
+                        var startDate = data["start"];
+                        var endDate = data["end"];
+                        var id = data["id"];
+                        var sobject; 
+                        sobject = new sforce.SObject("{!objectType}");
+                        sobject["{!idFieldName}"] = id;
+                        sobject["{!startDateFieldName}"] = startDate;
+                        sobject["{!endDateFieldName}"] = endDate;
+                            
+                        sforce.connection.sessionId = "{!$Api.Session_ID}";
+                        sforce.connection.update([sobject],{
+                                onSuccess : function(result){
+                                            },
+                                onFailure : function(result){
+                                                alert('{!$Label.AnErrorHasOcurred}' +': '+result);
+                                            }
+                        })
+                    }
+            var readonly = "{!readonly}" != "true";
+            g{!target}("#ganttChart{!target}").ganttView({ 
+                data: ganttData{!target},
+                slideWidth: 900,
+                behavior: {
+                    draggable: readonly,
+                    resizable: readonly, 
+                    onClick: function (data) {
+                        if(data && data.id){
+                            parent.location.href = '/'+data.id;
+                        }
+                    },
+                    onResize: dropEvent,
+                    onDrag: dropEvent
+                }
+            });
+        });
+    </script>
 
 </apex:component>

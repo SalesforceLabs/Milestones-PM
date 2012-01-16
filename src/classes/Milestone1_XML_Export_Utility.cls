@@ -26,7 +26,7 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
-public with sharing class Milestone1_XML_Export_Utility {
+global with sharing class Milestone1_XML_Export_Utility {
     
     private Milestone1_Project__c project;
     private List<Milestone1_Milestone__c>  milestones;
@@ -38,7 +38,7 @@ public with sharing class Milestone1_XML_Export_Utility {
     private List<Milestone1_Task__c> subMilestonesTasks;
     private Map<ID,Milestone1_Task__c> subMilestonesTasksMap;
     
-    public Milestone1_XML_Export_Utility()
+    global Milestone1_XML_Export_Utility()
     {
         milestonesMap = new Map<ID,Milestone1_Milestone__c>();
         milestonesTasksMap = new Map<ID,Milestone1_Task__c>();
@@ -46,7 +46,7 @@ public with sharing class Milestone1_XML_Export_Utility {
         subMilestonesTasksMap = new Map<ID,Milestone1_Task__c>();
     }
 
-    public Milestone1_Project__c lookup(ID targetId) {
+    global Milestone1_Project__c lookup(ID targetId) {
         Milestone1_Project__c project = [Select m.Kickoff__c,m.Deadline__c, m.Total_Hours_Budget__c, m.Total_Expense_Budget__c, m.Status__c, m.Name, m.Id, m.Description__c From Milestone1_Project__c m where Id = :targetId limit 1];
         //Retrieve all the Milestones
         milestones = [Select m1.Id, m1.Name, m1.Alias__c, m1.Deadline__c, m1.Kickoff__c, m1.Complete__c,m1.Description__c, m1.Expense_Budget__c,  m1.Project__c, m1.Hours_Budget__c From Milestone1_Milestone__c m1 where Project__c = :project.Id and Parent_Milestone__c = null];
@@ -76,7 +76,7 @@ public with sharing class Milestone1_XML_Export_Utility {
         return project;
     }
     
-    public String buildProjectXmlString(ID targetId) {
+    global String buildProjectXmlString(ID targetId) {
         project = lookup(targetId);
         Xmlstreamwriter out = new Xmlstreamwriter();
         
@@ -102,7 +102,7 @@ public with sharing class Milestone1_XML_Export_Utility {
         return ret;
     }
 
-    void writeProjectToXML(XMLstreamwriter out, Milestone1_Project__c project )
+    global void writeProjectToXML(XMLstreamwriter out, Milestone1_Project__c project )
     {
         out.writeStartElement(null, Milestone1_Constants.OBJ_NAME_PROJECT, null);
         writeElement(out,'Id',project.Id);
@@ -118,7 +118,7 @@ public with sharing class Milestone1_XML_Export_Utility {
         out.writeEndElement();  
     }
     
-    void writeMilestoneToXML(XMLstreamwriter out, Milestone1_Milestone__c milestone, Boolean isParentMilestone )
+    global void writeMilestoneToXML(XMLstreamwriter out, Milestone1_Milestone__c milestone, Boolean isParentMilestone )
     {
         List<Milestone1_Task__c> tasks;
         if(isParentMilestone)
@@ -153,7 +153,7 @@ public with sharing class Milestone1_XML_Export_Utility {
     }
     
     
-    void writeTaskToXML(XMLstreamwriter out, Milestone1_Task__c task ){
+    global void writeTaskToXML(XMLstreamwriter out, Milestone1_Task__c task ){
         out.writeStartElement(null, Milestone1_Constants.OBJ_NAME_TASK, null);
         writeElement(out,'Id', task.Id);
         writeElement(out,'Description__c',task.Description__c);
@@ -164,7 +164,7 @@ public with sharing class Milestone1_XML_Export_Utility {
         out.writeEndElement();  
     }
 	
-    void writeElement(Xmlstreamwriter out, String tag, Object content) {
+    global void writeElement(Xmlstreamwriter out, String tag, Object content) {
     if(content != null){
             out.writeStartElement(null, tag, null);
         	out.writeCharacters(EncodingUtil.urlEncode(String.valueOf(content), 'UTF-8'));

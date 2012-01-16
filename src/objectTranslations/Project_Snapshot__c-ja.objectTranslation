@@ -4,70 +4,64 @@
         <plural>false</plural>
         <value>Project Snapshot</value>
     </caseValues>
-    <caseValues>
-        <plural>true</plural>
-        <value>Project Snapshots</value>
-    </caseValues>
     <fields>
-        <label><!-- Blocked Task Count --></label>
+        <label>ブロックタスク数</label>
         <name>Blocked_Task_Count__c</name>
     </fields>
     <fields>
-        <label><!-- Complete Task Count --></label>
+        <label>完了タスク数</label>
         <name>Complete_Task_Count__c</name>
     </fields>
     <fields>
-        <label><!-- Date --></label>
+        <label>日付</label>
         <name>Date__c</name>
     </fields>
     <fields>
-        <label><!-- Expense Budget --></label>
+        <label>予算</label>
         <name>Expense_Budget__c</name>
     </fields>
     <fields>
-        <label><!-- Expense Estimate --></label>
+        <label>推定費用</label>
         <name>Expense_Estimate__c</name>
     </fields>
     <fields>
-        <label><!-- Expense Incurred --></label>
+        <label>発生予定費用</label>
         <name>Expense_Incurred__c</name>
     </fields>
     <fields>
-        <label><!-- Hours Budget --></label>
+        <label>予定時間</label>
         <name>Hours_Budget__c</name>
     </fields>
     <fields>
-        <label><!-- Hours Estimate --></label>
+        <label>推定時間</label>
         <name>Hours_Estimate__c</name>
     </fields>
     <fields>
-        <label><!-- Hours Incurred --></label>
+        <label>発生予定時間</label>
         <name>Hours_Incurred__c</name>
     </fields>
     <fields>
-        <label><!-- Incomplete Milestones --></label>
+        <label>未完了マイルストーン</label>
         <name>Incomplete_Milestones__c</name>
     </fields>
     <fields>
-        <label><!-- Incomplete Top Milestones --></label>
+        <label>未完了の上位マイルストーン</label>
         <name>Incomplete_Top_Milestones__c</name>
     </fields>
     <fields>
-        <label><!-- Late Task Count --></label>
+        <label>遅延タスク数</label>
         <name>Late_Task_Count__c</name>
     </fields>
     <fields>
-        <label><!-- Open Task Count --></label>
+        <label>進行中タスク数</label>
         <name>Open_Task_Count__c</name>
     </fields>
     <fields>
-        <label><!-- Project Name --></label>
+        <label>プロジェクト名</label>
         <name>Project_Name__c</name>
     </fields>
     <fields>
-        <label><!-- Status --></label>
+        <label>状態</label>
         <name>Status__c</name>
     </fields>
-    <nameFieldLabel><!-- Project Snapshot Name --></nameFieldLabel>
-    <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

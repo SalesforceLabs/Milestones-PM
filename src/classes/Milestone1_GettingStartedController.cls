@@ -43,7 +43,7 @@ public with sharing class Milestone1_GettingStartedController {
 		Milestone1_Settings__c settings = Milestone1_Settings__c.getOrgDefaults();
 		
 		if (settings != null) {
-			lastResult = 'Settings already exist.  No changes made.';		
+			lastResult = system.label.SettingsAlreadyExistNoChanges;		
 		} else {
 			settings = getInitialSettingsWithoutSave();
 			

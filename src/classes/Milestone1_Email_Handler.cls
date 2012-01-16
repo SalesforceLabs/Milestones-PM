@@ -38,15 +38,15 @@ global class Milestone1_Email_Handler implements Messaging.InboundEmailHandler
     Parent Milestone is looked up based on Milestone Alias provided in Subject. 
     */
 
-    public static final String REGEX_FWD_RE = '^[ ]*((([Ff][Ww][Dd])|([Rr][Ee]))[ ]*:[ ]*)*';
-    public static String ERROR_USERS_NOT_FOUND = 'The User seaches for Assignment (To Address) and/or Ownership (From Address) did not find matches to users in Salesforce.';
-    public static String ERROR_SUBJECT_MISSING_ALIAS = 'The subject line did not contain a milestone alias.';
-    public static String ERROR_ALIAS_NOT_FOUND = 'The alias provided in subject line did not match a milestone alias in Salesforce.';
-    public static String ERROR_FROM_USER_NOT_FOUND = 'The email sender did not match a user in Salesforce.';
-    public static String ERROR_TO_USER_NOT_FOUND = 'The list of recipients did not have any matches to a user in Salesforce.';
-    public static String ERROR_TASK_NOT_FOUND = 'A matching task was not found for this Email thread in Salesforce. Salesforce was unable to attach this email to the notes for a task.';
-    public static String ERROR_SUBJECT_MISSING_TASK	 = 'The subject line did not contain a task.';
-    public static String ERROR_SUBJECT_MISSING = 'The subject line did is empty.';
+    public static final String REGEX_FWD_RE = system.label.RegexFwdRe;
+    public static String ERROR_USERS_NOT_FOUND = system.label.UsersNotFound;
+    public static String ERROR_SUBJECT_MISSING_ALIAS = system.label.SubjectMissingAlias;
+    public static String ERROR_ALIAS_NOT_FOUND = system.label.ALiasNotFound;
+    public static String ERROR_FROM_USER_NOT_FOUND = system.label.FromUsersNotFound;
+    public static String ERROR_TO_USER_NOT_FOUND = system.label.ToUsersNotFound;
+    public static String ERROR_TASK_NOT_FOUND = system.label.TaskNotFound;
+    public static String ERROR_SUBJECT_MISSING_TASK	 = system.label.SubjectMissingTask;
+    public static String ERROR_SUBJECT_MISSING = system.label.SubjectMissing;
     
     global Messaging.InboundEmailResult handleInboundEmail(Messaging.InboundEmail email, Messaging.InboundEnvelope envelope) 
     {

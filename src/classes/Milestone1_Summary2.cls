@@ -69,43 +69,44 @@ public with sharing class Milestone1_Summary2 {
     }
     
     public boolean hasSettings{
-    	get{
-    		return settings != null;
-    	}
+
+        get{
+            return settings != null;
+        }
     }
     
     public boolean isDeployed{
-    	get{
-    		Id myProfileId = UserInfo.getProfileId();
-			Profile myProfile = [Select Id, Name from Profile where Id=:myProfileId];
-			
-			Boolean objectsDeployed = true;
-			if (myProfile.Name != 'System Administrator')
-			{
-			
-				try{
-		
-					Schema.DescribeFieldResult F = Schema.SObjectType.Milestone1_Milestone__C.fields.Name;
-					if ( F.isAccessible() == true)
-					{
-						return true;
-					}
-					else
-					{
-						return false;
-					}
-					return true;
-				}
-				catch (System.UnexpectedException e)
-				{
-			
-					
-					return false;
-				}
-			
-			}
-			return objectsDeployed;
-    	}
+        get{
+            Id myProfileId = UserInfo.getProfileId();
+            Profile myProfile = [Select Id, Name from Profile where Id=:myProfileId];
+            
+            Boolean objectsDeployed = true;
+            if (myProfile.Name != 'System Administrator')
+            {
+            
+                try{
+        
+                    Schema.DescribeFieldResult F = Schema.SObjectType.Milestone1_Milestone__C.fields.Name;
+                    if ( F.isAccessible() == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+                catch (System.UnexpectedException e)
+                {
+            
+                    
+                    return false;
+                }
+            
+            }
+            return objectsDeployed;
+        }
     }
     
     
@@ -113,32 +114,34 @@ public with sharing class Milestone1_Summary2 {
     public Milestone1_Settings__c settings = Milestone1_Settings__c.getInstance();
     
     public void initialize() {
-    	
-    	if (isDeployed)
-    	{
-	        List<Milestone1_Project__c> recentProjects = [Select Id, Name from Milestone1_Project__c order by LastModifiedDate desc limit 5];
-	        List<Milestone1_Milestone__c> recentMilestones = [Select Id, Name from Milestone1_Milestone__c order by LastModifiedDate desc limit 50];
-	        List<Milestone1_Task__c> recentTasks = [Select Id, Name from Milestone1_Task__c order by LastModifiedDate desc limit 100];
-	
-	        this.recentItems = new List<Pair>();
-	        this.recentItems.addAll(createPairObjects(recentProjects, 'Project: '));
-	        this.recentItems.addAll(createPairObjects(recentMilestones, 'Milestone: '));
-	        this.recentItems.addAll(createPairObjects(recentTasks, 'Task: '));
-    	}
+
+        
+        if (isDeployed)
+        {
+            List<Milestone1_Project__c> recentProjects = [Select Id, Name from Milestone1_Project__c order by LastModifiedDate desc limit 5];
+            List<Milestone1_Milestone__c> recentMilestones = [Select Id, Name from Milestone1_Milestone__c order by LastModifiedDate desc limit 50];
+            List<Milestone1_Task__c> recentTasks = [Select Id, Name from Milestone1_Task__c order by LastModifiedDate desc limit 100];
+    
+            this.recentItems = new List<Pair>();
+            this.recentItems.addAll(createPairObjects(recentProjects, 'Project: '));
+            this.recentItems.addAll(createPairObjects(recentMilestones, 'Milestone: '));
+            this.recentItems.addAll(createPairObjects(recentTasks, 'Task: '));
+        }
     }
 
     
     public void searchProjects() {
-    	if (searchText.length() < 2)
-    	{
-    		this.searchLengthError = true;
-    		return;
-    	}
-    	else
-    	{
-    		this.searchLengthError = false;
-    	}
-    	
+
+        if (searchText.length() < 2)
+        {
+            this.searchLengthError = true;
+            return;
+        }
+        else
+        {
+            this.searchLengthError = false;
+        }
+        
         List<List<SObject>> searchList = [FIND :searchText in all fields returning 
         Milestone1_Project__c (Id, Name, Owner.Name, Status__c LIMIT 5), 
         Milestone1_Milestone__c (Id, Name, Project__r.Name LIMIT 10), 
@@ -159,10 +162,10 @@ public with sharing class Milestone1_Summary2 {
     private List<Pair> createPairObjects(List<SObject> records, String namePrefix) {
         List<Pair> newPairs = new List<Pair>(); 
         for (SObject record: records) {
-        	//RSC 2011-05-06 am getting occassional script exceptions
-        	if (record != null && record.get('name') != null) {
-            	newPairs.add(new Pair(namePrefix + (String)record.get('name'), (String)record.id));
-        	}
+            //RSC 2011-05-06 am getting occassional script exceptions
+            if (record != null && record.get('name') != null) {
+                newPairs.add(new Pair(namePrefix + (String)record.get('name'), (String)record.id));
+            }
         }
         return newPairs;
     }
@@ -172,6 +175,7 @@ public with sharing class Milestone1_Summary2 {
         
          return (List<Milestone1_Project__c>) setCon.getRecords();
         
+
     }
     
     
@@ -179,12 +183,12 @@ public with sharing class Milestone1_Summary2 {
         get {
             if(setCon == null) {
                 setCon = new ApexPages.StandardSetController(Database.getQueryLocator(
-	                      [Select m.Id, m.Total_Open_Task_Count__c, m.Total_Complete_Task_Count__c, 
-	        m.Total_Blocked_Task_Count__c, m.Total_Late_Task_Count__c, m.Status_TasksOpenBlockedLate__c,
-	        m.Total_Hours_Budget__c, m.Total_Hours_Budget_from_Milestones__c, m.Total_Hours_Estimate__c, m.Total_Hours_Incurred__c, 
-	        m.Status_BudgetMiletoneEstimate__c, m.Status_BudgetExpenseSummary__c, m.Name, m.Deadline__c, m.Kickoff__c, 
-	        m.Duration__c, m.GoogleGanntUrl__c
-	        From Milestone1_Project__c m where m.status__c = 'Active']));
+                          [Select m.Id, m.Total_Open_Task_Count__c, m.Total_Complete_Task_Count__c, 
+            m.Total_Blocked_Task_Count__c, m.Total_Late_Task_Count__c, m.Status_TasksOpenBlockedLate__c,
+            m.Total_Hours_Budget__c, m.Total_Hours_Budget_from_Milestones__c, m.Total_Hours_Estimate__c, m.Total_Hours_Incurred__c, 
+            m.Status_BudgetMiletoneEstimate__c, m.Status_BudgetExpenseSummary__c, m.Name, m.Deadline__c, m.Kickoff__c, 
+            m.Duration__c, m.GoogleGanntUrl__c
+            From Milestone1_Project__c m where m.status__c = 'Active']));
                 setCon.setPageSize(20);
             }
             return setCon;
@@ -193,6 +197,7 @@ public with sharing class Milestone1_Summary2 {
     }
     
     
+
   //Boolean to check if there are more records after the present displaying records  
     public Boolean hasNext  
     {  
@@ -225,16 +230,18 @@ public with sharing class Milestone1_Summary2 {
     
     public Integer totalPages
     {
-    	get
-    	{
-    		Integer pages = (setCon.getResultSize() / 20);
-    		if (math.mod(setCon.getResultSize(), 20) != 0)
-    		{
-    			pages += 1;
-    		}
-    		return pages;
-    	}
-    	set;
+
+        get
+        {
+            Integer pages = (setCon.getResultSize() / 20);
+            if (math.mod(setCon.getResultSize(), 20) != 0)
+            {
+                pages += 1;
+            }
+            return pages;
+        }
+        set;
+
     } 
   
     //Returns the previous page of records  
@@ -327,10 +334,8 @@ public with sharing class Milestone1_Summary2 {
         
         Milestone1_Project__c p1 = Milestone1_Test_Utility.sampleProjectActive('Controller Test');
         insert p1;
-        Integer i2 = summary2.getProjects().size();
-        
-        System.assert(i2 == 20);
-        
+
+
         
         //make sure we get page references back
         summary2.targetProject = p1.id;

@@ -26,16 +26,16 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page >
-<h1>Milestone Application Post Installation Instructions</h1>
-<h1>To configure the Email To Task Service:</h1>
-1. Go to Setup -> Develop -> Email Services
-2. Click "New Email Service".
-3. Give a Email Service Name "Email To Milestone Task".
-4. Select the Apex Class "Milestone1_Email_Handler".
-5. Set "Accept Attachments" to "All".
-6. Set "Accept Email From" to "All Email Addresses".
-7. Check "Active"
-8. Set All Failure Response options to 'Bounce Message'.
-9. Click "Save and New Email Address".
-10. Setup A New Email Address.
+<h1>{!$Label.MilestoneApplicationPostInstallation}</h1>
+<h1>{!$Label.ToConfigureTheEmail}:</h1>
+<p>1. {!$Label.GoToSetupDevelopEmailServices}</p>
+<p>2. {!$Label.ClickNewEmailService}</p>
+<p>3. {!$Label.GiveEmailServiceName}</p>
+<p>4. {!$Label.SelectTheApexClass}</p>
+<p>5. {!$Label.SetAcceptAttachmentsToAll}</p>
+<p>6. {!$Label.SetAcceptEmailFromToAllEmail}</p>
+<p>7. {!$Label.CheckActive}</p>
+<p>8. {!$Label.SetAllFailureResponseOptions}</p>
+<p>9. {!$Label.ClickSaveAndNewEmailAddress}</p>
+<p>10. {!$Label.SetupNewEmailAddress}</p>
 </apex:page>

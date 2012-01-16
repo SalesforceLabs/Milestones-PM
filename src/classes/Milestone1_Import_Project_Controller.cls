@@ -27,20 +27,20 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 global with sharing class Milestone1_Import_Project_Controller {
-    public Milestone1_Project__c project {get; set;}
-    public List<Document> docs {get;set;}
-    public List<SelectOption> docOptions {get;set;}
-    public String contentType {get;set;}
-    public String docId{get;set;}
-    public string fileName{get;set;}  
-    public Blob fileBody{get;set;} 
-    public Integer docsSize {get;set;} 
-    public Integer maxFileSize {get; set;}
-    public static Integer MAX_FILE_SIZE = 500000;
+    global Milestone1_Project__c project {get; set;}
+    global List<Document> docs {get;set;}
+    global List<SelectOption> docOptions {get;set;}
+    global String contentType {get;set;}
+    global String docId{get;set;}
+    global string fileName{get;set;}  
+    global Blob fileBody{get;set;} 
+    global Integer docsSize {get;set;} 
+    global Integer maxFileSize {get; set;}
+    global static Integer MAX_FILE_SIZE = 500000;
     
     private static String CONTENT_ERROR = system.label.ContentIsNotAllowedInProlog;
     
-    public Milestone1_Import_Project_Controller(ApexPages.StandardSetController ssc)
+    global Milestone1_Import_Project_Controller(ApexPages.StandardSetController ssc)
     {
         docOptions = new List<SelectOption>();
         docs = [Select Id, Name from Document where Name like: 'EXPORT %' ];
@@ -52,7 +52,7 @@ global with sharing class Milestone1_Import_Project_Controller {
         docsSize = docs.size();
     }
     
-    public PageReference importTemplateXML() {
+    global PageReference importTemplateXML() {
         
         try {
 
@@ -92,7 +92,7 @@ global with sharing class Milestone1_Import_Project_Controller {
     }
     
     
-    public String getDocumentXMLString()
+    global String getDocumentXMLString()
     {
         List<Document> docs = [Select Id, Body, ContentType From Document Where Id = :docId limit 1];
         if(docs.size() != 0)

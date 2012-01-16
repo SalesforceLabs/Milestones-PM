@@ -32,12 +32,12 @@ global with sharing class Milestone1_Export_Project_Controller {
     	system.label.ProjectIsTooLarge + Milestone1_Import_Project_Controller.MAX_FILE_SIZE + 
     	system.label.CurrentExport;
     
-    public Milestone1_Project__c rec {get; set;}
-    public Boolean exportSuccess{get;set;}
-    public Document doc{get;set;}
-    public String errorMessage {get; private set;}
+    global Milestone1_Project__c rec {get; set;}
+    global Boolean exportSuccess{get;set;}
+    global Document doc{get;set;}
+    global String errorMessage {get; private set;}
     
-    public Milestone1_Export_Project_Controller(ApexPages.StandardController stc)
+    global Milestone1_Export_Project_Controller(ApexPages.StandardController stc)
     {
     	errorMessage = null;
     	
@@ -49,7 +49,7 @@ global with sharing class Milestone1_Export_Project_Controller {
               ];
     }
     
-    public void createExportXML()
+    global void createExportXML()
     {
         Milestone1_XML_Export_Utility xmlUtil = new Milestone1_XML_Export_Utility();
         String xmlString = xmlUtil.buildProjectXmlString(rec.Id);
@@ -74,21 +74,21 @@ global with sharing class Milestone1_Export_Project_Controller {
     *
     * @result Boolean True if any error has been flagged
     */
-    public Boolean hasError(){
+    global Boolean hasError(){
     	return this.errorMessage != null;
     }
     
-    public PageReference returnToProject()
+    global PageReference returnToProject()
     {
         return new ApexPages.StandardController(rec).view();
     }
     
-    public PageReference returnToDocument()
+    global PageReference returnToDocument()
     {
         return new ApexPages.StandardController(doc).view();
     }
     
-    public Document saveToDocument(String name, String xml, String description) {
+    global Document saveToDocument(String name, String xml, String description) {
         Document d = new Document();
         d.body = Blob.valueOf(xml);
         d.ContentType = 'text/xml';

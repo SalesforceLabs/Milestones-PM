@@ -28,7 +28,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 global with sharing class Milestone1_XML_Import_Utility {
     
-   public with sharing class XML_Metadata {
+   global with sharing class XML_Metadata {
      String ExportVersion;
      String ExportAuthor;
      String ExportPackage;
@@ -44,7 +44,7 @@ global with sharing class Milestone1_XML_Import_Utility {
     List<Milestone1_Time__c> times;
     XML_Metadata metadata = new XML_Metadata();
 
-    public Milestone1_XML_Import_Utility()
+    global Milestone1_XML_Import_Utility()
     {
         project = new Milestone1_Project__c();
         milestones = new List<Milestone1_Milestone__c>();
@@ -54,7 +54,7 @@ global with sharing class Milestone1_XML_Import_Utility {
         times = new List<Milestone1_Time__c>();
     }
     
-    public Milestone1_Project__c importProject(String xml) {
+    global Milestone1_Project__c importProject(String xml) {
 		
 		Savepoint sp = Database.setSavepoint();
 		try{        
@@ -131,7 +131,7 @@ global with sharing class Milestone1_XML_Import_Utility {
         insert times;
     }
     
-    void matchMilestonesToMilestones(List<Milestone1_Milestone__c> milestones, Milestone1_Milestone__c currentMilestone){
+    global void matchMilestonesToMilestones(List<Milestone1_Milestone__c> milestones, Milestone1_Milestone__c currentMilestone){
         for(Milestone1_Milestone__c currentSubMilestone : milestones)
         {
             if(currentSubMilestone.Parent_Milestone__c == currentMilestone.ImportID__c)
@@ -142,7 +142,7 @@ global with sharing class Milestone1_XML_Import_Utility {
         }
     }
     
-    Boolean matchTaskToMilestone(List<Milestone1_Milestone__c> milestones, Milestone1_Task__c currentTask){
+    global Boolean matchTaskToMilestone(List<Milestone1_Milestone__c> milestones, Milestone1_Task__c currentTask){
         for(Milestone1_Milestone__c currentMilestone : milestones){
             if(currentTask.Project_Milestone__c == currentMilestone.ImportID__c){
                 currentTask.Project_Milestone__c = currentMilestone.Id;
@@ -152,7 +152,7 @@ global with sharing class Milestone1_XML_Import_Utility {
         return false;
     }
 
-	Boolean matchTimeToTask(List<Milestone1_Task__c> tasks, Milestone1_Time__c currentTime){
+	global Boolean matchTimeToTask(List<Milestone1_Task__c> tasks, Milestone1_Time__c currentTime){
 		for(Milestone1_Task__c currentTask : tasks){
 			if(currentTime.Project_Task__c == currentTask.ImportID__c){
 				currentTime.Project_Task__c = currentTask.Id;
@@ -162,7 +162,7 @@ global with sharing class Milestone1_XML_Import_Utility {
 		return false;
 	}
 	
-    void parseProject(Xmlstreamreader reader) {
+    global void parseProject(Xmlstreamreader reader) {
         //name goes to name
         //id goes to importid
         //System.debug(LoggingLevel.warn, 'in Project');
@@ -230,7 +230,7 @@ global with sharing class Milestone1_XML_Import_Utility {
         }
     }
     
-    void parseMilestone(Xmlstreamreader reader, Milestone1_Milestone__c parentMilestone)
+    global void parseMilestone(Xmlstreamreader reader, Milestone1_Milestone__c parentMilestone)
     {
         
         Milestone1_Milestone__c currentMilestone = new Milestone1_Milestone__c();
@@ -301,7 +301,7 @@ global with sharing class Milestone1_XML_Import_Utility {
         }
     }
     
-    void parseTask(XMLStreamreader reader, Milestone1_Milestone__c currentMilestone){
+    global void parseTask(XMLStreamreader reader, Milestone1_Milestone__c currentMilestone){
         Milestone1_Task__c currentTask = new Milestone1_Task__c();
         currentTask.Project_Milestone__c = currentMilestone.ImportID__c;
         while(reader.hasNext())
@@ -357,7 +357,7 @@ global with sharing class Milestone1_XML_Import_Utility {
         tasks.add(currentTask);
     }
     
-    void parseTime(XMLStreamreader reader, Milestone1_Task__c currentTask){
+    global void parseTime(XMLStreamreader reader, Milestone1_Task__c currentTask){
         Milestone1_Time__c currentTime = new Milestone1_Time__c();
         currentTime.Project_Task__c = currentTask.ImportID__c;
         while(reader.hasNext())
@@ -387,7 +387,7 @@ global with sharing class Milestone1_XML_Import_Utility {
         times.add(currentTime);
     }
     
-    void parseMeta(Xmlstreamreader reader) {
+    global void parseMeta(Xmlstreamreader reader) {
         //system.debug('Process Metadata');
         while (reader.hasNext()) {
             //handle name field
@@ -427,7 +427,7 @@ global with sharing class Milestone1_XML_Import_Utility {
         }
     }
     
-    String getDecodedString(Xmlstreamreader reader) {
+    global String getDecodedString(Xmlstreamreader reader) {
         return EncodingUtil.urlDecode(reader.getText(), 'UTF-8').trim();
     }
 

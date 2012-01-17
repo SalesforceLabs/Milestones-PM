@@ -180,7 +180,6 @@ jQuery(document).ready(function() {
     </apex:panelGrid>
 
 
-
 <apex:repeat value="{!projects}" var="currentProject" id="projectList" >
 
 <apex:pageBlock title="{!currentProject.name}">

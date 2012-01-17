@@ -594,10 +594,6 @@
         <name>ThisSampleProjectIncludes</name>
     </customLabels>
     <customLabels>
-        <label>今週を表示</label>
-        <name>ThisWeeksView</name>
-    </customLabels>
-    <customLabels>
         <label>木曜</label>
         <name>Thursday</name>
     </customLabels>
@@ -764,40 +760,6 @@
         <sections>
             <label>タスク</label>
             <name>Tasks</name>
-        </sections>
-    </reportTypes>
-    <reportTypes>
-        <description>マイルストーンとタスクと費用</description>
-        <label>マイルストーン（一つ）とタスク（一つ）と費用（一つ）</label>
-        <name>Milestone_with_Task_with_Expense</name>
-        <sections>
-            <label>費用</label>
-            <name>Expense</name>
-        </sections>
-        <sections>
-            <label>マイルストーン</label>
-            <name>Milestone</name>
-        </sections>
-        <sections>
-            <label>タスク</label>
-            <name>Tasks</name>
-        </sections>
-    </reportTypes>
-    <reportTypes>
-        <description>マイルストーンとタスクと時間</description>
-        <label>マイルストーン（一つ）とタスク（一つ）と時間（一つ）</label>
-        <name>Milestone_with_Task_with_Milestone1_Time</name>
-        <sections>
-            <label>マイルストーン</label>
-            <name>Milestone</name>
-        </sections>
-        <sections>
-            <label>タスク</label>
-            <name>Tasks</name>
-        </sections>
-        <sections>
-            <label>時間</label>
-            <name>Times</name>
         </sections>
     </reportTypes>
     <reportTypes>

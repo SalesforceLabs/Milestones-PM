@@ -69,6 +69,7 @@ public with sharing class Milestone1_Summary2 {
     }
     
     public boolean hasSettings{
+
         get{
             return settings != null;
         }
@@ -113,6 +114,7 @@ public with sharing class Milestone1_Summary2 {
     public Milestone1_Settings__c settings = Milestone1_Settings__c.getInstance();
     
     public void initialize() {
+
         
         if (isDeployed)
         {
@@ -129,6 +131,7 @@ public with sharing class Milestone1_Summary2 {
 
     
     public void searchProjects() {
+
         if (searchText.length() < 2)
         {
             this.searchLengthError = true;
@@ -172,6 +175,7 @@ public with sharing class Milestone1_Summary2 {
         
          return (List<Milestone1_Project__c>) setCon.getRecords();
         
+
     }
     
     
@@ -193,6 +197,7 @@ public with sharing class Milestone1_Summary2 {
     }
     
     
+
   //Boolean to check if there are more records after the present displaying records  
     public Boolean hasNext  
     {  
@@ -225,6 +230,7 @@ public with sharing class Milestone1_Summary2 {
     
     public Integer totalPages
     {
+
         get
         {
             Integer pages = (setCon.getResultSize() / 20);
@@ -235,6 +241,7 @@ public with sharing class Milestone1_Summary2 {
             return pages;
         }
         set;
+
     } 
   
     //Returns the previous page of records  
@@ -261,6 +268,7 @@ public with sharing class Milestone1_Summary2 {
     }
 
     public Pagereference viewBlockedTasks() {
+    	
         return new Pagereference('/' + settings.Report_Id_Blocked_Tasks_by_Project__c + '?pv0=' + String.valueOf(targetProject).substring(0,15) );
     }
 
@@ -282,14 +290,17 @@ public with sharing class Milestone1_Summary2 {
     }
 
     public Pagereference incompleteTasksByPriority() {
+	
         return new Pagereference('/' + settings.Report_Id_My_Tasks_By_Priority_Project__c + '?pv0=' + Encodingutil.urlEncode(''+UserInfo.getName(), 'UTF-8' ) );
     }
 
     public Pagereference summaryMyLateTasks() {
+   	
         return new Pagereference('/' + settings.Report_Id_My_Late_Tasks__c + '?pv0=' + Encodingutil.urlEncode(''+UserInfo.getName(), 'UTF-8' ) );
     }
     
     public Pagereference summaryMyBlockedTasks() {
+   	
         return new Pagereference('/' + settings.Report_Id_My_Blocked_Tasks__c + '?pv0=' + Encodingutil.urlEncode(''+UserInfo.getName(), 'UTF-8' ) );
     }
     
@@ -324,8 +335,7 @@ public with sharing class Milestone1_Summary2 {
         Milestone1_Project__c p1 = Milestone1_Test_Utility.sampleProjectActive('Controller Test');
         insert p1;
 
-        
-        
+
         
         //make sure we get page references back
         summary2.targetProject = p1.id;

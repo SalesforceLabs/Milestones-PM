@@ -10,7 +10,6 @@ private class Milestone1_Schema_Helper_Tst {
 		
 		System.assertEquals(systemResults.keySet().size(),describeResults.keySet().size(),'global describe is missing keys');
 		
-		System.assert(describeResults.containsKey('milestone1_task__c'),'Did not find milestone task object type, or it had wrong case.');
 	}
 	
 	static testmethod void isOrgChatterEnabled(){

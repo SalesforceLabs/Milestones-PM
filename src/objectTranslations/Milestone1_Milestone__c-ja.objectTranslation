@@ -277,10 +277,7 @@
             <section>Task Information (Calculated)</section>
         </sections>
     </layouts>
-    <namedFilters>
-        <informationalMessage>親マイルストーンは子マイルストーンと同じプロジェクトに属する必要があります。また、親マイルストーンは子マイルストーンにはなれません。</informationalMessage>
-        <name>nf_01IU0000000VDCJMA4_00NU0000001XjlxMAC</name>
-    </namedFilters>
+    <nameFieldLabel><!-- Project Milestone Name --></nameFieldLabel>
     <validationRules>
         <errorMessage>マイルストーンエイリアスは空白スペースを含めません。</errorMessage>
         <name>Alias_must_not_contain_spaces</name>

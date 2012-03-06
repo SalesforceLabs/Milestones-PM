@@ -29,6 +29,7 @@
         <criteriaItems>
             <column>Milestone1_Project__c.Project_Milestones__r.Project_Tasks__r$Assigned_To__c</column>
             <operator>equals</operator>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>Milestone1_Project__c.Project_Milestones__r.Project_Tasks__r$Days_Late__c</column>
@@ -40,6 +41,7 @@
             <operator>equals</operator>
             <value>0</value>
         </criteriaItems>
+        <language>en_US</language>
     </filter>
     <format>Tabular</format>
     <name>My Late Tasks (DB)</name>

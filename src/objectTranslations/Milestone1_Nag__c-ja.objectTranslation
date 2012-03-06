@@ -87,6 +87,7 @@
             <section>Custom Links</section>
         </sections>
     </layouts>
+    <nameFieldLabel><!-- Project Nag Name --></nameFieldLabel>
     <validationRules>
         <errorMessage>一つの親レコードが選択されている必要があります。</errorMessage>
         <name>Must_have_a_parent</name>

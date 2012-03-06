@@ -79,7 +79,7 @@ private class Milestone1_One_Liner_Controller_Tst {
         System.assert(controller.task == null);
         List<ApexPages.Message> messages = ApexPages.getMessages();
         system.assertEquals(messages.size(),1);
-        system.assertEquals(messages.get(0).getDetail(),system.label.Thealias + 'XY()BC#1?' + system.label.DidNotMatch);
+        system.assertEquals(messages.get(0).getDetail(),system.label.Milestone1_Thealias + 'XY()BC#1?' + system.label.Milestone1_DidNotMatch);
     }
     
     static testMethod void testInvalidLineFound()
@@ -91,7 +91,7 @@ private class Milestone1_One_Liner_Controller_Tst {
         System.assert(controller.task == null);
         List<ApexPages.Message> messages = ApexPages.getMessages();
         system.assertEquals(messages.size(),1);
-        system.assertEquals(messages.get(0).getDetail(),system.label.PleaseUseFormat);
+        system.assertEquals(messages.get(0).getDetail(),system.label.Milestone1_PleaseUseFormat);
     }
 
 }

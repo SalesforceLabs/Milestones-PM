@@ -29,7 +29,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
            extensions="Milestone1_Export_Project_Controller"
            action="{!createExportXML}">
            
-    <apex:pageBlock title="{!$Label.ProjectXML}">
+    <apex:pageBlock title="{!$Label.Milestone1_ProjectXML}">
         <table>
             <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(errorMessage))}">
                 <tr>
@@ -38,25 +38,25 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
             </apex:outputPanel>
             <apex:outputPanel layout="none" rendered="{!AND(ISNULL(errorMessage),ISNULL(doc))}">
                 <tr>
-                    <td>{!$Label.YourProjectCouldNotSuccessfully}</td>
+                    <td>{!$Label.Milestone1_YourProjectCouldNotSuccessfully}</td>
                 </tr>   
                 </apex:outputPanel>
                 <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(doc))}">
                 <tr>
-                    <td>{!$Label.TheXMLFileForYourProjectHasBeenSuccessfully}</td>
+                    <td>{!$Label.Milestone1_TheXMLFileForYourProjectHasBeenSuccessfully}</td>
                 </tr>
                 <tr>
                     <td><br/></td>
                 </tr>
                 <tr>
-                    <td><a href="/{!doc.Id}">{!$Label.ToViewXML_FirstHalf}</a> {!$Label.ToViewXML_SecondHalf}</td>
+                    <td><a href="/{!doc.Id}">{!$Label.Milestone1_ToViewXML_FirstHalf}</a> {!$Label.Milestone1_ToViewXML_SecondHalf}</td>
                 </tr>
             </apex:outputPanel>
             <tr>
                 <td><br/></td>
             </tr>
             <tr>
-                <td><a href="/{!rec.Id}">{!$Label.ToYourProject_FirstHalf}</a> {!$Label.ToYourProject_SecondHalf}</td>
+                <td><a href="/{!rec.Id}">{!$Label.Milestone1_ToYourProject_FirstHalf}</a> {!$Label.Milestone1_ToYourProject_SecondHalf}</td>
             </tr>
         </table> 
     </apex:pageBlock>

@@ -19,12 +19,14 @@
         <criteriaItems>
             <column>Milestone1_Project__c.Project_Milestones__r.Project_Tasks__r$Assigned_To__c</column>
             <operator>equals</operator>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>Milestone1_Project__c.Project_Milestones__r.Project_Tasks__r$Blocked__c</column>
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
+        <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>

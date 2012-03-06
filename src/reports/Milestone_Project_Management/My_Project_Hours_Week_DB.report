@@ -11,9 +11,8 @@
         </chartSummaries>
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>false</expandOthers>
+        <expandOthers>true</expandOthers>
         <groupingColumn>Milestone1_Milestone__c.Project_Tasks__r.Project_Times__r$Date__c</groupingColumn>
-        <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -43,7 +42,9 @@
         <criteriaItems>
             <column>Milestone1_Milestone__c.Project_Tasks__r.Project_Times__r$Incurred_By__c</column>
             <operator>equals</operator>
+            <value></value>
         </criteriaItems>
+        <language>en_US</language>
     </filter>
     <format>Matrix</format>
     <groupingsAcross>

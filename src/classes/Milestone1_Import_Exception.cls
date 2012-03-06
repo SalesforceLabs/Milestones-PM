@@ -28,9 +28,9 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 public with sharing class Milestone1_Import_Exception extends Exception {
     
-    public static final String ERROR_NO_FILE_SELECTED = system.label.NoImportXMLFilesSelected;
-    public static final String ERROR_EMPTY_XML = system.label.TheProjectCannotBeNull;
-    public static final String ERROR_INVALID_XML = system.label.ImportFailed;
-    public static final String ERROR_FILESIZE_TOO_LARGE = system.label.TheXMLFileIsTooLarge;
+    public static final String ERROR_NO_FILE_SELECTED = system.label.Milestone1_NoImportXMLFilesSelected;
+    public static final String ERROR_EMPTY_XML = system.label.Milestone1_TheProjectCannotBeNull;
+    public static final String ERROR_INVALID_XML = system.label.Milestone1_ImportFailed;
+    public static final String ERROR_FILESIZE_TOO_LARGE = system.label.Milestone1_TheXMLFileIsTooLarge;
     
 }

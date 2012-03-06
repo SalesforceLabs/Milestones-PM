@@ -26,16 +26,16 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page >
-<h1>{!$Label.MilestoneApplicationPostInstallation}</h1>
-<h1>{!$Label.ToConfigureTheEmail}:</h1>
-<p>1. {!$Label.GoToSetupDevelopEmailServices}</p>
-<p>2. {!$Label.ClickNewEmailService}</p>
-<p>3. {!$Label.GiveEmailServiceName}</p>
-<p>4. {!$Label.SelectTheApexClass}</p>
-<p>5. {!$Label.SetAcceptAttachmentsToAll}</p>
-<p>6. {!$Label.SetAcceptEmailFromToAllEmail}</p>
-<p>7. {!$Label.CheckActive}</p>
-<p>8. {!$Label.SetAllFailureResponseOptions}</p>
-<p>9. {!$Label.ClickSaveAndNewEmailAddress}</p>
-<p>10. {!$Label.SetupNewEmailAddress}</p>
+<h1>{!$Label.Milestone1_MilestoneApplicationPostInstallation}</h1>
+<h1>{!$Label.Milestone1_ToConfigureTheEmail}:</h1>
+<p>1. {!$Label.Milestone1_GoToSetupDevelopEmailServices}</p>
+<p>2. {!$Label.Milestone1_ClickNewEmailService}</p>
+<p>3. {!$Label.Milestone1_GiveEmailServiceName}</p>
+<p>4. {!$Label.Milestone1_SelectTheApexClass}</p>
+<p>5. {!$Label.Milestone1_SetAcceptAttachmentsToAll}</p>
+<p>6. {!$Label.Milestone1_SetAcceptEmailFromToAllEmail}</p>
+<p>7. {!$Label.Milestone1_CheckActive}</p>
+<p>8. {!$Label.Milestone1_SetAllFailureResponseOptions}</p>
+<p>9. {!$Label.Milestone1_ClickSaveAndNewEmailAddress}</p>
+<p>10. {!$Label.Milestone1_SetupNewEmailAddress}</p>
 </apex:page>

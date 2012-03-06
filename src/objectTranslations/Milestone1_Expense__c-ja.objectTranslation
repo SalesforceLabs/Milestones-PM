@@ -38,4 +38,5 @@
             <section>Custom Links</section>
         </sections>
     </layouts>
+    <nameFieldLabel><!-- Project Expense Name --></nameFieldLabel>
 </CustomObjectTranslation>

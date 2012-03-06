@@ -76,7 +76,7 @@
         <targetField>Project_Snapshot__c.Date__c</targetField>
     </mappings>
     <name>Project Status Analytic Snapshot</name>
-    <runningUser>labs@labs.121</runningUser>
+    <runningUser>labs@labs.230</runningUser>
     <sourceReport>Milestone_Project_Management/Project_Snapshot</sourceReport>
     <targetObject>Project_Snapshot__c</targetObject>
 </AnalyticSnapshot>

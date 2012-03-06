@@ -15,7 +15,7 @@
     <fields>
         <label><!-- Assigned To --></label>
         <name>Assigned_To__c</name>
-        <relationshipLabel><!-- Nag --></relationshipLabel>
+        <relationshipLabel><!-- Nags --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Deadline --></label>
@@ -72,17 +72,17 @@
     <fields>
         <label><!-- Project Milestone --></label>
         <name>Project_Milestone__c</name>
-        <relationshipLabel><!-- Nag --></relationshipLabel>
+        <relationshipLabel><!-- Nags --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Project Task --></label>
         <name>Project_Task__c</name>
-        <relationshipLabel><!-- Nag --></relationshipLabel>
+        <relationshipLabel><!-- Nags --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Project --></label>
         <name>Project__c</name>
-        <relationshipLabel><!-- Nag --></relationshipLabel>
+        <relationshipLabel><!-- Nags --></relationshipLabel>
     </fields>
     <layouts>
         <layout>Project Nag Layout</layout>
@@ -91,7 +91,6 @@
             <section>Custom Links</section>
         </sections>
     </layouts>
-    <nameFieldLabel><!-- Project Nag Name --></nameFieldLabel>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- There must be one parent record selected. --></errorMessage>

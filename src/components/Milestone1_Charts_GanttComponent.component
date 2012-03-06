@@ -35,7 +35,7 @@
                                 onSuccess : function(result){
                                             },
                                 onFailure : function(result){
-                                                alert('{!$Label.AnErrorHasOcurred}' +': '+result);
+                                                alert('{!$Label.Milestone1_AnErrorHasOcurred}' +': '+result);
                                             }
                         })
                     }

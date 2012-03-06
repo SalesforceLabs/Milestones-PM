@@ -1,13 +1,13 @@
-#Thu Nov 03 10:58:04 CDT 2011
+#Mon Mar 05 20:18:23 CST 2012
 eclipse.preferences.version=1
-endpointApiVersion=20.0
+endpointApiVersion=23.0
 endpointEnvironment=Production/Developer Edition
 endpointServer=www.salesforce.com
 httpsProtocol=true
-ideVersion=20.0
+ideVersion=23.0
 keependpoint=false
-metadataFormatVersion=20.0
+metadataFormatVersion=23.0
 namespacePrefix=
 packageName=unpackaged
 readTimeout=400
-username=labs@labs.116
+username=labs@labs.230

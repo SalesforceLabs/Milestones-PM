@@ -33,12 +33,12 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 </style>
     <apex:form >
         <apex:messages layout="table" styleClass="moveError" />
-        <apex:pageBlock title="{!$Label.MoveMilestoneS}">
+        <apex:pageBlock title="{!$Label.Milestone1_MoveMilestoneS}">
             <apex:pageBlockButtons >
-                <apex:commandButton value="{!$Label.MoveMilestoneSave}"
+                <apex:commandButton value="{!$Label.Milestone1_MoveMilestoneSave}"
                                     action="{!moveMilestones}"
                                     rendered="{!anySelected && hasPermissionProjectField}"/>
-                <apex:commandButton value="{!$Label.MoveMilestoneCancel}"
+                <apex:commandButton value="{!$Label.Milestone1_MoveMilestoneCancel}"
                                     action="{!cancel}"/>
             </apex:pageBlockButtons>
             
@@ -48,7 +48,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
                                  required="true"/>
             </apex:pageBlockSection>
             
-            <apex:outputLabel value="{!$Label.MilestoneRecordsToMove}"
+            <apex:outputLabel value="{!$Label.Milestone1_MilestoneRecordsToMove}"
                               rendered="{!anySelected == false && hasPermissionProjectField}"/>
             <apex:outputLabel value="{!errorMessagePermission}" 
         					rendered="{!!hasPermissionProjectField}"/>

@@ -7,6 +7,7 @@
     <actionOverrides>
         <actionName>Clone</actionName>
         <content>Milestone1_Clone_Project</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
@@ -36,6 +37,7 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Force.com Labs - PM - A collaborative enterprise which has a planned goal. A project can have many milestones.</description>
     <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>true</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>false</enableReports>

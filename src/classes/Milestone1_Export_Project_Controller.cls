@@ -29,8 +29,8 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 global with sharing class Milestone1_Export_Project_Controller { 
     
     private final String ERROR_STRING_FILE_TOO_LONG = 
-    	system.label.ProjectIsTooLarge + Milestone1_Import_Project_Controller.MAX_FILE_SIZE + 
-    	system.label.CurrentExport;
+    	system.label.Milestone1_ProjectIsTooLarge + Milestone1_Import_Project_Controller.MAX_FILE_SIZE + 
+    	system.label.Milestone1_CurrentExport;
     
     global Milestone1_Project__c rec {get; set;}
     global Boolean exportSuccess{get;set;}

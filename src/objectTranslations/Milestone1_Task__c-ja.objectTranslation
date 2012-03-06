@@ -234,6 +234,7 @@
             <section>Metrics: Hours &amp; Expenses</section>
         </sections>
     </layouts>
+    <nameFieldLabel><!-- Project Task Name --></nameFieldLabel>
     <validationRules>
         <errorMessage>完了済みタスクをブロックすべきではありません。</errorMessage>
         <name>CannotBeBlockedIfComplete</name>

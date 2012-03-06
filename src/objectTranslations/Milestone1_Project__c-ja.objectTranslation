@@ -197,6 +197,7 @@
             <section>Status at a Glance</section>
         </sections>
     </layouts>
+    <nameFieldLabel><!-- Project Name --></nameFieldLabel>
     <validationRules>
         <errorMessage>開始日は期限日より前である必要があります。</errorMessage>
         <name>Kickoff_before_deadline</name>

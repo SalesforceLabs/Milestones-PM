@@ -281,7 +281,6 @@
             <section>Task Information (Calculated)</section>
         </sections>
     </layouts>
-    <nameFieldLabel><!-- Project Milestone Name --></nameFieldLabel>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- The Milestone Alias cannot contain spaces. --></errorMessage>

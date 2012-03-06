@@ -85,7 +85,7 @@ global with sharing class Milestone1_XML_Import_Utility {
         //System.debug('Number of Tasks: ' + this.tasks.size());
         if(project == null || project.Name == null || project.ImportID__c == null || project.ImportID__c.length() < 15)
         {
-            throw new Milestone1_Import_Exception(system.label.ProjectCannotBeNull);
+            throw new Milestone1_Import_Exception(system.label.Milestone1_ProjectCannotBeNull);
         }
         
         //attempt to validate 10 variations of the name
@@ -174,7 +174,7 @@ global with sharing class Milestone1_XML_Import_Utility {
                 reader.next();
                 project.Name = getDecodedString(reader);
                 if (project.Name.length() == 0) {
-                    throw new Milestone1_Import_Exception(system.label.InvalidName);
+                    throw new Milestone1_Import_Exception(system.label.Milestone1_InvalidName);
                 } 
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Description__c') {
@@ -399,7 +399,7 @@ global with sharing class Milestone1_XML_Import_Utility {
                 if(metadata.ExportVersion != Milestone1_Constants.XML_EXPORT_VERSION_VAL)
                 {
                     //system.debug('Throw the Exception');
-                    throw new Milestone1_Import_Exception(system.label.InvalidVersion + metadata.ExportVersion + system.label.OrganizationsVersion + Milestone1_Constants.XML_EXPORT_VERSION_VAL + system.label.ProjectsMustBeExported);
+                    throw new Milestone1_Import_Exception(system.label.Milestone1_InvalidVersion + metadata.ExportVersion + system.label.Milestone1_OrganizationsVersion + Milestone1_Constants.XML_EXPORT_VERSION_VAL + system.label.Milestone1_ProjectsMustBeExported);
                 }
             }   
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == Milestone1_Constants.XML_EXPORT_PACKAGE) {

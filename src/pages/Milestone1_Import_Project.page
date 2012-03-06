@@ -31,17 +31,17 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
     <style>
     .xmlImportError { color: red; font-weight: strong;}
     </style>
-    <apex:pageBlock title="{!$Label.ProjectXMLImport}">
+    <apex:pageBlock title="{!$Label.Milestone1_ProjectXMLImport}">
         <apex:messages styleClass="xmlImportError" />
         <apex:form >
-        <apex:pageBlockSection title="{!$Label.ImportLocalTemplateXML}" collapsible="false">
+        <apex:pageBlockSection title="{!$Label.Milestone1_ImportLocalTemplateXML}" collapsible="false">
             <apex:inputFile style="width:100%" fileSize="{!maxFileSize}" id="fileToUpload" value="{!fileBody}" 
                 contentType="{!contentType}" filename="{!fileName}" />
-            <apex:commandButton action="{!importTemplateXML}" value="{!$Label.Import}"></apex:commandButton>
+            <apex:commandButton action="{!importTemplateXML}" value="{!$Label.Milestone1_Import}"></apex:commandButton>
         </apex:pageBlockSection> 
-        <apex:pageBlockSection title="{!$Label.ImportTemplateXML}" rendered="{!IF(docsSize > 0, "true", "false")}" collapsible="false">
+        <apex:pageBlockSection title="{!$Label.Milestone1_ImportTemplateXML}" rendered="{!IF(docsSize > 0, "true", "false")}" collapsible="false">
             <apex:selectRadio value="{!docId}" layout="pageDirection"><apex:selectOptions value="{!docOptions}"/></apex:selectRadio>
-            <apex:commandButton action="{!importTemplateXML}" value="{!$Label.Import}"></apex:commandButton>
+            <apex:commandButton action="{!importTemplateXML}" value="{!$Label.Milestone1_Import}"></apex:commandButton>
             </apex:pageBlockSection>
         </apex:form>
      </apex:pageBlock>

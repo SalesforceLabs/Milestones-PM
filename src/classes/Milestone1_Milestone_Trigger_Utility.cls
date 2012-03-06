@@ -28,8 +28,8 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 public with sharing class Milestone1_Milestone_Trigger_Utility {
     
-    public static final String INSUFFICIENT_PRIVILEGES_TO_ACCESS_PARENT_MILESTONE = system.label.InsufficientPrivilegesToAccessParentMilestone;
-    public static final String INSUFFICIENT_PRIVILEGES_TO_ACCESS_PROJECT = system.label.InsufficientPrivileges;
+    public static final String INSUFFICIENT_PRIVILEGES_TO_ACCESS_PARENT_MILESTONE = system.label.Milestone1_InsufficientPrivilegesToAccessParentMilestone;
+    public static final String INSUFFICIENT_PRIVILEGES_TO_ACCESS_PROJECT = system.label.Milestone1_InsufficientPrivileges;
     
     public static Boolean alreadyMadeParent = false;
     
@@ -66,7 +66,7 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
             if(oldRec.Project__c != newRec.Project__c && newRec.Okay_to_Reparent__c == false){
             	//don't want to reparent if not OK to reparent.
                 allPassed = false;
-                newRec.Project__c.addError(system.label.MilestonesShouldNotBeMoved);
+                newRec.Project__c.addError(system.label.Milestone1_MilestonesShouldNotBeMoved);
             } 
         }
         
@@ -197,7 +197,7 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
 	                if(rec.Parent_Milestone__c != null){
 						// Parent milestone not accessible 
 	                    if(parentMilestonesMap.get(rec.Parent_Milestone__c).Parent_Milestone__c != null){
-	                        rec.Parent_Milestone__c.addError(system.label.SubMilestonesCanOnlyGoOneLevelDeep);
+	                        rec.Parent_Milestone__c.addError(system.label.Milestone1_SubMilestonesCanOnlyGoOneLevelDeep);
 	                    } else {
 	                        rec.Project__c = parentMilestonesMap.get(rec.Parent_Milestone__c).Project__c;
 	                    }

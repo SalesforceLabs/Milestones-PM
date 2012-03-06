@@ -59,6 +59,7 @@
             <operator>equals</operator>
             <value>Active</value>
         </criteriaItems>
+        <language>en_US</language>
     </filter>
     <format>Tabular</format>
     <name>Active Projects Open Milestones</name>

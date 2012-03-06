@@ -10,7 +10,7 @@
         </chartSummaries>
         <chartType>VerticalColumnGrouped</chartType>
         <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>false</expandOthers>
+        <expandOthers>true</expandOthers>
         <groupingColumn>Milestone1_Project__c$Name</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
@@ -44,12 +44,14 @@
         <criteriaItems>
             <column>Milestone1_Project__c$Id</column>
             <operator>equals</operator>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>Milestone1_Project__c.Project_Milestones__r.Project_Tasks__r$Complete__c</column>
             <operator>equals</operator>
             <value>0</value>
         </criteriaItems>
+        <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>

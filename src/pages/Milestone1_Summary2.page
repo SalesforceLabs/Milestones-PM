@@ -87,7 +87,7 @@ jQuery(document).ready(function() {
 
 <apex:outputPanel id="projectSummary_noProjects" rendered="{!projects.size == 0}">
 
-    <h1>{!$Label.NoProjects}</h1>
+    <h1>{!$Label.Milestone1_NoProjects}</h1>
      
 </apex:outputPanel>
 
@@ -100,7 +100,7 @@ jQuery(document).ready(function() {
 
 <apex:outputPanel id="mySearch">
 
-    <apex:pageBlock title="{!$Label.QuickSearch}" >
+    <apex:pageBlock title="{!$Label.Milestone1_QuickSearch}" >
         <apex:inputText value="{!searchText}" styleClass="quickSearchText" id="MileStoneSearchInput"/>
      <apex:actionStatus id="executeStatus">
          <apex:facet name="start">
@@ -110,7 +110,7 @@ jQuery(document).ready(function() {
          </apex:facet>
          <apex:facet name="stop"  >
              <apex:outputPanel id="executeStatusNotworking" layout="none">
-                 <apex:commandButton value="{!$Label.SummarySearch}" id="searchProjects" action="{!searchProjects}" style="font-size: 20px;" status="executeStatus" rerender="searchResults" />
+                 <apex:commandButton value="{!$Label.Milestone1_SummarySearch}" id="searchProjects" action="{!searchProjects}" style="font-size: 20px;" status="executeStatus" rerender="searchResults" />
              </apex:outputPanel>
          </apex:facet>
      </apex:actionStatus>
@@ -150,19 +150,19 @@ jQuery(document).ready(function() {
 <apex:outputPanel id="mySummary" >
 
 
-<apex:pageBlock title="{!$Label.MyIncompleteTasks}" rendered="{!hasSettings}">
+<apex:pageBlock title="{!$Label.Milestone1_MyIncompleteTasks}" rendered="{!hasSettings}">
 
     <apex:pageBlockButtons location="top">
-                <apex:commandButton action="{!incompleteTasksByProject}" value="{!$Label.IncompleteTasksByProjects}" >
+                <apex:commandButton action="{!incompleteTasksByProject}" value="{!$Label.Milestone1_IncompleteTasksByProjects}" >
                     </apex:commandButton>                 
                     &nbsp;
-                    <apex:commandButton action="{!incompleteTasksByPriority}" value="{!$Label.IncompleteTasksByPriority}" >
+                    <apex:commandButton action="{!incompleteTasksByPriority}" value="{!$Label.Milestone1_IncompleteTasksByPriority}" >
                     </apex:commandButton>
                                         &nbsp;
-                    <apex:commandButton action="{!summaryMyLateTasks}" value="{!$Label.LateTasks}" >
+                    <apex:commandButton action="{!summaryMyLateTasks}" value="{!$Label.Milestone1_LateTasks}" >
                     </apex:commandButton> 
                                         &nbsp;
-                    <apex:commandButton action="{!summaryMyBlockedTasks}" value="{!$Label.BlockedTasks}" >
+                    <apex:commandButton action="{!summaryMyBlockedTasks}" value="{!$Label.Milestone1_BlockedTasks}" >
                     </apex:commandButton> 
                     
                      
@@ -184,27 +184,27 @@ jQuery(document).ready(function() {
 
 <apex:pageBlock title="{!currentProject.name}">
 	<apex:pageBlockButtons location="top">
-         <apex:commandLink action="{!view}" value="{!$Label.ProjectDetail}" >
+         <apex:commandLink action="{!view}" value="{!$Label.Milestone1_ProjectDetail}" >
              <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
              </apex:commandLink>                 
              &nbsp;
-             <apex:commandLink action="{!viewMilestoneOpenTasks}" value="{!$Label.MilestonesOpenTasks}" >
+             <apex:commandLink action="{!viewMilestoneOpenTasks}" value="{!$Label.Milestone1_MilestonesOpenTasks}" >
                  <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
              </apex:commandLink> 
              &nbsp;
-             <apex:commandLink action="{!viewOpenTasks}" value="{!$Label.AllOpenTasks}" >
+             <apex:commandLink action="{!viewOpenTasks}" value="{!$Label.Milestone1_AllOpenTasks}" >
                  <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
              </apex:commandLink> 
              &nbsp;
-             <apex:commandLink action="{!viewMyTasks}" value="{!$Label.MyTasks}" >
+             <apex:commandLink action="{!viewMyTasks}" value="{!$Label.Milestone1_MyTasks}" >
                  <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
              </apex:commandLink>      
              &nbsp;
-             <apex:commandLink action="{!viewBlockedTasks}" value="{!$Label.Blocked_Tasks}" >
+             <apex:commandLink action="{!viewBlockedTasks}" value="{!$Label.Milestone1_Blocked_Tasks}" >
                  <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
              </apex:commandLink>    
              &nbsp;  
-             <apex:commandLink action="{!viewOverdueTasks}" value="{!$Label.OverdueTasks}" >
+             <apex:commandLink action="{!viewOverdueTasks}" value="{!$Label.Milestone1_OverdueTasks}" >
                  <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
              </apex:commandLink>                      
      </apex:pageBlockButtons>

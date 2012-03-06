@@ -5,677 +5,684 @@
         <name>Project_Mgmt_Labs</name>
     </customApplications>
     <customLabels>
-        <label>サブジェクトのエイリアスが、マイルストーンのエイリアスと一致しませんでした。</label>
-        <name>ALiasNotFound</name>
-    </customLabels>
-    <customLabels>
-        <label>全アイテム</label>
-        <name>AllItems</name>
-    </customLabels>
-    <customLabels>
-        <label>全てのオープンタスク</label>
-        <name>AllOpenTasks</name>
-    </customLabels>
-    <customLabels>
         <label>エラーが発生しました。</label>
         <name>AnErrorHasOcurred</name>
     </customLabels>
     <customLabels>
-        <label>戻る</label>
-        <name>Back</name>
+        <label><!-- ALiasNotFound --></label>
+        <name>Milestone1_ALiasNotFound</name>
     </customLabels>
     <customLabels>
-        <label>&quot;HOWTO: Get Started with Milestones PM&quot;というサンプルプロジェクトを確認してください。</label>
-        <name>BeSureToExploreTheSampleProject</name>
+        <label><!-- AllItems --></label>
+        <name>Milestone1_AllItems</name>
     </customLabels>
     <customLabels>
-        <label>ブロックタスク</label>
-        <name>BlockedTasks</name>
+        <label><!-- AllOpenTasks --></label>
+        <name>Milestone1_AllOpenTasks</name>
     </customLabels>
     <customLabels>
-        <label>ブロックタスク</label>
-        <name>Blocked_Tasks</name>
+        <label><!-- AnErrorHasOcurred --></label>
+        <name>Milestone1_AnErrorHasOcurred</name>
     </customLabels>
     <customLabels>
-        <label>カレンダー</label>
-        <name>Calendar</name>
+        <label><!-- Back --></label>
+        <name>Milestone1_Back</name>
     </customLabels>
     <customLabels>
-        <label>カレンダー</label>
-        <name>CalendarLegend</name>
+        <label><!-- Be sure to explore the sample project, &quot;HOWTO: Get Started with Milestones PM&quot;. --></label>
+        <name>Milestone1_BeSureToExploreTheSampleProject</name>
     </customLabels>
     <customLabels>
-        <label>キャンセル</label>
-        <name>Cancel</name>
+        <label><!-- Blocked Tasks --></label>
+        <name>Milestone1_BlockedTasks</name>
     </customLabels>
     <customLabels>
-        <label>有効フラグにチェックを入れて下さい。</label>
-        <name>CheckActive</name>
+        <label><!-- Blocked_Tasks --></label>
+        <name>Milestone1_Blocked_Tasks</name>
     </customLabels>
     <customLabels>
-        <label>ここをクリックして</label>
-        <name>ClickHere</name>
+        <label><!-- Calendar --></label>
+        <name>Milestone1_Calendar</name>
     </customLabels>
     <customLabels>
-        <label>このアプリを初期化するにはここをクリック</label>
-        <name>ClickHereToInitializeThisApp</name>
+        <label><!-- CalendarLegend --></label>
+        <name>Milestone1_CalendarLegend</name>
     </customLabels>
     <customLabels>
-        <label>から、新規メールサービスをクリックしてください。</label>
-        <name>ClickNewEmailService</name>
+        <label><!-- Cancel --></label>
+        <name>Milestone1_Cancel</name>
     </customLabels>
     <customLabels>
-        <label>「保存＆新規メールアドレス」をクリックしてください。</label>
-        <name>ClickSaveAndNewEmailAddress</name>
+        <label><!-- Check &quot;Active&quot; --></label>
+        <name>Milestone1_CheckActive</name>
     </customLabels>
     <customLabels>
-        <label>ボタンをクリックすると</label>
-        <name>ClickingTheButtonWill</name>
+        <label><!-- Click Here --></label>
+        <name>Milestone1_ClickHere</name>
     </customLabels>
     <customLabels>
-        <label>コミュニティ</label>
-        <name>Community</name>
+        <label><!-- Click here to initialize this app --></label>
+        <name>Milestone1_ClickHereToInitializeThisApp</name>
     </customLabels>
     <customLabels>
-        <label>コンテンツは許可されていません。</label>
-        <name>ContentIsNotAllowedInProlog</name>
+        <label><!-- Click &quot;New Email Service&quot;. --></label>
+        <name>Milestone1_ClickNewEmailService</name>
     </customLabels>
     <customLabels>
-        <label>$1文字長いようなので、プロジェクトを編集後再度試して下さい。</label>
-        <name>CurrentExport</name>
+        <label><!-- Click &quot;Save and New Email Address&quot;. --></label>
+        <name>Milestone1_ClickSaveAndNewEmailAddress</name>
     </customLabels>
     <customLabels>
-        <label>) がマイルストーンと一致しませんでした。</label>
-        <name>DidNotMatch</name>
+        <label><!-- Clicking the button will --></label>
+        <name>Milestone1_ClickingTheButtonWill</name>
     </customLabels>
     <customLabels>
-        <label>完了</label>
-        <name>Done</name>
+        <label><!-- Community --></label>
+        <name>Milestone1_Community</name>
     </customLabels>
     <customLabels>
-        <label>以下のフォーマットでコマンド入力して下さい。 &apos;alias --- description&apos;</label>
-        <name>EnterAcommand</name>
+        <label><!-- Content is not allowed in prolog. --></label>
+        <name>Milestone1_ContentIsNotAllowedInProlog</name>
     </customLabels>
     <customLabels>
-        <label>費用</label>
-        <name>Expenses</name>
+        <label><!-- CurrentExport --></label>
+        <name>Milestone1_CurrentExport</name>
     </customLabels>
     <customLabels>
-        <label>フィルター</label>
-        <name>Filter</name>
+        <label><!-- DidNotMatch --></label>
+        <name>Milestone1_DidNotMatch</name>
     </customLabels>
     <customLabels>
-        <label>カレンダーをフィルター</label>
-        <name>FilterCalendarBy</name>
+        <label><!-- Done --></label>
+        <name>Milestone1_Done</name>
     </customLabels>
     <customLabels>
-        <label>コミュニティで質問する場合は、&lt;a href=&quot;http://success.salesforce.com/answers&quot;&gt;Salesforce Answers&lt;/a&gt;でお願いします。&lt;span&gt;test&lt;/span&gt;</label>
-        <name>ForCommunityAssistance</name>
+        <label><!-- EnterAcommand --></label>
+        <name>Milestone1_EnterAcommand</name>
     </customLabels>
     <customLabels>
-        <label>金曜</label>
-        <name>Friday</name>
+        <label><!-- Expenses --></label>
+        <name>Milestone1_Expenses</name>
     </customLabels>
     <customLabels>
-        <label>送信者リストがSalesforceユーザと一致しませんでした。</label>
-        <name>FromUsersNotFound</name>
+        <label><!-- Filter --></label>
+        <name>Milestone1_Filter</name>
     </customLabels>
     <customLabels>
-        <label>今月を表示</label>
-        <name>FullMonth</name>
+        <label><!-- FilterCalendarBy --></label>
+        <name>Milestone1_FilterCalendarBy</name>
     </customLabels>
     <customLabels>
-        <label>全表示</label>
-        <name>FullView</name>
+        <label><!-- For community assistance with Milestones PM, please visit &lt;a href=&quot;http://succes --></label>
+        <name>Milestone1_ForCommunityAssistance</name>
     </customLabels>
     <customLabels>
-        <label>ヘルプ</label>
-        <name>GettingHelp</name>
+        <label><!-- Friday --></label>
+        <name>Milestone1_Friday</name>
     </customLabels>
     <customLabels>
-        <label>はじめに</label>
-        <name>GettingStarted</name>
+        <label><!-- FromUsersNotFound --></label>
+        <name>Milestone1_FromUsersNotFound</name>
     </customLabels>
     <customLabels>
-        <label>メールサービス名に「Milestone タスク用メール」と付けて下さい。</label>
-        <name>GiveEmailServiceName</name>
+        <label><!-- Full Month --></label>
+        <name>Milestone1_FullMonth</name>
     </customLabels>
     <customLabels>
-        <label>進む</label>
-        <name>Go</name>
+        <label><!-- FullView --></label>
+        <name>Milestone1_FullView</name>
     </customLabels>
     <customLabels>
-        <label>設定 -&gt; 開発 -&gt; メールサービス</label>
-        <name>GoToSetupDevelopEmailServices</name>
+        <label><!-- Getting Help --></label>
+        <name>Milestone1_GettingHelp</name>
     </customLabels>
     <customLabels>
-        <label>まだリリースしていない場合は、&lt;a href=&quot;/0A3?setupid=ImportedPackage&quot;&gt;設定 &gt; アプリケーションの設定 &gt; インストール済みパッケージ&lt;/a&gt;から 
-&lt;strong&gt;Milestones PM&lt;/strong&gt;をクリックして、リリースボタンをクリックしてください。</label>
-        <name>IfYouHaveNotDoneThis</name>
+        <label><!-- Getting Started --></label>
+        <name>Milestone1_GettingStarted</name>
     </customLabels>
     <customLabels>
-        <label>インポート</label>
-        <name>Import</name>
+        <label><!-- Give a Email Service Name &quot;Email To Milestone Task&quot;. --></label>
+        <name>Milestone1_GiveEmailServiceName</name>
     </customLabels>
     <customLabels>
-        <label>次の処理を行うための初期プロジェクトをインポートします。</label>
-        <name>ImportDefaultProject</name>
+        <label><!-- Go --></label>
+        <name>Milestone1_Go</name>
     </customLabels>
     <customLabels>
-        <label>インポートに失敗しました。 - マイルストーンはインポートできませんでした。</label>
-        <name>ImportFailed</name>
+        <label><!-- Go to Setup -&gt; Develop -&gt; Email Services --></label>
+        <name>Milestone1_GoToSetupDevelopEmailServices</name>
     </customLabels>
     <customLabels>
-        <label>ローカルのテンプレートXMLファイルをインポート</label>
-        <name>ImportLocalTemplateXML</name>
+        <label><!-- &quot;If you have not done this, please visit &lt;a href=&quot;&quot;/0A3?setupid=ImportedPackage&quot; --></label>
+        <name>Milestone1_IfYouHaveNotDoneThis</name>
     </customLabels>
     <customLabels>
-        <label>インポートテンプレート</label>
-        <name>ImportTemplate</name>
+        <label><!-- Import --></label>
+        <name>Milestone1_Import</name>
     </customLabels>
     <customLabels>
-        <label>個人ドキュメントからテンプレートXMLファイルをインポート</label>
-        <name>ImportTemplateXML</name>
+        <label><!-- Import a default project that will help you with your next steps. --></label>
+        <name>Milestone1_ImportDefaultProject</name>
     </customLabels>
     <customLabels>
-        <label>注意</label>
-        <name>Important</name>
+        <label><!-- Import Failed - -  Milestone was unable to import your file. --></label>
+        <name>Milestone1_ImportFailed</name>
     </customLabels>
     <customLabels>
-        <label>注意</label>
-        <name>ImportantUpper</name>
+        <label><!-- ImportLocalTemplateXML --></label>
+        <name>Milestone1_ImportLocalTemplateXML</name>
     </customLabels>
     <customLabels>
-        <label>優先順毎の未完タスク</label>
-        <name>IncompleteTasksByPriority</name>
+        <label><!-- Import Template --></label>
+        <name>Milestone1_ImportTemplate</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクト毎の未完タスク</label>
-        <name>IncompleteTasksByProjects</name>
+        <label><!-- ImportTemplateXML --></label>
+        <name>Milestone1_ImportTemplateXML</name>
     </customLabels>
     <customLabels>
-        <label>初期設定</label>
-        <name>InitialConfiguration</name>
+        <label><!-- Important --></label>
+        <name>Milestone1_Important</name>
     </customLabels>
     <customLabels>
-        <label>初期設定が完了しました！</label>
-        <name>InitializationComplete</name>
+        <label><!-- IMPORTANT --></label>
+        <name>Milestone1_ImportantUpper</name>
     </customLabels>
     <customLabels>
-        <label>アプリケーション設定を初期化します。</label>
-        <name>InitializeCustomAppSettings</name>
+        <label><!-- Incomplete Tasks By Priority --></label>
+        <name>Milestone1_IncompleteTasksByPriority</name>
     </customLabels>
     <customLabels>
-        <label>以下のボタンをクリックして設定の初期化をしてください。</label>
-        <name>InitializeYourConfiguration</name>
+        <label><!-- Incomplete Tasks By Projects --></label>
+        <name>Milestone1_IncompleteTasksByProjects</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトにアクセスする権限がありません。</label>
-        <name>InsufficientPrivileges</name>
+        <label><!-- Initial Configuration --></label>
+        <name>Milestone1_InitialConfiguration</name>
     </customLabels>
     <customLabels>
-        <label>親マイルストーンにアクセスする権限がありません。</label>
-        <name>InsufficientPrivilegesToAccessParentMilestone</name>
+        <label><!-- Initialization Complete! --></label>
+        <name>Milestone1_InitializationComplete</name>
     </customLabels>
     <customLabels>
-        <label>不正な名前です（長さをゼロにはできません）。</label>
-        <name>InvalidName</name>
+        <label><!-- Initialize custom app settings. --></label>
+        <name>Milestone1_InitializeCustomAppSettings</name>
     </customLabels>
     <customLabels>
-        <label>不正なバージョンです。プロジェクトは別のバージョンからエクスポートされました。</label>
-        <name>InvalidVersion</name>
+        <label><!-- Initialize your configuration using the button below. --></label>
+        <name>Milestone1_InitializeYourConfiguration</name>
     </customLabels>
     <customLabels>
-        <label>遅延タスク</label>
-        <name>LateTasks</name>
+        <label><!-- Insufficient privileges to access project. --></label>
+        <name>Milestone1_InsufficientPrivileges</name>
     </customLabels>
     <customLabels>
-        <label>&lt;a href=&quot;http://blogs.developerforce.com/labs/2011/08/howto-contribute-to-milestones-pm-code-not-required-opensource.html&quot;&gt;詳細はこちら&lt;/a&gt;.</label>
-        <name>LearnMore</name>
+        <label><!-- Insufficient privileges to access parent milestone. --></label>
+        <name>Milestone1_InsufficientPrivilegesToAccessParentMilestone</name>
     </customLabels>
     <customLabels>
-        <label>ローディング</label>
-        <name>Loading</name>
+        <label><!-- InvalidName --></label>
+        <name>Milestone1_InvalidName</name>
     </customLabels>
     <customLabels>
-        <label>ログ</label>
-        <name>Logs</name>
+        <label><!-- InvalidVersion --></label>
+        <name>Milestone1_InvalidVersion</name>
     </customLabels>
     <customLabels>
-        <label>Milestones PM - メインメニュー</label>
-        <name>MainMenu</name>
+        <label><!-- Late Tasks --></label>
+        <name>Milestone1_LateTasks</name>
     </customLabels>
     <customLabels>
-        <label>ユーザあたりのChatter登録数が上限に達しました。</label>
-        <name>MaximumPer</name>
+        <label><!-- &lt;a href=&quot;http://blogs.developerforce.com/labs/2011/08/howto-contribute-to-milest --></label>
+        <name>Milestone1_LearnMore</name>
     </customLabels>
     <customLabels>
-        <label>インストール後の設定</label>
-        <name>MilestoneApplicationPostInstallation</name>
+        <label><!-- Loading --></label>
+        <name>Milestone1_Loading</name>
     </customLabels>
     <customLabels>
-        <label>マイルストーン複製</label>
-        <name>MilestoneClone</name>
+        <label><!-- Logs --></label>
+        <name>Milestone1_Logs</name>
     </customLabels>
     <customLabels>
-        <label>マイルストーンが完了しました。タスクは移動できません。</label>
-        <name>MilestoneIsComplete</name>
+        <label><!-- MainMenu --></label>
+        <name>Milestone1_MainMenu</name>
     </customLabels>
     <customLabels>
-        <label>前画面に戻り、移動する一つ以上のマイルストーンを選択して下さい。</label>
-        <name>MilestoneRecordsToMove</name>
+        <label><!-- MaximumPer --></label>
+        <name>Milestone1_MaximumPer</name>
     </customLabels>
     <customLabels>
-        <label>移動しようとしたマイルストーンは既にこのプロジェクトに割当られています。選択したものを見直して再度実行して下さい。</label>
-        <name>MilestoneYouAreAttempting</name>
+        <label><!-- Milestone Application Post Installation Instructions --></label>
+        <name>Milestone1_MilestoneApplicationPostInstallation</name>
     </customLabels>
     <customLabels>
-        <label>マイルストーン</label>
-        <name>Milestones</name>
+        <label><!-- MilestoneClone --></label>
+        <name>Milestone1_MilestoneClone</name>
     </customLabels>
     <customLabels>
-        <label>マイルストーン</label>
-        <name>MilestonesCalendar</name>
+        <label><!-- Milestone is Complete, the Task can not be moved --></label>
+        <name>Milestone1_MilestoneIsComplete</name>
     </customLabels>
     <customLabels>
-        <label>マイルストーン＆オープンタスク</label>
-        <name>MilestonesOpenTasks</name>
+        <label><!-- MilestoneRecordsToMove --></label>
+        <name>Milestone1_MilestoneRecordsToMove</name>
     </customLabels>
     <customLabels>
-        <label>Milestones PMはオープンソースソフトウェアです。</label>
-        <name>MilestonesPMISOpenSource</name>
+        <label><!-- A milestone you are attempting to move is already assigned to this project. Plea --></label>
+        <name>Milestone1_MilestoneYouAreAttempting</name>
     </customLabels>
     <customLabels>
-        <label>Milestones PMは公式サポートがありません。</label>
-        <name>MilestonesPMIsUnsupported</name>
+        <label><!-- Milestones --></label>
+        <name>Milestone1_Milestones</name>
     </customLabels>
     <customLabels>
-        <label>マイルストーンは他のプロジェクトに移動できません。ただしマイルストーンリストビューの「新プロジェクトへ移動」を使うときだけ可能です。</label>
-        <name>MilestonesShouldNotBeMoved</name>
+        <label><!-- MilestonesCalendar --></label>
+        <name>Milestone1_MilestonesCalendar</name>
     </customLabels>
     <customLabels>
-        <label>月曜</label>
-        <name>Monday</name>
+        <label><!-- MilestonesOpenTasks --></label>
+        <name>Milestone1_MilestonesOpenTasks</name>
     </customLabels>
     <customLabels>
-        <label>キャンセル</label>
-        <name>MoveMilestoneCancel</name>
+        <label><!-- Milestones PM is Open Source software. --></label>
+        <name>Milestone1_MilestonesPMISOpenSource</name>
     </customLabels>
     <customLabels>
-        <label>前画面に戻り、移動する一つ以上のマイルストーンを選択して下さい。</label>
-        <name>MoveMilestoneRecordsToMove</name>
+        <label><!-- Milestones PM is unsupported. --></label>
+        <name>Milestone1_MilestonesPMIsUnsupported</name>
     </customLabels>
     <customLabels>
-        <label>マイルストーン移動</label>
-        <name>MoveMilestoneS</name>
+        <label><!-- Milestones should not be moved to different Projects, except through the &quot;Move t --></label>
+        <name>Milestone1_MilestonesShouldNotBeMoved</name>
     </customLabels>
     <customLabels>
-        <label>保存</label>
-        <name>MoveMilestoneSave</name>
+        <label><!-- Monday --></label>
+        <name>Milestone1_Monday</name>
     </customLabels>
     <customLabels>
-        <label>キャンセル</label>
-        <name>MoveMilestone_Cancel</name>
+        <label><!-- MoveMilestoneCancel --></label>
+        <name>Milestone1_MoveMilestoneCancel</name>
     </customLabels>
     <customLabels>
-        <label>保存</label>
-        <name>MoveMilestone_Save</name>
+        <label><!-- MoveMilestoneRecordsToMove --></label>
+        <name>Milestone1_MoveMilestoneRecordsToMove</name>
     </customLabels>
     <customLabels>
-        <label>マイルストーン移動</label>
-        <name>MoveMilestone_s</name>
+        <label><!-- MoveMilestoneS --></label>
+        <name>Milestone1_MoveMilestoneS</name>
     </customLabels>
     <customLabels>
-        <label>キャンセル</label>
-        <name>MoveTaskCancel</name>
+        <label><!-- MoveMilestoneSave --></label>
+        <name>Milestone1_MoveMilestoneSave</name>
     </customLabels>
     <customLabels>
-        <label>選択した一つ以上のタスクが移動できませんでした。時間、費用、メモ＆添付ファイルに関連づけられていることが理由として考えられます。</label>
-        <name>MoveTaskDetailAttachmentsRecords</name>
+        <label><!-- MoveMilestone_Cancel --></label>
+        <name>Milestone1_MoveMilestone_Cancel</name>
     </customLabels>
     <customLabels>
-        <label>キャンセル</label>
-        <name>MoveTaskDetailCancel</name>
+        <label><!-- MoveMilestone_Save --></label>
+        <name>Milestone1_MoveMilestone_Save</name>
     </customLabels>
     <customLabels>
-        <label>タスク移動</label>
-        <name>MoveTaskDetailS</name>
+        <label><!-- MoveMilestone_s --></label>
+        <name>Milestone1_MoveMilestone_s</name>
     </customLabels>
     <customLabels>
-        <label>保存</label>
-        <name>MoveTaskDetailSave</name>
+        <label><!-- MoveTaskCancel --></label>
+        <name>Milestone1_MoveTaskCancel</name>
     </customLabels>
     <customLabels>
-        <label>前画面に戻り、移動する一つ以上のタスクを選択して下さい。</label>
-        <name>MoveTaskDetailTaskRecordsToMove</name>
+        <label><!-- MoveTaskDetailAttachmentsRecords --></label>
+        <name>Milestone1_MoveTaskDetailAttachmentsRecords</name>
     </customLabels>
     <customLabels>
-        <label>前画面に戻り移動する一つ以上のタスクを選択してください。</label>
-        <name>MoveTaskRecordsToMove</name>
+        <label><!-- MoveTaskDetailCancel --></label>
+        <name>Milestone1_MoveTaskDetailCancel</name>
     </customLabels>
     <customLabels>
-        <label>タスク移動</label>
-        <name>MoveTaskS</name>
+        <label><!-- MoveTaskDetailS --></label>
+        <name>Milestone1_MoveTaskDetailS</name>
     </customLabels>
     <customLabels>
-        <label>保存</label>
-        <name>MoveTaskSave</name>
+        <label><!-- MoveTaskDetailSave --></label>
+        <name>Milestone1_MoveTaskDetailSave</name>
     </customLabels>
     <customLabels>
-        <label>私の未完タスク</label>
-        <name>MyIncompleteTasks</name>
+        <label><!-- MoveTaskDetailTaskRecordsToMove --></label>
+        <name>Milestone1_MoveTaskDetailTaskRecordsToMove</name>
     </customLabels>
     <customLabels>
-        <label>私のマイルストーンのみ</label>
-        <name>MyMilestonesOnly</name>
+        <label><!-- MoveTaskRecordsToMove --></label>
+        <name>Milestone1_MoveTaskRecordsToMove</name>
     </customLabels>
     <customLabels>
-        <label>私のプロジェクトとサブプロジェクトアイテム</label>
-        <name>MyProjectsAndSubProjectItems</name>
+        <label><!-- MoveTaskS --></label>
+        <name>Milestone1_MoveTaskS</name>
     </customLabels>
     <customLabels>
-        <label>私のタスク</label>
-        <name>MyTasks</name>
+        <label><!-- MoveTaskSave --></label>
+        <name>Milestone1_MoveTaskSave</name>
     </customLabels>
     <customLabels>
-        <label>私のタスクのみ</label>
-        <name>MyTasksOnly</name>
+        <label><!-- My Incomplete Tasks --></label>
+        <name>Milestone1_MyIncompleteTasks</name>
     </customLabels>
     <customLabels>
-        <label>新マイルストーン名</label>
-        <name>NewMilestoneName</name>
+        <label><!-- MyMilestonesOnly --></label>
+        <name>Milestone1_MyMilestonesOnly</name>
     </customLabels>
     <customLabels>
-        <label>新プロジェクト名</label>
-        <name>NewProjectName</name>
+        <label><!-- MyProjectsAndSubProjectItems --></label>
+        <name>Milestone1_MyProjectsAndSubProjectItems</name>
     </customLabels>
     <customLabels>
-        <label>次のステップ</label>
-        <name>NextSteps</name>
+        <label><!-- MyTasks --></label>
+        <name>Milestone1_MyTasks</name>
     </customLabels>
     <customLabels>
-        <label>インポートするXMLファイルが選択されていません。XMLファイルを選択して下さい。</label>
-        <name>NoImportXMLFilesSelected</name>
+        <label><!-- MyTasksOnly --></label>
+        <name>Milestone1_MyTasksOnly</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトがありません。</label>
-        <name>NoProjects</name>
+        <label><!-- NewMilestoneName --></label>
+        <name>Milestone1_NewMilestoneName</name>
     </customLabels>
     <customLabels>
-        <label>この組織より</label>
-        <name>OrganizationsVersion</name>
+        <label><!-- NewProjectName --></label>
+        <name>Milestone1_NewProjectName</name>
     </customLabels>
     <customLabels>
-        <label>遅延タスク</label>
-        <name>OverdueTasks</name>
+        <label><!-- Next Steps --></label>
+        <name>Milestone1_NextSteps</name>
     </customLabels>
     <customLabels>
-        <label>コマンドが不適切でした。以下のフォーマットを使って下さい。&lt;Alias&gt; --- &lt;DESCRIPTION&gt;</label>
-        <name>PleaseUseFormat</name>
+        <label><!-- No import XML files selected. Please select an XML file to import. --></label>
+        <name>Milestone1_NoImportXMLFilesSelected</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトはnullにできません。XMLインポート時の致命的エラーが発生しました。再度エクスポートした後にインポートを試して下さい。</label>
-        <name>ProjectCannotBeNull</name>
+        <label><!-- No projects! --></label>
+        <name>Milestone1_NoProjects</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクト複製</label>
-        <name>ProjectClone</name>
+        <label><!-- OrganizationsVersion --></label>
+        <name>Milestone1_OrganizationsVersion</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクト詳細</label>
-        <name>ProjectDetail</name>
+        <label><!-- OverdueTasks --></label>
+        <name>Milestone1_OverdueTasks</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトが大きすぎてエクスポートできません。総文字数は以下の必要があります。</label>
-        <name>ProjectIsTooLarge</name>
+        <label><!-- PleaseUseFormat --></label>
+        <name>Milestone1_PleaseUseFormat</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトマイルストーンからのお知らせ</label>
-        <name>ProjectMilestoneNagEngine</name>
+        <label><!-- ProjectCannotBeNull --></label>
+        <name>Milestone1_ProjectCannotBeNull</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトマイルストーンからのお知らせ - アイテムを確認して下さい。</label>
-        <name>ProjectMilestoneNotification</name>
+        <label><!-- ProjectClone --></label>
+        <name>Milestone1_ProjectClone</name>
     </customLabels>
     <customLabels>
-        <label>サマリー</label>
-        <name>ProjectSummary_FirstHalf</name>
+        <label><!-- ProjectDetail --></label>
+        <name>Milestone1_ProjectDetail</name>
     </customLabels>
     <customLabels>
-        <label>Milestones PMの利用を開始しましょう。</label>
-        <name>ProjectSummary_SecondHalf</name>
+        <label><!-- ProjectIsTooLarge --></label>
+        <name>Milestone1_ProjectIsTooLarge</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトXMLエクスポートプロセス</label>
-        <name>ProjectXML</name>
+        <label><!-- Project Milestone Nag Engine --></label>
+        <name>Milestone1_ProjectMilestoneNagEngine</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトXMLインポートプロセス</label>
-        <name>ProjectXMLImport</name>
+        <label><!-- Project Milestone Notification - Items require attention. --></label>
+        <name>Milestone1_ProjectMilestoneNotification</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクト</label>
-        <name>Projects</name>
+        <label><!-- Project Summary Page --></label>
+        <name>Milestone1_ProjectSummary_FirstHalf</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクト</label>
-        <name>ProjectsCalendar</name>
+        <label><!-- to start using Milestones PM. --></label>
+        <name>Milestone1_ProjectSummary_SecondHalf</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトは同一バージョンからエクスポート/インポートされる必要があります。</label>
-        <name>ProjectsMustBeExported</name>
+        <label><!-- ProjectXML --></label>
+        <name>Milestone1_ProjectXML</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクト要素のクイックサーチ</label>
-        <name>QuickSearch</name>
+        <label><!-- ProjectXMLImport --></label>
+        <name>Milestone1_ProjectXMLImport</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Projects --></label>
+        <name>Milestone1_Projects</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ProjectsCalendar --></label>
+        <name>Milestone1_ProjectsCalendar</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ProjectsMustBeExported --></label>
+        <name>Milestone1_ProjectsMustBeExported</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- QuickSearch --></label>
+        <name>Milestone1_QuickSearch</name>
     </customLabels>
     <customLabels>
         <label><!-- RegexFwdRe --></label>
-        <name>RegexFwdRe</name>
+        <name>Milestone1_RegexFwdRe</name>
     </customLabels>
     <customLabels>
-        <label>DMLエラーが発生しました。</label>
-        <name>SalesforceDMLError</name>
+        <label><!-- SalesforceDMLError --></label>
+        <name>Milestone1_SalesforceDMLError</name>
     </customLabels>
     <customLabels>
-        <label>土曜</label>
-        <name>Saturday</name>
+        <label><!-- Saturday --></label>
+        <name>Milestone1_Saturday</name>
     </customLabels>
     <customLabels>
-        <label>保存</label>
-        <name>Save</name>
+        <label><!-- Save --></label>
+        <name>Milestone1_Save</name>
     </customLabels>
     <customLabels>
-        <label>APEXクラスに&quot;Milestone1_Email_Handler&quot;を選択してください。</label>
-        <name>SelectTheApexClass</name>
+        <label><!-- Select the Apex Class &quot;Milestone1_Email_Handler&quot;. --></label>
+        <name>Milestone1_SelectTheApexClass</name>
     </customLabels>
     <customLabels>
-        <label>受け入れる添付ファイルには、すべてを選択してください。</label>
-        <name>SetAcceptAttachmentsToAll</name>
+        <label><!-- Set &quot;Accept Attachments&quot; to &quot;All&quot;. --></label>
+        <name>Milestone1_SetAcceptAttachmentsToAll</name>
     </customLabels>
     <customLabels>
-        <label>許可する送信元には、すべてを設定してください。</label>
-        <name>SetAcceptEmailFromToAllEmail</name>
+        <label><!-- Set &quot;Accept Email From&quot; to &quot;All Email Addresses&quot;. --></label>
+        <name>Milestone1_SetAcceptEmailFromToAllEmail</name>
     </customLabels>
     <customLabels>
-        <label>失敗時のレスポンス設定にはすべて、メッセージを破棄と設定してください。</label>
-        <name>SetAllFailureResponseOptions</name>
+        <label><!-- Set All Failure Response options to &apos;Bounce Message&apos;. --></label>
+        <name>Milestone1_SetAllFailureResponseOptions</name>
     </customLabels>
     <customLabels>
-        <label>既に設定されています。何も変更されませんでした。</label>
-        <name>SettingsAlreadyExistNoChanges</name>
+        <label><!-- Settings already exist.  No changes made. --></label>
+        <name>Milestone1_SettingsAlreadyExistNoChanges</name>
     </customLabels>
     <customLabels>
-        <label>新しいメールアドレスを設定します。</label>
-        <name>SetupNewEmailAddress</name>
+        <label><!-- Setup A New Email Address. --></label>
+        <name>Milestone1_SetupNewEmailAddress</name>
     </customLabels>
     <customLabels>
-        <label>自分のプロジェクト作成をはじめてみましょう！</label>
-        <name>StartCreatingYourFirstProject</name>
+        <label><!-- Start creating your first project. --></label>
+        <name>Milestone1_StartCreatingYourFirstProject</name>
     </customLabels>
     <customLabels>
-        <label>サブマイルストーンは一階層だけ下にできます。このレコードの親マイルストーンとして最上位マイルストーンを選択して下さい。</label>
-        <name>SubMilestonesCanOnlyGoOneLevelDeep</name>
+        <label><!-- Sub-milestones can only go one level deep. Please select a top-level milestone a --></label>
+        <name>Milestone1_SubMilestonesCanOnlyGoOneLevelDeep</name>
     </customLabels>
     <customLabels>
-        <label>サブジェクトが空です。</label>
-        <name>SubjectMissing</name>
+        <label><!-- SubjectMissing --></label>
+        <name>Milestone1_SubjectMissing</name>
     </customLabels>
     <customLabels>
-        <label>サブジェクトに目標のエイリアスが含まれません。</label>
-        <name>SubjectMissingAlias</name>
+        <label><!-- SubjectMissingAlias --></label>
+        <name>Milestone1_SubjectMissingAlias</name>
     </customLabels>
     <customLabels>
-        <label>サブジェクトにタスクが含まれていません。</label>
-        <name>SubjectMissingTask</name>
+        <label><!-- SubjectMissingTask --></label>
+        <name>Milestone1_SubjectMissingTask</name>
     </customLabels>
     <customLabels>
-        <label>送信</label>
-        <name>Submit</name>
+        <label><!-- Submit --></label>
+        <name>Milestone1_Submit</name>
     </customLabels>
     <customLabels>
-        <label>サマリー</label>
-        <name>Summary</name>
+        <label><!-- Summary --></label>
+        <name>Milestone1_Summary</name>
     </customLabels>
     <customLabels>
-        <label>検索</label>
-        <name>SummarySearch</name>
+        <label><!-- SummarySearch --></label>
+        <name>Milestone1_SummarySearch</name>
     </customLabels>
     <customLabels>
-        <label>日曜</label>
-        <name>Sunday</name>
+        <label><!-- Sunday --></label>
+        <name>Milestone1_Sunday</name>
     </customLabels>
     <customLabels>
-        <label>このメールに合致するタスクが見つからなかったため、タスクへの紐付けができませんでした。</label>
-        <name>TaskNotFound</name>
+        <label><!-- TaskNotFound --></label>
+        <name>Milestone1_TaskNotFound</name>
     </customLabels>
     <customLabels>
-        <label>移動しようとしたタスクは既にこのマイルストーンに割当られています。選択したものを見直して再度実行してください。</label>
-        <name>TaskYouAreAttempting</name>
+        <label><!-- A task you are attempting to move is already assigned to this milestone. Please --></label>
+        <name>Milestone1_TaskYouAreAttempting</name>
     </customLabels>
     <customLabels>
-        <label>タスク</label>
-        <name>Tasks</name>
+        <label><!-- Tasks --></label>
+        <name>Milestone1_Tasks</name>
     </customLabels>
     <customLabels>
-        <label>タスク</label>
-        <name>TasksCalendar</name>
+        <label><!-- TasksCalendar --></label>
+        <name>Milestone1_TasksCalendar</name>
     </customLabels>
     <customLabels>
-        <label>タスク / マイルストーン</label>
-        <name>TasksMilestone</name>
+        <label><!-- TasksMilestone --></label>
+        <name>Milestone1_TasksMilestone</name>
     </customLabels>
     <customLabels>
-        <label>マイルストーン</label>
-        <name>TestProjectMilestones</name>
+        <label><!-- TestProjectMilestones --></label>
+        <name>Milestone1_TestProjectMilestones</name>
     </customLabels>
     <customLabels>
-        <label>以下のプロジェクトマイルストーンアイテムが注意を促しています。</label>
-        <name>TheFollowingSalesforceProjectMilestoneItems</name>
+        <label><!-- The following Salesforce Project Milestone items are nagging you for attention --></label>
+        <name>Milestone1_TheFollowingSalesforceProjectMilestoneItems</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトはnullにできません。XMLファイルインポートで致命的エラーが発生しました。再度エクスポートした後にインポートを試してみて下さい。</label>
-        <name>TheProjectCannotBeNull</name>
+        <label><!-- The Project cannot be null. This is a critical error during import of XML. Pleas --></label>
+        <name>Milestone1_TheProjectCannotBeNull</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトのXMLファイルが生成されました。個人ドキュメントフォルダを参照して下さい。</label>
-        <name>TheXMLFileForYourProjectHasBeenSuccessfully</name>
+        <label><!-- The XML file for your project has been successfully created, and can be found in --></label>
+        <name>Milestone1_TheXMLFileForYourProjectHasBeenSuccessfully</name>
     </customLabels>
     <customLabels>
-        <label>XMLファイルが大きすぎます。</label>
-        <name>TheXMLFileIsTooLarge</name>
+        <label><!-- The XML file is too large. --></label>
+        <name>Milestone1_TheXMLFileIsTooLarge</name>
     </customLabels>
     <customLabels>
-        <label>エイリアス(</label>
-        <name>Thealias</name>
+        <label><!-- Thealias --></label>
+        <name>Milestone1_Thealias</name>
     </customLabels>
     <customLabels>
-        <label>このサンプルプロジェクトには Milestones PMから得られる様々なアイディアが含まれています。</label>
-        <name>ThisSampleProjectIncludes</name>
+        <label><!-- This sample project includes the remaining configuration steps as well as ideas --></label>
+        <name>Milestone1_ThisSampleProjectIncludes</name>
     </customLabels>
     <customLabels>
-        <label>木曜</label>
-        <name>Thursday</name>
+        <label><!-- This Weeks View --></label>
+        <name>Milestone1_ThisWeeksView</name>
     </customLabels>
     <customLabels>
-        <label>時間</label>
-        <name>Times</name>
+        <label><!-- Thursday --></label>
+        <name>Milestone1_Thursday</name>
     </customLabels>
     <customLabels>
-        <label>メールをタスク管理に利用する場合は、</label>
-        <name>ToConfigureTheEmail</name>
+        <label><!-- Times --></label>
+        <name>Milestone1_Times</name>
     </customLabels>
     <customLabels>
-        <label>アイディアや問題を報告するには、&lt;a href=&quot;https://github.com/ForceDotComLabs/Milestones-PM&quot;&gt;Milestones PM on Github&lt;/a&gt;.へお願いします。</label>
-        <name>ToSubmitIdeasOrIssues</name>
+        <label><!-- To configure the Email To Task Service --></label>
+        <name>Milestone1_ToConfigureTheEmail</name>
     </customLabels>
     <customLabels>
-        <label>受信者リストがSalesforceユーザと一致しませんでした。</label>
-        <name>ToUsersNotFound</name>
+        <label><!-- To submit ideas or issues, please visit &lt;a href=&quot;https://github.com/ForceDotComL --></label>
+        <name>Milestone1_ToSubmitIdeasOrIssues</name>
     </customLabels>
     <customLabels>
-        <label>ここをクリック</label>
-        <name>ToViewXML_FirstHalf</name>
+        <label><!-- ToUsersNotFound --></label>
+        <name>Milestone1_ToUsersNotFound</name>
     </customLabels>
     <customLabels>
-        <label>個人ドキュメントフォルダのXMLファイルを参照</label>
-        <name>ToViewXML_SecondHalf</name>
+        <label><!-- Click here --></label>
+        <name>Milestone1_ToViewXML_FirstHalf</name>
     </customLabels>
     <customLabels>
-        <label>ここをクリック</label>
-        <name>ToYourProject_FirstHalf</name>
+        <label><!-- to view the XML file in the My Personal Documents folder. --></label>
+        <name>Milestone1_ToViewXML_SecondHalf</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトに戻る</label>
-        <name>ToYourProject_SecondHalf</name>
+        <label><!-- Click here --></label>
+        <name>Milestone1_ToYourProject_FirstHalf</name>
     </customLabels>
     <customLabels>
-        <label>最上位のマイルストーンが前のものをもっているようです。削除した後に再度実行してください。</label>
-        <name>TopLevelMilestoneHasPredecessor</name>
+        <label><!-- to return to your project. --></label>
+        <name>Milestone1_ToYourProject_SecondHalf</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Top Level Milestone has predecessor and cannot be moved.  Remove that predecesso --></label>
+        <name>Milestone1_TopLevelMilestoneHasPredecessor</name>
     </customLabels>
     <customLabels>
         <label><!-- Top Level Milestone has successors and cannot be moved.  Redirect those successo --></label>
-        <name>TopLevelMilestoneHasSuccessors</name>
+        <name>Milestone1_TopLevelMilestoneHasSuccessors</name>
     </customLabels>
     <customLabels>
-        <label>火曜</label>
-        <name>Tuesday</name>
+        <label><!-- Tuesday --></label>
+        <name>Milestone1_Tuesday</name>
     </customLabels>
     <customLabels>
-        <label>ToとFromのアドレスがSalesforceのユーザと一致しませんでした。</label>
-        <name>UsersNotFound</name>
+        <label><!-- UsersNotFound --></label>
+        <name>Milestone1_UsersNotFound</name>
     </customLabels>
     <customLabels>
-        <label>初期化処理で作成された&quot;Getting Started&quot;プロジェクトを開いて下さい。</label>
-        <name>ViewTheGettingStartedProject</name>
+        <label><!-- View the &quot;Getting Started&quot; project created as part of your initial configuration --></label>
+        <name>Milestone1_ViewTheGettingStartedProject</name>
     </customLabels>
     <customLabels>
-        <label>あなたからの問題報告、アイディア、ドキュメント作成、コード改修、その他全ての形でのプロジェクトへの参加を歓迎します。</label>
-        <name>WeWelcomeYourIssueReports</name>
+        <label><!-- We welcome your issue reports, ideas, documentation, code tweaks and all other p --></label>
+        <name>Milestone1_WeWelcomeYourIssueReports</name>
     </customLabels>
     <customLabels>
-        <label>水曜</label>
-        <name>Wednesday</name>
+        <label><!-- Wednesday --></label>
+        <name>Milestone1_Wednesday</name>
     </customLabels>
     <customLabels>
-        <label>Milestones PM へようこそ － プロジェクトマネジメント</label>
-        <name>WelcomeToMilestonesPM</name>
+        <label><!-- Welcome to Milestones PM - Project Management --></label>
+        <name>Milestone1_WelcomeToMilestonesPM</name>
     </customLabels>
     <customLabels>
-        <label>サマリーページに移動して、サンプルプロジェクトを確認してください。</label>
-        <name>YouCanNowGoTo</name>
+        <label><!-- You can now go to your project summary page to see the sample project we install --></label>
+        <name>Milestone1_YouCanNowGoTo</name>
     </customLabels>
     <customLabels>
-        <label>まずはMilestonesを&lt;strong&gt;リリース&lt;/strong&gt;する必要があります。</label>
-        <name>YouMustDeploy</name>
+        <label><!-- you must &lt;strong&gt;deploy&lt;/strong&gt; Milestones before continuing. --></label>
+        <name>Milestone1_YouMustDeploy</name>
     </customLabels>
     <customLabels>
-        <label>その後の手順は簡単です。</label>
-        <name>YourNextFewSteps</name>
+        <label><!-- Your next few steps are easy. --></label>
+        <name>Milestone1_YourNextFewSteps</name>
     </customLabels>
     <customLabels>
-        <label>プロジェクトはXMLドキュメントとしてエクスポートされました。</label>
-        <name>YourProjectCouldNotSuccessfully</name>
+        <label><!-- Your project could not successfully be exported to an XML document. --></label>
+        <name>Milestone1_YourProjectCouldNotSuccessfully</name>
     </customLabels>
     <customPageWebLinks>
         <label>マイルストーンをはじめる</label>

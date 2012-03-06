@@ -22,16 +22,19 @@
         <criteriaItems>
             <column>Milestone1_Task__c$ProjectId__c</column>
             <operator>equals</operator>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>Milestone1_Task__c$Assigned_To__c</column>
             <operator>equals</operator>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>Milestone1_Task__c$Overall_Status__c</column>
             <operator>notEqual</operator>
             <value>Complete</value>
         </criteriaItems>
+        <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>

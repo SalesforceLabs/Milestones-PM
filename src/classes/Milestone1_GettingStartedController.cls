@@ -43,7 +43,7 @@ public with sharing class Milestone1_GettingStartedController {
 		Milestone1_Settings__c settings = Milestone1_Settings__c.getOrgDefaults();
 		
 		if (settings != null) {
-			lastResult = system.label.SettingsAlreadyExistNoChanges;		
+			lastResult = system.label.Milestone1_SettingsAlreadyExistNoChanges;		
 		} else {
 			settings = getInitialSettingsWithoutSave();
 			
@@ -126,7 +126,7 @@ public with sharing class Milestone1_GettingStartedController {
 					if (aliasCount > 0) {
 						targetAlias = targetAlias+aliasCount;
 					}
-					current.Alias__c = targetAlias;
+					current.Alias__c = 'DEMO' + targetAlias;
 					milestones.add(current);
 				}
 				

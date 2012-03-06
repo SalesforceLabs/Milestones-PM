@@ -42,6 +42,7 @@
             <section>Custom Links</section>
         </sections>
     </layouts>
+    <nameFieldLabel><!-- Project Time Name --></nameFieldLabel>
     <validationRules>
         <errorMessage>時間に負の数を入力しないでください。</errorMessage>
         <name>Hours_Not_Negative</name>

@@ -29,7 +29,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 public class Milestone1_Task_Trigger_Utility {
 
 	private static final Schema.SObjectType entitySubscriptionType = Milestone1_Schema_Helper.getGlobalDescribe().get('entitysubscription');
-	public static final string SUBSCRIPTION_LIMIT_EXCEEDED = system.label.MaximumPer;
+	public static final string SUBSCRIPTION_LIMIT_EXCEEDED = system.label.Milestone1_MaximumPer;
     
     public static void handleTaskAfterTrigger(List<Milestone1_Task__c> recs, List<Milestone1_Task__c> oldRecs) {
         Milestone1_Task__c oldRec;

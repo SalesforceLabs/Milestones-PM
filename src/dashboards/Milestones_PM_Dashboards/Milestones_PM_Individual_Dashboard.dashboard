@@ -13,6 +13,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <report>Milestone_Project_Management/My_Late_Tasks_DB</report>
+            <showPicturesOnTables>true</showPicturesOnTables>
             <sortBy>RowLabelAscending</sortBy>
             <title>My Late Tasks</title>
         </components>
@@ -26,6 +27,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <report>Milestone_Project_Management/My_Blocked_Tasks_DB</report>
+            <showPicturesOnTables>true</showPicturesOnTables>
             <sortBy>RowLabelAscending</sortBy>
             <title>My Blocked Tasks</title>
         </components>
@@ -49,9 +51,7 @@
             <useReportChart>false</useReportChart>
         </components>
     </rightSection>
-
-    <runningUser>labs@labs.121</runningUser>
-
+    <runningUser>labs@labs.224</runningUser>
     <textColor>#000000</textColor>
     <title>Milestones PM Individual Dashboard</title>
     <titleColor>#000000</titleColor>

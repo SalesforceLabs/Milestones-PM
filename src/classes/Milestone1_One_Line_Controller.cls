@@ -62,17 +62,17 @@ public with sharing class Milestone1_One_Line_Controller {
                     line = '';
                 }catch(Exception e)
                 {
-                    ApexPages.Message errorMsg = new ApexPages.Message(ApexPages.Severity.FATAL, system.label.SalesforceDMLError + e.getMessage());
+                    ApexPages.Message errorMsg = new ApexPages.Message(ApexPages.Severity.FATAL, system.label.Milestone1_SalesforceDMLError + e.getMessage());
                     ApexPages.addMessage(errorMsg);
                 }
             }else
             {
-                ApexPages.Message errorMsg = new ApexPages.Message(ApexPages.Severity.FATAL, system.label.Thealias + milestoneAlias + system.label.DidNotMatch);
+                ApexPages.Message errorMsg = new ApexPages.Message(ApexPages.Severity.FATAL, system.label.Milestone1_Thealias + milestoneAlias + system.label.Milestone1_DidNotMatch);
                 ApexPages.addMessage(errorMsg);
             }
         }else
         {
-            ApexPages.Message errorMsg = new ApexPages.Message(ApexPages.Severity.FATAL, system.label.PleaseUseFormat);
+            ApexPages.Message errorMsg = new ApexPages.Message(ApexPages.Severity.FATAL, system.label.Milestone1_PleaseUseFormat);
             ApexPages.addMessage(errorMsg);
         }   
     }

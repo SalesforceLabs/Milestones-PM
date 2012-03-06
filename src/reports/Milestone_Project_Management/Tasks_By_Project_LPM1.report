@@ -13,7 +13,9 @@
         <criteriaItems>
             <column>Milestone1_Task__c$ProjectId__c</column>
             <operator>equals</operator>
+            <value></value>
         </criteriaItems>
+        <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>

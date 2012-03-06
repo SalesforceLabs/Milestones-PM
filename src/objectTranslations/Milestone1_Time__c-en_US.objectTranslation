@@ -31,7 +31,7 @@
         <help><!-- The user who incurred the time being charged. Defaults to current user if left blank. --></help>
         <label><!-- Incurred By --></label>
         <name>Incurred_By__c</name>
-        <relationshipLabel><!-- Time --></relationshipLabel>
+        <relationshipLabel><!-- Times --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- The task that is having time charged to it. --></help>
@@ -46,7 +46,6 @@
             <section>Custom Links</section>
         </sections>
     </layouts>
-    <nameFieldLabel><!-- Project Time Name --></nameFieldLabel>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- The hours entered cannot be negative. --></errorMessage>

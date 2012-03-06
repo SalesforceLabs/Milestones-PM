@@ -35,11 +35,13 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Force.com Labs - PM - An activity that has hours, budget, and is assigned to a User.</description>
     <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>true</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
     <fields>
         <fullName>Assigned_To__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <inlineHelpText>The user responsible for completing the task. Defaults to current user if left blank.</inlineHelpText>
         <label>Assigned To</label>
@@ -285,6 +287,7 @@
     </fields>
     <fields>
         <fullName>Predecessor_Task__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <inlineHelpText>The predecessor task for this task if applicable.</inlineHelpText>
         <label>Predecessor Task</label>

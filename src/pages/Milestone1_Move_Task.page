@@ -34,12 +34,12 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 </style> 
     <apex:form >
         <apex:messages layout="table" styleClass="moveError" />
-        <apex:pageBlock title="{!$Label.MoveTaskS}">
+        <apex:pageBlock title="{!$Label.Milestone1_MoveTaskS}">
             <apex:pageBlockButtons >
-                <apex:commandButton value="{!$Label.MoveTaskSave}"
+                <apex:commandButton value="{!$Label.Milestone1_MoveTaskSave}"
                                     action="{!moveTasks}"
                                     rendered="{!showSave}"/>
-                <apex:commandButton value="{!$Label.MoveTaskCancel}"
+                <apex:commandButton value="{!$Label.Milestone1_MoveTaskCancel}"
                                     action="{!cancel}"/>
             </apex:pageBlockButtons>
             
@@ -49,7 +49,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
                                  required="true"/>
             </apex:pageBlockSection>
             
-            <apex:outputLabel value="{!$Label.MoveTaskRecordsToMove}"
+            <apex:outputLabel value="{!$Label.Milestone1_MoveTaskRecordsToMove}"
                               rendered="{!anySelected == false}"/>
             
             <apex:outputLabel value="One or more of the selected Task records cannot be moved because it has related Time, Expense, or Notes & Attachments records."

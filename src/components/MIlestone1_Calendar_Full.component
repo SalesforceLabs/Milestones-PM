@@ -3,20 +3,20 @@
 <table cellspacing="0" cellpadding="6" border="0">
     <tr>
         <td colspan="3">
-            <h1>{!$Label.CalendarLegend}</h1>
+            <h1>{!$Label.Milestone1_CalendarLegend}</h1>
         </td>
-        <td>{!$Label.FilterCalendarBy}: </td>
+        <td>{!$Label.Milestone1_FilterCalendarBy}: </td>
         <td><apex:selectList size="1" value="{!filterItem}">
             <apex:selectOptions value="{!filterList}"/>
         </apex:selectList></td>
-        <td><apex:commandButton action="{!filter}" value="{!$Label.Filter}" id="FilterButton" /></td>
+        <td><apex:commandButton action="{!filter}" value="{!$Label.Milestone1_Filter}" id="FilterButton" /></td>
         <td><apex:commandLink action="{!fiveDayView}" value="Week"/></td>
-        <td><apex:commandLink action="{!monthView}" value="{!$Label.FullMonth}"/></td>
+        <td><apex:commandLink action="{!monthView}" value="{!$Label.Milestone1_FullMonth}"/></td>
     </tr>
     <tr>
-         <td style="color:maroon">{!$Label.ProjectsCalendar} </td>
-         <td style="color:navy">{!$Label.MilestonesCalendar} </td>
-         <td style="color:green">{!$Label.TasksCalendar} </td>
+         <td style="color:maroon">{!$Label.Milestone1_ProjectsCalendar} </td>
+         <td style="color:navy">{!$Label.Milestone1_MilestonesCalendar} </td>
+         <td style="color:green">{!$Label.Milestone1_TasksCalendar} </td>
     </tr>
  </table>
 <apex:outputPanel id="theCalendar">
@@ -36,13 +36,13 @@ src="/s.gif" />
 </caption>
 <tbody>
 <tr class="headerRow">
-<th scope="col" class="calDays">{!$Label.Sunday}</th>
-<th scope="col" class="calDays">{!$Label.Monday}</th>
-<th scope="col" class="calDays">{!$Label.Tuesday}</th>
-<th scope="col" class="calDays">{!$Label.Wednesday}</th>
-<th scope="col" class="calDays">{!$Label.Thursday}</th>
-<th scope="col" class="calDays">{!$Label.Friday}</th>
-<th scope="col" class="calDays">{!$Label.Saturday}</th>
+<th scope="col" class="calDays">{!$Label.Milestone1_Sunday}</th>
+<th scope="col" class="calDays">{!$Label.Milestone1_Monday}</th>
+<th scope="col" class="calDays">{!$Label.Milestone1_Tuesday}</th>
+<th scope="col" class="calDays">{!$Label.Milestone1_Wednesday}</th>
+<th scope="col" class="calDays">{!$Label.Milestone1_Thursday}</th>
+<th scope="col" class="calDays">{!$Label.Milestone1_Friday}</th>
+<th scope="col" class="calDays">{!$Label.Milestone1_Saturday}</th>
 </tr>
 
 <apex:repeat value="{!weeks}" var="wk" id="foreachWeek">

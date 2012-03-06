@@ -35,6 +35,7 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Force.com Labs - PM - This is a nag object. Allows the Nag Engine to execute against objects.</description>
     <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
@@ -50,6 +51,7 @@
     </fields>
     <fields>
         <fullName>Assigned_To__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Assigned To</label>
         <referenceTo>User</referenceTo>
@@ -181,6 +183,7 @@ IF( Project_Task__c &lt;&gt; null, &apos;Task&apos;,&apos;&apos;)))</formula>
     </fields>
     <fields>
         <fullName>Project_Milestone__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Project Milestone</label>
         <referenceTo>Milestone1_Milestone__c</referenceTo>
@@ -190,6 +193,7 @@ IF( Project_Task__c &lt;&gt; null, &apos;Task&apos;,&apos;&apos;)))</formula>
     </fields>
     <fields>
         <fullName>Project_Task__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Project Task</label>
         <referenceTo>Milestone1_Task__c</referenceTo>
@@ -199,6 +203,7 @@ IF( Project_Task__c &lt;&gt; null, &apos;Task&apos;,&apos;&apos;)))</formula>
     </fields>
     <fields>
         <fullName>Project__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Project</label>
         <referenceTo>Milestone1_Project__c</referenceTo>
@@ -215,8 +220,8 @@ IF( Project_Task__c &lt;&gt; null, &apos;Task&apos;,&apos;&apos;)))</formula>
     <pluralLabel>Nags</pluralLabel>
     <searchLayouts>
         <excludedStandardButtons>Accept</excludedStandardButtons>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>New</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <validationRules>

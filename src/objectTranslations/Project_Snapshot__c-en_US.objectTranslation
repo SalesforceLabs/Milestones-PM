@@ -68,6 +68,5 @@
         <label><!-- Status --></label>
         <name>Status__c</name>
     </fields>
-    <nameFieldLabel><!-- Project Snapshot Name --></nameFieldLabel>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

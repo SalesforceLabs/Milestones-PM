@@ -11,7 +11,7 @@
         </chartSummaries>
         <chartType>VerticalColumnStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>false</expandOthers>
+        <expandOthers>true</expandOthers>
         <groupingColumn>Project_Snapshot__c.Date__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>

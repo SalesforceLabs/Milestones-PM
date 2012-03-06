@@ -35,6 +35,7 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Force.com Labs - PM - A time entry record which allows users to log times against milestone tasks.</description>
     <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
@@ -77,6 +78,7 @@
     </fields>
     <fields>
         <fullName>Incurred_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <inlineHelpText>The user who incurred the time being charged. Defaults to current user if left blank.</inlineHelpText>
         <label>Incurred By</label>

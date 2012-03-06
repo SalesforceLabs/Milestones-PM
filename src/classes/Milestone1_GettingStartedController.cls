@@ -122,7 +122,8 @@ public with sharing class Milestone1_GettingStartedController {
 					
 					//get a unique milestone alias
 					String targetAlias = current.Name.substring(0,1);
-					integer aliasCount = [Select count() from Milestone1_Milestone__c Where Alias__c=:targetAlias];
+					String queryAlias = 'DEMO' + targetAlias;
+					integer aliasCount = [Select count() from Milestone1_Milestone__c Where Alias__c=:queryAlias];
 					if (aliasCount > 0) {
 						targetAlias = targetAlias+aliasCount;
 					}

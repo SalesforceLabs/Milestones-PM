@@ -362,9 +362,10 @@
         <fullName>Milestone1_InitializeYourConfiguration</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Initialize your configuration using the button below.</shortDescription>
-        <value>Initialize your configuration using the button below.</value>
+        <shortDescription>Initialize your configuration using the button besides.</shortDescription>
+        <value>Initialize your configuration using the button besides.</value>
     </labels>
+
     <labels>
         <fullName>Milestone1_InsufficientPrivileges</fullName>
         <language>en_US</language>
@@ -1191,4 +1192,37 @@
         <shortDescription>Your project could not successfully be exported to an XML document.</shortDescription>
         <value>Your project could not successfully be exported to an XML document.</value>
     </labels>
+    
+    <labels>
+        <fullName>Milestone1_FilterProjectBy</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Milestone1_FilterProjectBy</shortDescription>
+        <value>Filter Project By</value>
+    </labels>
+
+    <labels>
+        <fullName>Milestone1_Loading</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Loading</shortDescription>
+        <value>Loading, please wait...</value>
+    </labels>
+
+    <labels>
+        <fullName>Milestone1_InactiveUsersError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Milestone1_InactiveUsersError</shortDescription>
+        <value>Clone was not successful because one or more records belong to inactive users.</value>
+    </labels>
+
+<labels>
+        <fullName>Milestone1_NewFieldToReplaceInactiveUsers</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Milestone1_NewFieldToReplaceInactiveUsers</shortDescription>
+        <value>Replace All Inactive Users With</value>
+    </labels>
+
 </CustomLabels>

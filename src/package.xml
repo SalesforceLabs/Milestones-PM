@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>Milestone1_GettingStartedController</members>
+        <members>Milestone1_Calendar_Item</members>
+        <members>Milestone1_Clone_Project_Controller</members>
+        <members>Milestone1_Task_Chatter_Tst</members>
+        <members>Milestone1_Test_Clone</members>
+        <members>Milestone1_Test_Import_Export</members>
+        <members>Milestone1_Test_Utility</members>
+        <members>Milestone1_XML_Export_Utility</members>
+        <members>Milestone1_XML_Export_Utility_Test</members>
+        <members>Milestone1_XML_Import_Predecessor_Tst</members>
+        <members>Milestone1_XML_Import_Utility</members>
+        <members>Milestone1_XML_Import_Utility_Test</members>
+        <members>Milestone1_repeatCon</members>
         <name>ApexClass</name>
+    </types>
+    <types>
+        <members>MIlestone1_Calendar_Full</members>
+        <members>MIlestone1_PopupComponent</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>Milestone1_Calendar_Large</members>
+        <members>Milestone1_GettingStarted</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>CustomLabels</members>
+        <name>CustomLabels</name>
+    </types>
+    <types>
+        <members>Milestone1_Milestone__c-Project Milestone Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Milestone1_Resource_Bundle</members>
+        <name>StaticResource</name>
     </types>
     <version>23.0</version>
 </Package>

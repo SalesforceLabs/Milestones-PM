@@ -26,8 +26,9 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page controller="Milestone1_repeatCon" id="thePage" showHeader="true" sidebar="true">
-<apex:stylesheet value="/sCSS/Theme2/default/homeCalendar.css" />
+<!-- Bug # 59;  Modified Date:04-17-2012; Owner:Persistent; Comments: CSS that has been refered could change at anytime and break the app,so need to upload as a static resource. -->
+<apex:stylesheet value="{!URLFOR($Resource.Milestone1_Resource_Bundle, 'stylesheets/homeCalendar.css')}" />
     <apex:pageBlock title="{!$Label.Milestone1_Calendar}">
-        <c:MIlestone1_Calendar_Full />
+        <c:MIlestone1_Calendar_Full /> 
     </apex:pageBlock>
 </apex:page>

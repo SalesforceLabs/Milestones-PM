@@ -32,9 +32,12 @@ public with sharing class Milestone1_Clone_Milestone_Controller {
     public Milestone1_Milestone__c dummyMS {get; set;}
     private List<Milestone1_Milestone__c> milestones {get; set;}
     private List<Milestone1_Task__c> tasks {get; set;}
+    private List<User> statusList{get; set;}
+    public boolean isMilestoneOwnerActive {get;set;}
+    public boolean isInactiveUserToBeReplaced{get;set;}
 
     public Milestone1_Clone_Milestone_Controller(ApexPages.StandardController stc){
-        //query main milestone record
+       // query main milestone record 
         rec = [SELECT Id,
                       Name,
                       Project__c,
@@ -50,7 +53,7 @@ public with sharing class Milestone1_Clone_Milestone_Controller {
                       WHERE Id = :stc.getId()
                      ];
         
-        //query sub milestone records
+        // query sub milestone records 
         milestones = [SELECT Id,
                              Name,
                              Parent_Milestone__c,
@@ -64,7 +67,7 @@ public with sharing class Milestone1_Clone_Milestone_Controller {
                       WHERE Parent_Milestone__c = :rec.Id
                      ];
         
-        //query task records
+        // query task records 
         tasks = [SELECT Id,
                         Name,
                         Project_Milestone__c,
@@ -74,13 +77,13 @@ public with sharing class Milestone1_Clone_Milestone_Controller {
                         Start_Date__c,
                         Due_Date__c,
                         Priority__c,
-				        Task_Stage__c,
-				        Class__c,
-				        Blocked__c,
-				        Blocked_Reason__c,
-				        Last_Email_Received__c,
-				        Estimated_Hours__c,
-				        Estimated_Expense__c
+                        Task_Stage__c,
+                        Class__c,
+                        Blocked__c,
+                        Blocked_Reason__c,
+                        Last_Email_Received__c,
+                        Estimated_Hours__c,
+                        Estimated_Expense__c
                  FROM Milestone1_Task__c
                  WHERE Project_Milestone__c = :rec.Id
                  OR Project_Milestone__r.Parent_Milestone__c = :rec.Id
@@ -88,41 +91,57 @@ public with sharing class Milestone1_Clone_Milestone_Controller {
         
         dummyMS = new Milestone1_Milestone__c();
         dummyMS.Name = 'Copy of ' + rec.Name;
+        
+        statusList = [SELECT IsActive from User where id = :rec.OwnerId];
+        if(statusList != null && statusList.size() > 0 )
+            isMilestoneOwnerActive = statusList[0].IsActive; 
     }
     
     public PageReference createClone(){
 
-    	PageReference pageReference = null;
-    	try{
-	        //clone and insert main milestone record
-	        List<Milestone1_Milestone__c> mainMilestoneList = new List<Milestone1_Milestone__c>();
-	        rec.Name = dummyMS.Name;
-	        mainMilestoneList.add(rec);
-	        Map<String, Milestone1_Milestone__c> newTopMilestoneMap = Milestone1_Clone_Utility.cloneMilestonesIntoMap(mainMilestoneList);
-	        insert newTopMilestoneMap.values();
-	        
-	        //clone and insert sub milestone records
-	        Map<String, Milestone1_Milestone__c> newBottomMilestoneMap = Milestone1_Clone_Utility.cloneMilestonesIntoMap(milestones);
-	        for(Milestone1_Milestone__c newMS : newBottomMilestoneMap.values()){
-	            newMS.Parent_Milestone__c = newTopMilestoneMap.get(newMS.Parent_Milestone__c).Id;
-	        }
-	        insert newBottomMilestoneMap.values();
-	        
-	        //collect all milestones into one map
-	        Map<String, Milestone1_Milestone__c> allNewMilestoneMap = new Map<String, Milestone1_Milestone__c>();
-	        allNewMilestoneMap.putAll(newTopMilestoneMap);
-	        allNewMilestoneMap.putAll(newBottomMilestoneMap);
-	        
-	        //clone and insert task records
-	        List<Milestone1_Task__c> newTasks = Milestone1_Clone_Utility.cloneTasksIntoList(tasks);
-	        for(Milestone1_Task__c newTask : newTasks){
-	            newTask.Project_Milestone__c = allNewMilestoneMap.get(newTask.Project_Milestone__c).Id;
-	        }
-	        insert newTasks;
-	        pageReference = new ApexPages.StandardController(newTopMilestoneMap.values()[0]).view(); 
+        PageReference pageReference = null;
+        try{
+              if(isMilestoneOwnerActive == false){
+                if(dummyMS.OwnerId == null){
+                   ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,system.label.Milestone1_InactiveUsersError);
+                   ApexPages.addMessage(myMsg);
+                   isInactiveUserToBeReplaced = true;
+                   return pageReference;
+                }if (dummyMS.OwnerId != null){
+                    rec.ownerId = dummyMS.OwnerId; 
+                }
+              }
+            
+            //clone and insert main milestone record
+            List<Milestone1_Milestone__c> mainMilestoneList = new List<Milestone1_Milestone__c>();
+            rec.Name = dummyMS.Name;
+            mainMilestoneList.add(rec);
+            Map<String, Milestone1_Milestone__c> newTopMilestoneMap = Milestone1_Clone_Utility.cloneMilestonesIntoMap(mainMilestoneList);
+            insert newTopMilestoneMap.values();
+            
+            //clone and insert sub milestone records
+            Map<String, Milestone1_Milestone__c> newBottomMilestoneMap = Milestone1_Clone_Utility.cloneMilestonesIntoMap(milestones);
+            for(Milestone1_Milestone__c newMS : newBottomMilestoneMap.values()){
+                newMS.Parent_Milestone__c = newTopMilestoneMap.get(newMS.Parent_Milestone__c).Id;
+            }
+            insert newBottomMilestoneMap.values();
+            
+            //collect all milestones into one map
+            Map<String, Milestone1_Milestone__c> allNewMilestoneMap = new Map<String, Milestone1_Milestone__c>();
+            allNewMilestoneMap.putAll(newTopMilestoneMap);
+            allNewMilestoneMap.putAll(newBottomMilestoneMap);
+            
+            //clone and insert task records
+            List<Milestone1_Task__c> newTasks = Milestone1_Clone_Utility.cloneTasksIntoList(tasks);
+            for(Milestone1_Task__c newTask : newTasks){
+                newTask.Project_Milestone__c = allNewMilestoneMap.get(newTask.Project_Milestone__c).Id;
+            }
+            insert newTasks;
+            pageReference = new ApexPages.StandardController(newTopMilestoneMap.values()[0]).view();
+             
         }catch(Exception ex){
-    		Apexpages.addMessages(ex);
-    	}
+            Apexpages.addMessages(ex);
+        }
         //direct user to cloned milestone's detail page
         return pageReference;
     }

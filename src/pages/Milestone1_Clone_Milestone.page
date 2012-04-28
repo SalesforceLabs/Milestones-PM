@@ -27,7 +27,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page standardController="Milestone1_Milestone__c"
            extensions="Milestone1_Clone_Milestone_Controller">
-	<apex:messages id="CloneMessages" />
+    <apex:pageMessages id="CloneMessages" />
     <apex:form >
         <apex:pageBlock title="{!$Label.Milestone1_MilestoneClone}">
             <apex:pageBlockButtons >
@@ -45,6 +45,14 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
                                     value="{!dummyMS.name}"
                                     required="true"/> 
                 </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            
+            <apex:pageBlockSection rendered="{!isInactiveUserToBeReplaced}">
+                  <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.Milestone1_NewFieldToReplaceInactiveUsers}" for="thelookup"/>
+                        <apex:inputField id="thelookup" value="{!dummyMS.OwnerId}"/> 
+                  </apex:pageBlockSectionItem>
             </apex:pageBlockSection>
             
         </apex:pageBlock>

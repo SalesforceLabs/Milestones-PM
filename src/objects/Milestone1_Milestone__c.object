@@ -23,7 +23,7 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>New</actionName>
+        <actionName>New</actionName> 
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>

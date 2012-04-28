@@ -41,7 +41,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
                 <apex:pageBlockSectionItem > 
                     <apex:outputLabel value="{!$Label.Milestone1_NewMilestoneName}"
                                       for="ms_name"/> 
-                    <apex:inputText id="ms_name"
+                     <apex:inputText id="ms_name"
                                     value="{!dummyMS.name}"
                                     required="true"/> 
                 </apex:pageBlockSectionItem>

@@ -5,7 +5,7 @@ Modified Date:04-17-2012
 Owner:Persistent
 Comments:Calendar-move between months take a while so Processing pop-up has been added.
  -->
-<c:MIlestone1_PopupComponent />
+<c:MIlestone1_PopupComponent /> 
 <apex:form id="theForm">
 <table cellspacing="0" cellpadding="6" border="0">
     <tr>

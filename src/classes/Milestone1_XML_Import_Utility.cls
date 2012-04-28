@@ -29,7 +29,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 global with sharing class Milestone1_XML_Import_Utility {
     
    global with sharing class XML_Metadata {
-     String ExportVersion;
+     String ExportVersion; 
      String ExportAuthor;
      String ExportPackage;
      String ExportOrganization;

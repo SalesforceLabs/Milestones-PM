@@ -28,7 +28,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 global with sharing class Milestone1_XML_Export_Utility {
     
-    private Milestone1_Project__c project;
+    private Milestone1_Project__c project;  
     private List<Milestone1_Milestone__c>  milestones;
     private Map<ID,Milestone1_Milestone__c>  milestonesMap;
     private List<Milestone1_Task__c> milestonesTasks;

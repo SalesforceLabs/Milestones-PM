@@ -28,7 +28,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 <apex:page standardController="Milestone1_Project__c"
            extensions="Milestone1_Clone_Project_Controller">
     <apex:pageMessages id="CloneMessages"/>
-    <apex:form >
+    <apex:form > 
         <apex:pageBlock title="{!$Label.Milestone1_ProjectClone}">
             <apex:pageBlockButtons >
                 <apex:commandButton value="{!$Label.Milestone1_Save}"

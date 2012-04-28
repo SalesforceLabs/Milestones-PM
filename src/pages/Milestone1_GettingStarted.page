@@ -27,7 +27,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page controller="Milestone1_GettingStartedController">
 
-    <apex:form >
+    <apex:form > 
         
     <apex:pageBlock title="{!$Label.WelcomeToMilestonesPM}">
     

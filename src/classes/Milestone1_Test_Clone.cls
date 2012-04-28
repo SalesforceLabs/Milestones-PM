@@ -27,7 +27,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 @isTest
-private class Milestone1_Test_Clone {
+private class Milestone1_Test_Clone { 
                   
     static testMethod void testProjectManyMilestonesManyTasksClone() {
         final Integer NUMBER_OF_MILESTONES = 200;

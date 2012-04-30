@@ -21,20 +21,9 @@ Contributors include:
 * Ganesh Mathrubootham, gmathrubootham@salesforce.com
 * Ron Hess, https://github.com/vnehess
 
-Todo List
----------
+
 
 Get to know Milestones PM. https://github.com/ForceDotComLabs/Milestones-PM/wiki/HOW-TO-Get-to-Know-Milestones-PM
 
-***CURRENT //TODO LIST***
 
-(Have a suggestion?  Let's hear it.)
-
-Add PE Compatibility.  https://github.com/ForceDotComLabs/Milestones-PM/wiki/PE-Compatibility
-
-DONE! Add Task and Milestone dependency.
-
-DONE! Add date change cascading.
-
-Add resource management.
 

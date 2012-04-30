@@ -3,7 +3,7 @@
   <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Resource_Bundle, 'stylesheets/PopupStylesheet.css')}" /> 
   <apex:includeScript value="{!URLFOR($Resource.Milestone1_Resource_Bundle,'javascript/plugins.js')}"/>
     
-    
+     
 <script>
      
     /********** loading popup related funtions*************/

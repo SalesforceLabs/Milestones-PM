@@ -37,7 +37,7 @@ private class Milestone1_Test_Import_Export {
         Document doc;
         String projectXML;
         
-        //create a project
+        //create a project 
         Milestone1_Project__c project = Milestone1_Test_Utility.sampleProjectActive('proj');
         insert project;
         

@@ -33,7 +33,7 @@ public with sharing class Milestone1_Clone_Milestone_Controller {
     private List<Milestone1_Milestone__c> milestones {get; set;}
     private List<Milestone1_Task__c> tasks {get; set;}
     private List<User> statusList{get; set;}
-    public boolean isMilestoneOwnerActive {get;set;}
+    public boolean isMilestoneOwnerActive {get;set;} 
     public boolean isInactiveUserToBeReplaced{get;set;}
 
     public Milestone1_Clone_Milestone_Controller(ApexPages.StandardController stc){

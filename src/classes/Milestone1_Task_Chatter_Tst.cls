@@ -31,7 +31,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 @isTest
 private class Milestone1_Task_Chatter_Tst 
 {
-    static testMethod void testChatterTaskFollows()
+    static testMethod void testChatterTaskFollows() 
     { 
         if(!Milestone1_Schema_Helper.isOrgChatterEnabled())
             return; //chatter is disabled - we can't run this test. 

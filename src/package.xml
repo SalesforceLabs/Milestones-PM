@@ -10,7 +10,6 @@
         <members>Milestone1_Test_Utility</members>
         <members>Milestone1_XML_Export_Utility</members>
         <members>Milestone1_XML_Export_Utility_Test</members>
-      
         <members>Milestone1_XML_Import_Utility</members>
         <members>Milestone1_XML_Import_Utility_Test</members>
         <members>Milestone1_repeatCon</members>

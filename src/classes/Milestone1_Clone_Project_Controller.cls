@@ -40,7 +40,7 @@ public with sharing class Milestone1_Clone_Project_Controller {
         //query project record
         rec = [SELECT Id,
                       Name,
-                      Deadline__c,
+                      Deadline__c, 
                       Description__c,
                       Status__c,
                       Total_Expense_Budget__c,

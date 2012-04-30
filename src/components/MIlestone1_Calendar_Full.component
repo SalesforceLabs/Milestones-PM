@@ -1,7 +1,7 @@
 <apex:Component controller="Milestone1_repeatCon" id="thePage"> 
 <!--
 Bug # 36
-Modified Date:04-17-2012
+Modified Date:04-17-2012 
 Owner:Persistent
 Comments:Calendar-move between months take a while so Processing pop-up has been added.
  -->

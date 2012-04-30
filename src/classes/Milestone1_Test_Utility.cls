@@ -1,7 +1,7 @@
-/*
+/* 
 Copyright (c) 2011, salesforce.com, Inc.
 All rights reserved.
-
+ 
 Redistribution and use in source and binary forms, with or without modification, 
 are permitted provided that the following conditions are met:
 
@@ -28,6 +28,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 public with sharing class Milestone1_Test_Utility {
     
+   
     public static Milestone1_Project__c sampleProject(String name) {
         Milestone1_Project__c rec = new Milestone1_Project__c();
         rec.Name = name + ''+ Datetime.now().getTime();
@@ -54,18 +55,48 @@ public with sharing class Milestone1_Test_Utility {
         return rec;
     }
     public static Milestone1_Milestone__c sampleMilestone(Id projectId, Id parentMSId, String name) {
+
         Milestone1_Milestone__c rec = new Milestone1_Milestone__c();
         rec.Name = name;
         rec.Parent_Milestone__c = parentMSId;
         rec.Project__c = projectId;
         rec.Complete__c = false; //getRandomBool(.25);
         rec.Description__c = 'Description for ' + name;
+        //rec.Kickoff__c  =   Date.today();
+        //rec.Deadline__c =   Date.today().addDays(25);
+        rec.Expense_Budget__c = Math.floor(Math.random() * 50000 * 100) / 100;
+        rec.Hours_Budget__c = Math.floor(Math.random() * 500 * 100) / 100;
+
+        return rec;
+    }
+     /**
+         *Modified Date:04-26-2012.
+         *Owner:Persistent.
+         *Comment: Importing the project with all the relationships intact.
+         *Bug #: 66.
+    */ 
+        
+    public static Milestone1_Milestone__c testSampleMilestone(Id projectId, Id predecessorMSId, String name){
+        Milestone1_Milestone__c rec = new Milestone1_Milestone__c();
+        rec.Name = name;
+        rec.Predecessor_Milestone__c = predecessorMSId;
+        rec.Project__c = projectId;
+        rec.Complete__c = false; //getRandomBool(.25);
+        rec.Description__c = 'Description for ' + name;
+        if(predecessorMSId==null){
+            rec.Kickoff__c =Date.today();
+            rec.Deadline__c =Date.today().addDays(5);
+        }
+        else{
+            rec.Kickoff__c =Date.today().addDays(6);
+            rec.Deadline__c =Date.today().addDays(7);
+        }
         rec.Expense_Budget__c = Math.floor(Math.random() * 50000 * 100) / 100;
         rec.Hours_Budget__c = Math.floor(Math.random() * 500 * 100) / 100;
         return rec;
     }
 
-	public static Milestone1_Task__c sampleTask(Id milestoneId, Date kickoff, Date deadline, Boolean isComplete, Boolean isBlocked) {
+    public static Milestone1_Task__c sampleTask(Id milestoneId, Date kickoff, Date deadline, Boolean isComplete, Boolean isBlocked) {
         Milestone1_Task__c rec = new Milestone1_Task__c();
         rec.Project_Milestone__c = milestoneId;
         rec.Assigned_To__c = UserInfo.getUserId();
@@ -81,28 +112,41 @@ public with sharing class Milestone1_Test_Utility {
         rec.Class__c = 'Ad Hoc';
         rec.Blocked__c = isBlocked;
         if (!isBlocked) {
-        	rec.Blocked_Reason__c = null;
+            rec.Blocked_Reason__c = null;
         } else {
-        	rec.Blocked_Reason__c = 'Blocked Task Test';
+            rec.Blocked_Reason__c = 'Blocked Task Test';
         }
         rec.Last_Email_Received__c = Datetime.now();
-        return rec;		
-	}
+        return rec;     
+    }
+    
+    public static Milestone1_Task__c sampleTask(Id milestoneId,Id PredecessorTaskId,Date kickoff, Date deadline){
+        Milestone1_Task__c rec = new Milestone1_Task__c();
+        rec.Project_Milestone__c = milestoneId;
+        rec.Assigned_To__c = UserInfo.getUserId();
+        rec.Predecessor_Task__c=PredecessorTaskId;
+        rec.Name = 'MS ' + milestoneId + ' task ' + Datetime.now().getTime();
+        rec.Description__c   = 'test description ' + rec.Name;
+        rec.Start_Date__c   = kickoff;
+        rec.Due_Date__c   = deadline;
+        return rec;
+    }
+    
 
     public static Milestone1_Task__c sampleTask(Milestone1_Milestone__c milestone) {
-		return Milestone1_Test_Utility.sampleTask(milestone.Id, milestone.Kickoff__c.addDays(-1), milestone.Deadline__c.addDays(-1), false, false);
+        return Milestone1_Test_Utility.sampleTask(milestone.Id, milestone.Kickoff__c.addDays(-1), milestone.Deadline__c.addDays(-1), false, false);
     }
     
     public static Milestone1_Task__c sampleTask(Id milestoneId) {
-		return Milestone1_Test_Utility.sampleTask(milestoneId, Date.today().addDays(1), Date.today().addDays(1), false, false);
+        return Milestone1_Test_Utility.sampleTask(milestoneId, Date.today().addDays(1), Date.today().addDays(1), false, false);
     }
 
     public static Milestone1_Task__c sampleTaskComplete(Id milestoneId) {
-		return Milestone1_Test_Utility.sampleTask(milestoneId, Date.today().addDays(1), Date.today().addDays(1), true, false);
+        return Milestone1_Test_Utility.sampleTask(milestoneId, Date.today().addDays(1), Date.today().addDays(1), true, false);
     }
 
     public static Milestone1_Task__c sampleTaskBlocked(Id milestoneId) {
-		return Milestone1_Test_Utility.sampleTask(milestoneId, Date.today().addDays(1), Date.today().addDays(1), false, true);
+        return Milestone1_Test_Utility.sampleTask(milestoneId, Date.today().addDays(1), Date.today().addDays(1), false, true);
     }
     
     public static Milestone1_Time__c sampleTime(Id taskId) {
@@ -150,40 +194,46 @@ public with sharing class Milestone1_Test_Utility {
         return testRule;
     }
     
-   	/**
-	* Extract the ids from a milestone list
-	*
-	* @param src Milestone list
-	* @return Set of milestone ids
-	*/    
+    /**
+    * Extract the ids from a milestone list
+    *
+    * @param src Milestone list
+    * @return Set of milestone ids
+    */    
     public static Set<Id> extractMilestoneIds(List<Milestone1_Milestone__c> src){
-    	Set<Id> res = new Set<Id>();
-    	
-    	for(Milestone1_Milestone__c m : src){ 
-    		res.add( m.Id ); 
-    	}
-    	
-    	return res;
+        Set<Id> res = new Set<Id>();
+        
+        for(Milestone1_Milestone__c m : src){ 
+            res.add( m.Id ); 
+        }
+        
+        return res;
     }
     
     /**
-    * 	Create a batch of milestones
+    *   Create a batch of milestones
     */
     public static Map<String,Milestone1_Milestone__c> manyMilestones(Milestone1_Project__c project,
-    															Milestone1_Milestone__c parentMilestone, Integer size){
-    	Map<String,Milestone1_Milestone__c> milestonesMap = new Map<String,Milestone1_Milestone__c>();
-    	Milestone1_Milestone__c milestone;
-    	List<Milestone1_Milestone__c> milestones = new List<Milestone1_Milestone__c>();
-    	Id projectId;
-    	if(project != null){
-    		projectId = project.Id;	
-    	}
-    	for(Integer i = 0; i < size; i++){
-        	milestone = Milestone1_Test_Utility.sampleMilestone(projectId, parentMilestone.Id, 'ms'+i);
-        	milestonesMap.put(milestone.Name,milestone);
+                                                                Milestone1_Milestone__c parentMilestone, Integer size){
+
+        Map<String,Milestone1_Milestone__c> milestonesMap = new Map<String,Milestone1_Milestone__c>();
+        Milestone1_Milestone__c milestone;
+        List<Milestone1_Milestone__c> milestones = new List<Milestone1_Milestone__c>();
+        Id projectId;
+        if(project != null){
+            projectId = project.Id; 
         }
+
+        for(Integer i = 0; i < size; i++){
+            milestone = Milestone1_Test_Utility.sampleMilestone(projectId, parentMilestone.Id, 'ms'+i);
+
+            milestonesMap.put(milestone.Name,milestone);
+
+        }
+
         insert milestonesMap.values();
-        return milestonesMap;	
+
+        return milestonesMap;   
     }    
     
     /**
@@ -246,57 +296,47 @@ public with sharing class Milestone1_Test_Utility {
         insert tasksMap.values();
         return tasksMap;        
     }    
+    
+    public static Map<String,Milestone1_Task__c> manyPredecessorTasks(Id mileID,Milestone1_Task__c predecessorTask,Integer size){
+        Map<String,Milestone1_Task__c> tasksMap = new Map<String,Milestone1_Task__c>();
+        Milestone1_Task__c task;
+        List<Milestone1_Task__c> tasks = new List<Milestone1_Task__c>();
+        Id milestoneId;
+        milestoneId = mileId; 
+        for(Integer i = 0; i < size; i++){
+            task = Milestone1_Test_Utility.sampleTask(milestoneId,predecessorTask.id,predecessorTask.Due_Date__c.addDays(1),predecessorTask.Due_Date__c.addDays(1));
+            task.Name =  'ts'+i;
+            tasksMap.put(task.Name ,task);
+        }
+        insert tasksMap.values();
+        return tasksMap;  
+    }
      
-    public static void createFilterData(){
-  		 Milestone1_Project__c testProject = Milestone1_Test_Utility.sampleProject('UNIT TEST PROJECT NAME ABC123XYZ UNIQUE' + System.now());
-        testProject.Status__c = 'Active';
-        testProject.Deadline__c = Date.today();
-        insert testProject;
+ public static User createSFUser(){
+    
+    Profile profileUsed;
         
-        Milestone1_Project__c testProject1 = Milestone1_Test_Utility.sampleProject('UNIT TEST PROJECT NAME ABC123XYZ UNIQUE' + System.now());
-        testProject1.Status__c = 'Active';
-        testProject1.Deadline__c = Date.today();
-        insert testProject1;
+        String ret = 'word' + math.rint(math.random() * 100000);
+        for( Profile p : [ Select Id, PermissionsModifyAllData, Name from Profile limit 100 ] ){
+             if( p.PermissionsModifyAllData ){
+                 profileUsed = p;
+             }
+        }
+        String namePrefix = ret;
+    
+         User testUser = new User();
+         testUser.Email = 'test@test.com';
+         testUser.Username = ret + '@testuser.com';
+         testUser.LastName = 'test';
+         testUser.Alias = 'test';
+         testUser.ProfileId = profileUsed.Id;
+         testUser.LanguageLocaleKey = 'en_US';
+         testUser.LocaleSidKey = 'en_US';
+         testUser.TimeZoneSidKey = 'America/Chicago';
+         testUser.EmailEncodingKey = 'UTF-8';
         
-        Milestone1_Project__c testProject2 = Milestone1_Test_Utility.sampleProject('UNIT TEST PROJECT NAME ABC123XYZ UNIQUE' + System.now());
-        testProject2.Status__c = 'Active';
-        testProject2.Deadline__c = Date.today();
-        insert testProject2;
-        
-        Milestone1_Milestone__c testMilestone = Milestone1_Test_Utility.sampleMilestone(testProject.Id,null,'UNIT TEST MILESTONE NAME ACB123XYZ UNIQUE' + System.now());
-        testMilestone.Deadline__c = Date.today();
-        testMilestone.Complete__c = false;
-        insert testMilestone;
-        
-        Milestone1_Milestone__c testMilestone1 = Milestone1_Test_Utility.sampleMilestone(testProject1.Id,null,'UNIT TEST MILESTONE NAME ACB123XYZ UNIQUE' + System.now());
-        testMilestone1.Deadline__c = Date.today();
-        testMilestone1.Complete__c = false;
-        insert testMilestone1;
-        
-        Milestone1_Milestone__c testMilestone2 = Milestone1_Test_Utility.sampleMilestone(testProject2.Id,null,'UNIT TEST MILESTONE NAME ACB123XYZ UNIQUE' + System.now());
-        testMilestone2.Deadline__c = Date.today();
-        testMilestone2.Complete__c = false;
-        insert testMilestone2;
-
-        Milestone1_Task__c testTask = Milestone1_Test_Utility.sampleTask(testMilestone.Id);
-        testTask.Complete__c = false;
-        testTask.Start_Date__c = Date.today();
-        testTask.Due_Date__c = Date.today();
-        insert testTask;
-        
-        Milestone1_Task__c testTask1 = Milestone1_Test_Utility.sampleTask(testMilestone1.Id);
-        testTask1.Complete__c = false;
-        testTask1.Start_Date__c = Date.today();
-        testTask1.Due_Date__c = Date.today();
-        insert testTask1;
-        
-         Milestone1_Task__c testTask2 = Milestone1_Test_Utility.sampleTask(testMilestone2.Id);
-        testTask2.Complete__c = false;
-        testTask2.Start_Date__c = Date.today();
-        testTask2.Due_Date__c = Date.today();
-        insert testTask2;
-        
-        
-  }
-
+         insert testUser;  
+         
+         return testUser;
+  } 
 }

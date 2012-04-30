@@ -1,4 +1,4 @@
-<!-- 
+<!--   
 Copyright (c) 2011, salesforce.com, Inc.
 All rights reserved.
 
@@ -29,6 +29,6 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 <!-- Bug # 59;  Modified Date:04-17-2012; Owner:Persistent; Comments: CSS that has been refered could change at anytime and break the app,so need to upload as a static resource. -->
 <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Resource_Bundle, 'stylesheets/homeCalendar.css')}" />
     <apex:pageBlock title="{!$Label.Milestone1_Calendar}">
-        <c:MIlestone1_Calendar_Full />
+        <c:MIlestone1_Calendar_Full /> 
     </apex:pageBlock>
 </apex:page>

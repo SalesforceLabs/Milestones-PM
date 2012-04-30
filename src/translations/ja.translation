@@ -5,8 +5,236 @@
         <name>Project_Mgmt_Labs</name>
     </customApplications>
     <customLabels>
+        <label><!-- ALiasNotFound --></label>
+        <name>ALiasNotFound</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AllItems --></label>
+        <name>AllItems</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- AllOpenTasks --></label>
+        <name>AllOpenTasks</name>
+    </customLabels>
+    <customLabels>
         <label>エラーが発生しました。</label>
         <name>AnErrorHasOcurred</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Back --></label>
+        <name>Back</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Be sure to explore the sample project, &quot;HOWTO: Get Started with Milestones PM&quot;. --></label>
+        <name>BeSureToExploreTheSampleProject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Blocked Tasks --></label>
+        <name>BlockedTasks</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Blocked_Tasks --></label>
+        <name>Blocked_Tasks</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Calendar --></label>
+        <name>Calendar</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CalendarLegend --></label>
+        <name>CalendarLegend</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Cancel --></label>
+        <name>Cancel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Check &quot;Active&quot; --></label>
+        <name>CheckActive</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Click Here --></label>
+        <name>ClickHere</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Click here to initialize this app --></label>
+        <name>ClickHereToInitializeThisApp</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Click &quot;New Email Service&quot;. --></label>
+        <name>ClickNewEmailService</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Click &quot;Save and New Email Address&quot;. --></label>
+        <name>ClickSaveAndNewEmailAddress</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Clicking the button will --></label>
+        <name>ClickingTheButtonWill</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Community --></label>
+        <name>Community</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Content is not allowed in prolog. --></label>
+        <name>ContentIsNotAllowedInProlog</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- CurrentExport --></label>
+        <name>CurrentExport</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- DidNotMatch --></label>
+        <name>DidNotMatch</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- EnterAcommand --></label>
+        <name>EnterAcommand</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Expenses --></label>
+        <name>Expenses</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Filter --></label>
+        <name>Filter</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- FilterCalendarBy --></label>
+        <name>FilterCalendarBy</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- For community assistance with Milestones PM, please visit &lt;a href=&quot;http://succes --></label>
+        <name>ForCommunityAssistance</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Friday --></label>
+        <name>Friday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- FromUsersNotFound --></label>
+        <name>FromUsersNotFound</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Full Month --></label>
+        <name>FullMonth</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- FullView --></label>
+        <name>FullView</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Getting Help --></label>
+        <name>GettingHelp</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Getting Started --></label>
+        <name>GettingStarted</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Give a Email Service Name &quot;Email To Milestone Task&quot;. --></label>
+        <name>GiveEmailServiceName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Go to Setup -&gt; Develop -&gt; Email Services --></label>
+        <name>GoToSetupDevelopEmailServices</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- &quot;If you have not done this, please visit &lt;a href=&quot;&quot;/0A3?setupid=ImportedPackage&quot; --></label>
+        <name>IfYouHaveNotDoneThis</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Import --></label>
+        <name>Import</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Import a default project that will help you with your next steps. --></label>
+        <name>ImportDefaultProject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Import Failed - -  Milestone was unable to import your file. --></label>
+        <name>ImportFailed</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ImportLocalTemplateXML --></label>
+        <name>ImportLocalTemplateXML</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Import Template --></label>
+        <name>ImportTemplate</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ImportTemplateXML --></label>
+        <name>ImportTemplateXML</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Important --></label>
+        <name>Important</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- IMPORTANT --></label>
+        <name>ImportantUpper</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Incomplete Tasks By Priority --></label>
+        <name>IncompleteTasksByPriority</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Incomplete Tasks By Projects --></label>
+        <name>IncompleteTasksByProjects</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Initial Configuration --></label>
+        <name>InitialConfiguration</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Initialization Complete! --></label>
+        <name>InitializationComplete</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Initialize custom app settings. --></label>
+        <name>InitializeCustomAppSettings</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Initialize your configuration using the button below. --></label>
+        <name>InitializeYourConfiguration</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Insufficient privileges to access project. --></label>
+        <name>InsufficientPrivileges</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Insufficient privileges to access parent milestone. --></label>
+        <name>InsufficientPrivilegesToAccessParentMilestone</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- InvalidName --></label>
+        <name>InvalidName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- InvalidVersion --></label>
+        <name>InvalidVersion</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Late Tasks --></label>
+        <name>LateTasks</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- &lt;a href=&quot;http://blogs.developerforce.com/labs/2011/08/howto-contribute-to-milest --></label>
+        <name>LearnMore</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Logs --></label>
+        <name>Logs</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MainMenu --></label>
+        <name>MainMenu</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MaximumPer --></label>
+        <name>MaximumPer</name>
     </customLabels>
     <customLabels>
         <label><!-- ALiasNotFound --></label>
@@ -113,6 +341,10 @@
         <name>Milestone1_FilterCalendarBy</name>
     </customLabels>
     <customLabels>
+        <label><!-- Milestone1_FilterProjectBy --></label>
+        <name>Milestone1_FilterProjectBy</name>
+    </customLabels>
+    <customLabels>
         <label><!-- For community assistance with Milestones PM, please visit &lt;a href=&quot;http://succes --></label>
         <name>Milestone1_ForCommunityAssistance</name>
     </customLabels>
@@ -189,6 +421,10 @@
         <name>Milestone1_ImportantUpper</name>
     </customLabels>
     <customLabels>
+        <label><!-- Milestone1_InactiveUsersError --></label>
+        <name>Milestone1_InactiveUsersError</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Incomplete Tasks By Priority --></label>
         <name>Milestone1_IncompleteTasksByPriority</name>
     </customLabels>
@@ -209,7 +445,7 @@
         <name>Milestone1_InitializeCustomAppSettings</name>
     </customLabels>
     <customLabels>
-        <label><!-- Initialize your configuration using the button below. --></label>
+        <label><!-- Initialize your configuration using the button besides. --></label>
         <name>Milestone1_InitializeYourConfiguration</name>
     </customLabels>
     <customLabels>
@@ -383,6 +619,10 @@
     <customLabels>
         <label><!-- MyTasksOnly --></label>
         <name>Milestone1_MyTasksOnly</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Milestone1_NewFieldToReplaceInactiveUsers --></label>
+        <name>Milestone1_NewFieldToReplaceInactiveUsers</name>
     </customLabels>
     <customLabels>
         <label><!-- NewMilestoneName --></label>
@@ -683,6 +923,418 @@
     <customLabels>
         <label><!-- Your project could not successfully be exported to an XML document. --></label>
         <name>Milestone1_YourProjectCouldNotSuccessfully</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Milestone Application Post Installation Instructions --></label>
+        <name>MilestoneApplicationPostInstallation</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MilestoneClone --></label>
+        <name>MilestoneClone</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Milestone is Complete, the Task can not be moved --></label>
+        <name>MilestoneIsComplete</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MilestoneRecordsToMove --></label>
+        <name>MilestoneRecordsToMove</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A milestone you are attempting to move is already assigned to this project. Plea --></label>
+        <name>MilestoneYouAreAttempting</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Milestones --></label>
+        <name>Milestones</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MilestonesCalendar --></label>
+        <name>MilestonesCalendar</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MilestonesOpenTasks --></label>
+        <name>MilestonesOpenTasks</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Milestones PM is Open Source software. --></label>
+        <name>MilestonesPMISOpenSource</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Milestones PM is unsupported. --></label>
+        <name>MilestonesPMIsUnsupported</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Milestones should not be moved to different Projects, except through the &quot;Move t --></label>
+        <name>MilestonesShouldNotBeMoved</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Monday --></label>
+        <name>Monday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveMilestoneCancel --></label>
+        <name>MoveMilestoneCancel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveMilestoneRecordsToMove --></label>
+        <name>MoveMilestoneRecordsToMove</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveMilestoneS --></label>
+        <name>MoveMilestoneS</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveMilestoneSave --></label>
+        <name>MoveMilestoneSave</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveMilestone_Cancel --></label>
+        <name>MoveMilestone_Cancel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveMilestone_Save --></label>
+        <name>MoveMilestone_Save</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveMilestone_s --></label>
+        <name>MoveMilestone_s</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveTaskCancel --></label>
+        <name>MoveTaskCancel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveTaskDetailAttachmentsRecords --></label>
+        <name>MoveTaskDetailAttachmentsRecords</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveTaskDetailCancel --></label>
+        <name>MoveTaskDetailCancel</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveTaskDetailS --></label>
+        <name>MoveTaskDetailS</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveTaskDetailSave --></label>
+        <name>MoveTaskDetailSave</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveTaskDetailTaskRecordsToMove --></label>
+        <name>MoveTaskDetailTaskRecordsToMove</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveTaskRecordsToMove --></label>
+        <name>MoveTaskRecordsToMove</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveTaskS --></label>
+        <name>MoveTaskS</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MoveTaskSave --></label>
+        <name>MoveTaskSave</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- My Incomplete Tasks --></label>
+        <name>MyIncompleteTasks</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MyMilestonesOnly --></label>
+        <name>MyMilestonesOnly</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MyProjectsAndSubProjectItems --></label>
+        <name>MyProjectsAndSubProjectItems</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MyTasks --></label>
+        <name>MyTasks</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- MyTasksOnly --></label>
+        <name>MyTasksOnly</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- NewFieldToReplaceInactiveUsers --></label>
+        <name>NewFieldToReplaceInactiveUsers</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- NewMilestoneName --></label>
+        <name>NewMilestoneName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- NewProjectName --></label>
+        <name>NewProjectName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Next Steps --></label>
+        <name>NextSteps</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- No import XML files selected. Please select an XML file to import. --></label>
+        <name>NoImportXMLFilesSelected</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- No projects! --></label>
+        <name>NoProjects</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- OrganizationsVersion --></label>
+        <name>OrganizationsVersion</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- OverdueTasks --></label>
+        <name>OverdueTasks</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- PleaseUseFormat --></label>
+        <name>PleaseUseFormat</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ProjectCannotBeNull --></label>
+        <name>ProjectCannotBeNull</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ProjectClone --></label>
+        <name>ProjectClone</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ProjectDetail --></label>
+        <name>ProjectDetail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ProjectIsTooLarge --></label>
+        <name>ProjectIsTooLarge</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Project Summary Page --></label>
+        <name>ProjectSummary_FirstHalf</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- to start using Milestones PM. --></label>
+        <name>ProjectSummary_SecondHalf</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ProjectXML --></label>
+        <name>ProjectXML</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ProjectXMLImport --></label>
+        <name>ProjectXMLImport</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Projects --></label>
+        <name>Projects</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ProjectsCalendar --></label>
+        <name>ProjectsCalendar</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ProjectsMustBeExported --></label>
+        <name>ProjectsMustBeExported</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- QuickSearch --></label>
+        <name>QuickSearch</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- RegexFwdRe --></label>
+        <name>RegexFwdRe</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SalesforceDMLError --></label>
+        <name>SalesforceDMLError</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Saturday --></label>
+        <name>Saturday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Save --></label>
+        <name>Save</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Select the Apex Class &quot;Milestone1_Email_Handler&quot;. --></label>
+        <name>SelectTheApexClass</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Set &quot;Accept Attachments&quot; to &quot;All&quot;. --></label>
+        <name>SetAcceptAttachmentsToAll</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Set &quot;Accept Email From&quot; to &quot;All Email Addresses&quot;. --></label>
+        <name>SetAcceptEmailFromToAllEmail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Set All Failure Response options to &apos;Bounce Message&apos;. --></label>
+        <name>SetAllFailureResponseOptions</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Settings already exist.  No changes made. --></label>
+        <name>SettingsAlreadyExistNoChanges</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Setup A New Email Address. --></label>
+        <name>SetupNewEmailAddress</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Start creating your first project. --></label>
+        <name>StartCreatingYourFirstProject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Sub-milestones can only go one level deep. Please select a top-level milestone a --></label>
+        <name>SubMilestonesCanOnlyGoOneLevelDeep</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SubjectMissing --></label>
+        <name>SubjectMissing</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SubjectMissingAlias --></label>
+        <name>SubjectMissingAlias</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SubjectMissingTask --></label>
+        <name>SubjectMissingTask</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Submit --></label>
+        <name>Submit</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Summary --></label>
+        <name>Summary</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- SummarySearch --></label>
+        <name>SummarySearch</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Sunday --></label>
+        <name>Sunday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- TaskNotFound --></label>
+        <name>TaskNotFound</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- A task you are attempting to move is already assigned to this milestone. Please --></label>
+        <name>TaskYouAreAttempting</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tasks --></label>
+        <name>Tasks</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- TasksCalendar --></label>
+        <name>TasksCalendar</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- The Project cannot be null. This is a critical error during import of XML. Pleas --></label>
+        <name>TheProjectCannotBeNull</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- The XML file for your project has been successfully created, and can be found in --></label>
+        <name>TheXMLFileForYourProjectHasBeenSuccessfully</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- The XML file is too large. --></label>
+        <name>TheXMLFileIsTooLarge</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Thealias --></label>
+        <name>Thealias</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- This sample project includes the remaining configuration steps as well as ideas --></label>
+        <name>ThisSampleProjectIncludes</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Thursday --></label>
+        <name>Thursday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Times --></label>
+        <name>Times</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- To configure the Email To Task Service --></label>
+        <name>ToConfigureTheEmail</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- To submit ideas or issues, please visit &lt;a href=&quot;https://github.com/ForceDotComL --></label>
+        <name>ToSubmitIdeasOrIssues</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ToUsersNotFound --></label>
+        <name>ToUsersNotFound</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Click here --></label>
+        <name>ToViewXML_FirstHalf</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- to view the XML file in the My Personal Documents folder. --></label>
+        <name>ToViewXML_SecondHalf</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Click here --></label>
+        <name>ToYourProject_FirstHalf</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- to return to your project. --></label>
+        <name>ToYourProject_SecondHalf</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Top Level Milestone has predecessor and cannot be moved.  Remove that predecesso --></label>
+        <name>TopLevelMilestoneHasPredecessor</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Top Level Milestone has successors and cannot be moved.  Redirect those successo --></label>
+        <name>TopLevelMilestoneHasSuccessors</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Tuesday --></label>
+        <name>Tuesday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- UsersNotFound --></label>
+        <name>UsersNotFound</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- View the &quot;Getting Started&quot; project created as part of your initial configuration --></label>
+        <name>ViewTheGettingStartedProject</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- We welcome your issue reports, ideas, documentation, code tweaks and all other p --></label>
+        <name>WeWelcomeYourIssueReports</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Wednesday --></label>
+        <name>Wednesday</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Welcome to Milestones PM - Project Management --></label>
+        <name>WelcomeToMilestonesPM</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- You can now go to your project summary page to see the sample project we install --></label>
+        <name>YouCanNowGoTo</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- you must &lt;strong&gt;deploy&lt;/strong&gt; Milestones before continuing. --></label>
+        <name>YouMustDeploy</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Your next few steps are easy. --></label>
+        <name>YourNextFewSteps</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Your project could not successfully be exported to an XML document. --></label>
+        <name>YourProjectCouldNotSuccessfully</name>
     </customLabels>
     <customPageWebLinks>
         <label>マイルストーンをはじめる</label>

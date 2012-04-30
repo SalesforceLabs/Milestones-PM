@@ -1,0 +1,38 @@
+<apex:component >
+  <apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-1.4.4.min.js')}"/>
+  <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Resource_Bundle, 'stylesheets/PopupStylesheet.css')}" /> 
+  <apex:includeScript value="{!URLFOR($Resource.Milestone1_Resource_Bundle,'javascript/plugins.js')}"/>
+    
+    
+<script>
+     
+    /********** loading popup related funtions*************/
+    
+    // this function is to open loading popup
+    function openLoadingPopup()
+    {
+        document.getElementById('loadingPopup').style.visibility = 'visible';
+        $("#loadingPopup").lightbox_me({
+            centered: true, 
+            closeClick: false, 
+            closeEsc: false, 
+            closeSelector: ".button.cancel"
+            });         
+      
+    }
+    // functions to close loading popup
+    function closeLoadingPopup()
+    {
+        $("#loadingPopup").trigger("close");
+                       
+    } 
+</script>
+
+
+<!-- loading popup -->
+    <div class="ext-el-mask-msg x-mask-loading" id="loadingPopup" style="left: 471px; top: 35px; visibility: hidden ">
+        <div>
+       {!$Label.Milestone1_Loading}
+        </div>
+    </div>
+</apex:component>

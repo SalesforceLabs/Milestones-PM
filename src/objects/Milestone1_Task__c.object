@@ -286,6 +286,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Predecessor_Task_Import_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Predecessor_Task_Import_Id__c</label>
+        <length>18</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Predecessor_Task__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>

@@ -1,10 +1,10 @@
-/*
+/* 
 Copyright (c) 2011, salesforce.com, Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
 are permitted provided that the following conditions are met:
-
+ 
     * Redistributions of source code must retain the above copyright notice, 
     this list of conditions and the following disclaimer.
     * Redistributions in binary form must reproduce the above copyright notice, 
@@ -28,7 +28,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 global with sharing class Milestone1_XML_Export_Utility {
     
-    private Milestone1_Project__c project;
+    private Milestone1_Project__c project;  
     private List<Milestone1_Milestone__c>  milestones;
     private Map<ID,Milestone1_Milestone__c>  milestonesMap;
     private List<Milestone1_Task__c> milestonesTasks;
@@ -48,26 +48,32 @@ global with sharing class Milestone1_XML_Export_Utility {
 
     global Milestone1_Project__c lookup(ID targetId) {
         Milestone1_Project__c project = [Select m.Kickoff__c,m.Deadline__c, m.Total_Hours_Budget__c, m.Total_Expense_Budget__c, m.Status__c, m.Name, m.Id, m.Description__c From Milestone1_Project__c m where Id = :targetId limit 1];
+        /**
+        *Bug # 44.
+        *Modified Date:04-18-2012.
+        *Owner: Persistent.
+        *Comments:Importing the project with all the relationships intact.
+        */
         //Retrieve all the Milestones
-        milestones = [Select m1.Id, m1.Name, m1.Alias__c, m1.Deadline__c, m1.Kickoff__c, m1.Complete__c,m1.Description__c, m1.Expense_Budget__c,  m1.Project__c, m1.Hours_Budget__c From Milestone1_Milestone__c m1 where Project__c = :project.Id and Parent_Milestone__c = null];
+        milestones = [Select m1.Id, m1.Name, m1.Alias__c,m1.Predecessor_Milestone__c, m1.Deadline__c, m1.Kickoff__c, m1.Complete__c,m1.Description__c, m1.Expense_Budget__c,  m1.Project__c, m1.Hours_Budget__c From Milestone1_Milestone__c m1 where Project__c = :project.Id and Parent_Milestone__c = null];
         for(Milestone1_Milestone__c milestone : milestones)
         {
             milestonesMap.put(milestone.Id,milestone);
         }
         //Retrieve all the Sub-Milestones
-        subMilestones = [Select m1.Id, m1.Name,  m1.Alias__c, m1.Deadline__c, m1.Kickoff__c, m1.Complete__c,m1.Description__c, m1.Expense_Budget__c,  m1.Project__c, m1.Hours_Budget__c, Parent_Milestone__c From Milestone1_Milestone__c m1 where Parent_Milestone__c in :milestonesMap.keySet()];
+        subMilestones = [Select m1.Id, m1.Name,m1.Predecessor_Milestone__c,m1.Alias__c, m1.Deadline__c, m1.Kickoff__c, m1.Complete__c,m1.Description__c, m1.Expense_Budget__c,  m1.Project__c, m1.Hours_Budget__c, Parent_Milestone__c From Milestone1_Milestone__c m1 where Parent_Milestone__c in :milestonesMap.keySet()];
         for(Milestone1_Milestone__c subMilestone : subMilestones)
         {
             subMilestonesMap.put(subMilestone.Id,subMilestone);
         }
         //Retrieve all the Milestone Tasks
-        milestonesTasks = [Select m.Id, m.Name, m.Description__c, m.Estimated_Hours__c, m.Estimated_Expense__c, m.Start_Date__c, m.Due_Date__c, m.Priority__c, m.Project_Milestone__c, m.Complete__c From Milestone1_Task__c m where m.Project_Milestone__c in : milestonesMap.keySet()];
+        milestonesTasks = [Select m.Id, m.Name, m.Description__c,m.Predecessor_Task__c, m.Estimated_Hours__c, m.Estimated_Expense__c, m.Start_Date__c, m.Due_Date__c, m.Priority__c, m.Project_Milestone__c, m.Complete__c From Milestone1_Task__c m where m.Project_Milestone__c in : milestonesMap.keySet()];
         for(Milestone1_Task__c task : milestonesTasks)
         {
             milestonesTasksMap.put(task.Id,task);
         }
         //Retreive all the Sub Miltestone Tasks
-        submilestonesTasks = [Select m.Id, m.Name, m.Description__c, m.Estimated_Hours__c, m.Estimated_Expense__c,m.Start_Date__c, m.Due_Date__c, m.Priority__c, m.Project_Milestone__c ,m.Complete__c From Milestone1_Task__c m where m.Project_Milestone__c in : subMilestonesMap.keySet()];
+        submilestonesTasks = [Select m.Id, m.Name, m.Description__c,m.Predecessor_Task__c,m.Estimated_Hours__c, m.Estimated_Expense__c,m.Start_Date__c, m.Due_Date__c, m.Priority__c, m.Project_Milestone__c ,m.Complete__c From Milestone1_Task__c m where m.Project_Milestone__c in : subMilestonesMap.keySet()];
         for(Milestone1_Task__c task : submilestonesTasks)
         {
             subMilestonesTasksMap.put(task.Id,task);
@@ -109,8 +115,8 @@ global with sharing class Milestone1_XML_Export_Utility {
         writeElement(out,'Total_Hours_Budget__c',project.Total_Hours_Budget__c);
         writeElement(out,'Total_Expense_Budget__c', project.Total_Expense_Budget__c);
         writeElement(out,'Status__c', project.Status__c);
-        writeElement(out,'Description__c', Project.Description__c);
-        writeElement(out,'Name', Project.Name);
+        writeElement(out,'Description__c',project.Description__c);
+        writeElement(out,'Name', project.Name);
         for(Milestone1_Milestone__c milestone : milestones)
         {
             writeMilestoneToXML(out,milestone,true);
@@ -132,11 +138,20 @@ global with sharing class Milestone1_XML_Export_Utility {
         writeElement(out,'Id', milestone.Id);
         writeElement(out,'Description__c',milestone.Description__c);
         writeElement(out,'Expense_Budget__c',milestone.Expense_Budget__c);
-	    writeElement(out,'Hours_Budget__c', milestone.Hours_Budget__c);
+        writeElement(out,'Hours_Budget__c', milestone.Hours_Budget__c);
         writeElement(out,'Name', milestone.Name);
         writeElement(out,'Alias__c',milestone.Alias__c);
-        for(Milestone1_Task__c task : tasks)
-        {
+        /**
+        *Bug # 44.
+        *Modified Date:04-18-2012.
+        *Owner: Persistent.
+        *Comments:Importing the project with all the relationships intact.
+        */
+        writeElement(out,'Predecessor_Milestone__c',milestone.Predecessor_Milestone__c);
+        writeElement(out,'Kickoff__c',milestone.Kickoff__c);
+        writeElement(out,'Deadline__c',milestone.Deadline__c);
+               for(Milestone1_Task__c task : tasks)
+            {
             if(task.Project_Milestone__c == milestone.Id)
             {
                 writeTaskToXML(out,task);
@@ -160,15 +175,24 @@ global with sharing class Milestone1_XML_Export_Utility {
         writeElement(out,'Name',task.Name);
         writeElement(out,'Estimated_Hours__c',task.Estimated_Hours__c);
         writeElement(out,'Estimated_Expense__c',task.Estimated_Expense__c);
-        
+         /**
+        *Bug # 44.
+        *Modified Date:04-18-2012.
+        *Owner: Persistent.
+        *Comments:Importing the project with all the relationships intact.
+        */
+        writeElement(out,'Predecessor_Task__c',task.Predecessor_Task__c);
+        writeElement(out,'Start_Date__c',task.Start_Date__c);
+        writeElement(out,'Due_Date__c',task.Due_Date__c);
+        writeElement(out,'Project_Milestone__c',task.Project_Milestone__c);
         out.writeEndElement();  
     }
-	
+    
     global void writeElement(Xmlstreamwriter out, String tag, Object content) {
     if(content != null){
             out.writeStartElement(null, tag, null);
-        	out.writeCharacters(EncodingUtil.urlEncode(String.valueOf(content), 'UTF-8'));
-        	out.writeEndElement();
+            out.writeCharacters(EncodingUtil.urlEncode(String.valueOf(content), 'UTF-8'));
+            out.writeEndElement();
         }  
     }
     

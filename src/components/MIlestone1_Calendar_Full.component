@@ -1,4 +1,4 @@
-<apex:Component controller="Milestone1_repeatCon" id="thePage">
+<apex:Component controller="Milestone1_repeatCon" id="thePage"> 
 <!--
 Bug # 36
 Modified Date:04-17-2012

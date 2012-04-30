@@ -4,7 +4,7 @@
   <apex:includeScript value="{!URLFOR($Resource.Milestone1_Resource_Bundle,'javascript/plugins.js')}"/>
     
     
-<script> 
+<script>
      
     /********** loading popup related funtions*************/
     
@@ -29,7 +29,7 @@
 </script>
 
 
- <!-- loading popup -->
+<!-- loading popup -->
     <div class="ext-el-mask-msg x-mask-loading" id="loadingPopup" style="left: 471px; top: 35px; visibility: hidden ">
         <div>
        {!$Label.Milestone1_Loading}

@@ -1,4 +1,4 @@
-<!-- 
+<!--  
 Copyright (c) 2011, salesforce.com, Inc.
 All rights reserved.
 
@@ -46,7 +46,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
                                     required="true"/> 
                 </apex:pageBlockSectionItem>
             </apex:pageBlockSection>
-            
+      
             <apex:pageBlockSection rendered="{!isInactiveUserToBeReplaced}" >
                   <apex:pageBlockSectionItem >
                         <apex:outputLabel value="{!$Label.Milestone1_NewFieldToReplaceInactiveUsers}" for="thelookup"/>

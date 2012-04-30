@@ -1,4 +1,4 @@
-/*
+/* 
 Copyright (c) 2011, salesforce.com, Inc.
 All rights reserved.
 
@@ -25,14 +25,16 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
 OF THE POSSIBILITY OF SUCH DAMAGE.
 
-*/
+*/ 
+
+
 @isTest
 private class Milestone1_Task_Chatter_Tst 
 {
     static testMethod void testChatterTaskFollows()
-    {
+    { 
         if(!Milestone1_Schema_Helper.isOrgChatterEnabled())
-        	return; //chatter is disabled - we can't run this test. 
+            return; //chatter is disabled - we can't run this test. 
         Milestone1_Settings__c settings = Milestone1_Test_Utility.createDefaultCustomChatterSettings(true);
         System.assert(settings.Auto_Follow_Task__c, 'Auto Follow Task must be true for this test to work.');
         
@@ -62,19 +64,11 @@ private class Milestone1_Task_Chatter_Tst
     
     static testMethod void testChatterTaskReassignment()
     {
-    	if(!Milestone1_Schema_Helper.isOrgChatterEnabled())
-        	return; //chatter is disabled - we can't run this test. 
-        List<User> otherUserList = [Select Id from User where Id <> :UserInfo.getUserId() and IsActive = true limit 1];
-        User otherUser = null;
-        if(otherUserList.size() == 0)
-        {
-            List<Profile> prof = [Select Id from Profile limit 1]; 
-            otherUser = new User(Alias='testxyz1',emailencodingkey='UTF-8', languagelocalekey='en_US',timezonesidkey='America/Los_Angeles',  CommunityNickname='XYZTEST12301', FirstName='Test Account', LastName='LastName', Email='testaccountxzy@testfacke123.com', username='UnitTest123fake@testfake.com',localesidkey='en_US', ProfileId=prof.get(0).Id);
-            insert otherUser;
-        }else
-        {
-            otherUser = otherUserList.get(0);
-        }
+        if(!Milestone1_Schema_Helper.isOrgChatterEnabled())
+            return; //chatter is disabled - we can't run this test. 
+         
+        User userObj = Milestone1_Test_Utility.createSFUser();
+       
         Milestone1_Test_Utility.createDefaultCustomChatterSettings(true);
         
         Milestone1_Project__c testProject = Milestone1_Test_Utility.sampleProject('UNIT TEST PROJECT NAME ABC123XYZ UNIQUE' + System.now());
@@ -91,8 +85,8 @@ private class Milestone1_Task_Chatter_Tst
         sObject subscription = Database.query('Select Id, ParentId, SubscriberId from EntitySubscription where ParentId = \''+testTask.Id+'\'');
         //assert that the user is following this object
         system.assertEquals(UserInfo.getUserId(),(id)subscription.get('SubscriberId'));
-        system.debug('Other User Id == ' + otherUser.Id + 'Task Assigned Id ==' + testTask.Assigned_To__c);
-        testTask.Assigned_To__c = otherUser.Id;
+        system.debug('Other User Id == ' + userObj.Id + 'Task Assigned Id ==' + testTask.Assigned_To__c);
+        testTask.Assigned_To__c = userObj.Id;
         update testTask;
         
         List<sObject> subscriptionList = Database.query('Select Id, ParentId, SubscriberId from EntitySubscription where ParentId = \''+testTask.Id+'\' and SubscriberId = \''+UserInfo.getUserId()+'\'');

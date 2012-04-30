@@ -1,4 +1,4 @@
-/*
+/* 
 Copyright (c) 2011, salesforce.com, Inc.
 All rights reserved.
 
@@ -25,7 +25,7 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
 OF THE POSSIBILITY OF SUCH DAMAGE.
 
-*/
+*/ 
 public with sharing class Milestone1_repeatCon {
 
  public List<SelectOption> filterList {get;set;}
@@ -50,23 +50,37 @@ public with sharing class Milestone1_repeatCon {
      return [Select Id,Name from Milestone1_Project__c where Status__c ='Active' limit 500];
  }
 
- private void getSelectedProject(){
+ private Map<ID,Milestone1_Project__c> getSelectedProject(){
         projectIds.clear();
+         Map<ID,Milestone1_Project__c> projMap=new  Map<ID,Milestone1_Project__c>();
         if(selectedProject == 'AllProjects' || selectedProject == null )
         {
-           List<Milestone1_Project__c> projList = getAllProjectItems();
-        	for(Milestone1_Project__c projObj : projList){
-        		projectIds.add(projObj.id);
-        	}
-        }else{
-        	projectIds.add(selectedProject);
+            List<Milestone1_Project__c> projList = getAllProjectItems();
+            for(Milestone1_Project__c projObj : projList){
+                projMap.put(projObj.id,projObj);
+            }
         }
+        else{
+        	Milestone1_Project__c project=[Select id from Milestone1_Project__c where id =:  selectedProject];
+            projMap.put(project.id,project);
+        }
+        for(Id setId:projMap.keySet())
+        projectIds.add(setId);
+    
+        return projMap;
  }
  
- private void getProjectSpecificMilestone(){
+ private Map<ID,Milestone1_Milestone__c> getProjectSpecificMilestone(){
     milestoneIds.clear();
-    for(Milestone1_Milestone__c m:[Select Id from Milestone1_Milestone__c where Project__c in : projectIds limit 300])
-        milestoneIds.add(m.Id);
+    Map<ID,Milestone1_Milestone__c> milestonesMap=new  Map<ID,Milestone1_Milestone__c>();
+    for(Milestone1_Milestone__c m:[Select Id from Milestone1_Milestone__c where Project__c in : projectIds limit 500])
+    {
+      milestonesMap.put(m.Id,m);
+      //  milestoneIds.add(m.Id);
+    }
+    for(Id setId:milestonesMap.keySet())
+        milestoneIds.add(setId);
+    return milestonesMap;
  }
  
   public void next() { 
@@ -125,9 +139,9 @@ public with sharing class Milestone1_repeatCon {
    for(Milestone1_Project__c project:getAllProjectItems()){
         activeProjectList.add(new SelectOption(project.id,project.name));
    }  
-   		filterItem = ALL_ITEMS;
-   		setMonth(currentDay);
-   		fiveDayView();
+        filterItem = ALL_ITEMS;
+        setMonth(currentDay);
+        fiveDayView();
   }
  
   public List<Milestone1_Month.Week> getWeeks() { 
@@ -186,8 +200,8 @@ public with sharing class Milestone1_repeatCon {
     getSelectedProject();
     getProjectSpecificMilestone();
     List<Milestone1_Project__c> projects = [Select Id, Deadline__c, Name from Milestone1_Project__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] and id in :projectIds limit 500];
-    List<Milestone1_Milestone__c> milestones = [Select Id, Deadline__c, Name from Milestone1_Milestone__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] and Project__c in :projectIds LIMIT 300];
-    List<Milestone1_Task__c> tasks = [Select Id, Due_Date__c, Name from Milestone1_Task__c where Due_Date__c >=:da[0] and Due_Date__c <= :da[1] and Project_Milestone__c in :milestoneIds LIMIT 300];
+    List<Milestone1_Milestone__c> milestones = [Select Id, Deadline__c, Name from Milestone1_Milestone__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] and Project__c in :projectIds LIMIT 500];
+    List<Milestone1_Task__c> tasks = [Select Id, Due_Date__c, Name from Milestone1_Task__c where Due_Date__c >=:da[0] and Due_Date__c <= :da[1] and Project_Milestone__c in :milestoneIds LIMIT 500];
     List<Milestone1_Calendar_Item> events = new List<Milestone1_Calendar_Item>();
     for(Milestone1_Project__c proj : projects)
     {
@@ -207,7 +221,7 @@ public with sharing class Milestone1_repeatCon {
     return events;
   }
   
-  private List<Milestone1_Calendar_Item> getMyProjectsAndItems(Date[] da)
+ private List<Milestone1_Calendar_Item> getMyProjectsAndItems(Date[] da)
   {
      /**
     *Modified Date:04-20-2012.
@@ -227,7 +241,7 @@ public with sharing class Milestone1_repeatCon {
         events.add(calItem);
     }
     
-    List<Milestone1_Milestone__c> milestones = [Select Id, Deadline__c, Name from Milestone1_Milestone__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] and Project__c in :projectIds limit 300];
+    List<Milestone1_Milestone__c> milestones = [Select Id, Deadline__c, Name from Milestone1_Milestone__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] and Project__c in :projectIds limit 500];
     List<String> milestoneIds = new List<String>();
     for(Milestone1_Milestone__c milestone : milestones)
     {
@@ -236,7 +250,7 @@ public with sharing class Milestone1_repeatCon {
         events.add(calItem);
     }
     
-    List<Milestone1_Task__c> tasks = [Select Id, Due_Date__c, Name from Milestone1_Task__c where Due_Date__c >=:da[0] and Due_Date__c <= :da[1] and Project_Milestone__c in:milestoneIds limit 300];
+    List<Milestone1_Task__c> tasks = [Select Id, Due_Date__c, Name from Milestone1_Task__c where Due_Date__c >=:da[0] and Due_Date__c <= :da[1] and Project_Milestone__c in:milestoneIds limit 500];
     for(Milestone1_Task__c currTask : tasks)
     {
         Milestone1_Calendar_Item calItem = new Milestone1_Calendar_Item(currTask.Id,currTask.Name,currTask.Due_Date__c,Milestone1_Calendar_Item.TASK_TYPE);
@@ -245,6 +259,7 @@ public with sharing class Milestone1_repeatCon {
     
     return events;
   }
+
 
   private List<Milestone1_Calendar_Item> getMyMilestonesOnly(Date[] da)
   {
@@ -256,7 +271,7 @@ public with sharing class Milestone1_repeatCon {
     */
     getSelectedProject();
     getProjectSpecificMilestone();
-    List<Milestone1_Milestone__c> milestones = [Select Id, Deadline__c, Name from Milestone1_Milestone__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] and OwnerId =:Userinfo.getUserId() and Project__c in : projectIds LIMIT 300 ];
+    List<Milestone1_Milestone__c> milestones = [Select Id, Deadline__c, Name from Milestone1_Milestone__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] and OwnerId =:Userinfo.getUserId() and Project__c in : projectIds LIMIT 500 ];
     List<Milestone1_Calendar_Item> events = new List<Milestone1_Calendar_Item>();
     for(Milestone1_Milestone__c milestone : milestones)
     {
@@ -276,7 +291,7 @@ public with sharing class Milestone1_repeatCon {
     */
     getSelectedProject();
     getProjectSpecificMilestone();
-    List<Milestone1_Task__c> tasks = [Select Id, Due_Date__c, Name from Milestone1_Task__c where Due_Date__c >=:da[0] and Due_Date__c <= :da[1] and Assigned_To__c =:Userinfo.getUserId() and Project_Milestone__c in : milestoneIds LIMIT 300 ];
+    List<Milestone1_Task__c> tasks = [Select Id, Due_Date__c, Name from Milestone1_Task__c where Due_Date__c >=:da[0] and Due_Date__c <= :da[1] and Assigned_To__c =:Userinfo.getUserId() and Project_Milestone__c in : milestoneIds LIMIT 500 ];
     List<Milestone1_Calendar_Item> events = new List<Milestone1_Calendar_Item>();
     for(Milestone1_Task__c currTask : tasks)
     {
@@ -319,8 +334,10 @@ public with sharing class Milestone1_repeatCon {
         controller.prev();
         List<Milestone1_Month.Week> weeksList = controller.getWeeks();
         test.stopTest();
-        system.assert(controller.getMonth() != null);
-        system.assert(weeksList != null);
+        Map<ID,Milestone1_Project__c> projMap= controller.getSelectedProject();
+        Map<ID,Milestone1_Milestone__c> milestonesMap=controller.getProjectSpecificMilestone();
+        system.assertEquals(projMap.containsKey(testProject.id),true);
+        system.assertEquals(milestonesMap.containsKey(testMilestone.id),true);
   }
   
   static testMethod void testControllerFilterTasks()
@@ -350,13 +367,23 @@ public with sharing class Milestone1_repeatCon {
         Milestone1_repeatCon controller = new Milestone1_repeatCon();
         controller.next();
         controller.prev();
-        controller.selectedProject = testProject.name;
+        controller.selectedProject = testProject.id;
         controller.filterItem = 'My Tasks Only';
         controller.filter();
         List<Milestone1_Month.Week> weeksList = controller.getWeeks();
         test.stopTest();
-        system.assert(controller.getMonth() != null);
-        system.assert(weeksList != null);
+        Map<ID,Milestone1_Project__c> projMap= controller.getSelectedProject();
+        Map<ID,Milestone1_Milestone__c> milestonesMap=controller.getProjectSpecificMilestone();
+        system.assertEquals(projMap.containsKey(testProject.id),true);
+        system.assertEquals(milestonesMap.containsKey(testMilestone.id),true);
+        List<Id> mIds=new List<Id>();
+        mIds.add(testMilestone.id);
+        List<Milestone1_Task__c> tasksList=[Select Id from Milestone1_Task__c where Assigned_To__c =:Userinfo.getUserId() and Project_Milestone__c in : mIds ];
+        for(Milestone1_Task__c task:tasksList)
+        {
+            if(testTask.id==task.id)
+            system.assertEquals(task.id,testTask.id);
+        }
   }
   
   static testMethod void testControllerFilterMilestones()
@@ -386,13 +413,15 @@ public with sharing class Milestone1_repeatCon {
         Milestone1_repeatCon controller = new Milestone1_repeatCon();
         controller.next();
         controller.prev();
-        controller.selectedProject = testProject.name;
+        controller.selectedProject = testProject.id;
         controller.filterItem = 'My Milestones Only';
         controller.filter();
         List<Milestone1_Month.Week> weeksList = controller.getWeeks();
         test.stopTest();
-        system.assert(controller.getMonth() != null);
-        system.assert(weeksList != null);
+         Map<ID,Milestone1_Project__c> projMap= controller.getSelectedProject();
+        Map<ID,Milestone1_Milestone__c> milestonesMap=controller.getProjectSpecificMilestone();
+       //system.assertEquals(projMap.containsKey(testProject.id),true);
+        system.assertEquals(milestonesMap.containsKey(testMilestone.id),true);
   }
   
   static testMethod void testControllerFilterMyProjects()
@@ -422,13 +451,15 @@ public with sharing class Milestone1_repeatCon {
         Milestone1_repeatCon controller = new Milestone1_repeatCon();
         controller.next();
         controller.prev();
-        controller.selectedProject = testProject.name;
+        controller.selectedProject = testProject.id;
         controller.filterItem = 'My Projects And Sub-Project Items';
         controller.filter();
         List<Milestone1_Month.Week> weeksList = controller.getWeeks();
         test.stopTest();
-        system.assert(controller.getMonth() != null);
-        system.assert(weeksList != null);
+        Map<ID,Milestone1_Project__c> projMap= controller.getSelectedProject();
+        Map<ID,Milestone1_Milestone__c> milestonesMap=controller.getProjectSpecificMilestone();
+        system.assertEquals(projMap.containsKey(testProject.id),true);
+        system.assertEquals(milestonesMap.containsKey(testMilestone.id),true);
   }
   
    /**
@@ -459,18 +490,51 @@ public with sharing class Milestone1_repeatCon {
         Milestone1_repeatCon controller = new Milestone1_repeatCon();
         controller.next();
         controller.prev();
-        controller.selectedProject = testProject.name;
+        controller.selectedProject = testProject.id;
         controller.filterItem = 'All Items';
         controller.filter();
         List<Milestone1_Month.Week> weeksList = controller.getWeeks();
         test.stopTest();
-        system.assert(controller.getMonth() != null);
-        system.assert(weeksList != null);
+        Map<ID,Milestone1_Project__c> projMap= controller.getSelectedProject();
+        Map<ID,Milestone1_Milestone__c> milestonesMap=controller.getProjectSpecificMilestone();
+      
     }
   
   static testMethod void testControllerFilterAllItemsWithBlankProject()
     {
-        Milestone1_Test_Utility.createFilterData();
+        Milestone1_Project__c testProject = Milestone1_Test_Utility.sampleProject('Trial Project ABCXYZ' + System.now());
+        testProject.Status__c = 'Active';
+        testProject.Deadline__c = Date.today();
+        system.debug(testProject.name);
+        insert testProject;
+        
+        Milestone1_Project__c testProject1 = Milestone1_Test_Utility.sampleProject('UNIT TEST PROJECT NAME ABC123XYZ UNIQUE' + System.now());
+        testProject1.Status__c = 'Active';
+        testProject1.Deadline__c = Date.today();
+        insert testProject1;
+        
+        Milestone1_Milestone__c testMilestone = Milestone1_Test_Utility.sampleMilestone(testProject.Id,null,'UNIT TEST MILESTONE NAME ACB123XYZ UNIQUE' + System.now());
+        testMilestone.Deadline__c = Date.today();
+        testMilestone.Complete__c = false;
+        insert testMilestone;
+        
+        Milestone1_Milestone__c testMilestone1 = Milestone1_Test_Utility.sampleMilestone(testProject1.Id,null,'UNIT TEST MILESTONE NAME ACB123XYZ UNIQUE' + System.now());
+        testMilestone1.Deadline__c = Date.today();
+        testMilestone1.Complete__c = false;
+        insert testMilestone1;
+        
+        Milestone1_Task__c testTask = Milestone1_Test_Utility.sampleTask(testMilestone.Id);
+        testTask.Complete__c = false;
+        testTask.Start_Date__c = Date.today();
+        testTask.Due_Date__c = Date.today();
+        insert testTask;
+        
+        Milestone1_Task__c testTask1 = Milestone1_Test_Utility.sampleTask(testMilestone1.Id);
+        testTask1.Complete__c = false;
+        testTask1.Start_Date__c = Date.today();
+        testTask1.Due_Date__c = Date.today();
+        insert testTask1;
+        
         test.startTest();
         Milestone1_repeatCon controller = new Milestone1_repeatCon();
         controller.next();
@@ -480,14 +544,42 @@ public with sharing class Milestone1_repeatCon {
         controller.filter();
         List<Milestone1_Month.Week> weeksList = controller.getWeeks();
         test.stopTest();
-        system.assert(controller.getMonth() != null);
-        system.assert(weeksList != null);
+        Map<ID,Milestone1_Project__c> projMap= controller.getSelectedProject();
+        Map<ID,Milestone1_Milestone__c> milestonesMap=controller.getProjectSpecificMilestone();
+        system.assertEquals(projMap.containsKey(testProject.id),true);
+        system.assertEquals(projMap.containsKey(testProject1.id),true);
+        system.assertEquals(milestonesMap.containsKey(testMilestone.id),true);
+        system.assertEquals(milestonesMap.containsKey(testMilestone1.id),true);
+        Milestone1_Task__c task=[Select id,name from Milestone1_Task__c where id =: testTask.id];
+        system.assertEquals(testTask.id,task.id);
+        
     }
 
 
 static testMethod void testControllerFilterMyProjectsWithBlankProject()
   {
-		Milestone1_Test_Utility.createFilterData();
+         Milestone1_Project__c testProject = Milestone1_Test_Utility.sampleProject('Trial Project ABCXYZ' + System.now());
+        testProject.Status__c = 'Active';
+        testProject.Deadline__c = Date.today();
+        system.debug(testProject.name);
+        insert testProject;
+        
+        Milestone1_Project__c testProject1 = Milestone1_Test_Utility.sampleProject('UNIT TEST PROJECT NAME ABC123XYZ UNIQUE' + System.now());
+        testProject1.Status__c = 'Active';
+        testProject1.Deadline__c = Date.today();
+        insert testProject1;
+        
+        Milestone1_Milestone__c testMilestone = Milestone1_Test_Utility.sampleMilestone(testProject.Id,null,'UNIT TEST MILESTONE NAME ACB123XYZ UNIQUE' + System.now());
+        testMilestone.Deadline__c = Date.today();
+        testMilestone.Complete__c = false;
+        insert testMilestone;
+        
+        Milestone1_Task__c testTask = Milestone1_Test_Utility.sampleTask(testMilestone.Id);
+        testTask.Complete__c = false;
+        testTask.Start_Date__c = Date.today();
+        testTask.Due_Date__c = Date.today();
+        insert testTask;
+        
         test.startTest();
         Milestone1_repeatCon controller = new Milestone1_repeatCon();
         controller.next();
@@ -497,13 +589,39 @@ static testMethod void testControllerFilterMyProjectsWithBlankProject()
         controller.filter();
         List<Milestone1_Month.Week> weeksList = controller.getWeeks();
         test.stopTest();
-        system.assert(controller.getMonth() != null);
-        system.assert(weeksList != null);
+        Map<ID,Milestone1_Project__c> projMap= controller.getSelectedProject();
+        Map<ID,Milestone1_Milestone__c> milestonesMap=controller.getProjectSpecificMilestone();
+        system.assertEquals(projMap.containsKey(testProject.id),true);
+        system.assertEquals(projMap.containsKey(testProject1.id),true);
+        system.assertEquals(milestonesMap.containsKey(testMilestone.id),true);
+        Milestone1_Task__c task=[Select id,name from Milestone1_Task__c where id =: testTask.id];
+        system.assertEquals(testTask.id,task.id);
   }
   
   static testMethod void testControllerFilterMilestonesWithBlankProject()
   {
-        Milestone1_Test_Utility.createFilterData();
+        Milestone1_Project__c testProject = Milestone1_Test_Utility.sampleProject('Trial Project ABCXYZ' + System.now());
+        testProject.Status__c = 'Active';
+        testProject.Deadline__c = Date.today();
+        system.debug(testProject.name);
+        insert testProject;
+        
+      	 Milestone1_Milestone__c testMilestone = Milestone1_Test_Utility.sampleMilestone(testProject.Id,null,'UNIT TEST MILESTONE NAME ACB123XYZ UNIQUE' + System.now());
+        testMilestone.Deadline__c = Date.today();
+        testMilestone.Complete__c = false;
+        insert testMilestone;
+        
+        Milestone1_Milestone__c testMilestone1 = Milestone1_Test_Utility.sampleMilestone(testProject.Id,null,'UNIT TEST MILESTONE NAME ACB123XYZ UNIQUE' + System.now());
+        testMilestone1.Deadline__c = Date.today();
+        testMilestone1.Complete__c = false;
+        insert testMilestone1;
+        
+        Milestone1_Task__c testTask = Milestone1_Test_Utility.sampleTask(testMilestone.Id);
+        testTask.Complete__c = false;
+        testTask.Start_Date__c = Date.today();
+        testTask.Due_Date__c = Date.today();
+        insert testTask;
+        
         test.startTest();
         Milestone1_repeatCon controller = new Milestone1_repeatCon();
         controller.next();
@@ -513,13 +631,39 @@ static testMethod void testControllerFilterMyProjectsWithBlankProject()
         controller.filter();
         List<Milestone1_Month.Week> weeksList = controller.getWeeks();
         test.stopTest();
-        system.assert(controller.getMonth() != null);
-        system.assert(weeksList != null);
+        Map<ID,Milestone1_Project__c> projMap= controller.getSelectedProject();
+        Map<ID,Milestone1_Milestone__c> milestonesMap=controller.getProjectSpecificMilestone();
+        system.assertEquals(milestonesMap.containsKey(testMilestone.id),true);
+        system.assertEquals(milestonesMap.containsKey(testMilestone1.id),true);
+        
+        
   }
   
   static testMethod void testControllerFilterTasksWithBlankProject()
   {
-		Milestone1_Test_Utility.createFilterData();
+        Milestone1_Project__c testProject = Milestone1_Test_Utility.sampleProject('Trial Project ABCXYZ' + System.now());
+        testProject.Status__c = 'Active';
+        testProject.Deadline__c = Date.today();
+        system.debug(testProject.name);
+        insert testProject;
+        
+        Milestone1_Milestone__c testMilestone = Milestone1_Test_Utility.sampleMilestone(testProject.Id,null,'UNIT TEST MILESTONE NAME ACB123XYZ UNIQUE' + System.now());
+        testMilestone.Deadline__c = Date.today();
+        testMilestone.Complete__c = false;
+        insert testMilestone;
+    
+        Milestone1_Task__c testTask = Milestone1_Test_Utility.sampleTask(testMilestone.Id);
+        testTask.Complete__c = false;
+        testTask.Start_Date__c = Date.today();
+        testTask.Due_Date__c = Date.today();
+        insert testTask;
+        
+        Milestone1_Task__c testTask1 = Milestone1_Test_Utility.sampleTask(testMilestone.Id);
+        testTask1.Complete__c = false;
+        testTask1.Start_Date__c = Date.today();
+        testTask1.Due_Date__c = Date.today();
+        insert testTask1;
+        
         test.startTest();
         Milestone1_repeatCon controller = new Milestone1_repeatCon();
         controller.next();
@@ -529,8 +673,12 @@ static testMethod void testControllerFilterMyProjectsWithBlankProject()
         controller.filter();
         List<Milestone1_Month.Week> weeksList = controller.getWeeks();
         test.stopTest();
-        system.assert(controller.getMonth() != null);
-        system.assert(weeksList != null);
+        Map<ID,Milestone1_Project__c> projMap= controller.getSelectedProject();
+        Map<ID,Milestone1_Milestone__c> milestonesMap=controller.getProjectSpecificMilestone();
+        Milestone1_Task__c task=[Select id,name from Milestone1_Task__c where id =: testTask.id];
+        system.assertEquals(testTask.id,task.id);
+        task=[Select id,name from Milestone1_Task__c where id =: testTask1.id];
+        system.assertEquals(testTask1.id,task.id);
   }
   
   

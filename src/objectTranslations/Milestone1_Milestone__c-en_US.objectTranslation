@@ -171,6 +171,10 @@
         <relationshipLabel><!-- Child Milestones --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Predecessor_Milestone_Import_Id__c --></label>
+        <name>Predecessor_Milestone_Import_Id__c</name>
+    </fields>
+    <fields>
         <help><!-- The milestone which must be complete before you start this one. The Predecessor Milestone end date must be before the current Milestone start date. --></help>
         <label><!-- Predecessor Milestone --></label>
         <name>Predecessor_Milestone__c</name>

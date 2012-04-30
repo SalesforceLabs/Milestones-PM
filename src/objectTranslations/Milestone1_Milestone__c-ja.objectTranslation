@@ -167,6 +167,10 @@
         <relationshipLabel>子マイルストーン</relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Predecessor_Milestone_Import_Id__c --></label>
+        <name>Predecessor_Milestone_Import_Id__c</name>
+    </fields>
+    <fields>
         <help>このマイルストーンを開始するより前に完了する必要があるマイルストーン。前のマイルストーンの終了日は現在のマイルストーンの開始日より前である必要があります。</help>
         <label>前のマイルストーン</label>
         <name>Predecessor_Milestone__c</name>

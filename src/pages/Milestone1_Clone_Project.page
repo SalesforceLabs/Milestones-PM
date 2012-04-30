@@ -1,4 +1,4 @@
-<!-- 
+<!--  
 Copyright (c) 2011, salesforce.com, Inc.
 All rights reserved.
 
@@ -27,8 +27,8 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page standardController="Milestone1_Project__c"
            extensions="Milestone1_Clone_Project_Controller">
-	<apex:pageMessages />
-    <apex:form >
+    <apex:pageMessages id="CloneMessages"/>
+    <apex:form > 
         <apex:pageBlock title="{!$Label.Milestone1_ProjectClone}">
             <apex:pageBlockButtons >
                 <apex:commandButton value="{!$Label.Milestone1_Save}"
@@ -45,6 +45,13 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
                                     value="{!dummyProj.name}"
                                     required="true"/> 
                 </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+      
+            <apex:pageBlockSection rendered="{!isInactiveUserToBeReplaced}" >
+                  <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.Milestone1_NewFieldToReplaceInactiveUsers}" for="thelookup"/>
+                      <apex:inputField id="thelookup" value="{!dummyProj.OwnerId}"/> 
+                   </apex:pageBlockSectionItem>
             </apex:pageBlockSection>
             
         </apex:pageBlock>

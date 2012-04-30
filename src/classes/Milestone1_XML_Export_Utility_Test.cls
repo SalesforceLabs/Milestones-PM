@@ -1,10 +1,10 @@
-/*
+/* 
 Copyright (c) 2011, salesforce.com, Inc.
 All rights reserved.
-
+ 
 Redistribution and use in source and binary forms, with or without modification, 
 are permitted provided that the following conditions are met:
-
+ 
     * Redistributions of source code must retain the above copyright notice, 
     this list of conditions and the following disclaimer.
     * Redistributions in binary form must reproduce the above copyright notice, 
@@ -50,19 +50,43 @@ private class Milestone1_XML_Export_Utility_Test {
         insert testSubMilestone;
         testSubMilestone = [select Id, Name from Milestone1_Milestone__c where Name = :testSubMilestone.Name limit 1];
         
+       	 /**
+         *Modified Date:04-26-2012.
+         *Owner:Persistent.
+         *Comment: Importing the project with all the relationships intact.
+         *Bug #: 66.
+   	     */ 
+       	Milestone1_Milestone__c testPredecessorMilestone = Milestone1_Test_Utility.sampleMilestone(testProject.Id,null,'UNIT_TEST_PREDECESSOR_MILESTONE_NAME_ACB123XYZ_UNIQUE' + System.now());
+        insert testPredecessorMilestone;
+        testPredecessorMilestone = [select Id, Name from Milestone1_Milestone__c where Name = :testPredecessorMilestone.Name limit 1];
+        
+        Milestone1_Milestone__c testSuccessorMilestone = Milestone1_Test_Utility.sampleMilestone(null,testPredecessorMilestone.Id,'UNIT_TEST_SUCCESSOR_MILESTONE_1_NAME_ACB123XYZ_UNIQUE' + System.now());
+        insert testSuccessorMilestone;
+        testSuccessorMilestone = [select Id, Name from Milestone1_Milestone__c where Name = :testSuccessorMilestone.Name limit 1];
+       
         Milestone1_Task__c task1 = Milestone1_Test_Utility.sampleTask(testMilestone.Id);
         insert task1;
         Milestone1_Task__c task2 = Milestone1_Test_Utility.sampleTask(testMilestone.Id);
         insert task2;
+        
+        Milestone1_Task__c predecessorTask = Milestone1_Test_Utility.sampleTask(testMilestone.Id,null,Date.today(),Date.today().addDays(1));
+        insert predecessorTask;
+        Milestone1_Task__c successorTask = Milestone1_Test_Utility.sampleTask(testMilestone.Id,predecessorTask.Id,Date.today().addDays(2),Date.today().addDays(3));
+        insert successorTask;
+        
         
         String xmlString = m1exportutility.buildProjectXmlString(testProject.Id);
         System.assertNotEquals(xmlString, null);
         Integer projectNamePos = xmlString.indexOf('UNIT_TEST_PROJECT_NAME_ABC123XYZ_UNIQUE');
         Integer milestoneNamePos = xmlString.indexOf('UNIT_TEST_MILESTONE_NAME_ACB123XYZ_UNIQUE');
         Integer subMilestoneNamePos = xmlString.indexOf('UNIT_TEST_SUB_MILESTONE_1_NAME_ACB123XYZ_UNIQUE');
+        Integer predecessorMilestoneNamePos = xmlString.indexOf('UNIT_TEST_PREDECESSOR_MILESTONE_NAME_ACB123XYZ_UNIQUE');
+        Integer successorMilestoneNamePos= xmlString.indexOf('UNIT_TEST_SUCCESSOR_MILESTONE_1_NAME_ACB123XYZ_UNIQUE');
         System.assert(projectNamePos > 0);
         System.assert(milestoneNamePos > 0);
         System.assert(subMilestoneNamePos > 0);
+        System.assert(predecessorMilestoneNamePos > 0);
+        System.assert(successorMilestoneNamePos > 0);
         System.assert(projectNamePos < milestoneNamePos);
         System.assert(projectNamePos < subMilestoneNamePos);
 

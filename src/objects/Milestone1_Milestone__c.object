@@ -444,6 +444,16 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Predecessor_Milestone_Import_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Predecessor_Milestone_Import_Id__c</label>
+        <length>18</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Predecessor_Milestone__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -681,6 +691,19 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <infoMessage>Parent Milestones must be part of the same project as the child milestone.  Also, Parent Milestone cannot also be a Child Milestone.</infoMessage>
         <isOptional>false</isOptional>
         <name>Milestone_Parent Milestone</name>
+        <sourceObject>Milestone1_Milestone__c</sourceObject>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE0000000HT73MAG_00NE0000000nwUIMAY</fullName>
+        <active>true</active>
+        <field>Milestone1_Milestone__c.Predecessor_Milestone__c</field>
+        <filterItems>
+            <field>Milestone1_Milestone__c.Project__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Project__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Milestone_Predecessor Milestone</name>
         <sourceObject>Milestone1_Milestone__c</sourceObject>
     </namedFilters>
     <pluralLabel>Milestones</pluralLabel>

@@ -6,7 +6,7 @@
      
 <script>
      
-    /********** loading popup related funtions*************/
+    /********** loading popup related  funtions*************/
     
     // this function is to open loading popup
     function openLoadingPopup()

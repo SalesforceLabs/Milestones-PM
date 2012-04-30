@@ -312,6 +312,7 @@ public with sharing class Milestone1_Test_Utility {
         return tasksMap;  
     }
      
+
  public static User createSFUser(){
     
     Profile profileUsed;
@@ -339,4 +340,6 @@ public with sharing class Milestone1_Test_Utility {
          
          return testUser;
   } 
+
+
 }

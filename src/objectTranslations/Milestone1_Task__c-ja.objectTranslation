@@ -116,6 +116,10 @@
         <name>OwnerId__c</name>
     </fields>
     <fields>
+        <label><!-- Predecessor_Task_Import_Id__c --></label>
+        <name>Predecessor_Task_Import_Id__c</name>
+    </fields>
+    <fields>
         <help>このタスクの前のタスク</help>
         <label>前のタスク</label>
         <name>Predecessor_Task__c</name>

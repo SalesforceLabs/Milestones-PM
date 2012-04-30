@@ -120,6 +120,10 @@
         <name>OwnerId__c</name>
     </fields>
     <fields>
+        <label><!-- Predecessor_Task_Import_Id__c --></label>
+        <name>Predecessor_Task_Import_Id__c</name>
+    </fields>
+    <fields>
         <help><!-- The predecessor task for this task if applicable. --></help>
         <label><!-- Predecessor Task --></label>
         <name>Predecessor_Task__c</name>

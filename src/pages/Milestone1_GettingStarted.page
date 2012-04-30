@@ -1,4 +1,4 @@
-<!-- 
+<!--  
 Copyright (c) 2011, salesforce.com, inc.
 All rights reserved.
 
@@ -27,44 +27,22 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page controller="Milestone1_GettingStartedController">
 
-    <apex:form >
+    <apex:form > 
         
-    <apex:pageBlock title="{!$Label.Milestone1_WelcomeToMilestonesPM}">
+    <apex:pageBlock title="{!$Label.WelcomeToMilestonesPM}">
     
-    <h2>{!$Label.Milestone1_NextSteps}</h2>
+    <apex:outputPanel id="mainpanel"> 
+     <apex:outputPanel id="stepmain" rendered="{!settingsReady == false}">
     
-    <p>{!$Label.Milestone1_YourNextFewSteps}</p>
+    <h2>{!$Label.NextSteps}</h2>
     
-    <p>1. {!$Label.Milestone1_InitializeYourConfiguration}</p>
     
-    <p>2. {!$Label.Milestone1_ViewTheGettingStartedProject}</p>
+    <p>{!$Label.YourNextFewSteps}</p>
     
-    <p>3. {!$Label.Milestone1_StartCreatingYourFirstProject}</p>
-    
-    <p>&nbsp;</p>
-    
-    <h2>{!$Label.Milestone1_GettingHelp}</h2>
-    
-    <p><apex:outputText value="{!$Label.Milestone1_MilestonesPMIsUnsupported}  {!$Label.Milestone1_ForCommunityAssistance}  
-    {!$Label.Milestone1_ToSubmitIdeasOrIssues}" escape="false" /></p>
-
-    <p>&nbsp;</p>
-    
-    <h2>{!$Label.Milestone1_Community}</h2>
-
-    <p><apex:outputText value="{!$Label.Milestone1_MilestonesPMISOpenSource}  {!$Label.Milestone1_WeWelcomeYourIssueReports} {!$Label.Milestone1_LearnMore}." escape="false" /></p>
-
-    <p>&nbsp;</p>
-    
-    <apex:outputPanel id="step1panel">
-        
-    <apex:outputPanel id="step1" rendered="{!settingsReady == false}">   
-    
-    <h2>{!$Label.Milestone1_InitialConfiguration}</h2>
-    
-    <p>&nbsp;</p>
-    
-     <apex:actionStatus id="executeStatus">
+    <p>1. {!$Label.InitializeYourConfiguration} &nbsp;
+       <apex:outputPanel id="step1panel">
+     <apex:outputPanel id="step1" rendered="{!settingsReady == false}">      
+    <apex:actionStatus id="executeStatus" >
          <apex:facet name="start">
              <apex:outputPanel id="executeStatusWorking" layout="none">
                  <img src = "{!URLFOR($Resource.Milestone1_Resource_Bundle,'images/Milestone1_Load_Wheel_Img')}"/>
@@ -72,52 +50,66 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
          </apex:facet>
          <apex:facet name="stop"  >
              <apex:outputPanel id="executeStatusNotworking" layout="none">
-                 <apex:commandButton action="{!setupStandardSettings}" value="{!$Label.Milestone1_ClickHereToInitializeThisApp}" status="executeStatus" rerender="step1panel"/>
+                 <apex:commandButton action="{!setupStandardSettings}" value="{!$Label.ClickHereToInitializeThisApp}" status="executeStatus" rerender="step1panel,step2panel,mainpanel" />
              </apex:outputPanel>
          </apex:facet>
      </apex:actionStatus>
-    
-    <p>&nbsp;</p>
-    
-    <p>{!$Label.Milestone1_ClickingTheButtonWill}:</p>
-    
-    <ul>
-        <li>{!$Label.Milestone1_InitializeCustomAppSettings}</li>
-        <li>{!$Label.Milestone1_ImportDefaultProject}</li>
-    </ul>
 
-    
     </apex:outputPanel>
+     </apex:outputPanel> 
+
+  
+   
+    </p>
     
-    <apex:outputPanel id="step2" rendered="{!settingsReady == true && projectReady != true}">
+    <p>2. {!$Label.ViewTheGettingStartedProject}</p>
     
+    <p>3. {!$Label.StartCreatingYourFirstProject}</p>
+    </apex:outputPanel> 
+        </apex:outputPanel> 
+
     <p>&nbsp;</p>
     
-    <h2>{!$Label.Milestone1_InitializationComplete}</h2>
+        <apex:outputPanel id="step2panel">       
+        
+        <apex:outputPanel id="step2" rendered="{!settingsReady == true && projectReady != true}">
+        
+            
+            <h2>{!$Label.InitializationComplete}</h2>
+            
+            <p>{!$Label.YouCanNowGoTo}<br/>&nbsp;</p>
+            
+            <h2>{!$Label.ImportantUpper}</h2>
+            
+            <p>{!$Label.BeSureToExploreTheSampleProject} {!$Label.ThisSampleProjectIncludes}</p>
+            
+            <p>{!$Label.ClickHere}:&nbsp;<apex:outputLink value="{!$Page.Milestone1_Summary2}">{!$Label.ProjectSummary_FirstHalf}</apex:outputLink> {!$Label.ProjectSummary_SecondHalf}</p>
+            
+            <p>&nbsp;</p>
+        
     
-    <p>{!$Label.Milestone1_YouCanNowGoTo}<br/>&nbsp;</p>
+        </apex:outputPanel>
     
-    <h2>{!$Label.Milestone1_ImportantUpper}</h2>
+    </apex:outputPanel>
     
-    <p>{!$Label.Milestone1_BeSureToExploreTheSampleProject} {!$Label.Milestone1_ThisSampleProjectIncludes}</p>
+     <p>&nbsp;</p>
     
-    <p>{!$Label.Milestone1_ClickHere}:&nbsp;<apex:outputLink value="{!$Page.Milestone1_Summary2}">{!$Label.Milestone1_ProjectSummary_FirstHalf}</apex:outputLink> {!$Label.Milestone1_ProjectSummary_SecondHalf}</p>
+    <h2>{!$Label.GettingHelp}</h2>
     
+    <p><apex:outputText value="{!$Label.MilestonesPMIsUnsupported}  {!$Label.ForCommunityAssistance}  
+    {!$Label.ToSubmitIdeasOrIssues}" escape="false" /></p>
+
+    <p>&nbsp;</p>
+    
+    <h2>{!$Label.Community}</h2>
+
+    <p><apex:outputText value="{!$Label.MilestonesPMISOpenSource}  {!$Label.WeWelcomeYourIssueReports} {!$Label.LearnMore}." escape="false" /></p>
+
     <p>&nbsp;</p>
     
     
-    </apex:outputPanel>
-    
-    </apex:outputPanel>
     
     </apex:pageBlock>
     
-    
-    
-    
-    
-    
-
-
     </apex:form>
 </apex:page>

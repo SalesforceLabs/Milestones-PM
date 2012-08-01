@@ -9,6 +9,48 @@
         <value>Projects</value>
     </caseValues>
     <fields>
+        <help><!-- Select the account/customer to which this project is for (if applicable). --></help>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Projects --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Enter assumptions that if proven false could cause your project to go over-budget, have poor quality output, or have bad health. --></help>
+        <label><!-- Assumptions --></label>
+        <name>Assumptions__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates if this project is billable/charge-able back to an account/customer. --></help>
+        <label><!-- Billable? --></label>
+        <name>Billable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commitment Level --></label>
+        <name>Commitment_Level__c</name>
+        <picklistValues>
+            <masterLabel>Committed</masterLabel>
+            <translation><!-- Committed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Estimated</masterLabel>
+            <translation><!-- Estimated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested</masterLabel>
+            <translation><!-- Requested --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Enter what it will take to consider this project done. --></help>
+        <label><!-- Completion Criteria --></label>
+        <name>Completion_Criteria__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter limitations or restrictions that the project team must work under. --></help>
+        <label><!-- Constraints --></label>
+        <name>Constraints__c</name>
+    </fields>
+    <fields>
         <help><!-- The date by which the project is scheduled to be completed by. --></help>
         <label><!-- Deadline --></label>
         <name>Deadline__c</name>
@@ -38,24 +80,70 @@
         <name>Kickoff__c</name>
     </fields>
     <fields>
-        <help><!-- Calculated as the next incomplete task with a due date in this project. This includes sub-milestones. --></help>
-        <label><!-- Next Project Milestone Due Date --></label>
+        <help><!-- Calculated as the next incomplete task with a due date in this project. This includes sub-iterations. --></help>
+        <label><!-- Next Project Iteration Due Date --></label>
         <name>Next_Project_Milestone_Due_Date__c</name>
     </fields>
     <fields>
-        <help><!-- The next incomplete milestone due date. This does not include sub-milestones. --></help>
-        <label><!-- Next Project Top Milestone Due Date --></label>
+        <help><!-- The next incomplete iteration due date. This does not include sub-iterations. --></help>
+        <label><!-- Next Project Top Iteration Due Date --></label>
         <name>Next_Project_Top_Milestone_Due_Date__c</name>
     </fields>
     <fields>
-        <help><!-- Calculated sum of the number of incomplete milestones assigned to this project. This includes sub-milestones in the project. --></help>
-        <label><!-- Number of Incomplete Milestones --></label>
+        <help><!-- Calculated sum of the number of incomplete iterations assigned to this project. This includes sub-iterations in the project. --></help>
+        <label><!-- Number of Incomplete Iterations --></label>
         <name>Number_of_Incomplete_Milestones__c</name>
     </fields>
     <fields>
-        <help><!-- The number of incomplete milestones that are in this project. This does not count sub-milestones. --></help>
-        <label><!-- Number of Incomplete Top Milestones --></label>
+        <help><!-- The number of incomplete iterations that are in this project. This does not count sub-Iterations. --></help>
+        <label><!-- Number of Incomplete Top Iterations --></label>
         <name>Number_of_Incomplete_Top_Milestones__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the sales opportunity/deal from which this project originated from (if applicable). --></help>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Projects --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Specify what is out of scope. --></help>
+        <label><!-- Out of Scope --></label>
+        <name>Out_of_Scope__c</name>
+    </fields>
+    <fields>
+        <help><!-- The current phase this project is in. Typically used for waterfall projects. --></help>
+        <label><!-- Phase --></label>
+        <name>Phase__c</name>
+        <picklistValues>
+            <masterLabel>1-Define</masterLabel>
+            <translation><!-- 1-Define --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2-Design</masterLabel>
+            <translation><!-- 2-Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3-Build</masterLabel>
+            <translation><!-- 3-Build --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4-Test</masterLabel>
+            <translation><!-- 4-Test --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5-Deploy</masterLabel>
+            <translation><!-- 5-Deploy --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Specify what is in scope --></help>
+        <label><!-- Scope Statement --></label>
+        <name>Scope_Statement__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the stakeholder(s) or stakeholder groups that will have an impact on or be impacted by this project. --></help>
+        <label><!-- Stakeholder Description --></label>
+        <name>Stakeholder_Description__c</name>
     </fields>
     <fields>
         <label><!-- Expense Summary - Deprecated --></label>
@@ -94,12 +182,28 @@
             <translation><!-- Active --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Completed</masterLabel>
             <translation><!-- Completed --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>In Process</masterLabel>
+            <translation><!-- In Process --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Inactive</masterLabel>
             <translation><!-- Inactive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Started</masterLabel>
+            <translation><!-- Not Started --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>On Hold</masterLabel>
@@ -126,8 +230,8 @@
         <name>Total_Expense_Budget__c</name>
     </fields>
     <fields>
-        <help><!-- Calculated from the milestone expense budgets assigned to this project. --></help>
-        <label><!-- Total Expense Budget from Milestones --></label>
+        <help><!-- Calculated from the iteration expense budgets assigned to this project. --></help>
+        <label><!-- Total Expense Budget from Iterations --></label>
         <name>Total_Expense_Budget_from_Milestones__c</name>
     </fields>
     <fields>
@@ -146,8 +250,8 @@
         <name>Total_Hours_Budget__c</name>
     </fields>
     <fields>
-        <help><!-- Calculated from hours budgets for milestones in this project. --></help>
-        <label><!-- Total Hours Budget from Milestones --></label>
+        <help><!-- Calculated from hours budgets for iterations in this project. --></help>
+        <label><!-- Total Hours Budget from Iterations --></label>
         <name>Total_Hours_Budget_from_Milestones__c</name>
     </fields>
     <fields>
@@ -173,24 +277,12 @@
     <layouts>
         <layout>Project Layout</layout>
         <sections>
-            <label><!-- Budgets --></label>
-            <section>Budgets</section>
-        </sections>
-        <sections>
             <label><!-- Custom Links --></label>
             <section>Custom Links</section>
         </sections>
         <sections>
             <label><!-- Description --></label>
             <section>Description</section>
-        </sections>
-        <sections>
-            <label><!-- Metrics: Hours &amp; Expenses (Calculated) --></label>
-            <section>Metrics: Hours &amp; Expenses (Calculated)</section>
-        </sections>
-        <sections>
-            <label><!-- Metrics: Milestone Information (Calculated) --></label>
-            <section>Metrics: Milestone Information (Calculated)</section>
         </sections>
         <sections>
             <label><!-- Project Milestones Gantt View --></label>

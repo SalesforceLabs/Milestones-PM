@@ -219,6 +219,11 @@
             <field>Open_Tasks_in_Tasks__c</field>
             <table>Milestone1_Milestone__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Kickoff__c</field>
+            <table>Milestone1_Milestone__c</table>
+        </columns>
         <masterLabel>Milestones</masterLabel>
     </sections>
     <sections>
@@ -265,6 +270,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Description__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Start_Date__c</field>
             <table>Milestone1_Milestone__c.Project_Tasks__r</table>
         </columns>
         <columns>
@@ -342,6 +352,36 @@
             <field>Priority__c</field>
             <table>Milestone1_Milestone__c.Project_Tasks__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Case__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Comments__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Class__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Overall_Status__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Predecessor_Task__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Task_Stage__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r</table>
+        </columns>
         <masterLabel>Tasks</masterLabel>
     </sections>
     <sections>
@@ -393,6 +433,21 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Incurred_By__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r.Project_Times__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Rate__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r.Project_Times__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Actual_Cost__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r.Project_Times__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Status__c</field>
             <table>Milestone1_Milestone__c.Project_Tasks__r.Project_Times__r</table>
         </columns>
         <masterLabel>Times</masterLabel>

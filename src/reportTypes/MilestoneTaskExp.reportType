@@ -71,6 +71,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Kickoff__c</field>
+            <table>Milestone1_Milestone__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Deadline__c</field>
             <table>Milestone1_Milestone__c</table>
         </columns>
@@ -219,7 +224,12 @@
             <field>Open_Tasks_in_Tasks__c</field>
             <table>Milestone1_Milestone__c</table>
         </columns>
-        <masterLabel>Milestones</masterLabel>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Predecessor_Milestone__c</field>
+            <table>Milestone1_Milestone__c</table>
+        </columns>
+        <masterLabel>Iterations</masterLabel>
     </sections>
     <sections>
         <columns>
@@ -340,6 +350,31 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Priority__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Case__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Comments__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Class__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Overall_Status__c</field>
+            <table>Milestone1_Milestone__c.Project_Tasks__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Predecessor_Task__c</field>
             <table>Milestone1_Milestone__c.Project_Tasks__r</table>
         </columns>
         <masterLabel>Tasks</masterLabel>

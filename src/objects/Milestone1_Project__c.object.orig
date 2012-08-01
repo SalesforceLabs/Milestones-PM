@@ -35,92 +35,12 @@
         <type>Default</type>
     </actionOverrides>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>An project has a defined start and end date. A project can have many iterations.</description>
-    <enableActivities>true</enableActivities>
+    <description>Force.com Labs - PM - A collaborative enterprise which has a planned goal. A project can have many milestones.</description>
+    <enableActivities>false</enableActivities>
     <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>true</enableFeeds>
-    <enableHistory>true</enableHistory>
-    <enableReports>true</enableReports>
-    <fields>
-        <fullName>Account__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <externalId>false</externalId>
-        <inlineHelpText>Select the account/customer to which this project is for (if applicable).</inlineHelpText>
-        <label>Account</label>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Projects</relationshipLabel>
-        <relationshipName>Projects</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Assumptions__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>Enter assumptions that if proven false could cause your project to go over-budget, have poor quality output, or have bad health.</inlineHelpText>
-        <label>Assumptions</label>
-        <length>2048</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>LongTextArea</type>
-        <visibleLines>7</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Billable__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <inlineHelpText>Indicates if this project is billable/charge-able back to an account/customer.</inlineHelpText>
-        <label>Billable?</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Commitment_Level__c</fullName>
-        <externalId>false</externalId>
-        <label>Commitment Level</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Requested</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Estimated</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Committed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>Completion_Criteria__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>Enter what it will take to consider this project done.</inlineHelpText>
-        <label>Completion Criteria</label>
-        <length>2048</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>LongTextArea</type>
-        <visibleLines>7</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Constraints__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>Enter limitations or restrictions that the project team must work under.</inlineHelpText>
-        <label>Constraints</label>
-        <length>2048</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>LongTextArea</type>
-        <visibleLines>7</visibleLines>
-    </fields>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
     <fields>
         <fullName>Deadline__c</fullName>
         <externalId>false</externalId>
@@ -128,7 +48,6 @@
         <label>Deadline</label>
         <required>false</required>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>true</trackHistory>
         <type>Date</type>
     </fields>
     <fields>
@@ -138,7 +57,6 @@
         <label>Description</label>
         <length>5000</length>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
     </fields>
@@ -152,7 +70,6 @@
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -163,7 +80,6 @@
         <label>GoogleGanntUrl</label>
         <length>32000</length>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
@@ -174,7 +90,6 @@
         <length>18</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -185,153 +100,96 @@
         <label>Kickoff</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
         <type>Date</type>
     </fields>
     <fields>
         <fullName>Next_Project_Milestone_Due_Date__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Calculated as the next incomplete task with a due date in this project. This includes sub-iterations.</inlineHelpText>
-        <label>Next Project Iteration Due Date</label>
+        <inlineHelpText>Calculated as the next incomplete task with a due date in this project. This includes sub-milestones.</inlineHelpText>
+        <label>Next Project Milestone Due Date</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Date</type>
     </fields>
     <fields>
         <fullName>Next_Project_Top_Milestone_Due_Date__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>The next incomplete iteration due date. This does not include sub-iterations.</inlineHelpText>
-        <label>Next Project Top Iteration Due Date</label>
+        <inlineHelpText>The next incomplete milestone due date. This does not include sub-milestones.</inlineHelpText>
+        <label>Next Project Top Milestone Due Date</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Date</type>
     </fields>
     <fields>
         <fullName>Number_of_Incomplete_Milestones__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Calculated sum of the number of incomplete iterations assigned to this project. This includes sub-iterations in the project.</inlineHelpText>
-        <label>Number of Incomplete Iterations</label>
+        <inlineHelpText>Calculated sum of the number of incomplete milestones assigned to this project. This includes sub-milestones in the project.</inlineHelpText>
+        <label>Number of Incomplete Milestones</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>Number_of_Incomplete_Top_Milestones__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>The number of incomplete iterations that are in this project. This does not count sub-Iterations.</inlineHelpText>
-        <label>Number of Incomplete Top Iterations</label>
+        <inlineHelpText>The number of incomplete milestones that are in this project. This does not count sub-milestones.</inlineHelpText>
+        <label>Number of Incomplete Top Milestones</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Opportunity__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <externalId>false</externalId>
-        <inlineHelpText>Enter the sales opportunity/deal from which this project originated from (if applicable).</inlineHelpText>
-        <label>Opportunity</label>
-        <referenceTo>Opportunity</referenceTo>
-        <relationshipLabel>Projects</relationshipLabel>
-        <relationshipName>Projects</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Out_of_Scope__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>Specify what is out of scope.</inlineHelpText>
-        <label>Out of Scope</label>
-        <length>2048</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>LongTextArea</type>
-        <visibleLines>7</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Phase__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>The current phase this project is in. Typically used for waterfall projects.</inlineHelpText>
-        <label>Phase</label>
-        <picklist>
-            <picklistValues>
-                <fullName>1-Define</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>2-Design</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>3-Build</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>4-Test</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>5-Deploy</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
-        <fullName>Scope_Statement__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>Specify what is in scope</inlineHelpText>
-        <label>Scope Statement</label>
-        <length>2048</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>LongTextArea</type>
-        <visibleLines>7</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Stakeholder_Description__c</fullName>
-        <externalId>false</externalId>
-        <inlineHelpText>Enter the stakeholder(s) or stakeholder groups that will have an impact on or be impacted by this project.</inlineHelpText>
-        <label>Stakeholder Description</label>
-        <length>2048</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>LongTextArea</type>
-        <visibleLines>7</visibleLines>
-    </fields>
-    <fields>
         <fullName>Status_BudgetExpenseSummary__c</fullName>
         <externalId>false</externalId>
-        <formula>&quot;DEPRECATED&quot;</formula>
+        <formula>IF( Total_Expense_Budget__c &gt; 0,
+IMAGE(
+&quot;http://chart.apis.google.com/chart?chtt=Task+Expense+Budget+Analysis&amp;&quot; &amp;
+&quot;chxr=0,0,&quot; &amp; Text(max( Total_Expense_Budget__c,Total_Expense_Budget_from_Milestones__c,Total_Expense_Estimate__c, Total_Expense_Incurred__c)) &amp; &quot;&amp;&quot; &amp;
+&quot;chxt=y&amp;chbh=a&amp;chs=300x225&amp;cht=bvg&amp;&quot;&amp;
+&quot;chco=2299bb,eeaa66,ee3322,666666&amp;&amp;&quot;&amp;
+&quot;chdl=&quot;&amp;
+&quot;Budget (&quot; &amp; TEXT(Total_Expense_Budget__c) &amp; &quot;)&quot;&amp;
+&quot;|Planned (&quot; &amp; TEXT(Total_Expense_Budget_from_Milestones__c) &amp; &quot;)&quot;&amp;
+&quot;|Estimated (&quot; &amp; TEXT(Total_Expense_Estimate__c) &amp; &quot;)&quot;&amp;
+&quot;|Incurred (&quot; &amp; TEXT(Total_Expense_Incurred__c) &amp; &quot;)&quot;&amp;
+&quot;&amp;chd=t:&quot;&amp;
+TEXT( Total_Expense_Budget__c / max( Total_Expense_Budget__c,Total_Expense_Budget_from_Milestones__c,Total_Expense_Estimate__c, Total_Expense_Incurred__c) * 100 )&amp;&quot;|&quot;&amp; 
+TEXT( Total_Expense_Budget_from_Milestones__c / max( Total_Expense_Budget__c,Total_Expense_Budget_from_Milestones__c,Total_Expense_Estimate__c, Total_Expense_Incurred__c) * 100)  &amp;&quot;|&quot; &amp; 
+TEXT( Total_Expense_Estimate__c / max( Total_Expense_Budget__c,Total_Expense_Budget_from_Milestones__c,Total_Expense_Estimate__c, Total_Expense_Incurred__c) * 100 ) &amp;&quot;|&quot; &amp; 
+TEXT(  Total_Expense_Incurred__c / max( Total_Expense_Budget__c,Total_Expense_Budget_from_Milestones__c,Total_Expense_Estimate__c, Total_Expense_Incurred__c) * 100) 
+, &quot;Project Expense - Budget, Planned, Estimated, Incurred&quot;), &apos;&apos;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Expense Summary - Deprecated</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>Status_BudgetMiletoneEstimate__c</fullName>
         <externalId>false</externalId>
-        <formula>&quot;DEPRECATED&quot;</formula>
+        <formula>&quot;http://chart.apis.google.com/chart?chtt=Task+Time+Budget+Analysis&amp;&quot;&amp;
+&quot;chxr=0,0,&quot; &amp; Text(max( Total_Hours_Budget__c,Total_Hours_Budget_from_Milestones__c,Total_Hours_Estimate__c, Total_Hours_Incurred__c)) &amp; &quot;&amp;&quot; &amp;
+&quot;chxt=y&amp;chbh=a&amp;chs=300x225&amp;cht=bvg&amp;&quot;&amp;
+&quot;chco=2299bb,eeaa66,ee3322,666666&amp;&quot;&amp;
+&quot;chdl=&quot;&amp;
+&quot;Budget (&quot; &amp; TEXT(Total_Hours_Budget__c) &amp; &quot;)&quot;&amp;
+&quot;|Planned (&quot; &amp; TEXT(Total_Hours_Budget_from_Milestones__c) &amp; &quot;)&quot;&amp;
+&quot;|Estimated (&quot; &amp; TEXT(Total_Hours_Estimate__c) &amp; &quot;)&quot;&amp;
+&quot;|Incurred (&quot; &amp; TEXT(Total_Hours_Incurred__c) &amp; &quot;)&quot;&amp;
+&quot;&amp;chd=t:&quot;&amp;
+TEXT( Total_Hours_Budget__c / max( Total_Hours_Budget__c,Total_Hours_Budget_from_Milestones__c,Total_Hours_Estimate__c, Total_Hours_Incurred__c) * 100 )&amp;&quot;|&quot;&amp; 
+TEXT( Total_Hours_Budget_from_Milestones__c / max( Total_Hours_Budget__c,Total_Hours_Budget_from_Milestones__c,Total_Hours_Estimate__c, Total_Hours_Incurred__c) * 100)  &amp;&quot;|&quot; &amp; 
+TEXT( Total_Hours_Estimate__c / max( Total_Hours_Budget__c,Total_Hours_Budget_from_Milestones__c,Total_Hours_Estimate__c, Total_Hours_Incurred__c) * 100 ) &amp;&quot;|&quot; &amp; 
+TEXT(  Total_Hours_Incurred__c / max( Total_Hours_Budget__c,Total_Hours_Budget_from_Milestones__c,Total_Hours_Estimate__c, Total_Hours_Incurred__c) * 100)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Hours Summary - Deprecated</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -343,7 +201,6 @@ IMAGE(Status_BudgetMiletoneEstimate__c, &quot;Hours Summary: Budgeted, Planned, 
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Hours Summary (chart) - Deprecated</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -355,40 +212,47 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Open vs. Complete Tasks (chart) - Deprec</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>Status_Img_OpenLateBlocked__c</fullName>
         <externalId>false</externalId>
-        <formula>&quot;DEPRECATED&quot;</formula>
+        <formula>IMAGE( Status_TasksOpenBlockedLate__c , &quot;Open, Late &amp; Blocked Tasks.&quot;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Open, Late &amp; Blocked Tasks (chart) - Dep</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>Status_TasksOpenBlockedLate__c</fullName>
         <externalId>false</externalId>
-        <formula>&quot;DEPRECATED&quot;</formula>
+        <formula>IF(max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ) &gt; 0 , 
+&quot;http://chart.apis.google.com/chart?chtt=Open+Task+Analysis&amp;chxt=y&amp;chbh=a&amp;chs=300x225&amp;cht=bvg&amp;&quot;&amp;
+&quot;chxr=0,0,&quot; &amp; Text(max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ))&amp;&quot;&amp;&quot;&amp;
+&quot;chco=2299bb,eeaa66,ee3322&amp;chdl=&quot;&amp;
+&quot;Open (&quot; &amp; TEXT(Total_Open_Task_Count__c) &amp; &quot;)&quot;&amp;
+&quot;|Late (&quot; &amp; TEXT(Total_Late_Task_Count__c) &amp; &quot;)&quot;&amp;
+&quot;|Blocked (&quot; &amp; TEXT(Total_Blocked_Task_Count__c) &amp; &quot;)&quot;&amp;
+&quot;&amp;chd=t:&quot;&amp; TEXT(Total_Open_Task_Count__c / max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ) *100)&amp;&quot;|&quot;&amp; TEXT(Total_Late_Task_Count__c/ max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ) *100) &amp;&quot;|&quot; &amp; TEXT(Total_Blocked_Task_Count__c/ max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ) *100), &apos;/s.gif&apos;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Open, Late &amp; Blocked Tasks - Deprecated</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>Status_TasksOpenComplete__c</fullName>
         <externalId>false</externalId>
-        <formula>&quot;DEPRECATED&quot;</formula>
+        <formula>&quot;http://chart.apis.google.com/chart?&quot;&amp;
+&quot;chtt=Task+Analysis&amp;&quot;&amp;
+&quot;chco=eeaa66,2299bb&amp;chs=300x225&amp;cht=p&amp;chd=t:&quot;&amp;Text(Total_Open_Task_Count__c)&amp;&quot;,&quot;&amp;Text(Total_Complete_Task_Count__c)&amp;&quot;&amp;chdl=&quot;&amp;
+&quot;Open%20Tasks (&quot; &amp; TEXT (Total_Open_Task_Count__c) &amp; &quot;)&quot;&amp;
+&quot;|Complete%20Tasks (&quot; &amp; TEXT (Total_Complete_Task_Count__c) &amp; &quot;)&quot;</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Open vs. Complete Tasks - Deprecated</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -398,30 +262,6 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <inlineHelpText>The current status of the project.</inlineHelpText>
         <label>Status</label>
         <picklist>
-            <picklistValues>
-                <fullName>New</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Not Started</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>In Process</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Completed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cancelled</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>On Hold</fullName>
-                <default>false</default>
-            </picklistValues>
             <picklistValues>
                 <fullName>Inactive</fullName>
                 <default>false</default>
@@ -434,10 +274,17 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
                 <fullName>Active</fullName>
                 <default>false</default>
             </picklistValues>
+            <picklistValues>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>true</trackHistory>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -449,7 +296,6 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <required>false</required>
         <scale>0</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -462,7 +308,6 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <required>false</required>
         <scale>0</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -475,19 +320,17 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Currency</type>
     </fields>
     <fields>
         <fullName>Total_Expense_Budget_from_Milestones__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Calculated from the iteration expense budgets assigned to this project.</inlineHelpText>
-        <label>Total Expense Budget from Iterations</label>
+        <inlineHelpText>Calculated from the milestone expense budgets assigned to this project.</inlineHelpText>
+        <label>Total Expense Budget from Milestones</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Currency</type>
     </fields>
     <fields>
@@ -499,7 +342,6 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Currency</type>
     </fields>
     <fields>
@@ -511,7 +353,6 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Currency</type>
     </fields>
     <fields>
@@ -523,20 +364,18 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>Total_Hours_Budget_from_Milestones__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Calculated from hours budgets for iterations in this project.</inlineHelpText>
-        <label>Total Hours Budget from Iterations</label>
+        <inlineHelpText>Calculated from hours budgets for milestones in this project.</inlineHelpText>
+        <label>Total Hours Budget from Milestones</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -549,7 +388,6 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -562,7 +400,6 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -575,7 +412,6 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <required>false</required>
         <scale>0</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -588,7 +424,6 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
         <required>false</required>
         <scale>0</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -601,33 +436,23 @@ IMAGE( Status_TasksOpenComplete__c , &quot;Open vs. Complete Tasks&quot;) , &apo
     <nameField>
         <label>Project Name</label>
         <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Projects</pluralLabel>
     <searchLayouts>
-        <customTabListAdditionalFields>Description__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>OWNER.FIRST_NAME</customTabListAdditionalFields>
         <customTabListAdditionalFields>OWNER.LAST_NAME</customTabListAdditionalFields>
         <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Deadline__c</customTabListAdditionalFields>
         <listViewButtons>Import_Template</listViewButtons>
-        <lookupDialogsAdditionalFields>Description__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>OWNER.FIRST_NAME</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>OWNER.LAST_NAME</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Deadline__c</lookupDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>Description__c</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>OWNER.FIRST_NAME</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>OWNER.LAST_NAME</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>Status__c</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>Deadline__c</lookupPhoneDialogsAdditionalFields>
-        <searchFilterFields>NAME</searchFilterFields>
         <searchFilterFields>OWNER.FIRST_NAME</searchFilterFields>
         <searchFilterFields>OWNER.LAST_NAME</searchFilterFields>
         <searchFilterFields>Status__c</searchFilterFields>
         <searchFilterFields>Deadline__c</searchFilterFields>
-        <searchResultsAdditionalFields>Description__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>OWNER.FIRST_NAME</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>OWNER.LAST_NAME</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>

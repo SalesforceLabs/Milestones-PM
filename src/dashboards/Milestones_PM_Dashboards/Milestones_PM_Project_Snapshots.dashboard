@@ -7,6 +7,7 @@
     <leftSection>
         <columnSize>Medium</columnSize>
         <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <chartAxisRange>Auto</chartAxisRange>
             <componentType>Column</componentType>
             <displayUnits>Auto</displayUnits>
@@ -26,6 +27,7 @@
     <middleSection>
         <columnSize>Medium</columnSize>
         <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <chartAxisRange>Auto</chartAxisRange>
             <componentType>Column</componentType>
             <displayUnits>Auto</displayUnits>
@@ -45,6 +47,7 @@
     <rightSection>
         <columnSize>Medium</columnSize>
         <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <chartAxisRange>Auto</chartAxisRange>
             <componentType>Column</componentType>
             <displayUnits>Auto</displayUnits>
@@ -61,7 +64,7 @@
             <useReportChart>false</useReportChart>
         </components>
     </rightSection>
-    <runningUser>labs@labs.266</runningUser>
+    <runningUser>brent.gossett@69demo.com</runningUser>
     <textColor>#000000</textColor>
     <title>Milestones PM Project Snapshots</title>
     <titleColor>#000000</titleColor>

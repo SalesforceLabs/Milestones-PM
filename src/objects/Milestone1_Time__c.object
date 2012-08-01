@@ -40,6 +40,24 @@
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
     <fields>
+        <fullName>Actual_Cost__c</fullName>
+        <externalId>false</externalId>
+        <formula>Hours__c * Rate__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Actual Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Billable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Billable?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Date__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>The date the time was incurred. Defaults to today if left blank.</inlineHelpText>
@@ -80,8 +98,8 @@
         <fullName>Incurred_By__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <inlineHelpText>The user who incurred the time being charged. Defaults to current user if left blank.</inlineHelpText>
-        <label>Incurred By</label>
+        <inlineHelpText>The user who incurred the time being charged. Defaults to current user if left blank AND no resource user is specified.</inlineHelpText>
+        <label>Incurred By User</label>
         <referenceTo>User</referenceTo>
         <relationshipName>Project_Times_Incurred</relationshipName>
         <required>false</required>
@@ -96,8 +114,61 @@
         <relationshipLabel>Times</relationshipLabel>
         <relationshipName>Project_Times</relationshipName>
         <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <externalId>false</externalId>
+        <formula>Project_Task__r.Project__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Project</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not Billable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pending Billing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Submitted To AR</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Entered By Accounting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sent Payment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled Payment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
     </fields>
     <label>Time</label>
     <listViews>

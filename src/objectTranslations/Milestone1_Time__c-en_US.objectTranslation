@@ -9,6 +9,14 @@
         <value>Times</value>
     </caseValues>
     <fields>
+        <label><!-- Actual Cost --></label>
+        <name>Actual_Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billable? --></label>
+        <name>Billable__c</name>
+    </fields>
+    <fields>
         <help><!-- The date the time was incurred. Defaults to today if left blank. --></help>
         <label><!-- Date Incurred --></label>
         <name>Date__c</name>
@@ -28,8 +36,8 @@
         <name>ImportID__c</name>
     </fields>
     <fields>
-        <help><!-- The user who incurred the time being charged. Defaults to current user if left blank. --></help>
-        <label><!-- Incurred By --></label>
+        <help><!-- The user who incurred the time being charged. Defaults to current user if left blank AND no resource user is specified. --></help>
+        <label><!-- Incurred By User --></label>
         <name>Incurred_By__c</name>
         <relationshipLabel><!-- Times --></relationshipLabel>
     </fields>
@@ -38,6 +46,42 @@
         <label><!-- Project Task --></label>
         <name>Project_Task__c</name>
         <relationshipLabel><!-- Times --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Project --></label>
+        <name>Project__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rate --></label>
+        <name>Rate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled Payment</masterLabel>
+            <translation><!-- Cancelled Payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entered By Accounting</masterLabel>
+            <translation><!-- Entered By Accounting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Billable</masterLabel>
+            <translation><!-- Not Billable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Billing</masterLabel>
+            <translation><!-- Pending Billing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent Payment</masterLabel>
+            <translation><!-- Sent Payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted To AR</masterLabel>
+            <translation><!-- Submitted To AR --></translation>
+        </picklistValues>
     </fields>
     <layouts>
         <layout>Project Time Layout</layout>

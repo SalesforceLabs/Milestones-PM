@@ -7,6 +7,7 @@
     <leftSection>
         <columnSize>Medium</columnSize>
         <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <componentType>Table</componentType>
             <displayUnits>Auto</displayUnits>
             <indicatorHighColor>#54C254</indicatorHighColor>
@@ -21,6 +22,7 @@
     <middleSection>
         <columnSize>Medium</columnSize>
         <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <componentType>Table</componentType>
             <displayUnits>Auto</displayUnits>
             <indicatorHighColor>#54C254</indicatorHighColor>
@@ -35,6 +37,7 @@
     <rightSection>
         <columnSize>Medium</columnSize>
         <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <chartAxisRange>Auto</chartAxisRange>
             <componentType>Column</componentType>
             <displayUnits>Auto</displayUnits>
@@ -51,7 +54,7 @@
             <useReportChart>false</useReportChart>
         </components>
     </rightSection>
-    <runningUser>labs@labs.266</runningUser>
+    <runningUser>brent.gossett@69demo.com</runningUser>
     <textColor>#000000</textColor>
     <title>Milestones PM Individual Dashboard</title>
     <titleColor>#000000</titleColor>

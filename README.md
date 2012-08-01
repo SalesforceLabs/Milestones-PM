@@ -17,13 +17,11 @@ Milestones PM was originally designed by Reid Carlberg.
 
 Contributors include:
 
+* Passage Technology, http://www.passagetech.com
 * Kevin / Jeremy from Axlea, http://axlea.com
 * Ganesh Mathrubootham, gmathrubootham@salesforce.com
 * Ron Hess, https://github.com/vnehess
 
-
-
 Get to know Milestones PM. https://github.com/ForceDotComLabs/Milestones-PM/wiki/HOW-TO-Get-to-Know-Milestones-PM
 
-
-
+Milestones PM is a fully supported, project management platform. Passage Technology provides this support, please contact sales@passagetech.com if you are interested.  Passage Technology has also added advanced collaborative project management capabilities to a managed package listed on the Salesforce.com AppExchange, http://goo.gl/8rOr0  More info, http://blogs.developerforce.com/labs/2012/07/introducing-milestones-pm-fully-supported-portfolio-program-and-project-management.html  

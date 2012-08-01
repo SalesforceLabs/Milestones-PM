@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Project Snapshot</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Project Snapshots</value>
+    </caseValues>
+    <fields>
+        <label><!-- Blocked Task Count --></label>
+        <name>Blocked_Task_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Complete Task Count --></label>
+        <name>Complete_Task_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date --></label>
+        <name>Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expense Budget --></label>
+        <name>Expense_Budget__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expense Estimate --></label>
+        <name>Expense_Estimate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expense Incurred --></label>
+        <name>Expense_Incurred__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hours Budget --></label>
+        <name>Hours_Budget__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hours Estimate --></label>
+        <name>Hours_Estimate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hours Incurred --></label>
+        <name>Hours_Incurred__c</name>
+    </fields>
+    <fields>
+        <label><!-- Incomplete Milestones --></label>
+        <name>Incomplete_Milestones__c</name>
+    </fields>
+    <fields>
+        <label><!-- Incomplete Top Milestones --></label>
+        <name>Incomplete_Top_Milestones__c</name>
+    </fields>
+    <fields>
+        <label><!-- Late Task Count --></label>
+        <name>Late_Task_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open Task Count --></label>
+        <name>Open_Task_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Name --></label>
+        <name>Project_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

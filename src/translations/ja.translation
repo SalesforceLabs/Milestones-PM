@@ -9,6 +9,10 @@
         <name>ALiasNotFound</name>
     </customLabels>
     <customLabels>
+        <label><!-- Text used in the About tab --></label>
+        <name>About_Text</name>
+    </customLabels>
+    <customLabels>
         <label><!-- AllItems --></label>
         <name>AllItems</name>
     </customLabels>
@@ -17,12 +21,60 @@
         <name>AllOpenTasks</name>
     </customLabels>
     <customLabels>
+        <label><!-- Help text for the Allow Blank Opp Names checkbox setting --></label>
+        <name>Allow_Blank_Opportunity_Names_Setting_Help_Text</name>
+    </customLabels>
+    <customLabels>
         <label>エラーが発生しました。</label>
         <name>AnErrorHasOcurred</name>
     </customLabels>
     <customLabels>
+        <label><!-- Help Text for the Advanced Configuration Items section of the About tab --></label>
+        <name>BDE_Advanced_Configuration_Items_Help_Text</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Help text for the Batch Metadata section in the About tab --></label>
+        <name>BDE_Batch_Metadata_Help_Text</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Help Text for the Configuring Batch Fields and Lists section of the About tab --></label>
+        <name>BDE_Configuring_Batch_Fields_and_Lists_Help_Text</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Help text for the Data Entry section in the About tab --></label>
+        <name>BDE_Data_Entry_Help_Text</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Help Text for the Deleting Batches section in the About tab --></label>
+        <name>BDE_Deleting_Batches_Help_Text</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Help Text for the Entering and Saving Data section in the About tab --></label>
+        <name>BDE_Entering_and_Saving_Data_Help_Text</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Help text for Configuring Entry and Save Fields section of the About tab --></label>
+        <name>BDE_Entry_Save_List_Help_Text</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Help text for the Other Considerations section in the About tab --></label>
+        <name>BDE_Other_Considerations_Help_Text</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Help Text for the Starting a New Batch section in the About tab --></label>
+        <name>BDE_Starting_New_Batch_Help_Text</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Back --></label>
         <name>Back</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Batch Deletion Help Text --></label>
+        <name>Batch_Deletion_Help_Text</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Batch Entry Help Text --></label>
+        <name>Batch_Entry_Help_Text</name>
     </customLabels>
     <customLabels>
         <label><!-- Be sure to explore the sample project, &quot;HOWTO: Get Started with Milestones PM&quot;. --></label>
@@ -81,6 +133,10 @@
         <name>ContentIsNotAllowedInProlog</name>
     </customLabels>
     <customLabels>
+        <label><!-- Create_Setting_Help_Text --></label>
+        <name>Create_Setting_Help_Text</name>
+    </customLabels>
+    <customLabels>
         <label><!-- CurrentExport --></label>
         <name>CurrentExport</name>
     </customLabels>
@@ -91,6 +147,10 @@
     <customLabels>
         <label><!-- EnterAcommand --></label>
         <name>EnterAcommand</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Entry Field Help Text --></label>
+        <name>Entry_Field_Help_Text</name>
     </customLabels>
     <customLabels>
         <label><!-- Expenses --></label>
@@ -105,7 +165,7 @@
         <name>FilterCalendarBy</name>
     </customLabels>
     <customLabels>
-        <label><!-- For community assistance with Milestones PM, please visit &lt;a href=&quot;http://succes --></label>
+        <label><!-- For community assistance with Milestones PM+, visit &lt;a href=&quot;http://succes --></label>
         <name>ForCommunityAssistance</name>
     </customLabels>
     <customLabels>
@@ -205,7 +265,7 @@
         <name>InsufficientPrivileges</name>
     </customLabels>
     <customLabels>
-        <label><!-- Insufficient privileges to access parent milestone. --></label>
+        <label><!-- Insufficient privileges to access parent iteration. --></label>
         <name>InsufficientPrivilegesToAccessParentMilestone</name>
     </customLabels>
     <customLabels>
@@ -223,6 +283,14 @@
     <customLabels>
         <label><!-- &lt;a href=&quot;http://blogs.developerforce.com/labs/2011/08/howto-contribute-to-milest --></label>
         <name>LearnMore</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- List Field Help Text --></label>
+        <name>List_Field_Help_Text</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Load Setting Help Text --></label>
+        <name>Load_Setting_Help_Text</name>
     </customLabels>
     <customLabels>
         <label><!-- Logs --></label>
@@ -257,7 +325,11 @@
         <name>Milestone1_Back</name>
     </customLabels>
     <customLabels>
-        <label><!-- Be sure to explore the sample project, &quot;HOWTO: Get Started with Milestones PM&quot;. --></label>
+        <label><!-- A backlog item you are attempting to move is already assigned to this iteration. --></label>
+        <name>Milestone1_BacklogItemYouAreAttempting</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Be sure to explore the sample project, &quot;HOWTO: Get Started with Milestones PM+&quot;. --></label>
         <name>Milestone1_BeSureToExploreTheSampleProject</name>
     </customLabels>
     <customLabels>
@@ -345,7 +417,7 @@
         <name>Milestone1_FilterProjectBy</name>
     </customLabels>
     <customLabels>
-        <label><!-- For community assistance with Milestones PM, please visit &lt;a href=&quot;http://succes --></label>
+        <label><!-- For community assistance with Milestones PM+, visit &lt;a href=&quot;http://succes --></label>
         <name>Milestone1_ForCommunityAssistance</name>
     </customLabels>
     <customLabels>
@@ -373,7 +445,7 @@
         <name>Milestone1_GettingStarted</name>
     </customLabels>
     <customLabels>
-        <label><!-- Give a Email Service Name &quot;Email To Milestone Task&quot;. --></label>
+        <label><!-- Give a Email Service Name &quot;Email To Iteration Task&quot;. --></label>
         <name>Milestone1_GiveEmailServiceName</name>
     </customLabels>
     <customLabels>
@@ -397,7 +469,7 @@
         <name>Milestone1_ImportDefaultProject</name>
     </customLabels>
     <customLabels>
-        <label><!-- Import Failed - -  Milestone was unable to import your file. --></label>
+        <label><!-- Import Failed - -  Milestones PM+ was unable to import your file. --></label>
         <name>Milestone1_ImportFailed</name>
     </customLabels>
     <customLabels>
@@ -453,7 +525,7 @@
         <name>Milestone1_InsufficientPrivileges</name>
     </customLabels>
     <customLabels>
-        <label><!-- Insufficient privileges to access parent milestone. --></label>
+        <label><!-- Insufficient privileges to access parent iteration. --></label>
         <name>Milestone1_InsufficientPrivilegesToAccessParentMilestone</name>
     </customLabels>
     <customLabels>
@@ -489,23 +561,23 @@
         <name>Milestone1_MaximumPer</name>
     </customLabels>
     <customLabels>
-        <label><!-- Milestone Application Post Installation Instructions --></label>
+        <label><!-- Milestone PM 2 Application Post Installation Instructions --></label>
         <name>Milestone1_MilestoneApplicationPostInstallation</name>
     </customLabels>
     <customLabels>
-        <label><!-- MilestoneClone --></label>
+        <label><!-- IterationClone --></label>
         <name>Milestone1_MilestoneClone</name>
     </customLabels>
     <customLabels>
-        <label><!-- Milestone is Complete, the Task can not be moved --></label>
+        <label><!-- Iteration is Complete, the Task can not be moved --></label>
         <name>Milestone1_MilestoneIsComplete</name>
     </customLabels>
     <customLabels>
-        <label><!-- MilestoneRecordsToMove --></label>
+        <label><!-- IterationRecordsToMove --></label>
         <name>Milestone1_MilestoneRecordsToMove</name>
     </customLabels>
     <customLabels>
-        <label><!-- A milestone you are attempting to move is already assigned to this project. Plea --></label>
+        <label><!-- The iteration u are attempting to move is already assigned to this project. Plea --></label>
         <name>Milestone1_MilestoneYouAreAttempting</name>
     </customLabels>
     <customLabels>
@@ -521,15 +593,15 @@
         <name>Milestone1_MilestonesOpenTasks</name>
     </customLabels>
     <customLabels>
-        <label><!-- Milestones PM is Open Source software. --></label>
+        <label><!-- Milestones PM+ is commercially available and supported software. --></label>
         <name>Milestone1_MilestonesPMISOpenSource</name>
     </customLabels>
     <customLabels>
-        <label><!-- Milestones PM is unsupported. --></label>
+        <label><!-- Milestones PM+ is supported. --></label>
         <name>Milestone1_MilestonesPMIsUnsupported</name>
     </customLabels>
     <customLabels>
-        <label><!-- Milestones should not be moved to different Projects, except through the &quot;Move t --></label>
+        <label><!-- Iterations should not be moved to different Projects, except through the &quot;Move t --></label>
         <name>Milestone1_MilestonesShouldNotBeMoved</name>
     </customLabels>
     <customLabels>
@@ -541,11 +613,11 @@
         <name>Milestone1_MoveMilestoneCancel</name>
     </customLabels>
     <customLabels>
-        <label><!-- MoveMilestoneRecordsToMove --></label>
+        <label><!-- MoveIterationRecordsToMove --></label>
         <name>Milestone1_MoveMilestoneRecordsToMove</name>
     </customLabels>
     <customLabels>
-        <label><!-- MoveMilestoneS --></label>
+        <label><!-- MoveIterations --></label>
         <name>Milestone1_MoveMilestoneS</name>
     </customLabels>
     <customLabels>
@@ -561,7 +633,7 @@
         <name>Milestone1_MoveMilestone_Save</name>
     </customLabels>
     <customLabels>
-        <label><!-- MoveMilestone_s --></label>
+        <label><!-- MoveIteration_s --></label>
         <name>Milestone1_MoveMilestone_s</name>
     </customLabels>
     <customLabels>
@@ -605,7 +677,7 @@
         <name>Milestone1_MyIncompleteTasks</name>
     </customLabels>
     <customLabels>
-        <label><!-- MyMilestonesOnly --></label>
+        <label><!-- MyIterationsOnly --></label>
         <name>Milestone1_MyMilestonesOnly</name>
     </customLabels>
     <customLabels>
@@ -625,7 +697,7 @@
         <name>Milestone1_NewFieldToReplaceInactiveUsers</name>
     </customLabels>
     <customLabels>
-        <label><!-- NewMilestoneName --></label>
+        <label><!-- NewIterationName --></label>
         <name>Milestone1_NewMilestoneName</name>
     </customLabels>
     <customLabels>
@@ -673,11 +745,11 @@
         <name>Milestone1_ProjectIsTooLarge</name>
     </customLabels>
     <customLabels>
-        <label><!-- Project Milestone Nag Engine --></label>
+        <label><!-- Project Iteration Nag Engine --></label>
         <name>Milestone1_ProjectMilestoneNagEngine</name>
     </customLabels>
     <customLabels>
-        <label><!-- Project Milestone Notification - Items require attention. --></label>
+        <label><!-- Project Iteration Notification - Items require attention. --></label>
         <name>Milestone1_ProjectMilestoneNotification</name>
     </customLabels>
     <customLabels>
@@ -685,7 +757,7 @@
         <name>Milestone1_ProjectSummary_FirstHalf</name>
     </customLabels>
     <customLabels>
-        <label><!-- to start using Milestones PM. --></label>
+        <label><!-- to start using Milestones PM+. --></label>
         <name>Milestone1_ProjectSummary_SecondHalf</name>
     </customLabels>
     <customLabels>
@@ -757,7 +829,7 @@
         <name>Milestone1_StartCreatingYourFirstProject</name>
     </customLabels>
     <customLabels>
-        <label><!-- Sub-milestones can only go one level deep. Please select a top-level milestone a --></label>
+        <label><!-- Sub-iterations can only go one level deep. Please select a top-level milestone a --></label>
         <name>Milestone1_SubMilestonesCanOnlyGoOneLevelDeep</name>
     </customLabels>
     <customLabels>
@@ -793,7 +865,7 @@
         <name>Milestone1_TaskNotFound</name>
     </customLabels>
     <customLabels>
-        <label><!-- A task you are attempting to move is already assigned to this milestone. Please --></label>
+        <label><!-- A task you are attempting to move is already assigned to this iteration. Please --></label>
         <name>Milestone1_TaskYouAreAttempting</name>
     </customLabels>
     <customLabels>
@@ -805,15 +877,15 @@
         <name>Milestone1_TasksCalendar</name>
     </customLabels>
     <customLabels>
-        <label><!-- TasksMilestone --></label>
+        <label><!-- TasksIteration --></label>
         <name>Milestone1_TasksMilestone</name>
     </customLabels>
     <customLabels>
-        <label><!-- TestProjectMilestones --></label>
+        <label><!-- TestProjectIterations --></label>
         <name>Milestone1_TestProjectMilestones</name>
     </customLabels>
     <customLabels>
-        <label><!-- The following Salesforce Project Milestone items are nagging you for attention --></label>
+        <label><!-- The following Project Iteration items are nagging you for attention --></label>
         <name>Milestone1_TheFollowingSalesforceProjectMilestoneItems</name>
     </customLabels>
     <customLabels>
@@ -877,11 +949,11 @@
         <name>Milestone1_ToYourProject_SecondHalf</name>
     </customLabels>
     <customLabels>
-        <label><!-- Top Level Milestone has predecessor and cannot be moved.  Remove that predecesso --></label>
+        <label><!-- Top Level Iteration has predecessor and cannot be moved.  Remove that predecesso --></label>
         <name>Milestone1_TopLevelMilestoneHasPredecessor</name>
     </customLabels>
     <customLabels>
-        <label><!-- Top Level Milestone has successors and cannot be moved.  Redirect those successo --></label>
+        <label><!-- Top Level Iteration has successors and cannot be moved.  Redirect those successo --></label>
         <name>Milestone1_TopLevelMilestoneHasSuccessors</name>
     </customLabels>
     <customLabels>
@@ -913,7 +985,7 @@
         <name>Milestone1_YouCanNowGoTo</name>
     </customLabels>
     <customLabels>
-        <label><!-- you must &lt;strong&gt;deploy&lt;/strong&gt; Milestones before continuing. --></label>
+        <label><!-- you must &lt;strong&gt;deploy&lt;/strong&gt; Milestones PM+ before continuing. --></label>
         <name>Milestone1_YouMustDeploy</name>
     </customLabels>
     <customLabels>
@@ -925,11 +997,47 @@
         <name>Milestone1_YourProjectCouldNotSuccessfully</name>
     </customLabels>
     <customLabels>
+        <label><!-- Milestones PM+ --></label>
+        <name>Milestone2_App_Name</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Backlog Items --></label>
+        <name>Milestone2_Backlog_Items</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Iterations --></label>
+        <name>Milestone2_Iterations</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- &lt;a href=&quot;http://blogs.developerforce.com/labs/2011/08/howto-contribute-to-milest --></label>
+        <name>Milestone2_LearnMore</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Move Backlog Item(s) --></label>
+        <name>Milestone2_Move_Backlog_Item_s</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Release Notes --></label>
+        <name>Milestone2_Release_Notes</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Status Reports --></label>
+        <name>Milestone2_Status_Reports</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- ToResourcesNotFound --></label>
+        <name>Milestone2_ToResourcesNotFound</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- Upcoming Features Content --></label>
+        <name>Milestone2_Upcoming_Features_Content</name>
+    </customLabels>
+    <customLabels>
         <label><!-- Milestone Application Post Installation Instructions --></label>
         <name>MilestoneApplicationPostInstallation</name>
     </customLabels>
     <customLabels>
-        <label><!-- MilestoneClone --></label>
+        <label><!-- IterationClone --></label>
         <name>MilestoneClone</name>
     </customLabels>
     <customLabels>
@@ -941,15 +1049,15 @@
         <name>MilestoneRecordsToMove</name>
     </customLabels>
     <customLabels>
-        <label><!-- A milestone you are attempting to move is already assigned to this project. Plea --></label>
+        <label><!-- An teration you are attempting to move is already assigned to this project. Plea --></label>
         <name>MilestoneYouAreAttempting</name>
     </customLabels>
     <customLabels>
-        <label><!-- Milestones --></label>
+        <label><!-- Iterations --></label>
         <name>Milestones</name>
     </customLabels>
     <customLabels>
-        <label><!-- MilestonesCalendar --></label>
+        <label><!-- IterationsCalendar --></label>
         <name>MilestonesCalendar</name>
     </customLabels>
     <customLabels>
@@ -1041,7 +1149,7 @@
         <name>MyIncompleteTasks</name>
     </customLabels>
     <customLabels>
-        <label><!-- MyMilestonesOnly --></label>
+        <label><!-- MyIterationsOnly --></label>
         <name>MyMilestonesOnly</name>
     </customLabels>
     <customLabels>
@@ -1055,6 +1163,10 @@
     <customLabels>
         <label><!-- MyTasksOnly --></label>
         <name>MyTasksOnly</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- NPSP Setting Help Text --></label>
+        <name>NPSP_Setting_Help_Text</name>
     </customLabels>
     <customLabels>
         <label><!-- NewFieldToReplaceInactiveUsers --></label>
@@ -1081,12 +1193,32 @@
         <name>NoProjects</name>
     </customLabels>
     <customLabels>
+        <label><!-- Opportunity Naming Setting Help Text --></label>
+        <name>Opportunity_Naming_Setting_Help_Text</name>
+    </customLabels>
+    <customLabels>
         <label><!-- OrganizationsVersion --></label>
         <name>OrganizationsVersion</name>
     </customLabels>
     <customLabels>
         <label><!-- OverdueTasks --></label>
         <name>OverdueTasks</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- PS App Name --></label>
+        <name>PS_App_Name</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- PS Initialize Button --></label>
+        <name>PS_Initialize_Button</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- PS Initialize Notice --></label>
+        <name>PS_Initialize_Notice</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- PT Logo URL --></label>
+        <name>PT_Logo_URL</name>
     </customLabels>
     <customLabels>
         <label><!-- PleaseUseFormat --></label>
@@ -1113,7 +1245,7 @@
         <name>ProjectSummary_FirstHalf</name>
     </customLabels>
     <customLabels>
-        <label><!-- to start using Milestones PM. --></label>
+        <label><!-- to start using Milestones PM+. --></label>
         <name>ProjectSummary_SecondHalf</name>
     </customLabels>
     <customLabels>
@@ -1221,7 +1353,7 @@
         <name>TaskNotFound</name>
     </customLabels>
     <customLabels>
-        <label><!-- A task you are attempting to move is already assigned to this milestone. Please --></label>
+        <label><!-- A task you are attempting to move is already assigned to this iteration. Please --></label>
         <name>TaskYouAreAttempting</name>
     </customLabels>
     <customLabels>
@@ -1289,11 +1421,11 @@
         <name>ToYourProject_SecondHalf</name>
     </customLabels>
     <customLabels>
-        <label><!-- Top Level Milestone has predecessor and cannot be moved.  Remove that predecesso --></label>
+        <label><!-- Top Level Iteration has predecessor and cannot be moved.  Remove that predecesso --></label>
         <name>TopLevelMilestoneHasPredecessor</name>
     </customLabels>
     <customLabels>
-        <label><!-- Top Level Milestone has successors and cannot be moved.  Redirect those successo --></label>
+        <label><!-- Top Level Iteration has successors and cannot be moved.  Redirect those successo --></label>
         <name>TopLevelMilestoneHasSuccessors</name>
     </customLabels>
     <customLabels>
@@ -1317,7 +1449,7 @@
         <name>Wednesday</name>
     </customLabels>
     <customLabels>
-        <label><!-- Welcome to Milestones PM - Project Management --></label>
+        <label><!-- Welcome to Milestones PM+ --></label>
         <name>WelcomeToMilestonesPM</name>
     </customLabels>
     <customLabels>
@@ -1361,11 +1493,11 @@
         <label>マイルストーン(複数)とタスク（複数）</label>
         <name>Milestone1_Milestones_Tasks</name>
         <sections>
-            <label>プロジェクトマイルストーン</label>
-            <name>Project Milestones</name>
+            <label><!-- Iterations --></label>
+            <name>Iterations</name>
         </sections>
         <sections>
-            <label>プロジェクトタスク</label>
+            <label><!-- Project Tasks --></label>
             <name>Project Tasks</name>
         </sections>
     </reportTypes>
@@ -1374,7 +1506,7 @@
         <label>プロジェクト（PM）</label>
         <name>Milestone1_Projects</name>
         <sections>
-            <label>プロジェクト</label>
+            <label><!-- Projects --></label>
             <name>Projects</name>
         </sections>
     </reportTypes>
@@ -1383,15 +1515,15 @@
         <label>プロジェクト（複数）とマイルストーン（複数）</label>
         <name>Milestone1_Projects_Milestones</name>
         <sections>
-            <label>子マイルストーン</label>
+            <label><!-- Child Milestones --></label>
             <name>Child Milestones</name>
         </sections>
         <sections>
-            <label>プロジェクトマイルストーン</label>
-            <name>Project Milestones</name>
+            <label><!-- Iterations --></label>
+            <name>Iterations</name>
         </sections>
         <sections>
-            <label>プロジェクト</label>
+            <label><!-- Projects --></label>
             <name>Projects</name>
         </sections>
     </reportTypes>
@@ -1400,7 +1532,7 @@
         <label>タスク</label>
         <name>Milestone1_Tasks</name>
         <sections>
-            <label>タスク</label>
+            <label><!-- Tasks --></label>
             <name>Tasks</name>
         </sections>
     </reportTypes>
@@ -1409,15 +1541,15 @@
         <label>マイルストーンとタスクと費用</label>
         <name>MilestoneTaskExp</name>
         <sections>
-            <label>費用</label>
+            <label><!-- Expenses --></label>
             <name>Expenses</name>
         </sections>
         <sections>
-            <label>マイルストーン</label>
-            <name>Milestones</name>
+            <label><!-- Iterations --></label>
+            <name>Iterations</name>
         </sections>
         <sections>
-            <label>タスク</label>
+            <label><!-- Tasks --></label>
             <name>Tasks</name>
         </sections>
     </reportTypes>
@@ -1426,15 +1558,15 @@
         <label>マイルストーン（複数）とタスク（複数）と費用（複数）</label>
         <name>Milestones_with_Tasks_with_Expenses</name>
         <sections>
-            <label>費用</label>
+            <label><!-- Expenses --></label>
             <name>Expenses</name>
         </sections>
         <sections>
-            <label>マイルストーン</label>
-            <name>Milestones</name>
+            <label><!-- Iterations --></label>
+            <name>Iterations</name>
         </sections>
         <sections>
-            <label>タスク</label>
+            <label><!-- Tasks --></label>
             <name>Tasks</name>
         </sections>
     </reportTypes>
@@ -1443,15 +1575,15 @@
         <label>マイルストーン（複数）とタスク（複数）と時間（複数）</label>
         <name>Milestones_with_Tasks_with_Times</name>
         <sections>
-            <label>マイルストーン</label>
+            <label><!-- Milestones --></label>
             <name>Milestones</name>
         </sections>
         <sections>
-            <label>タスク</label>
+            <label><!-- Tasks --></label>
             <name>Tasks</name>
         </sections>
         <sections>
-            <label>時間</label>
+            <label><!-- Times --></label>
             <name>Times</name>
         </sections>
     </reportTypes>
@@ -1460,15 +1592,15 @@
         <label>プロジェクト（複数）とマイルストーン（複数）とタスク（複数）</label>
         <name>Projects_Milestones_Tasks</name>
         <sections>
-            <label>マイルストーン</label>
-            <name>Milestones</name>
+            <label><!-- Iterations --></label>
+            <name>Iterations</name>
         </sections>
         <sections>
-            <label>プロジェクト</label>
+            <label><!-- Projects --></label>
             <name>Projects</name>
         </sections>
         <sections>
-            <label>タスク</label>
+            <label><!-- Tasks --></label>
             <name>Tasks</name>
         </sections>
     </reportTypes>

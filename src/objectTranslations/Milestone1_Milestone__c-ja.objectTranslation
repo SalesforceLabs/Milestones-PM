@@ -15,6 +15,10 @@
         <name>Actual_Expense_From_Tasks__c</name>
     </fields>
     <fields>
+        <label><!-- Actual Finish Date --></label>
+        <name>Actual_Finish_Date__c</name>
+    </fields>
+    <fields>
         <help>子マイルストーのタスクンから算出した実際時間</help>
         <label>サブマイルストーンからの時間</label>
         <name>Actual_Hours_From_Sub_Milestones__c</name>
@@ -23,6 +27,10 @@
         <help>このマイルストーンのタスクから算出された総時間</help>
         <label>タスクからの時間</label>
         <name>Actual_Hours_From_Tasks__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actual Start Date --></label>
+        <name>Actual_Start_Date__c</name>
     </fields>
     <fields>
         <help>マイルストーンをタスクに関連付けできる1行エイリアス</help>
@@ -38,6 +46,22 @@
         <help>ブロックされているタスク</help>
         <label>ブロックされたタスク（タスクから）</label>
         <name>Blocked_Tasks_in_Tasks__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commitment Level --></label>
+        <name>Commitment_Level__c</name>
+        <picklistValues>
+            <masterLabel>Committed</masterLabel>
+            <translation><!-- Committed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Estimated</masterLabel>
+            <translation><!-- Estimated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested</masterLabel>
+            <translation><!-- Requested --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help>子マイルストーンの完了タスク</help>
@@ -115,6 +139,11 @@
         <name>ImportID__c</name>
     </fields>
     <fields>
+        <help><!-- What is the goal of this iteration? --></help>
+        <label><!-- Iteration Goal --></label>
+        <name>Iteration_Goal__c</name>
+    </fields>
+    <fields>
         <help>マイルストーンの開始日</help>
         <label>キックオフ</label>
         <name>Kickoff__c</name>
@@ -167,7 +196,7 @@
         <relationshipLabel>子マイルストーン</relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Predecessor_Milestone_Import_Id__c --></label>
+        <label><!-- Predecessor_Iteration_Import_Id__c --></label>
         <name>Predecessor_Milestone_Import_Id__c</name>
     </fields>
     <fields>
@@ -281,10 +310,14 @@
             <section>Task Information (Calculated)</section>
         </sections>
     </layouts>
-    <nameFieldLabel><!-- Project Milestone Name --></nameFieldLabel>
+    <nameFieldLabel><!-- Iteration Name --></nameFieldLabel>
     <validationRules>
         <errorMessage>マイルストーンエイリアスは空白スペースを含めません。</errorMessage>
         <name>Alias_must_not_contain_spaces</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can not add iterations to parent iterations with status completed. --></errorMessage>
+        <name>CanNotAddSubiterationToParentCompleted</name>
     </validationRules>
     <validationRules>
         <errorMessage>完了済みマイルストーンを親マイルストーンに設定できません。</errorMessage>
@@ -297,6 +330,14 @@
     <validationRules>
         <errorMessage>期限日はプロジェクトの期限より前である必要があります。</errorMessage>
         <name>Deadline_within_project_boundaries</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Iteration kickoff must be greater than or equal to the project kickoff and iteration deadline must be less than or equal to the project deadline --></errorMessage>
+        <name>Iteration_between_Project_duration</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select a parent Project, a parent Iteration, or both. --></errorMessage>
+        <name>Iteration_must_have_parent_record</name>
     </validationRules>
     <validationRules>
         <errorMessage>マイルストーンの開始日は親マイルストーンの開始日より前である必要はなく、マイルストーンの期限は親マイルストーンの期限日より後である必要はありません。</errorMessage>

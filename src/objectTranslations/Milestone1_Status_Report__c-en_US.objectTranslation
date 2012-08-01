@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Status Report</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Status Reports</value>
+    </caseValues>
+    <fields>
+        <label><!-- Accomplishments --></label>
+        <name>Accomplishments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agenda Topics --></label>
+        <name>Agenda_Topics__c</name>
+    </fields>
+    <fields>
+        <label><!-- Changes Required --></label>
+        <name>Changes_Required__c</name>
+        <picklistValues>
+            <masterLabel>Deliverable Scope Changed</masterLabel>
+            <translation><!-- Deliverable Scope Changed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Project Objective Changes</masterLabel>
+            <translation><!-- Project Objective Changes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scope Change Required</masterLabel>
+            <translation><!-- Scope Change Required --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Changes to Release Goals --></label>
+        <name>Changes_to_Release_Goals__c</name>
+    </fields>
+    <fields>
+        <label><!-- Changes to Release Strategy --></label>
+        <name>Changes_to_Release_Strategy__c</name>
+    </fields>
+    <fields>
+        <help><!-- If the status is created from a Project, then this is the Commitment Level from the Project page.
+If the status is created from an Iteration, then this the Commitment Level from the Iteration page. --></help>
+        <label><!-- Commitment Level --></label>
+        <name>Commitment_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cost Comments --></label>
+        <name>Cost_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cost Issues --></label>
+        <name>Cost_Issues__c</name>
+        <picklistValues>
+            <masterLabel>Decision Making Delays</masterLabel>
+            <translation><!-- Decision Making Delays --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External Factors</masterLabel>
+            <translation><!-- External Factors --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Staffing / Resource Availability</masterLabel>
+            <translation><!-- Staffing / Resource Availability --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Cost Status --></label>
+        <name>Cost_Status__c</name>
+        <picklistValues>
+            <masterLabel>On Track</masterLabel>
+            <translation><!-- On Track --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Over Budget</masterLabel>
+            <translation><!-- Over Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Under Budget</masterLabel>
+            <translation><!-- Under Budget --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- If the status is created from a Project, then this is the Go-Live Date from the Project page.
+If the status is created from an Iteration, then this is the Planned Finish Date from the Iteration page. --></help>
+        <label><!-- Go-Live Date --></label>
+        <name>Go_Live_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Impediments --></label>
+        <name>Impediments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Team Moving Right Direction? --></label>
+        <name>Is_Team_Moving_Right_Direction__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Iteration --></label>
+        <name>Iteration__c</name>
+        <relationshipLabel><!-- Status Reports --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Meeting Attendees --></label>
+        <name>Meeting_Attendees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting End Time --></label>
+        <name>Meeting_End_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Invitees --></label>
+        <name>Meeting_Invitees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Location --></label>
+        <name>Meeting_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Minutes --></label>
+        <name>Meeting_Minutes_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Name --></label>
+        <name>Meeting_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Purpose --></label>
+        <name>Meeting_Purpose__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Start Time --></label>
+        <name>Meeting_Start_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Topic(s) --></label>
+        <name>Meeting_Topics__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Tomorrow --></label>
+        <name>Plan_Tomorrow__c</name>
+    </fields>
+    <fields>
+        <help><!-- The current phase this project is in. Typically used for waterfall projects. --></help>
+        <label><!-- Project Phase --></label>
+        <name>Project_Phase__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project --></label>
+        <name>Project__c</name>
+        <relationshipLabel><!-- Status Reports --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Report Date --></label>
+        <name>Report_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Schedule Comments --></label>
+        <name>Schedule_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Schedule Status --></label>
+        <name>Schedule_Status__c</name>
+        <picklistValues>
+            <masterLabel>Minor Variance</masterLabel>
+            <translation><!-- Minor Variance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Track</masterLabel>
+            <translation><!-- On Track --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Significant Variance</masterLabel>
+            <translation><!-- Significant Variance --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Scope Comments --></label>
+        <name>Scope_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scope Status --></label>
+        <name>Scope_Status__c</name>
+        <picklistValues>
+            <masterLabel>Minor Variance</masterLabel>
+            <translation><!-- Minor Variance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Track</masterLabel>
+            <translation><!-- On Track --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Significant Variance</masterLabel>
+            <translation><!-- Significant Variance --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Stakeholder Feedback --></label>
+        <name>Stakeholder_Feedback__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Report Update --></label>
+        <name>Status_Report_Update__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tele/Web Conferencing Info --></label>
+        <name>Tele_Web_Conferencing_Info__c</name>
+    </fields>
+    <fields>
+        <label><!-- What didn&apos;t work well? --></label>
+        <name>What_didnt_work_well__c</name>
+    </fields>
+    <fields>
+        <label><!-- What to improve in next sprint? --></label>
+        <name>What_to_improve_in_next_sprint__c</name>
+    </fields>
+    <fields>
+        <label><!-- What went well? --></label>
+        <name>What_went_well__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

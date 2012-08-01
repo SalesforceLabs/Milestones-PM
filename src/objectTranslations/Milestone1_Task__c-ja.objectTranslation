@@ -21,6 +21,15 @@
         <name>Blocked__c</name>
     </fields>
     <fields>
+        <label><!-- % Complete --></label>
+        <name>Calculated_Percent_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Tasks --></relationshipLabel>
+    </fields>
+    <fields>
         <help>自分がわかるように分類わけを設定</help>
         <label>クラス</label>
         <name>Class__c</name>
@@ -36,6 +45,10 @@
             <masterLabel>Rework</masterLabel>
             <translation>再開</translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Comments__c</name>
     </fields>
     <fields>
         <help>このタスクの完了状態。</help>
@@ -159,6 +172,11 @@
         <name>ProjectStatus__c</name>
     </fields>
     <fields>
+        <label><!-- Project --></label>
+        <name>Project_Lookup__c</name>
+        <relationshipLabel><!-- Tasks --></relationshipLabel>
+    </fields>
+    <fields>
         <help>タスクが割り当てられているマイルストーン</help>
         <label>マイルストーン</label>
         <name>Project_Milestone__c</name>
@@ -197,12 +215,24 @@
             <translation>完了済</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Process</masterLabel>
+            <translation><!-- In Process --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>In Progress</masterLabel>
             <translation>進行中</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>None</masterLabel>
             <translation>無</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Started</masterLabel>
+            <translation><!-- Not Started --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Resolved</masterLabel>

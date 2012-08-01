@@ -49,7 +49,7 @@
         <criteriaItems>
             <column>Milestone1_Project__c$Status__c</column>
             <operator>equals</operator>
-            <value>Active</value>
+            <value>In Process</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

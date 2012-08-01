@@ -53,6 +53,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Start_Date__c</field>
+            <table>Milestone1_Task__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Due_Date__c</field>
             <table>Milestone1_Task__c</table>
         </columns>
@@ -169,6 +174,26 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Total_Hours__c</field>
+            <table>Milestone1_Task__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Comments__c</field>
+            <table>Milestone1_Task__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Class__c</field>
+            <table>Milestone1_Task__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Predecessor_Task__c</field>
+            <table>Milestone1_Task__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Task_Stage__c</field>
             <table>Milestone1_Task__c</table>
         </columns>
         <masterLabel>Tasks</masterLabel>

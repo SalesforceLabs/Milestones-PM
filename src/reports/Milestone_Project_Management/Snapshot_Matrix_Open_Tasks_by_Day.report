@@ -5,17 +5,17 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Project_Snapshot__c.Open_Task_Count__c</field>
+        <field>Milestone1_Project_Snapshot__c.Open_Task_Count__c</field>
     </columns>
     <format>Matrix</format>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>Project_Snapshot__c.Date__c</field>
+        <field>Milestone1_Project_Snapshot__c.Date__c</field>
         <sortOrder>Desc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Project_Snapshot__c.Project_Name__c</field>
+        <field>Milestone1_Project_Snapshot__c.Project_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Snapshot-Matrix Open Tasks by Day (DB)</name>
@@ -23,11 +23,11 @@
         <name>co</name>
         <value>0</value>
     </params>
-    <reportType>CustomEntity$Project_Snapshot__c</reportType>
+    <reportType>CustomEntity$Milestone1_Project_Snapshot__c</reportType>
     <scope>organization</scope>
     <showDetails>false</showDetails>
     <timeFrameFilter>
-        <dateColumn>Project_Snapshot__c.Date__c</dateColumn>
+        <dateColumn>Milestone1_Project_Snapshot__c.Date__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

@@ -2,7 +2,7 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Task</value>
+        <value>Project Task</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
@@ -25,6 +25,15 @@
         <name>Blocked__c</name>
     </fields>
     <fields>
+        <label><!-- % Complete --></label>
+        <name>Calculated_Percent_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Tasks --></relationshipLabel>
+    </fields>
+    <fields>
         <help><!-- Classify this task as appropriate for your use. --></help>
         <label><!-- Class --></label>
         <name>Class__c</name>
@@ -40,6 +49,10 @@
             <masterLabel>Rework</masterLabel>
             <translation><!-- Rework --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Comments__c</name>
     </fields>
     <fields>
         <help><!-- The status of this task. A task is either in-complete or complete. --></help>
@@ -107,7 +120,7 @@
         <name>Last_Email_Received__c</name>
     </fields>
     <fields>
-        <label><!-- Milestone Grandparent --></label>
+        <label><!-- Iteration Grandparent --></label>
         <name>Milestone_Grandparent__c</name>
     </fields>
     <fields>
@@ -127,7 +140,7 @@
         <help><!-- The predecessor task for this task if applicable. --></help>
         <label><!-- Predecessor Task --></label>
         <name>Predecessor_Task__c</name>
-        <relationshipLabel><!-- Successor Tasks --></relationshipLabel>
+        <relationshipLabel><!-- Tasks --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- This is the priority of the task. 0,1,2,3 or 4. --></help>
@@ -163,8 +176,13 @@
         <name>ProjectStatus__c</name>
     </fields>
     <fields>
-        <help><!-- The milestone that this task is assigned to. --></help>
-        <label><!-- Milestone --></label>
+        <label><!-- Project --></label>
+        <name>Project_Lookup__c</name>
+        <relationshipLabel><!-- Tasks --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The iteration that this task is assigned to. --></help>
+        <label><!-- Iteration --></label>
         <name>Project_Milestone__c</name>
         <relationshipLabel><!-- Tasks --></relationshipLabel>
     </fields>
@@ -201,12 +219,24 @@
             <translation><!-- Closed --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Process</masterLabel>
+            <translation><!-- In Process --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>In Progress</masterLabel>
             <translation><!-- In Progress --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>None</masterLabel>
             <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Started</masterLabel>
+            <translation><!-- Not Started --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Resolved</masterLabel>

@@ -5,6 +5,14 @@
         <value>Time</value>
     </caseValues>
     <fields>
+        <label><!-- Actual Cost --></label>
+        <name>Actual_Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billable? --></label>
+        <name>Billable__c</name>
+    </fields>
+    <fields>
         <help>この時間が発生した日時。デフォルトではその日が入る。</help>
         <label>発生日</label>
         <name>Date__c</name>
@@ -34,6 +42,42 @@
         <label>プロジェクトタスク</label>
         <name>Project_Task__c</name>
         <relationshipLabel>時間</relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Project --></label>
+        <name>Project__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rate --></label>
+        <name>Rate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled Payment</masterLabel>
+            <translation><!-- Cancelled Payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entered By Accounting</masterLabel>
+            <translation><!-- Entered By Accounting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Billable</masterLabel>
+            <translation><!-- Not Billable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Billing</masterLabel>
+            <translation><!-- Pending Billing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sent Payment</masterLabel>
+            <translation><!-- Sent Payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted To AR</masterLabel>
+            <translation><!-- Submitted To AR --></translation>
+        </picklistValues>
     </fields>
     <layouts>
         <layout>Project Time Layout</layout>

@@ -72,6 +72,29 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Calculated_Percent_Complete__c</fullName>
+        <externalId>false</externalId>
+        <formula>if((  Estimated_Hours__c  ) == 0, 0, Total_Hours__c  /(   Estimated_Hours__c   ))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>% Complete</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipName>Project_Tasks</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Class__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>Classify this task as appropriate for your use.</inlineHelpText>
@@ -93,6 +116,14 @@
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>Complete__c</fullName>
@@ -251,7 +282,7 @@
  Project_Milestone__r.Parent_Milestone__c != null, 
  Project_Milestone__r.Parent_Milestone__r.Name , &apos;&apos;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Milestone Grandparent</label>
+        <label>Iteration Grandparent</label>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -302,7 +333,6 @@
         <inlineHelpText>The predecessor task for this task if applicable.</inlineHelpText>
         <label>Predecessor Task</label>
         <referenceTo>Milestone1_Task__c</referenceTo>
-        <relationshipLabel>Successor Tasks</relationshipLabel>
         <relationshipName>Successor_Tasks</relationshipName>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -360,14 +390,26 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Project_Lookup__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Project</label>
+        <referenceTo>Milestone1_Project__c</referenceTo>
+        <relationshipLabel>Tasks</relationshipLabel>
+        <relationshipName>Tasks</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Project_Milestone__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>The milestone that this task is assigned to.</inlineHelpText>
-        <label>Milestone</label>
+        <inlineHelpText>The iteration that this task is assigned to.</inlineHelpText>
+        <label>Iteration</label>
         <referenceTo>Milestone1_Milestone__c</referenceTo>
-        <relationshipLabel>Tasks</relationshipLabel>
         <relationshipName>Project_Tasks</relationshipName>
         <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackFeedHistory>false</trackFeedHistory>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -413,6 +455,22 @@
         <label>Stage</label>
         <picklist>
             <picklistValues>
+                <fullName>Not Started</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Process</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>None</fullName>
                 <default>false</default>
             </picklistValues>
@@ -422,10 +480,6 @@
             </picklistValues>
             <picklistValues>
                 <fullName>Resolved</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Closed</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -457,11 +511,16 @@
         <summaryOperation>sum</summaryOperation>
         <type>Summary</type>
     </fields>
-    <label>Task</label>
+    <label>Project Task</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Start_Date__c</columns>
+        <columns>Due_Date__c</columns>
+        <columns>Complete__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Project Task Name</label>
@@ -485,26 +544,22 @@
     <searchLayouts>
         <customTabListAdditionalFields>Project__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Project_Milestone__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Assigned_To__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Due_Date__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Complete__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Priority__c</customTabListAdditionalFields>
         <listViewButtons>Change_Milestone</listViewButtons>
         <lookupDialogsAdditionalFields>Project__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Project_Milestone__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Assigned_To__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Due_Date__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Complete__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Priority__c</lookupDialogsAdditionalFields>
         <searchFilterFields>Project__c</searchFilterFields>
         <searchFilterFields>Project_Milestone__c</searchFilterFields>
-        <searchFilterFields>Assigned_To__c</searchFilterFields>
         <searchFilterFields>Due_Date__c</searchFilterFields>
         <searchFilterFields>Complete__c</searchFilterFields>
         <searchFilterFields>Priority__c</searchFilterFields>
         <searchResultsAdditionalFields>Project__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Project_Milestone__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Assigned_To__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Due_Date__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Complete__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Priority__c</searchResultsAdditionalFields>
@@ -566,7 +621,7 @@
         <displayType>massActionButton</displayType>
         <height>600</height>
         <linkType>page</linkType>
-        <masterLabel>Move to New Milestone</masterLabel>
+        <masterLabel>Move to New Iteration</masterLabel>
         <openType>sidebar</openType>
         <page>Milestone1_Move_Task</page>
         <protected>false</protected>
@@ -578,7 +633,7 @@
         <displayType>button</displayType>
         <height>600</height>
         <linkType>page</linkType>
-        <masterLabel>Move to New Milestone</masterLabel>
+        <masterLabel>Move to New Iteration</masterLabel>
         <openType>sidebar</openType>
         <page>Milestone1_Move_Task_Detail</page>
         <protected>false</protected>

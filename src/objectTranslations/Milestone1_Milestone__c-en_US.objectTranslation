@@ -2,15 +2,15 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Milestone</value>
+        <value>Iteration</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Milestones</value>
+        <value>Iterations</value>
     </caseValues>
     <fields>
-        <help><!-- Calculated from expense records related to tasks on child milestones --></help>
-        <label><!-- Actual Expense From Sub-Milestones --></label>
+        <help><!-- Calculated from expense records related to tasks on child iterations --></help>
+        <label><!-- Actual Expense From Sub-Iterations --></label>
         <name>Actual_Expense_From_Sub_Milestones__c</name>
     </fields>
     <fields>
@@ -19,8 +19,12 @@
         <name>Actual_Expense_From_Tasks__c</name>
     </fields>
     <fields>
-        <help><!-- Calculated from time records related to tasks on child milestones --></help>
-        <label><!-- Actual Hours From Sub-Milestones --></label>
+        <label><!-- Actual Finish Date --></label>
+        <name>Actual_Finish_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Calculated from time records related to tasks on child iterations --></help>
+        <label><!-- Actual Hours From Sub-Iterations --></label>
         <name>Actual_Hours_From_Sub_Milestones__c</name>
     </fields>
     <fields>
@@ -29,13 +33,17 @@
         <name>Actual_Hours_From_Tasks__c</name>
     </fields>
     <fields>
-        <help><!-- An alias helps you associate a task to a milestone using the single line entry home page component. --></help>
-        <label><!-- Milestone Alias --></label>
+        <label><!-- Actual Start Date --></label>
+        <name>Actual_Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- An alias helps you associate a task to an iteration using the single line entry home page component OR an email service. --></help>
+        <label><!-- Iteration Alias --></label>
         <name>Alias__c</name>
     </fields>
     <fields>
-        <help><!-- How many tasks are blocked in sub-milestones? --></help>
-        <label><!-- Blocked Tasks (in Sub-Milestones) --></label>
+        <help><!-- How many tasks are blocked in sub-iterations? --></help>
+        <label><!-- Blocked Tasks (in Sub-Iterations) --></label>
         <name>Blocked_Tasks_in_Sub_Milestones__c</name>
     </fields>
     <fields>
@@ -44,8 +52,24 @@
         <name>Blocked_Tasks_in_Tasks__c</name>
     </fields>
     <fields>
+        <label><!-- Commitment Level --></label>
+        <name>Commitment_Level__c</name>
+        <picklistValues>
+            <masterLabel>Committed</masterLabel>
+            <translation><!-- Committed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Estimated</masterLabel>
+            <translation><!-- Estimated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested</masterLabel>
+            <translation><!-- Requested --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <help><!-- Number of complete tasks related to sub-milestones --></help>
-        <label><!-- Complete Tasks (in Sub-Milestones) --></label>
+        <label><!-- Complete Tasks (in Sub-Iterations) --></label>
         <name>Complete_Tasks_in_Sub_Milestones__c</name>
     </fields>
     <fields>
@@ -75,7 +99,7 @@
     </fields>
     <fields>
         <help><!-- Calculated from tasks on child milestones --></help>
-        <label><!-- Estimated Expense From Sub-Milestones --></label>
+        <label><!-- Estimated Expense From Sub-Iterations --></label>
         <name>Estimated_Expense_From_Sub_Milestones__c</name>
     </fields>
     <fields>
@@ -85,7 +109,7 @@
     </fields>
     <fields>
         <help><!-- Calculated from tasks on child milestones --></help>
-        <label><!-- Estimated Hours From Sub-Milestones --></label>
+        <label><!-- Estimated Hours From Sub-Iterations --></label>
         <name>Estimated_Hours_From_Sub_Milestones__c</name>
     </fields>
     <fields>
@@ -94,23 +118,23 @@
         <name>Estimated_Hours_From_Tasks__c</name>
     </fields>
     <fields>
-        <help><!-- The expense budget for the milestone. --></help>
-        <label><!-- Milestone Expense Budget --></label>
+        <help><!-- The expense budget for the iteration. --></help>
+        <label><!-- Iteration Expense Budget --></label>
         <name>Expense_Budget__c</name>
     </fields>
     <fields>
-        <help><!-- The expense budget all the sub milestones of this milestone. --></help>
-        <label><!-- Expense Budget from Sub-Milestones --></label>
+        <help><!-- The expense budget of all the sub iterations of this milestone. --></help>
+        <label><!-- Expense Budget from Sub-Iterations --></label>
         <name>Expense_Budget_from_Sub_Milestones__c</name>
     </fields>
     <fields>
-        <help><!-- The hours budget for the milestone. --></help>
-        <label><!-- Milestone Hours Budget --></label>
+        <help><!-- The hours budget for the iteration. --></help>
+        <label><!-- Iteration Hours Budget --></label>
         <name>Hours_Budget__c</name>
     </fields>
     <fields>
-        <help><!-- The total hours budget for all the sub milestones for this milestone. --></help>
-        <label><!-- Hours Budget from Sub-Milestones --></label>
+        <help><!-- The total hours budget for all the sub iterations for this iteration. --></help>
+        <label><!-- Hours Budget from Sub-Iterations --></label>
         <name>Hours_Budget_from_Sub_Milestones__c</name>
     </fields>
     <fields>
@@ -119,13 +143,18 @@
         <name>ImportID__c</name>
     </fields>
     <fields>
+        <help><!-- What is the goal of this iteration? --></help>
+        <label><!-- Iteration Goal --></label>
+        <name>Iteration_Goal__c</name>
+    </fields>
+    <fields>
         <help><!-- When should this milestone kickoff? --></help>
         <label><!-- Kickoff --></label>
         <name>Kickoff__c</name>
     </fields>
     <fields>
-        <help><!-- Number of incomplete and overdue tasks related to child milestones --></help>
-        <label><!-- Late Tasks (in Sub-Milestones) --></label>
+        <help><!-- Number of incomplete and overdue tasks related to child iterations --></help>
+        <label><!-- Late Tasks (in Sub-Iterations) --></label>
         <name>Late_Tasks_in_Sub_Milestones__c</name>
     </fields>
     <fields>
@@ -151,8 +180,8 @@
         <name>Open_Late_Blocked_Tasks__c</name>
     </fields>
     <fields>
-        <help><!-- Number of incomplete tasks related to child milestones --></help>
-        <label><!-- Open Tasks (in Sub-Milestones) --></label>
+        <help><!-- Number of incomplete tasks related to child iterations --></help>
+        <label><!-- Open Tasks (in Sub-Iterations) --></label>
         <name>Open_Tasks_in_Sub_Milestones__c</name>
     </fields>
     <fields>
@@ -165,20 +194,20 @@
         <name>Open_vs_Complete_Tasks__c</name>
     </fields>
     <fields>
-        <help><!-- The parent milestone for this milestone if applicable. --></help>
-        <label><!-- Parent Milestone --></label>
+        <help><!-- The parent iteration for this iteration if applicable. --></help>
+        <label><!-- Parent Iteration --></label>
         <name>Parent_Milestone__c</name>
-        <relationshipLabel><!-- Child Milestones --></relationshipLabel>
+        <relationshipLabel><!-- Iterations (Parent Iterations) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Predecessor_Milestone_Import_Id__c --></label>
+        <label><!-- Predecessor_Iteration_Import_Id__c --></label>
         <name>Predecessor_Milestone_Import_Id__c</name>
     </fields>
     <fields>
-        <help><!-- The milestone which must be complete before you start this one. The Predecessor Milestone end date must be before the current Milestone start date. --></help>
-        <label><!-- Predecessor Milestone --></label>
+        <help><!-- The Iteration which must be complete before you start this one. The Predecessor Iteration end date must be before the current Iteration start date. --></help>
+        <label><!-- Predecessor Iteration --></label>
         <name>Predecessor_Milestone__c</name>
-        <relationshipLabel><!-- Successor Milestones --></relationshipLabel>
+        <relationshipLabel><!-- Iterations (Predecessor Iteration) --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- How many days after project kickoff does this milestone kickoff? --></help>
@@ -189,7 +218,7 @@
         <help><!-- The project this milestone is assigned to. If this is a sub-milestone this field is empty. --></help>
         <label><!-- Project --></label>
         <name>Project__c</name>
-        <relationshipLabel><!-- Milestones --></relationshipLabel>
+        <relationshipLabel><!-- Iterations --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- Calculated from expense records on tasks for this milestone and all child milestones --></help>
@@ -197,7 +226,7 @@
         <name>Total_Actual_Expense__c</name>
     </fields>
     <fields>
-        <help><!-- Calculated from time records on tasks for this milestone and all child milestones --></help>
+        <help><!-- Calculated from time records on tasks for this iteration and all child iterations --></help>
         <label><!-- Total Actual Hours --></label>
         <name>Total_Actual_Hours__c</name>
     </fields>
@@ -287,15 +316,19 @@
     </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
-        <errorMessage><!-- The Milestone Alias cannot contain spaces. --></errorMessage>
+        <errorMessage><!-- The Iteration Alias cannot contain spaces. --></errorMessage>
         <name>Alias_must_not_contain_spaces</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can not add iterations to parent iterations with status completed. --></errorMessage>
+        <name>CanNotAddSubiterationToParentCompleted</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- You can not add milestones to parent milestones with status completed. --></errorMessage>
         <name>CanNotAddSubmilestoneToParentCompleted</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You cannot mark a milestone as complete if it has open tasks. --></errorMessage>
+        <errorMessage><!-- You cannot mark an iteration as complete if it has open tasks. --></errorMessage>
         <name>CannotBeCompleteWithOpenTasks</name>
     </validationRules>
     <validationRules>
@@ -303,11 +336,19 @@
         <name>Deadline_within_project_boundaries</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Milestone Kickoff must not be earlier than Parent Kickoff and Milestone Deadline must not be later than Parent Deadline. --></errorMessage>
+        <errorMessage><!-- Iteration kickoff must be greater than or equal to the project kickoff and iteration deadline must be less than or equal to the project deadline --></errorMessage>
+        <name>Iteration_between_Project_duration</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select a parent Project, a parent Iteration, or both. --></errorMessage>
+        <name>Iteration_must_have_parent_record</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Iteration Kickoff must not be earlier than Parent Kickoff and Iteration Deadline must not be later than Parent Deadline. --></errorMessage>
         <name>KickoffDeadlineWithinParentBoundaries</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Milestone Kickoff must not be earlier than its Predecessor&apos;s Deadline. --></errorMessage>
+        <errorMessage><!-- Iteration Kickoff must not be earlier than its Predecessor&apos;s Deadline. --></errorMessage>
         <name>Kickoff_after_Predecessor_Deadline</name>
     </validationRules>
     <validationRules>

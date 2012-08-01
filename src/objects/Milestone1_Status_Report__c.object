@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Accomplishments__c</fullName>
+        <externalId>false</externalId>
+        <label>Accomplishments</label>
+        <length>1000</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Agenda_Topics__c</fullName>
+        <externalId>false</externalId>
+        <label>Agenda Topics</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Changes_Required__c</fullName>
+        <externalId>false</externalId>
+        <label>Changes Required</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Scope Change Required</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Deliverable Scope Changed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Project Objective Changes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Changes_to_Release_Goals__c</fullName>
+        <externalId>false</externalId>
+        <label>Changes to Release Goals</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Changes_to_Release_Strategy__c</fullName>
+        <externalId>false</externalId>
+        <label>Changes to Release Strategy</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Commitment_Level__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If the status is created from a Project, then this is the Commitment Level from the Project page.
+If the status is created from an Iteration, then this the Commitment Level from the Iteration page.</inlineHelpText>
+        <label>Commitment Level</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Cost_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Cost Comments</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Cost_Issues__c</fullName>
+        <externalId>false</externalId>
+        <label>Cost Issues</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Decision Making Delays</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Staffing / Resource Availability</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>External Factors</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Cost_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Cost Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>On Track</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Under Budget</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Over Budget</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Go_Live_Date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If the status is created from a Project, then this is the Go-Live Date from the Project page.
+If the status is created from an Iteration, then this is the Planned Finish Date from the Iteration page.</inlineHelpText>
+        <label>Go-Live Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Impediments__c</fullName>
+        <externalId>false</externalId>
+        <label>Impediments</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Is_Team_Moving_Right_Direction__c</fullName>
+        <externalId>false</externalId>
+        <label>Is Team Moving Right Direction?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Iteration__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Iteration</label>
+        <referenceTo>Milestone1_Milestone__c</referenceTo>
+        <relationshipLabel>Status Reports</relationshipLabel>
+        <relationshipName>Status_Reports</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Meeting_Attendees__c</fullName>
+        <externalId>false</externalId>
+        <label>Meeting Attendees</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Meeting_End_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Meeting End Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Meeting_Invitees__c</fullName>
+        <externalId>false</externalId>
+        <label>Meeting Invitees</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Meeting_Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Meeting Location</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meeting_Minutes_del__c</fullName>
+        <externalId>false</externalId>
+        <label>Meeting Minutes</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Meeting_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Meeting Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meeting_Purpose__c</fullName>
+        <externalId>false</externalId>
+        <label>Meeting Purpose</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Meeting_Start_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Meeting Start Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Meeting_Topics__c</fullName>
+        <externalId>false</externalId>
+        <label>Meeting Topic(s)</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Plan_Tomorrow__c</fullName>
+        <externalId>false</externalId>
+        <label>Plan Tomorrow</label>
+        <length>1000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Project_Phase__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Project__r.Phase__c)</formula>
+        <inlineHelpText>The current phase this project is in. Typically used for waterfall projects.</inlineHelpText>
+        <label>Project Phase</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Project</label>
+        <referenceTo>Milestone1_Project__c</referenceTo>
+        <relationshipLabel>Status Reports</relationshipLabel>
+        <relationshipName>Status_Reports</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Report_Date__c</fullName>
+        <defaultValue>TODAY()</defaultValue>
+        <externalId>false</externalId>
+        <label>Report Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Schedule_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Schedule Comments</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Schedule_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Schedule Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>On Track</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Minor Variance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Significant Variance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Scope_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Scope Comments</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Scope_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Scope Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>On Track</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Minor Variance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Significant Variance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Stakeholder_Feedback__c</fullName>
+        <externalId>false</externalId>
+        <label>Stakeholder Feedback</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>50</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Status_Report_Update__c</fullName>
+        <externalId>false</externalId>
+        <label>Status Report Update</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Tele_Web_Conferencing_Info__c</fullName>
+        <externalId>false</externalId>
+        <label>Tele/Web Conferencing Info</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>What_didnt_work_well__c</fullName>
+        <externalId>false</externalId>
+        <label>What didn&apos;t work well?</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>What_to_improve_in_next_sprint__c</fullName>
+        <externalId>false</externalId>
+        <label>What to improve in next sprint?</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>What_went_well__c</fullName>
+        <externalId>false</externalId>
+        <label>What went well?</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <label>Status Report</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Project__c</columns>
+        <columns>Status_Report_Update__c</columns>
+        <columns>Report_Date__c</columns>
+        <columns>Schedule_Status__c</columns>
+        <columns>Scope_Status__c</columns>
+        <columns>Cost_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>SR-{00000}</displayFormat>
+        <label>Status Report</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Status Reports</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Report_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATEDBY_USER</customTabListAdditionalFields>
+        <lookupFilterFields>Report_Date__c</lookupFilterFields>
+        <lookupFilterFields>CREATEDBY_USER</lookupFilterFields>
+        <lookupFilterFields>CREATEDBY_USER.ALIAS</lookupFilterFields>
+        <searchFilterFields>NAME</searchFilterFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

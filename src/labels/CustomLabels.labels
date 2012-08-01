@@ -5,7 +5,15 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>ALiasNotFound</shortDescription>
-        <value>The alias provided in subject line did not match a milestone alias in Salesforce.</value>
+        <value>The alias provided in subject line did not match an iteration alias in Salesforce.</value>
+    </labels>
+    <labels>
+        <fullName>About_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Text used in the About tab</shortDescription>
+        <value>Batch Data Entry is an open source utility for manually entering bulk data for any standard or custom object into Salesforce.com.  Originally developed as part of the April 2011 Nonprofit Starter Pack Developer Sprint, the project is now freely available from the Salesforce.com Foundation for download via the Appexchange. The source code can be found through the project&apos;s repository on Github.com under the BSD License.</value>
     </labels>
     <labels>
         <fullName>AllItems</fullName>
@@ -22,11 +30,93 @@
         <value>All Open Tasks</value>
     </labels>
     <labels>
+        <fullName>Allow_Blank_Opportunity_Names_Setting_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help text for the Allow Blank Opp Names checkbox setting</shortDescription>
+        <value>Prevents Batch Entry from overriding the Opportunity Name value. Checking this will allow any user-defined process (trigger, WF) to take over the naming</value>
+    </labels>
+    <labels>
         <fullName>AnErrorHasOcurred</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>AnErrorHasOcurred</shortDescription>
         <value>An error has ocurred:</value>
+    </labels>
+    <labels>
+        <fullName>BDE_Advanced_Configuration_Items_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help Text for the Advanced Configuration Items section of the About tab</shortDescription>
+        <value>Selecting the Advanced Configuration tab in the Batch Data Entry Setting tab provides you with access to additional settings. When the &apos;Name&apos; field is removed from the Record Information section when entering Opportunities, the Batch Data Entry tool will automatically name Opportunities for you in the following format: &quot;&lt;Acct/Con Name&gt; &lt;CloseDate&gt; &lt;RecordType&gt;&quot;.  The &apos;Automatically Name Opportunities&apos; box will cause the Batch Data Entry tool to automatically generate a name for Opportunities, even if the &apos;Name&apos; field is on the Record Information section.  This will OVERWRITE user values for this field for newly created records.
+
+The &apos;Use NPSP Configuration&apos; checkbox is only available if you have the Nonprofit Starter Pack installed. When checked, an additional field called &apos;NPSP Contact&apos; will be provided when entering Opportunities. This field will create the proper Opp Contact Role when entering Donations. Unchecking will remove the field from from the Record Information section.</value>
+    </labels>
+    <labels>
+        <fullName>BDE_Batch_Metadata_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help text for the Batch Metadata section in the About tab</shortDescription>
+        <value>Information in the Batch Summary section is associated with the batch object.  This object provides metadata information about the status of the batch, and a convenient way to recall all records entered in a single batch.  The Batch Name is your name for the batch, and description provides additional information about the batch.  The status pulldown menu allows you to select your batch status. Batches marked as &apos;Complete&apos; will not be displayed by default in the list of existing batches (clicking &apos;Show All&apos; will make them visible).  Changes to the Batch Summary section are automatically saved.  You can add additional fields to the batch object and add existing fields to this layout.  To display new or existing fields, add the fields to the BatchDetailView fieldset. This can be found by going to Setup-&gt;Create-&gt;Objects-&gt;Batch-&gt;FieldSets-&gt;BatchDetailView.</value>
+    </labels>
+    <labels>
+        <fullName>BDE_Configuring_Batch_Fields_and_Lists_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help Text for the Configuring Batch Fields and Lists section of the About tab</shortDescription>
+        <value>The fields displayed in the &apos;Existing Batches&apos; menu are configurable using the list view filters via the dropdown menu.  The fields displayed in the &apos;Batch Summary&apos; section, and the fields displayed in the &apos;Delete Batches&apos; tab in the settings, are all customizable utilizing Field Sets. To change the fields displayed for the &apos;Delete Batches&apos; section or the &apos;Batch Summary&apos; section for data entry, go to: &lt;your name&gt;-&gt;Setup-&gt;Create-&gt;Objects, and click on &apos;Batch&apos;.  Under the Field Sets section, click &apos;Edit&apos; next to the name of the Field Set you wish to edit. Save your results, and refresh the Batch Data Entry tool to see the changes.</value>
+    </labels>
+    <labels>
+        <fullName>BDE_Data_Entry_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help text for the Data Entry section in the About tab</shortDescription>
+        <value>Entering data in Batch Data Entry is done using the Record Information section. The fields and order are determined by the object setting in the Batch Data Entry Settings tab.  Clicking the &apos;Save&apos; button after entering data will save the record to the database, and display it in a related list in the &apos;Saved Records&apos; section below.  Records from the related list can be edited by clicking on &apos;edit&apos; next to the record. This will load the record into the Record Information section, and allow you to edit the previously saved vales.  You can adjust the fields in the related list by going to the Batch Data Entry Settings tab.  You can use the &apos;sticky&apos; pushpins to &apos;pin&apos; data to a record, making it a default value for the pinned field.  Once a value is &apos;pinned&apos;, it will automatically carry over to the next record to be entered. You can optionally overwrite the saved value prior to saving the new record.</value>
+    </labels>
+    <labels>
+        <fullName>BDE_Deleting_Batches_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help Text for the Deleting Batches section in the About tab</shortDescription>
+        <value>The Delete Batches tab in the Batch Data Entry Setting tab provides an interface for deleting batches.  Simply click &apos;delete&apos; next to the batch you wish to delete. Its important to note, deleting a batch only deletes the associated batch metadata, and does not effect any of the records created as part of the batch.</value>
+    </labels>
+    <labels>
+        <fullName>BDE_Entering_and_Saving_Data_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help Text for the Entering and Saving Data section in the About tab</shortDescription>
+        <value>Once you&apos;ve selected the object to work with, you can immediately start entering data. The &apos;Batch Summary&apos; section contains metadata about the contents of a batch.  The &apos;Saved Record List&apos; shows all records for this batch that have already been entered and saved. Entering new data is done in the &apos;Record Information&apos; section.  Clicking the pushpin button next to a field will make that field &apos;sticky&apos;, and will take the value in that field, and make it the default value for the next record as well. You can modify already saved records by clicking &apos;edit&apos; next to the record in the &apos;Saved Record List&apos;.  Clicking &apos;view&apos; will take you to the detail page view of the saved record.</value>
+    </labels>
+    <labels>
+        <fullName>BDE_Entry_Save_List_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help text for Configuring Entry and Save Fields section of the About tab</shortDescription>
+        <value>You have full control over the fields displayed in the Record Information (data entry) section, as well as the corresponding list of saved objects (save list).  To edit these fields, go to the Batch Data Entry Settings tab, and then the &apos;Field Mappings&apos; tab.  Each object you want to enter data for needs its own settings (one setting per object), as well as a lookup field to the Batch__c object. Lookup fields have been provided for the Opportunity, Contact, Account and Lead objects. Select the object you wish to create a list for (or click &apos;edit&apos; next to an existing object&apos;s record), and the list of available fields will be loaded for you. Fields that are marked as required are automatically selected in the data entry list. To select (or deselect) additional fields, hold down the &apos;ctrl&apos; key, and click on the items you wish to add to your entry screen and save list.  Click &apos;Save&apos; when complete to save your object setting.</value>
+    </labels>
+    <labels>
+        <fullName>BDE_Other_Considerations_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help text for the Other Considerations section in the About tab</shortDescription>
+        <value>When entering Opportunities, the &apos;Name&apos; field is required. However, the Batch Data Entry tool will automatically generate an Opportunity Name for you if the &apos;Name&apos; field is not rendered on the Record Information screen.  If you&apos;re a Nonprofit Starter Pack user, the Batch Data Entry tool automatically configures itself with a NPSP-specific field for attaching Donations to Contacts.  This option is not available if you&apos;re not using the NPSP.</value>
+    </labels>
+    <labels>
+        <fullName>BDE_Starting_New_Batch_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help Text for the Starting a New Batch section in the About tab</shortDescription>
+        <value>You can immediately start entering batch data by clicking on the &apos;New Batch&apos; button. A default batch setting for Opportunities is created for you automatically.  If you want to batch enter other custom or standard objects, you&apos;ll need to click on &apos;Create Settings&apos; to create a setting for that object.</value>
     </labels>
     <labels>
         <fullName>Back</fullName>
@@ -36,11 +126,27 @@
         <value>Back</value>
     </labels>
     <labels>
+        <fullName>Batch_Deletion_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Batch Deletion Help Text</shortDescription>
+        <value>This menu allows you to delete existing batches. It is important to note that this only deletes the batch metadata, and does NOT effect any of the records created as part of the batch.</value>
+    </labels>
+    <labels>
+        <fullName>Batch_Entry_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Batch Entry Help Text</shortDescription>
+        <value>This page allows you to edit and configure your Batch Entry tool.  The &quot;Field Mappings&quot; tab controls which fields are rendered in the batch entry and saved records areas for each object.  The &quot;Advanced Configuration&quot; tab provides overrides to automatically configured features of the Batch Entry tool.</value>
+    </labels>
+    <labels>
         <fullName>BeSureToExploreTheSampleProject</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Be sure to explore the sample project, &quot;HOWTO: Get Started with Milestones PM&quot;.</shortDescription>
-        <value>Be sure to explore the sample project, &quot;HOWTO: Get Started with Milestones PM&quot;.</value>
+        <value>Be sure to explore the sample project, &quot;HOWTO: Get Started with Milestones PM+&quot;.</value>
     </labels>
     <labels>
         <fullName>BlockedTasks</fullName>
@@ -134,6 +240,14 @@
         <value>Content is not allowed in prolog.</value>
     </labels>
     <labels>
+        <fullName>Create_Setting_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Create_Setting_Help_Text</shortDescription>
+        <value>You can create new or edit existing settings using this tab.  Required fields will be automatically selected for you.  Holding the &apos;ctrl&apos; key while clicking on the fields you wish to add or remove from the setting will allow you to select multiple fields in addition to the already selected items.</value>
+    </labels>
+    <labels>
         <fullName>CurrentExport</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -145,7 +259,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>DidNotMatch</shortDescription>
-        <value>) did not match any milestone.</value>
+        <value>) did not match any iteration.</value>
     </labels>
     <labels>
         <fullName>EnterAcommand</fullName>
@@ -153,6 +267,14 @@
         <protected>true</protected>
         <shortDescription>EnterAcommand</shortDescription>
         <value>Enter a command in the form &apos;alias --- description&apos;</value>
+    </labels>
+    <labels>
+        <fullName>Entry_Field_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Entry Field Help Text</shortDescription>
+        <value>Hold the ctrl key and click the field name to select multiple fields for the data entry screen.</value>
     </labels>
     <labels>
         <fullName>Expenses</fullName>
@@ -179,8 +301,8 @@
         <fullName>ForCommunityAssistance</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>For community assistance with Milestones PM, please visit &lt;a href=&quot;http://succes</shortDescription>
-        <value>For community assistance with Milestones PM, please visit &lt;a href=&quot;http://success.salesforce.com/answers&quot;&gt;Salesforce Answers&lt;/a&gt;.</value>
+        <shortDescription>For community assistance with Milestones PM+, visit &lt;a href=&quot;http://succes</shortDescription>
+        <value>For community assistance with Milestones PM+, visit &lt;a href=&quot;http://success.salesforce.com/answers&quot;&gt;Salesforce Answers&lt;/a&gt;.</value>
     </labels>
     <labels>
         <fullName>Friday</fullName>
@@ -244,7 +366,7 @@
         <protected>true</protected>
         <shortDescription>&quot;If you have not done this, please visit &lt;a href=&quot;&quot;/0A3?setupid=ImportedPackage&quot;</shortDescription>
         <value>If you have not done this, please visit &lt;a href=&quot;/0A3?setupid=ImportedPackage&quot;&gt;Setup &gt; App Setup &gt; View Installed Packages&lt;/a&gt;,
-    click on &lt;strong&gt;Milestones PM&lt;/strong&gt; and click on the deploy button.</value>
+    click on &lt;strong&gt;Milestones PM+&lt;/strong&gt; and click on the deploy button.</value>
     </labels>
     <labels>
         <fullName>Import</fullName>
@@ -265,7 +387,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Import Failed -- Milestone was unable to import your file.</shortDescription>
-        <value>Import Failed -- Milestone was unable to import your file.</value>
+        <value>Import Failed -- Milestones PM+ was unable to import your file.</value>
     </labels>
     <labels>
         <fullName>ImportLocalTemplateXML</fullName>
@@ -355,8 +477,8 @@
         <fullName>InsufficientPrivilegesToAccessParentMilestone</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Insufficient privileges to access parent milestone.</shortDescription>
-        <value>Insufficient privileges to access parent milestone.</value>
+        <shortDescription>Insufficient privileges to access parent iteration.</shortDescription>
+        <value>Insufficient privileges to access parent iteration.</value>
     </labels>
     <labels>
         <fullName>InvalidName</fullName>
@@ -387,6 +509,22 @@
         <value>&lt;a href=&quot;http://blogs.developerforce.com/labs/2011/08/howto-contribute-to-milestones-pm-code-not-required-opensource.html&quot;&gt;Learn more&lt;/a&gt;.</value>
     </labels>
     <labels>
+        <fullName>List_Field_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>List Field Help Text</shortDescription>
+        <value>Hold the ctrl key and click the field name to select multiple fields to be displayed in the list of saved items.</value>
+    </labels>
+    <labels>
+        <fullName>Load_Setting_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Load Setting Help Text</shortDescription>
+        <value>If the object you wish to enter is not in the list above, make sure you have a list setting for that object, and the object has a lookup to the Batch__c object.</value>
+    </labels>
+    <labels>
         <fullName>Logs</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -398,7 +536,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>MainMenu</shortDescription>
-        <value>Milestones PM - Main Menu</value>
+        <value>Milestones PM+ - Main Menu</value>
     </labels>
     <labels>
         <fullName>MaximumPer</fullName>
@@ -412,7 +550,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>ALiasNotFound</shortDescription>
-        <value>The alias provided in subject line did not match a milestone alias in Salesforce.</value>
+        <value>The alias provided in subject line did not match an interation alias in Salesforce.</value>
     </labels>
     <labels>
         <fullName>Milestone1_AllItems</fullName>
@@ -443,11 +581,18 @@
         <value>Back</value>
     </labels>
     <labels>
+        <fullName>Milestone1_BacklogItemYouAreAttempting</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>A backlog item you are attempting to move is already assigned to this iteration.</shortDescription>
+        <value>A backlog item you are attempting to move is already assigned to this iteration. Please review your selection and try again.</value>
+    </labels>
+    <labels>
         <fullName>Milestone1_BeSureToExploreTheSampleProject</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Be sure to explore the sample project, &quot;HOWTO: Get Started with Milestones PM&quot;.</shortDescription>
-        <value>Be sure to explore the sample project, &quot;HOWTO: Get Started with Milestones PM&quot;.</value>
+        <shortDescription>Be sure to explore the sample project, &quot;HOWTO: Get Started with Milestones PM+&quot;.</shortDescription>
+        <value>Be sure to explore the sample project, &quot;HOWTO: Get Started with Milestones PM+&quot;.</value>
     </labels>
     <labels>
         <fullName>Milestone1_BlockedTasks</fullName>
@@ -552,7 +697,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>DidNotMatch</shortDescription>
-        <value>) did not match any milestone.</value>
+        <value>) did not match any iteration.</value>
     </labels>
     <labels>
         <fullName>Milestone1_Done</fullName>
@@ -600,8 +745,8 @@
         <fullName>Milestone1_ForCommunityAssistance</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>For community assistance with Milestones PM, please visit &lt;a href=&quot;http://succes</shortDescription>
-        <value>For community assistance with Milestones PM, please visit &lt;a href=&quot;http://success.salesforce.com/answers&quot;&gt;Salesforce Answers&lt;/a&gt;.</value>
+        <shortDescription>For community assistance with Milestones PM+, visit &lt;a href=&quot;http://succes</shortDescription>
+        <value>For community assistance with Milestones PM+, visit &lt;a href=&quot;http://success.salesforce.com/answers&quot;&gt;Salesforce Answers&lt;/a&gt;.</value>
     </labels>
     <labels>
         <fullName>Milestone1_Friday</fullName>
@@ -649,8 +794,8 @@
         <fullName>Milestone1_GiveEmailServiceName</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Give a Email Service Name &quot;Email To Milestone Task&quot;.</shortDescription>
-        <value>Give a Email Service Name &quot;Email To Milestone Task&quot;.</value>
+        <shortDescription>Give a Email Service Name &quot;Email To Iteration Task&quot;.</shortDescription>
+        <value>Give a Email Service Name &quot;Email To Iteration Task&quot;.</value>
     </labels>
     <labels>
         <fullName>Milestone1_Go</fullName>
@@ -672,7 +817,7 @@
         <protected>true</protected>
         <shortDescription>&quot;If you have not done this, please visit &lt;a href=&quot;&quot;/0A3?setupid=ImportedPackage&quot;</shortDescription>
         <value>If you have not done this, please visit &lt;a href=&quot;/0A3?setupid=ImportedPackage&quot;&gt;Setup &gt; App Setup &gt; View Installed Packages&lt;/a&gt;,
-    click on &lt;strong&gt;Milestones PM&lt;/strong&gt; and click on the deploy button.</value>
+    click on &lt;strong&gt;Milestones PM+&lt;/strong&gt; and click on the deploy button.</value>
     </labels>
     <labels>
         <fullName>Milestone1_Import</fullName>
@@ -692,8 +837,8 @@
         <fullName>Milestone1_ImportFailed</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Import Failed -- Milestone was unable to import your file.</shortDescription>
-        <value>Import Failed -- Milestone was unable to import your file.</value>
+        <shortDescription>Import Failed -- Milestones PM+ was unable to import your file.</shortDescription>
+        <value>Import Failed -- Milestones PM+ was unable to import your file.</value>
     </labels>
     <labels>
         <fullName>Milestone1_ImportLocalTemplateXML</fullName>
@@ -790,8 +935,8 @@
         <fullName>Milestone1_InsufficientPrivilegesToAccessParentMilestone</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Insufficient privileges to access parent milestone.</shortDescription>
-        <value>Insufficient privileges to access parent milestone.</value>
+        <shortDescription>Insufficient privileges to access parent iteration.</shortDescription>
+        <value>Insufficient privileges to access parent iteration.</value>
     </labels>
     <labels>
         <fullName>Milestone1_InvalidName</fullName>
@@ -840,7 +985,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>MainMenu</shortDescription>
-        <value>Milestones PM - Main Menu</value>
+        <value>Milestones 2 - Main Menu</value>
     </labels>
     <labels>
         <fullName>Milestone1_MaximumPer</fullName>
@@ -853,36 +998,36 @@
         <fullName>Milestone1_MilestoneApplicationPostInstallation</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Milestone Application Post Installation Instructions</shortDescription>
-        <value>Milestone Application Post Installation Instructions</value>
+        <shortDescription>Milestone PM 2 Application Post Installation Instructions</shortDescription>
+        <value>Milestone PM 2 Application Post Installation Instructions</value>
     </labels>
     <labels>
         <fullName>Milestone1_MilestoneClone</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>MilestoneClone</shortDescription>
-        <value>Milestone Clone</value>
+        <shortDescription>IterationClone</shortDescription>
+        <value>Iteration Clone</value>
     </labels>
     <labels>
         <fullName>Milestone1_MilestoneIsComplete</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Milestone is Complete, the Task can not be moved</shortDescription>
-        <value>Milestone is Complete, the Task can not be moved</value>
+        <shortDescription>Iteration is Complete, the Task can not be moved</shortDescription>
+        <value>Iteration is Complete, the Task can not be moved</value>
     </labels>
     <labels>
         <fullName>Milestone1_MilestoneRecordsToMove</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>MilestoneRecordsToMove</shortDescription>
-        <value>Please return to the previous screen and select one or more Milestone records to move.</value>
+        <shortDescription>IterationRecordsToMove</shortDescription>
+        <value>Please return to the previous screen and select one or more iteration records to move.</value>
     </labels>
     <labels>
         <fullName>Milestone1_MilestoneYouAreAttempting</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>A milestone you are attempting to move is already assigned to this project. Plea</shortDescription>
-        <value>A milestone you are attempting to move is already assigned to this project. Please review your selection and try again.</value>
+        <shortDescription>The iteration u are attempting to move is already assigned to this project. Plea</shortDescription>
+        <value>An iteration you are attempting to move is already assigned to this project. Please review your selection and try again.</value>
     </labels>
     <labels>
         <fullName>Milestone1_Milestones</fullName>
@@ -896,35 +1041,35 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>MilestonesCalendar</shortDescription>
-        <value>Milestones</value>
+        <value>Iterations</value>
     </labels>
     <labels>
         <fullName>Milestone1_MilestonesOpenTasks</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>MilestonesOpenTasks</shortDescription>
-        <value>Milestones &amp; Open Tasks</value>
+        <value>Iterations &amp; Open Tasks</value>
     </labels>
     <labels>
         <fullName>Milestone1_MilestonesPMISOpenSource</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Milestones PM is Open Source software.</shortDescription>
-        <value>Milestones PM is Open Source software.</value>
+        <shortDescription>Milestones PM+ is commercially available and supported software.</shortDescription>
+        <value>Milestones PM+ is commercially available software and supported.</value>
     </labels>
     <labels>
         <fullName>Milestone1_MilestonesPMIsUnsupported</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Milestones PM is unsupported.</shortDescription>
-        <value>Milestones PM is unsupported.</value>
+        <shortDescription>Milestones PM+ is supported.</shortDescription>
+        <value>Milestones PM+ is supported.</value>
     </labels>
     <labels>
         <fullName>Milestone1_MilestonesShouldNotBeMoved</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Milestones should not be moved to different Projects, except through the &quot;Move t</shortDescription>
-        <value>Milestones should not be moved to different Projects, except through the &quot;Move to New Project&quot; button in Milestone list view.</value>
+        <shortDescription>Iterations should not be moved to different Projects, except through the &quot;Move t</shortDescription>
+        <value>Iterations should not be moved to different Projects, except through the &quot;Move to New Project&quot; button in Iteration list view.</value>
     </labels>
     <labels>
         <fullName>Milestone1_Monday</fullName>
@@ -944,15 +1089,15 @@
         <fullName>Milestone1_MoveMilestoneRecordsToMove</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>MoveMilestoneRecordsToMove</shortDescription>
-        <value>Please return to the previous screen and select one or more Milestone records to move.</value>
+        <shortDescription>MoveIterationRecordsToMove</shortDescription>
+        <value>Please return to the previous screen and select one or more Iteration records to move.</value>
     </labels>
     <labels>
         <fullName>Milestone1_MoveMilestoneS</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>MoveMilestoneS</shortDescription>
-        <value>Move Milestone(s)</value>
+        <shortDescription>MoveIterations</shortDescription>
+        <value>Move Iteration(s)</value>
     </labels>
     <labels>
         <fullName>Milestone1_MoveMilestoneSave</fullName>
@@ -979,8 +1124,8 @@
         <fullName>Milestone1_MoveMilestone_s</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>MoveMilestone_s</shortDescription>
-        <value>Move Milestone(s)</value>
+        <shortDescription>MoveIteration_s</shortDescription>
+        <value>Move Iteration(s)</value>
     </labels>
     <labels>
         <fullName>Milestone1_MoveTaskCancel</fullName>
@@ -1056,8 +1201,8 @@
         <fullName>Milestone1_MyMilestonesOnly</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>MyMilestonesOnly</shortDescription>
-        <value>My Milestones Only</value>
+        <shortDescription>MyIterationsOnly</shortDescription>
+        <value>My Iterations Only</value>
     </labels>
     <labels>
         <fullName>Milestone1_MyProjectsAndSubProjectItems</fullName>
@@ -1091,8 +1236,8 @@
         <fullName>Milestone1_NewMilestoneName</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>NewMilestoneName</shortDescription>
-        <value>New Milestone Name</value>
+        <shortDescription>NewIterationName</shortDescription>
+        <value>New Iteration Name</value>
     </labels>
     <labels>
         <fullName>Milestone1_NewProjectName</fullName>
@@ -1175,15 +1320,15 @@
         <fullName>Milestone1_ProjectMilestoneNagEngine</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Project Milestone Nag Engine</shortDescription>
-        <value>Project Milestone Nag Engine</value>
+        <shortDescription>Project Iteration Nag Engine</shortDescription>
+        <value>Project Iteration Nag Engine</value>
     </labels>
     <labels>
         <fullName>Milestone1_ProjectMilestoneNotification</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Project Milestone Notification - Items require attention.</shortDescription>
-        <value>Project Milestone Notification - Items require attention.</value>
+        <shortDescription>Project Iteration Notification - Items require attention.</shortDescription>
+        <value>Project Iteration Notification - Items require attention.</value>
     </labels>
     <labels>
         <fullName>Milestone1_ProjectSummary_FirstHalf</fullName>
@@ -1196,8 +1341,8 @@
         <fullName>Milestone1_ProjectSummary_SecondHalf</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>to start using Milestones PM.</shortDescription>
-        <value>to start using Milestones PM.</value>
+        <shortDescription>to start using Milestones PM+.</shortDescription>
+        <value>to start using Milestones PM+.</value>
     </labels>
     <labels>
         <fullName>Milestone1_ProjectXML</fullName>
@@ -1322,8 +1467,8 @@
         <fullName>Milestone1_SubMilestonesCanOnlyGoOneLevelDeep</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Sub-milestones can only go one level deep. Please select a top-level milestone a</shortDescription>
-        <value>Sub-milestones can only go one level deep. Please select a top-level milestone as this record\&apos;s parent milestone.</value>
+        <shortDescription>Sub-iterations can only go one level deep. Please select a top-level milestone a</shortDescription>
+        <value>Sub-iterations can only go one level deep. Please select a top-level Iteration as this record\&apos;s parent Iteration.</value>
     </labels>
     <labels>
         <fullName>Milestone1_SubjectMissing</fullName>
@@ -1337,7 +1482,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>SubjectMissingAlias</shortDescription>
-        <value>The subject line did not contain a milestone alias.</value>
+        <value>The subject line did not contain an iteration alias.</value>
     </labels>
     <labels>
         <fullName>Milestone1_SubjectMissingTask</fullName>
@@ -1385,8 +1530,8 @@
         <fullName>Milestone1_TaskYouAreAttempting</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>A task you are attempting to move is already assigned to this milestone. Please</shortDescription>
-        <value>A task you are attempting to move is already assigned to this milestone. Please review your selection and try again.</value>
+        <shortDescription>A task you are attempting to move is already assigned to this iteration. Please</shortDescription>
+        <value>A task you are attempting to move is already assigned to this teration. Please review your selection and try again.</value>
     </labels>
     <labels>
         <fullName>Milestone1_Tasks</fullName>
@@ -1406,22 +1551,22 @@
         <fullName>Milestone1_TasksMilestone</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>TasksMilestone</shortDescription>
-        <value>Tasks / Milestone</value>
+        <shortDescription>TasksIteration</shortDescription>
+        <value>Tasks / Iteration</value>
     </labels>
     <labels>
         <fullName>Milestone1_TestProjectMilestones</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>TestProjectMilestones</shortDescription>
-        <value>Milestones</value>
+        <shortDescription>TestProjectIterations</shortDescription>
+        <value>Iterations</value>
     </labels>
     <labels>
         <fullName>Milestone1_TheFollowingSalesforceProjectMilestoneItems</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>The following Salesforce Project Milestone items are nagging you for attention</shortDescription>
-        <value>The following Salesforce Project Milestone items are nagging you for attention</value>
+        <shortDescription>The following Project Iteration items are nagging you for attention</shortDescription>
+        <value>The following Project Iteration items are nagging you for attention</value>
     </labels>
     <labels>
         <fullName>Milestone1_TheProjectCannotBeNull</fullName>
@@ -1456,7 +1601,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>This sample project includes the remaining configuration steps as well as ideas</shortDescription>
-        <value>This sample project includes the remaining configuration steps as well as ideas on how you can get the most out of Milestones PM.</value>
+        <value>This sample project includes the remaining configuration steps as well as ideas on how you can get the most out of Milestones PM+.</value>
     </labels>
     <labels>
         <fullName>Milestone1_ThisWeeksView</fullName>
@@ -1532,15 +1677,15 @@
         <fullName>Milestone1_TopLevelMilestoneHasPredecessor</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Top Level Milestone has predecessor and cannot be moved.  Remove that predecesso</shortDescription>
-        <value>Top Level Milestone has predecessor and cannot be moved.  Remove that predecessor and try again.</value>
+        <shortDescription>Top Level Iteration has predecessor and cannot be moved.  Remove that predecesso</shortDescription>
+        <value>Top Level Iteration has predecessor and cannot be moved.  Remove that predecessor and try again.</value>
     </labels>
     <labels>
         <fullName>Milestone1_TopLevelMilestoneHasSuccessors</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Top Level Milestone has successors and cannot be moved.  Redirect those successo</shortDescription>
-        <value>Top Level Milestone has successors and cannot be moved.  Redirect those successors and try again.</value>
+        <shortDescription>Top Level Iteration has successors and cannot be moved.  Redirect those successo</shortDescription>
+        <value>Top Level Iteration has successors and cannot be moved.  Redirect those successors and try again.</value>
     </labels>
     <labels>
         <fullName>Milestone1_Tuesday</fullName>
@@ -1595,8 +1740,8 @@
         <fullName>Milestone1_YouMustDeploy</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>you must &lt;strong&gt;deploy&lt;/strong&gt; Milestones before continuing.</shortDescription>
-        <value>you must &lt;strong&gt;deploy&lt;/strong&gt; Milestones before continuing.</value>
+        <shortDescription>you must &lt;strong&gt;deploy&lt;/strong&gt; Milestones PM+ before continuing.</shortDescription>
+        <value>you must &lt;strong&gt;deploy&lt;/strong&gt; Milestones PM+ before continuing.</value>
     </labels>
     <labels>
         <fullName>Milestone1_YourNextFewSteps</fullName>
@@ -1613,6 +1758,77 @@
         <value>Your project could not successfully be exported to an XML document.</value>
     </labels>
     <labels>
+        <fullName>Milestone2_App_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Milestones PM+</shortDescription>
+        <value>Milestones PM+</value>
+    </labels>
+    <labels>
+        <fullName>Milestone2_Backlog_Items</fullName>
+        <categories>Milestone2</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Backlog Items</shortDescription>
+        <value>Backlog Items</value>
+    </labels>
+    <labels>
+        <fullName>Milestone2_Iterations</fullName>
+        <categories>Milestone2</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Iterations</shortDescription>
+        <value>Iterations</value>
+    </labels>
+    <labels>
+        <fullName>Milestone2_LearnMore</fullName>
+        <categories>Milestone2</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>&lt;a href=&quot;http://blogs.developerforce.com/labs/2011/08/howto-contribute-to-milest</shortDescription>
+        <value>&lt;br&gt;&lt;a href=&quot;http://blogs.developerforce.com/labs/2011/08/howto-contribute-to-milestones-pm-code-not-required-opensource.html&quot;&gt;Learn more about contributing to the open source community&lt;/a&gt;.</value>
+    </labels>
+    <labels>
+        <fullName>Milestone2_Move_Backlog_Item_s</fullName>
+        <categories>Milestone2</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Move Backlog Item(s)</shortDescription>
+        <value>Move Backlog Item(s)</value>
+    </labels>
+    <labels>
+        <fullName>Milestone2_Release_Notes</fullName>
+        <categories>Milestone2</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Release Notes</shortDescription>
+        <value>Release Notes</value>
+    </labels>
+    <labels>
+        <fullName>Milestone2_Status_Reports</fullName>
+        <categories>Milestone2</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Status Reports</shortDescription>
+        <value>Status Reports</value>
+    </labels>
+    <labels>
+        <fullName>Milestone2_ToResourcesNotFound</fullName>
+        <categories>Milestone2</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ToResourcesNotFound</shortDescription>
+        <value>The list of recipients did not have any matches to a user OR resource in Salesforce.</value>
+    </labels>
+    <labels>
+        <fullName>Milestone2_Upcoming_Features_Content</fullName>
+        <categories>Milestone2</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Upcoming Features Content</shortDescription>
+        <value>Parent Date Sync, and Sync Tasks with Salesforce Tasks</value>
+    </labels>
+    <labels>
         <fullName>MilestoneApplicationPostInstallation</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -1623,8 +1839,8 @@
         <fullName>MilestoneClone</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>MilestoneClone</shortDescription>
-        <value>Milestone Clone</value>
+        <shortDescription>IterationClone</shortDescription>
+        <value>Iteration Clone</value>
     </labels>
     <labels>
         <fullName>MilestoneIsComplete</fullName>
@@ -1644,22 +1860,22 @@
         <fullName>MilestoneYouAreAttempting</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>A milestone you are attempting to move is already assigned to this project. Plea</shortDescription>
-        <value>A milestone you are attempting to move is already assigned to this project. Please review your selection and try again.</value>
+        <shortDescription>An teration you are attempting to move is already assigned to this project. Plea</shortDescription>
+        <value>A Iteration you are attempting to move is already assigned to this project. Please review your selection and try again.</value>
     </labels>
     <labels>
         <fullName>Milestones</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Milestones</shortDescription>
-        <value>Milestones</value>
+        <shortDescription>Iterations</shortDescription>
+        <value>Iterations</value>
     </labels>
     <labels>
         <fullName>MilestonesCalendar</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>MilestonesCalendar</shortDescription>
-        <value>Milestones</value>
+        <shortDescription>IterationsCalendar</shortDescription>
+        <value>Iterations</value>
     </labels>
     <labels>
         <fullName>MilestonesOpenTasks</fullName>
@@ -1819,8 +2035,8 @@
         <fullName>MyMilestonesOnly</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>MyMilestonesOnly</shortDescription>
-        <value>My Milestones Only</value>
+        <shortDescription>MyIterationsOnly</shortDescription>
+        <value>My Iterations Only</value>
     </labels>
     <labels>
         <fullName>MyProjectsAndSubProjectItems</fullName>
@@ -1842,6 +2058,14 @@
         <protected>true</protected>
         <shortDescription>MyTasksOnly</shortDescription>
         <value>My Tasks Only</value>
+    </labels>
+    <labels>
+        <fullName>NPSP_Setting_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NPSP Setting Help Text</shortDescription>
+        <value>Only available if the Nonprofit Starter Pack Contacts &amp; Organizations package is installed.  This value is automatically configured but can be overriden. When set to true, an NPSP-specific Contact lookup field will be displayed when entering Opportunities (Donations).</value>
     </labels>
     <labels>
         <fullName>NewFieldToReplaceInactiveUsers</fullName>
@@ -1886,6 +2110,14 @@
         <value>No projects!</value>
     </labels>
     <labels>
+        <fullName>Opportunity_Naming_Setting_Help_Text</fullName>
+        <categories>BatchEntry</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity Naming Setting Help Text</shortDescription>
+        <value>Opportunities will be named automatically based on Contact/Account lookup, date and recordtype if the &apos;Name&apos; field is not on the Batch Entry screen. You can force automatic Opportunity naming to override user-provided values by checking this box.</value>
+    </labels>
+    <labels>
         <fullName>OrganizationsVersion</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -1898,6 +2130,34 @@
         <protected>true</protected>
         <shortDescription>OverdueTasks</shortDescription>
         <value>Overdue Tasks</value>
+    </labels>
+    <labels>
+        <fullName>PS_App_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PS App Name</shortDescription>
+        <value>Rollup Helper</value>
+    </labels>
+    <labels>
+        <fullName>PS_Initialize_Button</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PS Initialize Button</shortDescription>
+        <value>Start Schedule</value>
+    </labels>
+    <labels>
+        <fullName>PS_Initialize_Notice</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PS Initialize Notice</shortDescription>
+        <value>Click here to initialize this application and get started.  This is a one-time setup step.</value>
+    </labels>
+    <labels>
+        <fullName>PT_Logo_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PT Logo URL</shortDescription>
+        <value>http://appexchange.salesforce.com/listingDetail?listingId=a0N300000023On3EAE</value>
     </labels>
     <labels>
         <fullName>PleaseUseFormat</fullName>
@@ -1945,8 +2205,8 @@
         <fullName>ProjectSummary_SecondHalf</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>to start using Milestones PM.</shortDescription>
-        <value>to start using Milestones PM.</value>
+        <shortDescription>to start using Milestones PM+.</shortDescription>
+        <value>to start using Milestones PM+.</value>
     </labels>
     <labels>
         <fullName>ProjectXML</fullName>
@@ -2134,8 +2394,8 @@
         <fullName>TaskYouAreAttempting</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>A task you are attempting to move is already assigned to this milestone. Please</shortDescription>
-        <value>A task you are attempting to move is already assigned to this milestone. Please review your selection and try again.</value>
+        <shortDescription>A task you are attempting to move is already assigned to this iteration. Please</shortDescription>
+        <value>A task you are attempting to move is already assigned to this Iteration. Please review your selection and try again.</value>
     </labels>
     <labels>
         <fullName>Tasks</fullName>
@@ -2184,7 +2444,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>This sample project includes the remaining configuration steps as well as ideas</shortDescription>
-        <value>This sample project includes the remaining configuration steps as well as ideas on how you can get the most out of Milestones PM.</value>
+        <value>This sample project includes the remaining configuration steps as well as ideas on how you can get the most out of Milestones PM+.</value>
     </labels>
     <labels>
         <fullName>Thursday</fullName>
@@ -2253,15 +2513,15 @@
         <fullName>TopLevelMilestoneHasPredecessor</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Top Level Milestone has predecessor and cannot be moved.  Remove that predecesso</shortDescription>
-        <value>Top Level Milestone has predecessor and cannot be moved.  Remove that predecessor and try again.</value>
+        <shortDescription>Top Level Iteration has predecessor and cannot be moved.  Remove that predecesso</shortDescription>
+        <value>Top Level Iteration has predecessor and cannot be moved.  Remove that predecessor and try again.</value>
     </labels>
     <labels>
         <fullName>TopLevelMilestoneHasSuccessors</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Top Level Milestone has successors and cannot be moved.  Redirect those successo</shortDescription>
-        <value>Top Level Milestone has successors and cannot be moved.  Redirect those successors and try again.</value>
+        <shortDescription>Top Level Iteration has successors and cannot be moved.  Redirect those successo</shortDescription>
+        <value>Top Level Iteration has successors and cannot be moved.  Redirect those successors and try again.</value>
     </labels>
     <labels>
         <fullName>Tuesday</fullName>
@@ -2289,7 +2549,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>We welcome your issue reports, ideas, documentation, code tweaks and all other p</shortDescription>
-        <value>We welcome your issue reports, ideas, documentation, code tweaks and all other participation.</value>
+        <value>Milestones PM+ is affiliated with the Force.com labs open source community and a thriving customer ecosystem. We welcome your ideas, issues, documentation, enhancement requests, and all other participation.</value>
     </labels>
     <labels>
         <fullName>Wednesday</fullName>
@@ -2302,8 +2562,8 @@
         <fullName>WelcomeToMilestonesPM</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Welcome to Milestones PM - Project Management</shortDescription>
-        <value>Welcome to Milestones PM - Project Management</value>
+        <shortDescription>Welcome to Milestones PM+</shortDescription>
+        <value>Welcome to Milestones PM+!</value>
     </labels>
     <labels>
         <fullName>YouCanNowGoTo</fullName>

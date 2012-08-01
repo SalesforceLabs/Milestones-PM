@@ -16,7 +16,7 @@
         <criteriaItems>
             <column>Milestone1_Project__c$Status__c</column>
             <operator>equals</operator>
-            <value>Active</value>
+            <value>In Process</value>
         </criteriaItems>
         <criteriaItems>
             <column>Milestone1_Project__c.Project_Milestones__r.Project_Tasks__r$Blocked__c</column>

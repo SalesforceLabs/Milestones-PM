@@ -176,6 +176,41 @@
             <field>Total_Open_Task_Count__c</field>
             <table>Milestone1_Project__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c</field>
+            <table>Milestone1_Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Constraints__c</field>
+            <table>Milestone1_Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Assumptions__c</field>
+            <table>Milestone1_Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Scope_Statement__c</field>
+            <table>Milestone1_Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Out_of_Scope__c</field>
+            <table>Milestone1_Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Stakeholder_Description__c</field>
+            <table>Milestone1_Project__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opportunity__c</field>
+            <table>Milestone1_Project__c</table>
+        </columns>
         <masterLabel>Projects</masterLabel>
     </sections>
 </ReportType>

@@ -5,9 +5,38 @@
         <value>Log</value>
     </caseValues>
     <fields>
+        <label><!-- Approver --></label>
+        <name>Approver__c</name>
+        <relationshipLabel><!-- Logs --></relationshipLabel>
+    </fields>
+    <fields>
         <help>ログの詳細情報。記録をとりたい情報に対して自由に入力できる。</help>
         <label>詳細</label>
         <name>Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Impact Area --></label>
+        <name>Primary_Impact_Area__c</name>
+        <picklistValues>
+            <masterLabel>Budget</masterLabel>
+            <translation><!-- Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quality</masterLabel>
+            <translation><!-- Quality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resources</masterLabel>
+            <translation><!-- Resources --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Schedule</masterLabel>
+            <translation><!-- Schedule --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scope</masterLabel>
+            <translation><!-- Scope --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help>情報が知りたいプロジェクト費用</help>
@@ -40,6 +69,23 @@
         <relationshipLabel>ログ</relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Status Report --></label>
+        <name>Status_Report__c</name>
+        <relationshipLabel><!-- Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation><!-- Open --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <help>ログの題名</help>
         <label>題名</label>
         <name>Subject__c</name>
@@ -49,12 +95,20 @@
         <label>タイプ</label>
         <name>Type__c</name>
         <picklistValues>
+            <masterLabel>Change Request</masterLabel>
+            <translation><!-- Change Request --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Decision</masterLabel>
             <translation>決定</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>General</masterLabel>
             <translation>一般</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Issue</masterLabel>
+            <translation><!-- Issue --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Risk</masterLabel>

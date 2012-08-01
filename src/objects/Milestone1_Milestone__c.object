@@ -35,7 +35,7 @@
         <type>Default</type>
     </actionOverrides>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Force.com Labs - PM - Milestones are significant events in the life-cycle of a Project. Milestones can have tasks and sub-milestones associated with them.</description>
+    <description>Iterations are significant phases in the life-cycle of a Project. Iterations can have tasks and sub-iterations associated with them. A sub-iteration can have tasks associated with them.</description>
     <enableActivities>false</enableActivities>
     <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>true</enableFeeds>
@@ -45,8 +45,8 @@
         <fullName>Actual_Expense_From_Sub_Milestones__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>Calculated from expense records related to tasks on child milestones</inlineHelpText>
-        <label>Actual Expense From Sub-Milestones</label>
+        <inlineHelpText>Calculated from expense records related to tasks on child iterations</inlineHelpText>
+        <label>Actual Expense From Sub-Iterations</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -64,11 +64,19 @@
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Actual_Finish_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Actual Finish Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Actual_Hours_From_Sub_Milestones__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>Calculated from time records related to tasks on child milestones</inlineHelpText>
-        <label>Actual Hours From Sub-Milestones</label>
+        <inlineHelpText>Calculated from time records related to tasks on child iterations</inlineHelpText>
+        <label>Actual Hours From Sub-Iterations</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -87,12 +95,20 @@
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Actual_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Actual Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Alias__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <description>This is the alias for a milestone.</description>
+        <description>This is the alias for a iteration.</description>
         <externalId>false</externalId>
-        <inlineHelpText>An alias helps you associate a task to a milestone using the single line entry home page component.</inlineHelpText>
-        <label>Milestone Alias</label>
+        <inlineHelpText>An alias helps you associate a task to an iteration using the single line entry home page component OR an email service.</inlineHelpText>
+        <label>Iteration Alias</label>
         <length>10</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -103,8 +119,8 @@
         <fullName>Blocked_Tasks_in_Sub_Milestones__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>How many tasks are blocked in sub-milestones?</inlineHelpText>
-        <label>Blocked Tasks (in Sub-Milestones)</label>
+        <inlineHelpText>How many tasks are blocked in sub-iterations?</inlineHelpText>
+        <label>Blocked Tasks (in Sub-Iterations)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -127,11 +143,33 @@
         <type>Summary</type>
     </fields>
     <fields>
+        <fullName>Commitment_Level__c</fullName>
+        <externalId>false</externalId>
+        <label>Commitment Level</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Requested</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Estimated</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Committed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>Complete_Tasks_in_Sub_Milestones__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <inlineHelpText>Number of complete tasks related to sub-milestones</inlineHelpText>
-        <label>Complete Tasks (in Sub-Milestones)</label>
+        <label>Complete Tasks (in Sub-Iterations)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -147,7 +185,7 @@
         <summaryFilterItems>
             <field>Milestone1_Task__c.Complete__c</field>
             <operation>equals</operation>
-            <value>true</value>
+            <value>True</value>
         </summaryFilterItems>
         <summaryForeignKey>Milestone1_Task__c.Project_Milestone__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
@@ -199,7 +237,7 @@
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <inlineHelpText>Calculated from tasks on child milestones</inlineHelpText>
-        <label>Estimated Expense From Sub-Milestones</label>
+        <label>Estimated Expense From Sub-Iterations</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -221,7 +259,7 @@
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <inlineHelpText>Calculated from tasks on child milestones</inlineHelpText>
-        <label>Estimated Hours From Sub-Milestones</label>
+        <label>Estimated Hours From Sub-Iterations</label>
         <precision>16</precision>
         <required>false</required>
         <scale>0</scale>
@@ -243,8 +281,8 @@
         <fullName>Expense_Budget__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>The expense budget for the milestone.</inlineHelpText>
-        <label>Milestone Expense Budget</label>
+        <inlineHelpText>The expense budget for the iteration.</inlineHelpText>
+        <label>Iteration Expense Budget</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -255,8 +293,8 @@
         <fullName>Expense_Budget_from_Sub_Milestones__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>The expense budget all the sub milestones of this milestone.</inlineHelpText>
-        <label>Expense Budget from Sub-Milestones</label>
+        <inlineHelpText>The expense budget of all the sub iterations of this milestone.</inlineHelpText>
+        <label>Expense Budget from Sub-Iterations</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -267,8 +305,8 @@
         <fullName>Hours_Budget__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>The hours budget for the milestone.</inlineHelpText>
-        <label>Milestone Hours Budget</label>
+        <inlineHelpText>The hours budget for the iteration.</inlineHelpText>
+        <label>Iteration Hours Budget</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -280,8 +318,8 @@
         <fullName>Hours_Budget_from_Sub_Milestones__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>The total hours budget for all the sub milestones for this milestone.</inlineHelpText>
-        <label>Hours Budget from Sub-Milestones</label>
+        <inlineHelpText>The total hours budget for all the sub iterations for this iteration.</inlineHelpText>
+        <label>Hours Budget from Sub-Iterations</label>
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
@@ -301,6 +339,15 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Iteration_Goal__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the goal of this iteration?</inlineHelpText>
+        <label>Iteration Goal</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Kickoff__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>When should this milestone kickoff?</inlineHelpText>
@@ -313,8 +360,8 @@
         <fullName>Late_Tasks_in_Sub_Milestones__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>Number of incomplete and overdue tasks related to child milestones</inlineHelpText>
-        <label>Late Tasks (in Sub-Milestones)</label>
+        <inlineHelpText>Number of incomplete and overdue tasks related to child iterations</inlineHelpText>
+        <label>Late Tasks (in Sub-Iterations)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -394,8 +441,8 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <fullName>Open_Tasks_in_Sub_Milestones__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
-        <inlineHelpText>Number of incomplete tasks related to child milestones</inlineHelpText>
-        <label>Open Tasks (in Sub-Milestones)</label>
+        <inlineHelpText>Number of incomplete tasks related to child iterations</inlineHelpText>
+        <label>Open Tasks (in Sub-Iterations)</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -434,10 +481,10 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <fullName>Parent_Milestone__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <inlineHelpText>The parent milestone for this milestone if applicable.</inlineHelpText>
-        <label>Parent Milestone</label>
+        <inlineHelpText>The parent iteration for this iteration if applicable.</inlineHelpText>
+        <label>Parent Iteration</label>
         <referenceTo>Milestone1_Milestone__c</referenceTo>
-        <relationshipLabel>Child Milestones</relationshipLabel>
+        <relationshipLabel>Iterations (Parent Iterations)</relationshipLabel>
         <relationshipName>Child_Milestones</relationshipName>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -446,7 +493,7 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
     <fields>
         <fullName>Predecessor_Milestone_Import_Id__c</fullName>
         <externalId>false</externalId>
-        <label>Predecessor_Milestone_Import_Id__c</label>
+        <label>Predecessor_Iteration_Import_Id__c</label>
         <length>18</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -457,10 +504,10 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <fullName>Predecessor_Milestone__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <inlineHelpText>The milestone which must be complete before you start this one. The Predecessor Milestone end date must be before the current Milestone start date.</inlineHelpText>
-        <label>Predecessor Milestone</label>
+        <inlineHelpText>The Iteration which must be complete before you start this one. The Predecessor Iteration end date must be before the current Iteration start date.</inlineHelpText>
+        <label>Predecessor Iteration</label>
         <referenceTo>Milestone1_Milestone__c</referenceTo>
-        <relationshipLabel>Successor Milestones</relationshipLabel>
+        <relationshipLabel>Iterations (Predecessor Iteration)</relationshipLabel>
         <relationshipName>Successor_Milestones</relationshipName>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -486,7 +533,6 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <inlineHelpText>The project this milestone is assigned to. If this is a sub-milestone this field is empty.</inlineHelpText>
         <label>Project</label>
         <referenceTo>Milestone1_Project__c</referenceTo>
-        <relationshipLabel>Milestones</relationshipLabel>
         <relationshipName>Project_Milestones</relationshipName>
         <required>false</required>
         <trackFeedHistory>true</trackFeedHistory>
@@ -509,7 +555,7 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <externalId>false</externalId>
         <formula>Actual_Hours_From_Tasks__c + Actual_Hours_From_Sub_Milestones__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <inlineHelpText>Calculated from time records on tasks for this milestone and all child milestones</inlineHelpText>
+        <inlineHelpText>Calculated from time records on tasks for this iteration and all child iterations</inlineHelpText>
         <label>Total Actual Hours</label>
         <precision>18</precision>
         <required>false</required>
@@ -643,7 +689,7 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <type>Number</type>
         <unique>false</unique>
     </fields>
-    <label>Milestone</label>
+    <label>Iteration</label>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
@@ -670,7 +716,7 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <label>My Milestones</label>
     </listViews>
     <nameField>
-        <label>Project Milestone Name</label>
+        <label>Iteration Name</label>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Text</type>
     </nameField>
@@ -706,28 +752,51 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <name>Milestone_Predecessor Milestone</name>
         <sourceObject>Milestone1_Milestone__c</sourceObject>
     </namedFilters>
-    <pluralLabel>Milestones</pluralLabel>
+    <namedFilters>
+        <fullName>nf_01Id00000016LzaEAE_00Nd0000005EhxIEAS</fullName>
+        <active>true</active>
+        <field>Milestone1_Status_Report__c.Iteration__c</field>
+        <filterItems>
+            <field>Milestone1_Milestone__c.Project__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Project__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Status Report_Iteration</name>
+        <sourceObject>Milestone1_Status_Report__c</sourceObject>
+    </namedFilters>
+    <pluralLabel>Iterations</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Project__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Parent_Milestone__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>OWNER.FIRST_NAME</customTabListAdditionalFields>
         <customTabListAdditionalFields>OWNER.LAST_NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Kickoff__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Deadline__c</customTabListAdditionalFields>
         <listViewButtons>Change_Project</listViewButtons>
         <lookupDialogsAdditionalFields>Project__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Parent_Milestone__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>OWNER.FIRST_NAME</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>OWNER.LAST_NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Kickoff__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Deadline__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Project__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Parent_Milestone__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>OWNER.FIRST_NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>OWNER.LAST_NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Kickoff__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Deadline__c</lookupPhoneDialogsAdditionalFields>
         <searchFilterFields>Project__c</searchFilterFields>
         <searchFilterFields>Parent_Milestone__c</searchFilterFields>
         <searchFilterFields>OWNER.FIRST_NAME</searchFilterFields>
         <searchFilterFields>OWNER.LAST_NAME</searchFilterFields>
+        <searchFilterFields>Kickoff__c</searchFilterFields>
         <searchFilterFields>Deadline__c</searchFilterFields>
         <searchResultsAdditionalFields>Project__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Parent_Milestone__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>OWNER.FIRST_NAME</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>OWNER.LAST_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Kickoff__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Deadline__c</searchResultsAdditionalFields>
         <searchResultsCustomButtons>Change_Project</searchResultsCustomButtons>
     </searchLayouts>
@@ -737,7 +806,14 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <active>true</active>
         <errorConditionFormula>CONTAINS(TRIM(Alias__c ),&quot; &quot;)</errorConditionFormula>
         <errorDisplayField>Alias__c</errorDisplayField>
-        <errorMessage>The Milestone Alias cannot contain spaces.</errorMessage>
+        <errorMessage>The Iteration Alias cannot contain spaces.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CanNotAddSubiterationToParentCompleted</fullName>
+        <active>true</active>
+        <errorConditionFormula>Parent_Milestone__r.Complete__c</errorConditionFormula>
+        <errorDisplayField>Parent_Milestone__c</errorDisplayField>
+        <errorMessage>You can not add iterations to parent iterations with status completed.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>CanNotAddSubmilestoneToParentCompleted</fullName>
@@ -751,7 +827,7 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <active>true</active>
         <errorConditionFormula>if( and(Complete__c == true, Total_Open_Tasks__c &gt; 0), true, false)</errorConditionFormula>
         <errorDisplayField>Complete__c</errorDisplayField>
-        <errorMessage>You cannot mark a milestone as complete if it has open tasks.</errorMessage>
+        <errorMessage>You cannot mark an iteration as complete if it has open tasks.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Deadline_within_project_boundaries</fullName>
@@ -761,18 +837,34 @@ IMAGE(&quot;http://chart.apis.google.com/chart?chxt=y&amp;chbh=a&amp;chs=300x225
         <errorMessage>Deadline must be less than or equal to the project deadline.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>Iteration_between_Project_duration</fullName>
+        <active>false</active>
+        <description>Iteration kickoff must be greater or equal than project kickoff and iteration deadline must be less or equal than project deadline</description>
+        <errorConditionFormula>(NOT(ISNULL(Kickoff__c)) &amp;&amp; NOT(ISNULL(Project__r.Kickoff__c )) &amp;&amp; Kickoff__c&lt; Project__r.Kickoff__c ) 
+|| 
+(NOT(ISNULL(Deadline__c)) &amp;&amp; NOT(ISNULL(Project__r.Deadline__c)) &amp;&amp; Deadline__c &gt; Project__r.Deadline__c)</errorConditionFormula>
+        <errorMessage>Iteration kickoff must be greater than or equal to the project kickoff and iteration deadline must be less than or equal to the project deadline</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Iteration_must_have_parent_record</fullName>
+        <active>true</active>
+        <description>Iteration records must always have a parent Project and/or a parent Iteration</description>
+        <errorConditionFormula>ISBLANK(Project__c) &amp;&amp; ISBLANK(Parent_Milestone__c)</errorConditionFormula>
+        <errorMessage>Please select a parent Project, a parent Iteration, or both.</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>KickoffDeadlineWithinParentBoundaries</fullName>
         <active>false</active>
         <errorConditionFormula>(NOT(ISNULL(Kickoff__c)) &amp;&amp; NOT(ISNULL(Parent_Milestone__r.Kickoff__c)) &amp;&amp; Kickoff__c &lt; Parent_Milestone__r.Kickoff__c) || (NOT(ISNULL(Deadline__c)) &amp;&amp; NOT(ISNULL(Parent_Milestone__r.Deadline__c)) &amp;&amp; Deadline__c &gt; Parent_Milestone__r.Deadline__c)</errorConditionFormula>
         <errorDisplayField>Kickoff__c</errorDisplayField>
-        <errorMessage>Milestone Kickoff must not be earlier than Parent Kickoff and Milestone Deadline must not be later than Parent Deadline.</errorMessage>
+        <errorMessage>Iteration Kickoff must not be earlier than Parent Kickoff and Iteration Deadline must not be later than Parent Deadline.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Kickoff_after_Predecessor_Deadline</fullName>
         <active>true</active>
         <errorConditionFormula>NOT(ISNULL(Kickoff__c)) &amp;&amp; NOT(ISNULL(Predecessor_Milestone__r.Deadline__c)) &amp;&amp; Kickoff__c &lt; Predecessor_Milestone__r.Deadline__c</errorConditionFormula>
         <errorDisplayField>Kickoff__c</errorDisplayField>
-        <errorMessage>Milestone Kickoff must not be earlier than its Predecessor&apos;s Deadline.</errorMessage>
+        <errorMessage>Iteration Kickoff must not be earlier than its Predecessor&apos;s Deadline.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Kickoff_before_deadline</fullName>

@@ -32,6 +32,15 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Calendar_Project_Statuses_To_Filter_Out__c</fullName>
+        <externalId>false</externalId>
+        <label>Calendar Project Statuses To Filter Out</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Default_Milestone_Alias__c</fullName>
         <description>Default milestone for email to task.</description>
         <externalId>false</externalId>

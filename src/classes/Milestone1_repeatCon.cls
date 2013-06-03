@@ -47,7 +47,33 @@ public with sharing class Milestone1_repeatCon {
  public String selectedProject {get;set;}
  
  public List<Milestone1_Project__c> getAllProjectItems(){
-     return [Select Id,Name from Milestone1_Project__c where Status__c ='Active' limit 500];
+	/****************************************************************************************
+	/*	Author: 	Passage Technology (www.passagetech.com)								*
+	/*  Issue: 		https://github.com/ForceDotComLabs/Milestones-PM/issues/97				*
+	/*	Comment:	Added custom setting to enable configuration of project data to exclude.*
+	/****************************************************************************************/ 
+
+     string activeProjectQry;
+     List<String> inactivePrjStatuses;
+     string inactivePrjQry = '';
+     
+     if (Milestone1_Settings__c.getInstance().Calendar_Project_Statuses_To_Filter_Out__c == null ) {
+     	activeProjectQry = 'Select Id, Name from Milestone1_Project__c';
+     } else {
+     	inactivePrjStatuses = Milestone1_Settings__c.getInstance().Calendar_Project_Statuses_To_Filter_Out__c.split(',');
+        
+        for(Integer i = 0 ; i < inactivePrjStatuses.size() ; i++) {
+        	if (i == (inactivePrjStatuses.size() - 1)){
+            	inactivePrjQry += '\'' + inactivePrjStatuses[i].trim() + '\'';
+            } else {
+                inactivePrjQry += '\'' + inactivePrjStatuses[i].trim() + '\',';
+            }
+		}
+        
+        activeProjectQry = 'Select Id, Name from Milestone1_Project__c where Status__c NOT IN (' + inactivePrjQry + ')';   
+     
+     }
+     return Database.Query(activeProjectQry);
  }
 
  private Map<ID,Milestone1_Project__c> getSelectedProject(){

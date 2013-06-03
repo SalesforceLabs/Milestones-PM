@@ -52,8 +52,23 @@ public with sharing class Milestone1_General_Utility
     * @createDate 	January 19, 2011
     */
     public static Boolean isSysAdmin() {
-    	Profile pObj = [SELECT PermissionsModifyAllData, Id FROM Profile WHERE Id=:Userinfo.getProfileId() limit 1];
-		return pObj.PermissionsModifyAllData;
+		/****************************************************************************************************
+		/*	Author: 	Passage Technology (www.passagetech.com)											*
+		/*  Issue: 		It is possible to have a user without a profile Id. 								*
+		/*	http://www.salesforce.com/us/developer/docs/packagingGuide/Content/apex_post_install_script.htm	*
+		/*	Comment:	This fix resolves an error on no rows to assign to SObject.							*
+		/****************************************************************************************************/ 
+    	
+    	Profile pObj;
+    	
+    	for(Profile p : [SELECT PermissionsModifyAllData, Id FROM Profile WHERE Id=:Userinfo.getProfileId()]) {
+    		pObj = p;
+    	} 
+    	if(pObj == null) {
+    		return true;
+    	} else {
+    		return pObj.PermissionsModifyAllData;
+    	}
     }
     
     public static Integer truncateStringAtSpace(String inputString)

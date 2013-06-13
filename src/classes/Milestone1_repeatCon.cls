@@ -28,12 +28,23 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 */ 
 public with sharing class Milestone1_repeatCon {
 
+/****************************************************************************************
+/*	Author: 	Passage Technology (www.passagetech.com)								*
+/*  Issue: 		https://github.com/ForceDotComLabs/Milestones-PM/issues/97				*
+/*	Comment:	Added custom setting to enable configuration of project data to exclude.*
+/*				Revised hard coded limit statements to stay within the Visualforce 		* 
+/*				collection size limit.													*
+/****************************************************************************************/ 
+
  public List<SelectOption> filterList {get;set;}
  public String filterItem {get;set;}
  private final String ALL_ITEMS = system.label.Milestone1_AllItems;
  private final String MY_TASKS = system.label.Milestone1_MyTasksOnly;
  private final String MY_MILESTONES_ONLY = system.label.Milestone1_MyMilestonesOnly;
  private final String MY_PROJECTS_AND_ITEMS = system.label.Milestone1_MyProjectsAndSubProjectItems;
+ 
+ //As of Winter 2013, maxiumum records displayed on a Visualforce page is 1,000. 
+ private final Integer MAX_RECORD_DISPLAY = 1000; 
  private Date currentDay;
    /**
     *Modified Date:04-20-2012.
@@ -46,8 +57,37 @@ public with sharing class Milestone1_repeatCon {
  public List<SelectOption> activeProjectList {get;set;}
  public String selectedProject {get;set;}
  
+/****************************************************************************************
+/*	Author: 	Passage Technology (www.passagetech.com)								*
+/*  Method: 	getAllProjectItems()													*
+/*	Comment:	Added custom setting to enable configuration of project data to exclude.*
+/****************************************************************************************/ 
+
  public List<Milestone1_Project__c> getAllProjectItems(){
-     return [Select Id,Name from Milestone1_Project__c where Status__c ='Active' limit 500];
+
+     string activeProjectQry;
+     List<String> inactivePrjStatuses;
+     string inactivePrjQry = '';
+     
+     if (Milestone1_Settings__c.getInstance().Calendar_Project_Statuses_To_Filter_Out__c == null ) {
+     	activeProjectQry = 'Select Id, Name from Milestone1_Project__c';
+     } else {
+     	inactivePrjStatuses = Milestone1_Settings__c.getInstance().Calendar_Project_Statuses_To_Filter_Out__c.split(',');
+        
+        for(Integer i = 0 ; i < inactivePrjStatuses.size() ; i++) {
+        	if (i == (inactivePrjStatuses.size() - 1)){
+            	inactivePrjQry += '\'' + inactivePrjStatuses[i].trim() + '\'';
+            } else {
+                inactivePrjQry += '\'' + inactivePrjStatuses[i].trim() + '\',';
+            }
+		}
+        
+        activeProjectQry = 'Select Id, Name' + 
+        	' FROM Milestone1_Project__c' + 
+        	' WHERE Status__c NOT IN (' + inactivePrjQry + ')';   
+     
+     }
+     return Database.Query(activeProjectQry);
  }
 
  private Map<ID,Milestone1_Project__c> getSelectedProject(){
@@ -73,7 +113,9 @@ public with sharing class Milestone1_repeatCon {
  private Map<ID,Milestone1_Milestone__c> getProjectSpecificMilestone(){
     milestoneIds.clear();
     Map<ID,Milestone1_Milestone__c> milestonesMap=new  Map<ID,Milestone1_Milestone__c>();
-    for(Milestone1_Milestone__c m:[Select Id from Milestone1_Milestone__c where Project__c in : projectIds limit 500])
+    for(Milestone1_Milestone__c m:[Select Id 
+    								from Milestone1_Milestone__c 
+    								where Project__c in : projectIds])
     {
       milestonesMap.put(m.Id,m);
       //  milestoneIds.add(m.Id);
@@ -188,90 +230,173 @@ public with sharing class Milestone1_repeatCon {
    // month.setEvents(getAllItems(da));  // merge those events into the month class
    filter();
   }
-  
+
+/****************************************************************************************
+/*	Author: 	Passage Technology (www.passagetech.com)								*
+/*  Method: 	getAllItems(Date[])														*
+/*	Comment:	Revised hard coded limit statements to stay within the Visualforce 		* 
+/*				collection size limit.													*
+/****************************************************************************************/   
   private List<Milestone1_Calendar_Item> getAllItems(Date[] da)
   {
-    /**
-    *Modified Date:04-20-2012.
-    *Owner:Persistent.
-    *Comment: To add an additional project filter.
-    *Bug #: 66.
-    */
+    List<Milestone1_Calendar_Item> events = new List<Milestone1_Calendar_Item>();
+    Integer remainingItems = MAX_RECORD_DISPLAY;
+
     getSelectedProject();
     getProjectSpecificMilestone();
-    List<Milestone1_Project__c> projects = [Select Id, Deadline__c, Name from Milestone1_Project__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] and id in :projectIds limit 500];
-    List<Milestone1_Milestone__c> milestones = [Select Id, Deadline__c, Name from Milestone1_Milestone__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] and Project__c in :projectIds LIMIT 500];
-    List<Milestone1_Task__c> tasks = [Select Id, Due_Date__c, Name from Milestone1_Task__c where Due_Date__c >=:da[0] and Due_Date__c <= :da[1] and Project_Milestone__c in :milestoneIds LIMIT 500];
-    List<Milestone1_Calendar_Item> events = new List<Milestone1_Calendar_Item>();
-    for(Milestone1_Project__c proj : projects)
+    
+    for(Milestone1_Task__c currTask : [Select Id, Due_Date__c, Name 
+    									from Milestone1_Task__c 
+    									where Due_Date__c >=:da[0] 
+    									and Due_Date__c <= :da[1] 
+    									and Project_Milestone__c in :milestoneIds])
     {
-        Milestone1_Calendar_Item calItem = new Milestone1_Calendar_Item(proj.Id,proj.Name,proj.Deadline__c,Milestone1_Calendar_Item.PROJECT_TYPE);
-        events.add(calItem);
+        events.add(new Milestone1_Calendar_Item(
+        	currTask.Id,
+        	currTask.Name,
+        	currTask.Due_Date__c,
+        	Milestone1_Calendar_Item.TASK_TYPE
+        ));
+        remainingItems--;
+        if(remainingItems == 0)
+        	break;
     }
-    for(Milestone1_Milestone__c milestone : milestones)
-    {
-        Milestone1_Calendar_Item calItem = new Milestone1_Calendar_Item(milestone.Id,milestone.Name,milestone.Deadline__c,Milestone1_Calendar_Item.MILESTONE_TYPE);
-        events.add(calItem);
+    if(remainingItems > 0) {
+	    for(Milestone1_Milestone__c milestone : [Select Id, Deadline__c, Name 
+	    											from Milestone1_Milestone__c 
+	    											where Deadline__c >=:da[0] 
+	    											and Deadline__c <= :da[1] 
+	    											and Project__c in :projectIds])
+	    {
+	        events.add(new Milestone1_Calendar_Item(
+	        	milestone.Id,
+	        	milestone.Name,
+	        	milestone.Deadline__c,
+	        	Milestone1_Calendar_Item.MILESTONE_TYPE
+	        ));
+	        remainingItems--;
+	        if(remainingItems == 0)
+	        	break;
+	    }    	
     }
-    for(Milestone1_Task__c currTask : tasks)
-    {
-        Milestone1_Calendar_Item calItem = new Milestone1_Calendar_Item(currTask.Id,currTask.Name,currTask.Due_Date__c,Milestone1_Calendar_Item.TASK_TYPE);
-        events.add(calItem);
+    if(remainingItems > 0) {
+	    for(Milestone1_Project__c proj : [Select Id, Deadline__c, Name 
+    										from Milestone1_Project__c 
+    										where Deadline__c >=:da[0] 
+    										and Deadline__c <= :da[1] 
+    										and id in :projectIds])
+	    {
+	        events.add(new Milestone1_Calendar_Item(
+	        	proj.Id,
+	        	proj.Name,
+	        	proj.Deadline__c,
+	        	Milestone1_Calendar_Item.PROJECT_TYPE
+	        ));
+	        remainingItems--;
+	        if(remainingItems == 0)
+	        	break;
+	    }
     }
     return events;
   }
+/****************************************************************************************
+/*	Author: 	Passage Technology (www.passagetech.com)								*
+/*  Method: 	getMyProjectsAndItems(Date[])											*
+/*	Comment:	Revised hard coded limit statements to stay within the Visualforce 		* 
+/*				collection size limit.													*
+/****************************************************************************************/   
   
  private List<Milestone1_Calendar_Item> getMyProjectsAndItems(Date[] da)
   {
-     /**
-    *Modified Date:04-20-2012.
-    *Owner:Persistent.
-    *Comment: To add an additional project filter.
-    *Bug #: 66.
-    */
+	Integer remainingItems = MAX_RECORD_DISPLAY;
+    List<String> projectIds = new List<String>(),
+    			milestoneIds = new List<String>();
+    List<Milestone1_Calendar_Item> events = new List<Milestone1_Calendar_Item>();
+  	
     getSelectedProject();
     getProjectSpecificMilestone();
-    List<Milestone1_Calendar_Item> events = new List<Milestone1_Calendar_Item>();
-    List<Milestone1_Project__c> projects = [Select Id, Deadline__c, Name from Milestone1_Project__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] and OwnerId =:Userinfo.getUserId() and id in :projectIds limit 500];
-    List<String> projectIds = new List<String>();
-    for(Milestone1_Project__c proj : projects)
+    
+    for(Milestone1_Project__c proj : [Select Id, Deadline__c, Name 
+    									from Milestone1_Project__c 
+    									where Deadline__c >=:da[0] 
+    									and Deadline__c <= :da[1] 
+    									and OwnerId =:Userinfo.getUserId() 
+    									and id in :projectIds])
     {
         projectIds.add(proj.Id);
-        Milestone1_Calendar_Item calItem = new Milestone1_Calendar_Item(proj.Id,proj.Name,proj.Deadline__c,Milestone1_Calendar_Item.PROJECT_TYPE);
-        events.add(calItem);
+        events.add(new Milestone1_Calendar_Item(
+        	proj.Id,
+        	proj.Name,
+        	proj.Deadline__c,
+        	Milestone1_Calendar_Item.PROJECT_TYPE
+        ));
+        remainingItems--;
+        if(remainingItems == 0)
+        	break;        
     }
-    
-    List<Milestone1_Milestone__c> milestones = [Select Id, Deadline__c, Name from Milestone1_Milestone__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] and Project__c in :projectIds limit 500];
-    List<String> milestoneIds = new List<String>();
-    for(Milestone1_Milestone__c milestone : milestones)
-    {
-        milestoneIds.add(milestone.Id);
-        Milestone1_Calendar_Item calItem = new Milestone1_Calendar_Item(milestone.Id,milestone.Name,milestone.Deadline__c,Milestone1_Calendar_Item.MILESTONE_TYPE);
-        events.add(calItem);
+    if(remainingItems > 0) {
+	    for(Milestone1_Milestone__c milestone : [Select Id, Deadline__c, Name 
+	    											from Milestone1_Milestone__c 
+	    											where Deadline__c >=:da[0] 
+	    											and Deadline__c <= :da[1] 
+	    											and Project__c in :projectIds])
+	    {
+	        milestoneIds.add(milestone.Id);
+	        events.add(new Milestone1_Calendar_Item(
+	        	milestone.Id,
+	        	milestone.Name,
+	        	milestone.Deadline__c,
+	        	Milestone1_Calendar_Item.MILESTONE_TYPE
+	        ));
+	        remainingItems--;
+	        if(remainingItems == 0)
+	        	break;
+	    }    	
     }
-    
-    List<Milestone1_Task__c> tasks = [Select Id, Due_Date__c, Name from Milestone1_Task__c where Due_Date__c >=:da[0] and Due_Date__c <= :da[1] and Project_Milestone__c in:milestoneIds limit 500];
-    for(Milestone1_Task__c currTask : tasks)
-    {
-        Milestone1_Calendar_Item calItem = new Milestone1_Calendar_Item(currTask.Id,currTask.Name,currTask.Due_Date__c,Milestone1_Calendar_Item.TASK_TYPE);
-        events.add(calItem);
+    if(remainingItems > 0) {
+	    for(Milestone1_Task__c currTask : [Select Id, Due_Date__c, Name 
+	    									from Milestone1_Task__c 
+	    									where Due_Date__c >=:da[0] 
+	    									and Due_Date__c <= :da[1] 
+	    									and Project_Milestone__c in :milestoneIds])
+	    {
+	        events.add(new Milestone1_Calendar_Item(
+	        	currTask.Id,
+	        	currTask.Name,
+	        	currTask.Due_Date__c,
+	        	Milestone1_Calendar_Item.TASK_TYPE
+	        ));
+	        remainingItems--;
+	        if(remainingItems == 0)
+	        	break;
+	    }
+    	
     }
     
     return events;
   }
 
+/****************************************************************************************
+/*	Author: 	Passage Technology (www.passagetech.com)								*
+/*  Method: 	getMyMilestonesOnly(Date[])												*
+/*	Comment:	Revised hard coded limit statements to stay within the Visualforce 		* 
+/*				collection size limit.													*
+/****************************************************************************************/   
 
   private List<Milestone1_Calendar_Item> getMyMilestonesOnly(Date[] da)
   {
-    /**
-    *Modified Date:04-20-2012.
-    *Owner:Persistent.
-    *Comment: To add an additional project filter.
-    *Bug #: 66.
-    */
+
     getSelectedProject();
     getProjectSpecificMilestone();
-    List<Milestone1_Milestone__c> milestones = [Select Id, Deadline__c, Name from Milestone1_Milestone__c where Deadline__c >=:da[0] and Deadline__c <= :da[1] and OwnerId =:Userinfo.getUserId() and Project__c in : projectIds LIMIT 500 ];
+    List<Milestone1_Milestone__c> milestones = [
+    	Select Id, Deadline__c, Name 
+    		from Milestone1_Milestone__c 
+    		where Deadline__c >=:da[0] 
+    		and Deadline__c <= :da[1] 
+    		and OwnerId =:Userinfo.getUserId() 
+    		and Project__c in : projectIds 
+    		LIMIT :MAX_RECORD_DISPLAY 
+    ];
     List<Milestone1_Calendar_Item> events = new List<Milestone1_Calendar_Item>();
     for(Milestone1_Milestone__c milestone : milestones)
     {
@@ -281,17 +406,25 @@ public with sharing class Milestone1_repeatCon {
     return events;
   }
   
+/****************************************************************************************
+/*	Author: 	Passage Technology (www.passagetech.com)								*
+/*  Method: 	getMyTasksOnly(Date[])													*
+/*	Comment:	Revised hard coded limit statements to stay within the Visualforce 		* 
+/*				collection size limit.													*
+/****************************************************************************************/   
   private List<Milestone1_Calendar_Item> getMyTasksOnly(Date[] da)
   {
-    /**
-    *Modified Date:04-20-2012.
-    *Owner:Persistent.
-    *Comment: To add an additional project filter.
-    *Bug #: 66.
-    */
     getSelectedProject();
     getProjectSpecificMilestone();
-    List<Milestone1_Task__c> tasks = [Select Id, Due_Date__c, Name from Milestone1_Task__c where Due_Date__c >=:da[0] and Due_Date__c <= :da[1] and Assigned_To__c =:Userinfo.getUserId() and Project_Milestone__c in : milestoneIds LIMIT 500 ];
+    List<Milestone1_Task__c> tasks = [
+    	Select Id, Due_Date__c, Name 
+    	from Milestone1_Task__c 
+    	where Due_Date__c >=:da[0] 
+    	and Due_Date__c <= :da[1] 
+    	and Assigned_To__c =:Userinfo.getUserId() 
+    	and Project_Milestone__c in : milestoneIds 
+		LIMIT :MAX_RECORD_DISPLAY 
+    ];
     List<Milestone1_Calendar_Item> events = new List<Milestone1_Calendar_Item>();
     for(Milestone1_Task__c currTask : tasks)
     {

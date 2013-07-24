@@ -39,11 +39,17 @@ public class Milestone1_Task_Trigger_Utility {
         
         List<sObject> existingSubscriptions = new List<sObject>();
         //Retrieve existing list of Subscriptions for the Task(s) and store in Map by User. Salesforce does not allow user to subscribe to same object more than once so we can store in map.
-        if(Milestone1_Schema_Helper.isOrgChatterEnabled()){
+
+		/****************************************************************************************************
+	    /*  Author:   Passage Technology (www.passagetech.com)                      						*
+	    /*  Issue:    https://github.com/ForceDotComLabs/Milestones-PM/issues/75							*
+	    /*  Comment:  LIMIT clause is required when querying the EntitySubscription object.					*
+	    /****************************************************************************************************/         
+	    if(Milestone1_Schema_Helper.isOrgChatterEnabled()){
         	String queryString = 'Select Id, ParentId, SubscriberId from EntitySubscription where ParentId in (';
 	        for(Id recId:recIds)
 	        	queryString += '\''+recId+'\',';
-	        queryString = queryString.substring(0,queryString.length()-1) + ')'; //trim the trailing comma 
+	        queryString = queryString.substring(0,queryString.length()-1) + ') LIMIT 1000'; //trim the trailing comma 
 	        existingSubscriptions= Database.query(queryString);
         }
         //Create a Map of Users to Subscriptions
@@ -69,6 +75,7 @@ public class Milestone1_Task_Trigger_Utility {
                 
                 AutoChatterSetting chatterSettings = new AutoChatterSetting(rec.Assigned_To__c, rec.Assigned_To__r.ProfileId);
                 //If the custom setting for automatically following is true, lets perform auto chatter logic
+                
                 if(chatterSettings.autoFollow)
                 {
                     //If the there is not an existing subscription for the user, go ahead and follow the object. This prevents DUPLICATE_VALUE exception on subscription insert.
@@ -89,7 +96,6 @@ public class Milestone1_Task_Trigger_Utility {
             //Lets remove the previous Assigned To Follower if oldRec exists, and if the Assignment changed to another user.
             if(oldRec != null && oldRec.Assigned_To__c != null && oldRec.Assigned_To__c != rec.Assigned_To__c)
             {
-                system.debug('Unfollow..');
                 AutoChatterSetting chatterSettings = new AutoChatterSetting(oldRec.Assigned_To__c, oldRec.Assigned_To__r.ProfileId);
                 List<sObject> existingSubscriptionList = userSubscriptionMap.get(oldRec.Assigned_To__c);
                 sObject existingSubscription = getSubscriptionForUserAndRec(oldRec,existingSubscriptionList,userSubscriptionMap);

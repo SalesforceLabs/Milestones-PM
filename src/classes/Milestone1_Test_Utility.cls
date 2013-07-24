@@ -119,7 +119,7 @@ public with sharing class Milestone1_Test_Utility {
         rec.Last_Email_Received__c = Datetime.now();
         return rec;     
     }
-    
+     
     public static Milestone1_Task__c sampleTask(Id milestoneId,Id PredecessorTaskId,Date kickoff, Date deadline){
         Milestone1_Task__c rec = new Milestone1_Task__c();
         rec.Project_Milestone__c = milestoneId;
@@ -322,6 +322,34 @@ public with sharing class Milestone1_Test_Utility {
                  profileUsed = p;
              }
         }
+        String namePrefix = ret;
+    
+         User testUser = new User();
+         testUser.Email = 'test@test.com';
+         testUser.Username = ret + '@testuser.com';
+         testUser.LastName = 'test';
+         testUser.Alias = 'test';
+         testUser.ProfileId = profileUsed.Id;
+         testUser.LanguageLocaleKey = 'en_US';
+         testUser.LocaleSidKey = 'en_US';
+         testUser.TimeZoneSidKey = 'America/Chicago';
+         testUser.EmailEncodingKey = 'UTF-8';
+        
+         insert testUser;  
+         
+         return testUser;
+  } 
+  
+	/****************************************************************************************************
+    /*  Author: Passage Technology (www.passagetech.com)                      							*
+    /*  Method:	createSFUser(Profile):  Enable dynamic assignment of a profile to enable testing with 	*
+    /*			a non-admin profile.																	*
+    /****************************************************************************************************/         
+  
+ public static User createSFUser(Profile profileUsed){
+    
+        
+        String ret = 'word' + math.rint(math.random() * 100000);
         String namePrefix = ret;
     
          User testUser = new User();

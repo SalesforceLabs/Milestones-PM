@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
-    <body>&lt;iframe src=&quot;/apex/Milestone1_One_Line_Create&quot; style=&quot;border: 0pt none; margin: 0pt; padding: 0pt;&quot; frameborder=&quot;no&quot; height=&quot;160&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;</body>
     <pageComponentType>htmlArea</pageComponentType>
     <width>narrow</width>
 </HomePageComponent>

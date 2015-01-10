@@ -368,6 +368,7 @@
         <relationshipLabel>Tasks</relationshipLabel>
         <relationshipName>Project_Tasks</relationshipName>
         <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackFeedHistory>false</trackFeedHistory>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>

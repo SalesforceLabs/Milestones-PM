@@ -105,6 +105,7 @@
         <relationshipLabel>Logs</relationshipLabel>
         <relationshipName>Project_Logs</relationshipName>
         <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>

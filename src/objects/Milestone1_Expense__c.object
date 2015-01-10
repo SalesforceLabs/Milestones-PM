@@ -86,6 +86,7 @@
         <relationshipLabel>Expenses</relationshipLabel>
         <relationshipName>Project_Expenses</relationshipName>
         <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>

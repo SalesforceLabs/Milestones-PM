@@ -12,6 +12,7 @@
         <externalId>false</externalId>
         <inlineHelpText>When a Task is marked &apos;Complete&apos;, Automatically unsubscribe the Assigned User from the Chatter Feed for the Task.</inlineHelpText>
         <label>Auto UnFollow A Complete Task</label>
+        <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -21,6 +22,7 @@
         <externalId>false</externalId>
         <inlineHelpText>When a Task is Assigned to a User, automatically subscribe the user to follow the task.</inlineHelpText>
         <label>Auto Follow A Task</label>
+        <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -29,6 +31,7 @@
         <externalId>false</externalId>
         <inlineHelpText>Automatically unsubscribe the currently assigned user from the task when it is reassigned to another user.</inlineHelpText>
         <label>Auto Unfollow Reassignment</label>
+        <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -39,6 +42,7 @@
         <label>Default Milestone Alias</label>
         <length>30</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -48,6 +52,7 @@
         <label>Report Id: Blocked Tasks by Project</label>
         <length>15</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -57,6 +62,7 @@
         <label>Report Id: My Blocked Tasks</label>
         <length>15</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -66,6 +72,7 @@
         <label>Report Id: My Late Tasks</label>
         <length>15</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -75,6 +82,7 @@
         <label>Report Id: My Tasks By Priority, Project</label>
         <length>15</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -84,6 +92,7 @@
         <label>Report Id: My Tasks By Project + Milesto</label>
         <length>15</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -94,6 +103,7 @@
         <label>Report Id: My tasks by project</label>
         <length>15</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -103,6 +113,7 @@
         <label>Report Id: Open Task Status by Project</label>
         <length>15</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -112,6 +123,7 @@
         <label>Report Id: Overdue Tasks by Project</label>
         <length>15</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -121,6 +133,7 @@
         <label>Report Id: Project, Milestone, Open Task</label>
         <length>15</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -130,6 +143,7 @@
         <label>Report Id: Task Status By Project</label>
         <length>15</length>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>

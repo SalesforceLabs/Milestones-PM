@@ -11,6 +11,11 @@ The app is available via the BSD license.  Contributions welcome. Contact labs a
 
 Version History: https://github.com/ForceDotComLabs/Milestones-PM/wiki/Version-History
 
+Getting Started
+----
+For a page that outlines how to perform a basic setup of the package and start creating a demo project, see the [User Guide](https://github.com/ForceDotComLabs/Milestones-PM/wiki/DOC:-Milestones-PM-User-Guide).
+
+
 Meta
 ----
 Milestones PM was originally designed by Reid Carlberg.
@@ -23,7 +28,7 @@ Contributors include:
 
 
 
-Get to know Milestones PM. https://github.com/ForceDotComLabs/Milestones-PM/wiki/HOW-TO-Get-to-Know-Milestones-PM
+Get to know Milestones PM. https://github.com/ForceDotComLabs/Milestones-PM/wiki/
 
 
 

@@ -1872,11 +1872,34 @@
         <value>Next Steps</value>
     </labels>
     <labels>
+        <fullName>NoAccFetchedError</fullName>
+        <categories>Inline VF related lists under account object</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NoAccFetchedError</shortDescription>
+        <value>Error in fetching account : No account found</value>
+    </labels>
+    <labels>
+        <fullName>NoAccesstoEntityorOpportunity</fullName>
+        <categories>Inline pages of Entity</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NoAccesstoEntityorOpportunity</shortDescription>
+        <value>Insufficient Privileges. You do not have the level of access necessary to perform the operation you requested.</value>
+    </labels>
+    <labels>
         <fullName>NoImportXMLFilesSelected</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>No import XML files selected. Please select an XML file to import.</shortDescription>
         <value>No import XML files selected. Please select an XML file to import.</value>
+    </labels>
+    <labels>
+        <fullName>NoOppFound</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NoOppFound</shortDescription>
+        <value>Error in fetching Opportunities : No Opportunities fetched for the given conditions</value>
     </labels>
     <labels>
         <fullName>NoProjects</fullName>
@@ -2269,6 +2292,14 @@
         <protected>true</protected>
         <shortDescription>Tuesday</shortDescription>
         <value>Tuesday</value>
+    </labels>
+    <labels>
+        <fullName>UnexpectedError</fullName>
+        <categories>System Error occur.</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UnexpectedError</shortDescription>
+        <value>An unexpected error has occurred while performing the action. Please contact your system administrator.</value>
     </labels>
     <labels>
         <fullName>UsersNotFound</fullName>

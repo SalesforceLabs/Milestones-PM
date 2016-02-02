@@ -60,9 +60,6 @@
             </args>
         </git>
         <git command="push">
-            <args>
-                <arg value="." />
-            </args>
         </git>
     </target>
 

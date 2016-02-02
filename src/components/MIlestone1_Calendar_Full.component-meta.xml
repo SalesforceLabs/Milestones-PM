@@ -3,4 +3,9 @@
     <apiVersion>19.0</apiVersion>
     <description>This is a generic template for Apex Component.  With this template, you may adjust the default elements and values and add new elements and values.</description>
     <label>MIlestone1_Calendar_Full</label>
+    <packageVersions>
+        <majorNumber>1</majorNumber>
+        <minorNumber>10</minorNumber>
+        <namespace>sf_chttr_apps</namespace>
+    </packageVersions>
 </ApexComponent>

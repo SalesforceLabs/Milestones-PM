@@ -5,6 +5,10 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>Clone</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -17,11 +21,19 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -32,13 +44,17 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Force.com Labs - PM - An activity that has hours, budget, and is assigned to a User.</description>
     <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
     <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>true</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Assigned_To__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -49,6 +65,7 @@
         <relationshipName>Project_Tasks_Assigned</relationshipName>
         <required>false</required>
         <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -59,6 +76,7 @@
         <length>255</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -69,6 +87,7 @@
         <inlineHelpText>Is this task blocked for some reason?</inlineHelpText>
         <label>Blocked</label>
         <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -92,6 +111,7 @@
             <sorted>false</sorted>
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -101,6 +121,7 @@
         <inlineHelpText>The status of this task. A task is either in-complete or complete.</inlineHelpText>
         <label>Complete</label>
         <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
@@ -112,6 +133,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -124,6 +146,7 @@
         <required>false</required>
         <scale>0</scale>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -134,6 +157,7 @@
         <label>Description</label>
         <length>5000</length>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
     </fields>
@@ -144,6 +168,7 @@
         <label>Due Date</label>
         <required>false</required>
         <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -154,6 +179,7 @@
         <length>150</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -166,6 +192,7 @@
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
     <fields>
@@ -177,6 +204,7 @@
         <required>false</required>
         <scale>2</scale>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -190,6 +218,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
+        <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
     <fields>
@@ -202,6 +231,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
+        <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -212,6 +242,7 @@
         <length>18</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -221,6 +252,7 @@
         <formula>Assigned_To__r.FirstName &amp; &apos; &apos; &amp; Assigned_To__r.LastName &amp; &apos; &apos; &amp; Project_Milestone__r.Project__r.Name &amp; &apos; &apos; &amp; Project_Milestone__r.Name &amp; &apos; complete:&apos; &amp; IF(Complete__c, &apos;yes&apos;, &apos;no&apos;) &amp; &apos; &apos; &amp; Name</formula>
         <label>Index Helper</label>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -231,6 +263,7 @@
         <length>255</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -242,6 +275,7 @@
         <label>Last Email Received</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
     <fields>
@@ -253,6 +287,7 @@
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Milestone Grandparent</label>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -272,6 +307,7 @@
         <inlineHelpText>Calculated field indicating if the task is complete, open, late, blocked or late and blocked.</inlineHelpText>
         <label>Overall Status</label>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -282,6 +318,7 @@
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>OwnerId</label>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -292,6 +329,7 @@
         <length>18</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -306,6 +344,7 @@
         <relationshipName>Successor_Tasks</relationshipName>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -337,6 +376,7 @@
             <sorted>false</sorted>
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -346,6 +386,7 @@
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>ProjectId</label>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -356,6 +397,7 @@
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>ProjectStatus</label>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -368,7 +410,9 @@
         <relationshipLabel>Tasks</relationshipLabel>
         <relationshipName>Project_Tasks</relationshipName>
         <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
@@ -379,6 +423,7 @@
         <inlineHelpText>A link to the Project which this task is included in via its milestone.</inlineHelpText>
         <label>Project</label>
         <required>false</required>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -387,6 +432,7 @@
         <externalId>false</externalId>
         <inlineHelpText>Unique number for each task and across all projects.</inlineHelpText>
         <label>Short ID</label>
+        <trackTrending>false</trackTrending>
         <type>AutoNumber</type>
     </fields>
     <fields>
@@ -397,6 +443,7 @@
         <label>Start Date</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
@@ -404,6 +451,7 @@
         <externalId>false</externalId>
         <inlineHelpText>Unique number for each task and across all projects.</inlineHelpText>
         <label>Task Short ID</label>
+        <trackTrending>false</trackTrending>
         <type>AutoNumber</type>
     </fields>
     <fields>
@@ -435,6 +483,7 @@
             <sorted>false</sorted>
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
     <fields>
@@ -445,6 +494,7 @@
         <summarizedField>Milestone1_Expense__c.Amount__c</summarizedField>
         <summaryForeignKey>Milestone1_Expense__c.Project_Task__c</summaryForeignKey>
         <summaryOperation>sum</summaryOperation>
+        <trackTrending>false</trackTrending>
         <type>Summary</type>
     </fields>
     <fields>
@@ -455,6 +505,7 @@
         <summarizedField>Milestone1_Time__c.Hours__c</summarizedField>
         <summaryForeignKey>Milestone1_Time__c.Project_Task__c</summaryForeignKey>
         <summaryOperation>sum</summaryOperation>
+        <trackTrending>false</trackTrending>
         <type>Summary</type>
     </fields>
     <label>Task</label>
@@ -468,19 +519,6 @@
         <trackFeedHistory>false</trackFeedHistory>
         <type>Text</type>
     </nameField>
-    <namedFilters>
-        <fullName>nf_01IU00000000WpxMAE_00NU0000000IK2lMAG</fullName>
-        <active>true</active>
-        <field>Milestone1_Task__c.Predecessor_Task__c</field>
-        <filterItems>
-            <field>Milestone1_Task__c.Project_Milestone__c</field>
-            <operation>equals</operation>
-            <valueField>$Source.Project_Milestone__c</valueField>
-        </filterItems>
-        <isOptional>false</isOptional>
-        <name>Task_Predecessor Task</name>
-        <sourceObject>Milestone1_Task__c</sourceObject>
-    </namedFilters>
     <pluralLabel>Tasks</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Project__c</customTabListAdditionalFields>

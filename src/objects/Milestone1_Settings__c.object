@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <customSettingsType>Hierarchy</customSettingsType>
-    <customSettingsVisibility>Public</customSettingsVisibility>
     <description>Milestone1: This custom setting allows users to follow tasks automatically assigned to them.</description>
     <enableEnhancedLookup>false</enableEnhancedLookup>
     <enableFeeds>false</enableFeeds>
@@ -148,4 +147,5 @@
         <unique>false</unique>
     </fields>
     <label>Milestone1 Settings</label>
+    <visibility>Public</visibility>
 </CustomObject>

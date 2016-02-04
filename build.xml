@@ -27,7 +27,7 @@
                    sessionId="${sf.sessionId}" 
                    serverurl="${sf.serverurl}" 
                    maxPoll="${sf.maxPoll}" retrieveTarget="/Users/vsilva/Documents/workspace/Milestones-PM/src" 
-                   unpackaged="retrieve/package.xml"/>
+                   unpackaged="/Users/vsilva/Documents/workspace/Milestones-PM/src/objects/package.xml"/>
         <echo message="Commiting all changes with message ${gt.commitMessage}" />
         <git command="add">
             <args>
@@ -43,6 +43,9 @@
         </git>
     </target>
 
+    
+    
+    
     <!-- Deploy the unpackaged set of metadata retrieved with retrieveUnpackaged and run tests in this organization's namespace only-->
     <target name="deploy">
       <sf:deploy 

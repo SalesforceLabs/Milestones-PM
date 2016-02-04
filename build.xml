@@ -22,12 +22,13 @@
     <target name="retrieve">
         <!-- Retrieve the contents into another directory -->
         <sf:retrieve 
-                   username="${sf.username}" 
-                   password="${sf.password}" 
-                   sessionId="${sf.sessionId}" 
-                   serverurl="${sf.serverurl}" 
-                   maxPoll="${sf.maxPoll}" retrieveTarget="/Users/vsilva/Documents/workspace/Milestones-PM/src" 
-                   unpackaged="/Users/vsilva/Documents/workspace/Milestones-PM/src/objects/package.xml"/>
+                username="${sf.username.source}" 
+                password="${sf.password.source}" 
+                sessionId="${sf.sessionId}" 
+                serverurl="${sf.serverurl}" 
+                maxPoll="${sf.maxPoll}" 
+                retrieveTarget="${sf.targetFolder}" 
+                unpackaged="${sf.pkgName}"/>
         <echo message="Commiting all changes with message ${gt.commitMessage}" />
         <git command="add">
             <args>
@@ -54,8 +55,8 @@
                  sessionId="${sf.sessionId}" 
                  serverurl="${sf.serverurl}" 
                  maxPoll="${sf.maxPoll}" 
-                 deployRoot="/Users/vsilva/Documents/workspace/Milestones-PM/src/objects" 
-                 rollbackOnError="true"/>
+                 deployRoot="/Users/vsilva/Documents/workspace/Milestones-PM/src" 
+                 rollbackOnError="false"/>
     </target>
 	
     <!-- Shows removing code; only succeeds if done after deployCode -->

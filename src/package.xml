@@ -3,6 +3,7 @@
     <types>
         <members>Candidate__c</members>
         <members>Interviewer__c</members>
+        <members>Job_Application__c</members>
         <members>Position__c</members>
         <name>CustomObject</name>
     </types>

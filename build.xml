@@ -48,7 +48,7 @@
     
     
     <!-- Deploy the unpackaged set of metadata retrieved with retrieveUnpackaged and run tests in this organization's namespace only-->
-    <target name="deploy">
+    <target name="deploy" depends="retrieve">
       <sf:deploy 
                  username="${sf.username.target}" 
                  password="${sf.password.target}" 
@@ -61,9 +61,15 @@
 	
     <!-- Shows removing code; only succeeds if done after deployCode -->
     <target name="remove">
-      <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="remove"/>
+      <sf:deploy 
+                 username="${sf.username.target}" 
+                 password="${sf.password.target}" 
+                 sessionId="${sf.sessionId}" 
+                 serverurl="${sf.serverurl}" 
+                 maxPoll="${sf.maxPoll}" 
+                 deployRoot="remove"/>
     </target>
-    
+        
     <macrodef name="git">
         <attribute name="command" />
         <attribute name="dir" default="${gt.Directory}" />

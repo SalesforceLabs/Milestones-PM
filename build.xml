@@ -1,0 +1,86 @@
+<project name="Sample usage of Salesforce Ant tasks" default="test" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+
+    <!-- Setting default value for username, password and session id properties to empty string 
+         so unset values are treated as empty. Without this, ant expressions such as ${sf.username}
+         will be treated literally.
+    -->
+    <condition property="sf.username" value=""> <not> <isset property="sf.username"/> </not> </condition>
+    <condition property="sf.password" value=""> <not> <isset property="sf.password"/> </not> </condition>
+    <condition property="sf.sessionId" value=""> <not> <isset property="sf.sessionId"/> </not> </condition>
+
+    <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+        <classpath>
+            <pathelement location="ant-salesforce.jar" />        	
+        </classpath>
+    </taskdef>
+	
+    <!-- Retrieve an unpackaged set of metadata from your org -->
+    <!-- The file unpackaged/package.xml lists what is to be retrieved -->
+    <target name="retrieve">
+        <!-- Retrieve the contents into another directory -->
+        <sf:retrieve 
+                username="${sf.username.source}" 
+                password="${sf.password.source}" 
+                sessionId="${sf.sessionId}" 
+                serverurl="${sf.serverurl}" 
+                maxPoll="${sf.maxPoll}" 
+                retrieveTarget="${sf.targetFolder}" 
+                unpackaged="${sf.pkgName}"/>
+        <echo message="Commiting all changes with message ${gt.commitMessage}" />
+        <git command="add">
+            <args>
+                <arg value="." />
+            </args>
+        </git>
+        <git command="commit">
+            <args>
+                <arg value="-m ${gt.commitMessage}" />
+            </args>
+        </git>
+        <git command="push">
+        </git>
+    </target>
+
+    
+    
+    
+    <!-- Deploy the unpackaged set of metadata retrieved with retrieveUnpackaged and run tests in this organization's namespace only-->
+    <target name="deploy" depends="retrieve">
+      <sf:deploy 
+                 username="${sf.username.target}" 
+                 password="${sf.password.target}" 
+                 sessionId="${sf.sessionId}" 
+                 serverurl="${sf.serverurl}" 
+                 maxPoll="${sf.maxPoll}" 
+                 deployRoot="${sf.targetFolder}" 
+                 rollbackOnError="false"/>
+    </target>
+	
+    <!-- Shows removing code; only succeeds if done after deployCode -->
+    <target name="remove">
+      <sf:deploy 
+                 username="${sf.username.target}" 
+                 password="${sf.password.target}" 
+                 sessionId="${sf.sessionId}" 
+                 serverurl="${sf.serverurl}" 
+                 maxPoll="${sf.maxPoll}" 
+                 deployRoot="remove"/>
+    </target>
+        
+    <macrodef name="git">
+        <attribute name="command" />
+        <attribute name="dir" default="${gt.Directory}" />
+        <element name="args" optional="true" />
+        <sequential>
+            <echo message="git @{command}" />
+            <exec executable="git" dir="@{dir}">
+                <arg value="@{command}" />
+                <args/>
+            </exec>
+        </sequential>
+    </macrodef>
+
+</project>

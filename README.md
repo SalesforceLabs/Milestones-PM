@@ -21,7 +21,8 @@ Contributors include:
 * Ganesh Mathrubootham, gmathrubootham@salesforce.com
 * Ron Hess, https://github.com/vnehess
 
-
+<a href="https://codeclimate.com/github/Up2Go/Milestones-PM"><img src="https://codeclimate.com/github/Up2Go/Milestones-PM/badges/gpa.svg" /></a>
+<a href="https://codeclimate.com/github/Up2Go/Milestones-PM"><img src="https://codeclimate.com/github/Up2Go/Milestones-PM/badges/issue_count.svg" /></a>
 
 Get to know Milestones PM. https://github.com/ForceDotComLabs/Milestones-PM/wiki/HOW-TO-Get-to-Know-Milestones-PM
 

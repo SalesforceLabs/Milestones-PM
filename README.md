@@ -1,5 +1,5 @@
-Welcome to Milestones PM
-========================
+Welcome to Milestones PM 
+=========================
 
 Milestones PM is a lightweight task and project manager for Force.com.
 
@@ -12,7 +12,7 @@ The app is available via the BSD license.  Contributions welcome. Contact labs a
 Version History: https://github.com/ForceDotComLabs/Milestones-PM/wiki/Version-History
 
 Meta
-----
+-----
 Milestones PM was originally designed by Reid Carlberg.
 
 Contributors include:
@@ -20,6 +20,7 @@ Contributors include:
 * Kevin / Jeremy from Axlea, http://axlea.com
 * Ganesh Mathrubootham, gmathrubootham@salesforce.com
 * Ron Hess, https://github.com/vnehess
+* Mohamed Atheek
 
 
 

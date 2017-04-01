@@ -32,6 +32,7 @@ public with sharing class Milestone1_Calendar_Item
     public String name {get;set;}
     public Date theDate {get;set;}
     public String theType {get;set;}
+    //test
     
     public static final String PROJECT_TYPE = 'PROJECT_TYPE';
     public static final String MILESTONE_TYPE = 'MILESTONE_TYPE';

@@ -1,0 +1,23 @@
+<apex:page standardController="Account" extensions="SearchController">
+<apex:form id="searchForm">
+    <apex:PageBlock mode="edit">        
+    <apex:pageblockSection id="searchBlockSection">
+        <apex:pageBlockSectionItem id="searchBlockSectionItem">
+            <apex:outputLabel >Keyword</apex:outputLabel>
+            <apex:panelGroup >
+                <!--<apex:inputtext id="searchTextBox" value="{!searchText}"></apex:inputtext>-->
+                <apex:inputtext id="searchTextBox"></apex:inputtext>
+                <strong><apex:commandButton Id="btnSearch" action="{!search}" rerender="renderBlock" status="status" title="Search" value="Search"></apex:commandButton></strong>
+            </apex:panelGroup>
+        </apex:pageBlockSectionItem>
+    </apex:pageblockSection>
+    <apex:actionStatus id="status" startText="Searching... please wait..."/>        
+    <apex:pageBlocksection id="renderBlock" >
+        <strong><apex:pageblocktable value="{!SearchResults}" var="o" rendered="{!NOT(ISNULL(SearchResults))}">
+            <apex:outputLink value="/{!o.Id}">{!o.Name}</apex:outputLink>
+            <apex:column value="{!o.Id}"/>
+        </apex:pageblocktable></strong>        
+    </apex:pageBlocksection>
+    </apex:PageBlock>
+</apex:form>
+</apex:page>

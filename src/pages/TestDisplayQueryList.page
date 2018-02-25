@@ -1,0 +1,18 @@
+<apex:page controller="TestDisplayQueryList"> 
+    <apex:pageBlock title="My Content"> 
+        <apex:pageBlockTable value="{!Records}" var="Record"> 
+            <apex:column > 
+                <apex:facet name="header">Account Name</apex:facet> 
+                <apex:outputText value="{!Record.Name}"/> 
+            </apex:column> 
+            <apex:column > 
+                <apex:facet name="header">Account Number</apex:facet> 
+                <apex:outputText value="{!Record.AccountNumber}"/> 
+            </apex:column> 
+            <apex:column > 
+                <apex:facet name="header">Clean Status</apex:facet> 
+                <apex:outputText value="{!Record.CleanStatus}"/> 
+            </apex:column> 
+        </apex:pageBlockTable> 
+    </apex:pageBlock> 
+</apex:page>

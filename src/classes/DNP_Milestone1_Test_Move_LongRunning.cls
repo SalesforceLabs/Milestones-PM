@@ -27,7 +27,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 @istest
-private with sharing class DNP_Milestone1_Test_Move_LongRunning {
+private with sharing class DNP_Milestone1_Test_Move_LongRunning{
 
 	static testmethod void testHighSecondLevelMilestoneMove(){
 		final Integer NUMBER_OF_TOPLEVEL_MILESTONES    = 200;

@@ -38,7 +38,9 @@ public with sharing class Milestone1_Clone_Milestone_Controller {
 
     public Milestone1_Clone_Milestone_Controller(ApexPages.StandardController stc){
        // query main milestone record 
-        rec = [SELECT Id,
+
+        if (Schema.sObjectType.Milestone1_Milestone__c.isAccessible()) {
+        	rec = [SELECT Id,
                       Name,
                       Project__c,
                       Parent_Milestone__c,
@@ -53,8 +55,8 @@ public with sharing class Milestone1_Clone_Milestone_Controller {
                       WHERE Id = :stc.getId()
                      ];
         
-        // query sub milestone records 
-        milestones = [SELECT Id,
+        	// query sub milestone records 
+        	milestones = [SELECT Id,
                              Name,
                              Parent_Milestone__c,
                              Complete__c,
@@ -66,9 +68,14 @@ public with sharing class Milestone1_Clone_Milestone_Controller {
                       FROM Milestone1_Milestone__c
                       WHERE Parent_Milestone__c = :rec.Id
                      ];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+            
         
-        // query task records 
-        tasks = [SELECT Id,
+        if (Schema.sObjectType.Milestone1_Task__c.isAccessible()) {
+        	// query task records 
+       		tasks = [SELECT Id,
                         Name,
                         Project_Milestone__c,
                         Assigned_To__c,
@@ -87,17 +94,25 @@ public with sharing class Milestone1_Clone_Milestone_Controller {
                  FROM Milestone1_Task__c
                  WHERE Project_Milestone__c = :rec.Id
                  OR Project_Milestone__r.Parent_Milestone__c = :rec.Id
-                ];
+                 ];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		} 
         
         dummyMS = new Milestone1_Milestone__c();
         dummyMS.Name = 'Copy of ' + rec.Name;
         
-        statusList = [SELECT IsActive from User where id = :rec.OwnerId];
+        if (Schema.sObjectType.User.fields.Id.isAccessible()) {
+        	statusList = [SELECT IsActive from User where id = :rec.OwnerId];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+        
         if(statusList != null && statusList.size() > 0 )
             isMilestoneOwnerActive = statusList[0].IsActive; 
     }
     
-    public PageReference createClone(){
+    public PageReference createClone() {
 
         PageReference pageReference = null;
         try{
@@ -117,14 +132,24 @@ public with sharing class Milestone1_Clone_Milestone_Controller {
             rec.Name = dummyMS.Name;
             mainMilestoneList.add(rec);
             Map<String, Milestone1_Milestone__c> newTopMilestoneMap = Milestone1_Clone_Utility.cloneMilestonesIntoMap(mainMilestoneList);
-            insert newTopMilestoneMap.values();
+            
+            if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+            	insert newTopMilestoneMap.values();
+            } else {
+				ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+			}
             
             //clone and insert sub milestone records
             Map<String, Milestone1_Milestone__c> newBottomMilestoneMap = Milestone1_Clone_Utility.cloneMilestonesIntoMap(milestones);
             for(Milestone1_Milestone__c newMS : newBottomMilestoneMap.values()){
                 newMS.Parent_Milestone__c = newTopMilestoneMap.get(newMS.Parent_Milestone__c).Id;
             }
-            insert newBottomMilestoneMap.values();
+            
+            if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+            	insert newBottomMilestoneMap.values();
+            } else {
+				ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+			}
             
             //collect all milestones into one map
             Map<String, Milestone1_Milestone__c> allNewMilestoneMap = new Map<String, Milestone1_Milestone__c>();
@@ -136,7 +161,13 @@ public with sharing class Milestone1_Clone_Milestone_Controller {
             for(Milestone1_Task__c newTask : newTasks){
                 newTask.Project_Milestone__c = allNewMilestoneMap.get(newTask.Project_Milestone__c).Id;
             }
-            insert newTasks;
+            
+            if (Schema.sObjectType.Milestone1_Task__c.isCreateable()) {
+            	insert newTasks;
+            } else {
+				ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+			}    
+                
             pageReference = new ApexPages.StandardController(newTopMilestoneMap.values()[0]).view();
              
         }catch(Exception ex){

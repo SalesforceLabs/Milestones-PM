@@ -70,26 +70,88 @@ global with sharing class Milestone1_XML_Import_Utility {
     
     global Milestone1_Project__c importProject(String xml) {
 
-Savepoint sp = Database.setSavepoint();
-try{
-Xmlstreamreader reader = new Xmlstreamreader(xml);
-while (reader.hasNext()) {
-if (reader.getEventType() == XmlTag.START_ELEMENT && reader.getLocalName() == Milestone1_Constants.XML_META) {
-//System.debug(LoggingLevel.warn, 'Parse XML Metadata');
-parseMeta(reader);
-}
-if (reader.getEventType() == XmlTag.START_ELEMENT && reader.getLocalName() == Milestone1_Constants.OBJ_NAME_PROJECT) {
-//System.debug(LoggingLevel.warn, 'Parse XML Project');
-parseProject(reader);
-}
-reader.next();
-}
-insertSalesforceObjects();
-}catch(Exception ex){
-Database.rollback(sp);
-throw ex;
-//throw new Milestone1_Import_Exception(Milestone1_Import_Exception.ERROR_INVALID_XML);
-}
+        Savepoint sp = Database.setSavepoint();
+        try{
+            /*
+             * TEST FLS CREATE
+             */ 
+            Map<DescribeSObjectResult, Set<String>> flsMap = new Map<DescribeSObjectResult, Set<String>>();
+            flsMap.put(
+                Milestone1_Project__c.SObjectType.getDescribe(),
+                new Set<String>{
+                    'Status__c',
+                    'Total_Expense_Budget__c',
+                    'Total_Hours_Budget__c',
+                    'Description__c',
+                    'ImportId__c',
+                    'Name'
+                }
+            );
+            flsMap.put(
+                Milestone1_Milestone__c.SObjectType.getDescribe(),
+                new Set<String>{
+                    'Name',
+                    'Predecessor_Milestone__c',
+                    'Parent_Milestone__c',
+                    'ImportID__c',
+                    'Hours_Budget__c',
+                    'Expense_Budget__c',
+                    'Description__c',
+                    'Project__c',
+                    'Deadline__c',
+                    'Kickoff__c'
+                }
+            );
+            flsMap.put(
+                Milestone1_Task__c.SObjectType.getDescribe(),
+                new Set<String>{
+                    'Predecessor_Task__c',
+                    'ImportID__c',
+                    'Estimated_Hours__c',
+                    'Estimated_Expense__c',
+                    'Description__c',
+                    'Project_Milestone__c',
+                    'Name',
+                    'Due_Date__c',
+                    'Start_Date__c'
+                }
+            );
+            flsMap.put(
+                Milestone1_Time__c.SObjectType.getDescribe(),
+                new Set<String>{
+                    'Project_Task__c',
+                    'ImportID__c',
+                    'Hours__c',
+                    'Description__c'
+                }
+            );
+            
+            for (DescribeSObjectResult dsr : flsMap.keySet()) {
+                Milestone1_Security_Utility.fieldsCreateable(
+                    dsr, flsMap.get(dsr));
+            }
+            /*
+             * END TEST FLS CREATE
+             */ 
+            
+            Xmlstreamreader reader = new Xmlstreamreader(xml);
+            while (reader.hasNext()) {
+                if (reader.getEventType() == XmlTag.START_ELEMENT && reader.getLocalName() == Milestone1_Constants.XML_META) {
+                //System.debug(LoggingLevel.warn, 'Parse XML Metadata');
+                	parseMeta(reader);
+                }
+                if (reader.getEventType() == XmlTag.START_ELEMENT && reader.getLocalName() == Milestone1_Constants.OBJ_NAME_PROJECT) {
+                //System.debug(LoggingLevel.warn, 'Parse XML Project');
+                	parseProject(reader);
+                }
+                reader.next();
+            }
+            insertSalesforceObjects();
+        } catch(Exception ex) {
+        	Database.rollback(sp);
+        	throw ex;
+        //throw new Milestone1_Import_Exception(Milestone1_Import_Exception.ERROR_INVALID_XML);
+		}
         return project;
     }
 
@@ -97,6 +159,8 @@ throw ex;
     {
         //System.debug('Number of Milestones: ' + this.milestones.size());
         //System.debug('Number of Tasks: ' + this.tasks.size());
+        
+        
         if(project == null || project.Name == null || project.ImportID__c == null || project.ImportID__c.length() < 15)
         {
             throw new Milestone1_Import_Exception(system.label.Milestone1_ProjectCannotBeNull);
@@ -105,47 +169,70 @@ throw ex;
         //attempt to validate 10 variations of the name
         String targetName = '%' + project.Name + '%';
         Integer existingLikeName = [Select Count() from Milestone1_Project__c where Name LIKE :targetName];
+        
         if(existingLikeName!=null && existingLikeName > 0)
         {
-            project.Name = project.Name + ' Copy ' + (existingLikeName +1);
+            if (Schema.sObjectType.Milestone1_Project__c.fields.Name.isCreateable() && 
+                Schema.sObjectType.Milestone1_Project__c.fields.Name.isUpdateable()) {
+            	project.Name = project.Name + ' Copy ' + (existingLikeName +1);
+            } else {
+                throw new Milestone1_Exception('Insufficient Privileges');
+            }
         }
         
-        insert project;
-        //system.debug('Project ID after insert == ' + project.Id);
-         /**
-	      *Bug # 44.
-	      *Modified Date:04-18-2012.
-	      *Owner: Persistent.
-	      *Comments:Importing the project with all the relationships intact.
-    	 */
+        if (Schema.sObjectType.Milestone1_Project__c.isCreateable()) {
+        	insert project;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         
-	        for(Milestone1_Milestone__c currentMilestone : milestones)
+	    for(Milestone1_Milestone__c currentMilestone : milestones)
 	        {
 	            currentMilestone.Project__c = project.Id;
 	            if(currentMilestone.Predecessor_Milestone__c!=null)
 	            	{
 	            		successorsList.add(currentMilestone);
+                        Milestone1_Security_Utility.fieldCreateable(
+            				Milestone1_Milestone__c.Predecessor_Milestone_Import_Id__c.getDescribe());
 	            		currentMilestone.Predecessor_Milestone_Import_Id__c=currentMilestone.Predecessor_Milestone__c;
+                        Milestone1_Security_Utility.fieldCreateable(
+            				Milestone1_Milestone__c.Predecessor_Milestone__c.getDescribe());
 	            		currentMilestone.Predecessor_Milestone__c=null;
 	            	}
 	        }
         
-        insert milestones;
+        if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+        	insert milestones;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         
         for(Milestone1_Milestone__c currentMilestone : milestones)
         {
+            Milestone1_Security_Utility.fieldCreateable(
+            	Milestone1_Milestone__c.Project__c.getDescribe());
             currentMilestone.Project__c = project.Id;
             matchMilestonesToMilestones(subMilestones,currentMilestone);
         }
         for(Milestone1_Milestone__c currentMilestone : subMilestones)
-        if(currentMilestone.Predecessor_Milestone__c!=null)
-	            	{
-	            		successorsList.add(currentMilestone);
-	            		currentMilestone.Predecessor_Milestone_Import_Id__c=currentMilestone.Predecessor_Milestone__c;
-	            		currentMilestone.Predecessor_Milestone__c=null;
-	            	}
-	    insert subMilestones;
+        if(currentMilestone.Predecessor_Milestone__c != null)
+	    {
+	    	successorsList.add(currentMilestone);
+            Milestone1_Security_Utility.fieldCreateable(
+            	Milestone1_Milestone__c.Predecessor_Milestone_Import_Id__c.getDescribe());
+            Milestone1_Security_Utility.fieldCreateable(
+            	Milestone1_Milestone__c.Predecessor_Milestone__c.getDescribe());
+	        currentMilestone.Predecessor_Milestone_Import_Id__c=currentMilestone.Predecessor_Milestone__c;
+	        currentMilestone.Predecessor_Milestone__c=null;
+	    }
         
+        if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+	    	insert subMilestones;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+        
+        /*
         for(Milestone1_Milestone__c currentMilestone : milestones){
         	updatePredecessorMilestones(currentMilestone);
         }
@@ -154,6 +241,7 @@ throw ex;
         }
         
 		update successorsList;
+		*/
         //System.debug('NUMBER OF TASKS == ' + tasks.size());
         for(Milestone1_Task__c currentTask : tasks)
         {
@@ -164,26 +252,39 @@ throw ex;
         }
         
         for(Milestone1_Task__c currentTask : tasks)
-        	{
-        		currentTask.Predecessor_Task_Import_Id__c=currentTask.Predecessor_Task__c;
-        		currentTask.Predecessor_Task__c=null;
-        	}
-        insert tasks;
+        {
+            Milestone1_Security_Utility.fieldCreateable(
+            	Milestone1_Task__c.Predecessor_Task_Import_Id__c.getDescribe());
+            Milestone1_Security_Utility.fieldCreateable(
+            	Milestone1_Task__c.Predecessor_Task__c.getDescribe());
+        	currentTask.Predecessor_Task_Import_Id__c=currentTask.Predecessor_Task__c;
+        	currentTask.Predecessor_Task__c=null;
+        }
+
+        if (Schema.sObjectType.Milestone1_Task__c.isCreateable()) {
+        	insert tasks;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+
         system.debug('tasks'+tasks);
-        
+        /*
         for(Milestone1_Task__c currentTask : tasks){
-        		matchTaskToTask(currentTask);
+        	matchTaskToTask(currentTask);
         }
         update subtasks;
         system.debug('subtasks'+subtasks);
-        
+        */
         for(Milestone1_Time__c currentTime : times){
-         matchTimetoTask(tasks,currentTime);
+        	matchTimetoTask(tasks,currentTime);
         }
-        
-        insert times;
+        if (Schema.sObjectType.Milestone1_Time__c.isCreateable()) {
+        	insert times;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
     }
-    
+    /*
     global void updatePredecessorMilestones(Milestone1_Milestone__c currentMilestone){
     	
     	for(Milestone1_Milestone__c milestone:successorsList){
@@ -195,27 +296,34 @@ throw ex;
     			}
     	}
     }
-    
+    */
     global void matchMilestonesToMilestones(List<Milestone1_Milestone__c> milestones, Milestone1_Milestone__c currentMilestone){
         for(Milestone1_Milestone__c currentSubMilestone : milestones)
         {
             if(currentSubMilestone.Parent_Milestone__c == currentMilestone.ImportID__c)
             {
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Milestone__c.Parent_Milestone__c.getDescribe());
                 currentSubMilestone.Parent_Milestone__c = currentMilestone.Id;
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Milestone__c.Project__c.getDescribe());
                 currentSubMilestone.Project__c = currentMilestone.Project__c;
             }
         }
     }
-    
+
     global Boolean matchTaskToMilestone(List<Milestone1_Milestone__c> milestones, Milestone1_Task__c currentTask){
         for(Milestone1_Milestone__c currentMilestone : milestones){
             if(currentTask.Project_Milestone__c == currentMilestone.ImportID__c){
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Task__c.Project_Milestone__c.getDescribe());
                 currentTask.Project_Milestone__c = currentMilestone.Id;
                 return true;
             }
         }
         return false;
     }
+    /*
 	global void matchTaskToTask(Milestone1_Task__c currentTask){
 		for(Milestone1_Task__c task:subTasks){
 			 if(task.Predecessor_Task_Import_Id__c==currentTask.ImportID__c){
@@ -223,14 +331,17 @@ throw ex;
              }
 		}
 	}
-	global Boolean matchTimeToTask(List<Milestone1_Task__c> tasks, Milestone1_Time__c currentTime){
-	for(Milestone1_Task__c currentTask : tasks){
-	if(currentTime.Project_Task__c == currentTask.ImportID__c){
-	currentTime.Project_Task__c = currentTask.Id;
-	return true;
-	}
-	}
-	return false;
+    */
+	global Boolean matchTimeToTask(List<Milestone1_Task__c> tasks, Milestone1_Time__c currentTime) {
+        for(Milestone1_Task__c currentTask : tasks) {
+            if(currentTime.Project_Task__c == currentTask.ImportID__c) {
+                Milestone1_Security_Utility.fieldCreateable(
+                    Milestone1_Time__c.Project_Task__c.getDescribe());
+            	currentTime.Project_Task__c = currentTask.Id;
+            	return true;
+            }
+        }
+        return false;
 	}
 
     global void parseProject(Xmlstreamreader reader) {
@@ -243,53 +354,86 @@ throw ex;
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Name') {
                 //system.debug('Processing Project Name');
                 reader.next();
-                project.Name = getDecodedString(reader);
-                if (project.Name.length() == 0) {
-                    throw new Milestone1_Import_Exception(system.label.Milestone1_InvalidName);
+                if (Schema.sObjectType.Milestone1_Project__c.fields.Name.isCreateable() && 
+                    Schema.sObjectType.Milestone1_Project__c.fields.Name.isUpdateable()) {
+                    project.Name = getDecodedString(reader);
+                    if (project.Name.length() == 0) {
+                        throw new Milestone1_Import_Exception(system.label.Milestone1_InvalidName);
+                    }
+                } else {
+                    throw new Milestone1_Exception('Insufficient Privileges');
                 }
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Description__c') {
                 //system.debug('Processing Project Desc');
                 reader.next();
-                project.Description__c = getDecodedString(reader);
+                if (Schema.sObjectType.Milestone1_Project__c.fields.Description__c.isCreateable() && 
+                    Schema.sObjectType.Milestone1_Project__c.fields.Description__c.isUpdateable()) {
+                	project.Description__c = getDecodedString(reader);
+                } else {
+                    throw new Milestone1_Exception('Insufficient Privileges');
+                }
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Total_Hours_Budget__c') {
                 //system.debug('Processing Project Est');
                 reader.next();
-                String val = getDecodedString(reader);
-                if(val == null || val == 'null')
-                    val = '0.0';
-                project.Total_Hours_Budget__c = Decimal.valueOf(val);
+                if (Schema.sObjectType.Milestone1_Project__c.fields.Total_Hours_Budget__c.isCreateable() && 
+                    Schema.sObjectType.Milestone1_Project__c.fields.Total_Hours_Budget__c.isUpdateable()) {
+                    String val = getDecodedString(reader);
+                    if(val == null || val == 'null') {
+                        val = '0.0';
+                    }
+                    project.Total_Hours_Budget__c = Decimal.valueOf(val);
+                } else {
+                    throw new Milestone1_Exception('Insufficient Privileges');
+                }
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Total_Expense_Budget__c') {
                 //system.debug('Processing Project Budg');
                 reader.next();
-                String val = getDecodedString(reader);
-                if(val == null || val == 'null')
-                    val = '0.0';
-                project.Total_Expense_Budget__c = Decimal.valueOf(val);
+                if (Schema.sObjectType.Milestone1_Project__c.fields.Total_Expense_Budget__c.isCreateable() && 
+                    Schema.sObjectType.Milestone1_Project__c.fields.Total_Expense_Budget__c.isUpdateable()) {
+                    String val = getDecodedString(reader);
+                    if(val == null || val == 'null') {
+                        val = '0.0';
+                    }
+                    project.Total_Expense_Budget__c = Decimal.valueOf(val);
+                } else {
+                    throw new Milestone1_Exception('Insufficient Privileges');
+                }
+                
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Status__c') {
                 //system.debug('Processing Project Stat');
                 reader.next();
-                project.Status__c = getDecodedString(reader);
+                if (Schema.sObjectType.Milestone1_Project__c.fields.Status__c.isCreateable() && 
+                    Schema.sObjectType.Milestone1_Project__c.fields.Status__c.isUpdateable()) {
+                	project.Status__c = getDecodedString(reader);
+                } else {
+                    throw new Milestone1_Exception('Insufficient Privileges');
+                }
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == Milestone1_Constants.OBJ_NAME_MILESTONE) {
                 //system.debug('Processing Project Milestone');
                 reader.next();
                 parseMilestone(reader,null);
-                }
+            }
             //handle import id field
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Id') {
                 //System.debug(LoggingLevel.warn, 'in id');
                 reader.next();
-                project.ImportId__c = getDecodedString(reader);
-                //system.debug('Import ID == ' + project.ImportID__c);
-                if (project.ImportId__c.length() > 15) {
-                    project.ImportId__c = project.ImportId__c.substring(0,15);
-                }
-                if (project.ImportId__c.length() != 15) {
-                    throw new Milestone1_Import_Exception('Invalid Import ID (length must be 15)');
+                if (Schema.sObjectType.Milestone1_Project__c.fields.ImportId__c.isCreateable() && 
+                    Schema.sObjectType.Milestone1_Project__c.fields.ImportId__c.isUpdateable()) {
+                    project.ImportId__c = getDecodedString(reader);
+                    //system.debug('Import ID == ' + project.ImportID__c);
+                    if (project.ImportId__c.length() > 15) {
+                        project.ImportId__c = project.ImportId__c.substring(0,15);
+                    }
+                    if (project.ImportId__c.length() != 15) {
+                        throw new Milestone1_Import_Exception('Invalid Import ID (length must be 15)');
+                    }
+                } else {
+                    throw new Milestone1_Exception('Insufficient Privileges');
                 }
             }
             //validate that we're done
@@ -308,39 +452,56 @@ throw ex;
         if(parentMilestone != null)
         {
             //System.debug(LoggingLevel.warn, 'in SUB Milestone');
+            Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Milestone__c.Parent_Milestone__c.getDescribe());
             currentMilestone.Parent_Milestone__c = parentMilestone.ImportID__c;
         }else
         {
             //System.debug(LoggingLevel.warn, 'in Milestone');
         }
+        Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Milestone__c.Project__c.getDescribe());
         currentMilestone.Project__c = project.ImportID__c;
         
         while (reader.hasNext()){
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Id') {
                 reader.next();
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Milestone__c.ImportID__c.getDescribe());
                 currentMilestone.ImportID__c = getDecodedString(reader);
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Name') {
                 reader.next();
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Milestone__c.Name.getDescribe());
                 currentMilestone.Name = getDecodedString(reader);
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Expense_Budget__c') {
                 reader.next();
+                
                 String val = getDecodedString(reader);
-                if(val == null || val == 'null')
+                if(val == null || val == 'null') {
                     val = '0.0';
+                }
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Milestone__c.Expense_Budget__c.getDescribe());
                 currentMilestone.Expense_Budget__c = Decimal.valueOf(val);
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Description__c') {
                 reader.next();
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Milestone__c.Description__c.getDescribe());
                 currentMilestone.Description__c = getDecodedString(reader);
             }
             
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Hours_Budget__c') {
                 reader.next();
                 String val = getDecodedString(reader);
-                if(val == null || val == 'null')
+                if(val == null || val == 'null') {
                     val = '0.0';
+                }
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Milestone__c.Hours_Budget__c.getDescribe());
                 currentMilestone.Hours_Budget__c = Decimal.valueOf(val);
             }
             /**
@@ -351,21 +512,31 @@ throw ex;
             */
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Predecessor_Milestone__c'){
                 reader.next();
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Milestone__c.Predecessor_Milestone__c.getDescribe());
                 currentMilestone.Predecessor_Milestone__c =getDecodedString(reader);
                
              }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Kickoff__c'){
                 reader.next();
+                
                 String val=getDecodedString(reader);
-                if(val == null || val == 'null')
+                if(val == null || val == 'null') {
                     val= '';
+                }
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Milestone__c.Kickoff__c.getDescribe());
                 currentMilestone.Kickoff__c=date.valueOf(val);
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Deadline__c'){
                 reader.next();
+                
                 String val=getDecodedString(reader);
-                if(val == null || val == 'null')
+                if(val == null || val == 'null') {
                     val= '';
+                }
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Milestone__c.Deadline__c.getDescribe());
                 currentMilestone.Deadline__c=date.valueOf(val);
                 
             }
@@ -400,40 +571,54 @@ throw ex;
     
     global void parseTask(XMLStreamreader reader, Milestone1_Milestone__c currentMilestone){
         Milestone1_Task__c currentTask = new Milestone1_Task__c();
+        Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Task__c.Project_Milestone__c.getDescribe());
         currentTask.Project_Milestone__c = currentMilestone.ImportID__c;
         while(reader.hasNext())
         {
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Id') {
                 reader.next();
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Task__c.ImportID__c.getDescribe());
                 currentTask.ImportID__c = getDecodedString(reader);
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Description__c') {
                 reader.next();
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Task__c.Description__c.getDescribe());
                 currentTask.Description__c = getDecodedString(reader);
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Name') {
                 reader.next();
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Task__c.Name.getDescribe());
                 currentTask.Name = getDecodedString(reader);
-                if(currentTask.Name == null){system.debug('Name is NULL '); currentTask.Name = 'Name Blank';}
-            }
-            if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Estimated_Hours__c') {
-                reader.next();
-                String val = getDecodedString(reader);
-                if(val == null || val == 'null')
-                    val = '0.0';currentTask.Estimated_Hours__c = Decimal.valueOf(val);
+                if(currentTask.Name == null){
+                    system.debug('Name is NULL ');
+                    Milestone1_Security_Utility.fieldCreateable(
+            			Milestone1_Task__c.Name.getDescribe());
+                    currentTask.Name = 'Name Blank';
+                }
             }
             
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Estimated_Hours__c') {
                 reader.next();
                 String val = getDecodedString(reader);
-                if(val == null || val == 'null')
-                    val = '0.0';currentTask.Estimated_Hours__c = Decimal.valueOf(val);
+                if(val == null || val == 'null') {
+					val = '0.0';                    
+                }
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Task__c.Estimated_Hours__c.getDescribe());
+                currentTask.Estimated_Hours__c = Decimal.valueOf(val);
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Estimated_Expense__c') {
                 reader.next();
                 String val = getDecodedString(reader);
-                if(val == null || val == 'null')
+                if(val == null || val == 'null') {
                     val = '0.0';
+                }
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Task__c.Estimated_Expense__c.getDescribe());
                 currentTask.Estimated_Expense__c = Decimal.valueOf(val);
             }
             /**
@@ -444,25 +629,35 @@ throw ex;
             */
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Predecessor_Task__c') {
                 reader.next();
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Task__c.Predecessor_Task__c.getDescribe());
                 currentTask.Predecessor_Task__c=getDecodedString(reader);
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Project_Milestone__c') {
                 reader.next();
-                currentTask.Project_Milestone__c=getDecodedString(reader);
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Task__c.Project_Milestone__c.getDescribe());
+                currentTask.Project_Milestone__c = getDecodedString(reader);
             }
-             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Start_Date__c') {
+            if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Start_Date__c') {
                 reader.next();
                 String val = getDecodedString(reader);
-                if(val == null || val == 'null')
-                    val='';
+                if(val == null || val == 'null') {
+                     val='';
+                }
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Task__c.Start_Date__c.getDescribe());
                 currentTask.Start_Date__c=date.valueOf(val);
             }
-             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Due_Date__c') {
+            if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Due_Date__c') {
                 reader.next();
                 String val = getDecodedString(reader);
-                if(val == null || val == 'null')
+                if(val == null || val == 'null') {
                     val='';
-                currentTask.Due_Date__c=date.valueOf(val);
+                }
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Task__c.Due_Date__c.getDescribe());
+                currentTask.Due_Date__c = date.valueOf(val);
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == Milestone1_Constants.OBJ_NAME_TIME) {
                 //system.debug('Processing Sub Milestone');
@@ -487,21 +682,29 @@ throw ex;
     
     global void parseTime(XMLStreamreader reader, Milestone1_Task__c currentTask){
         Milestone1_Time__c currentTime = new Milestone1_Time__c();
+        Milestone1_Security_Utility.fieldCreateable(
+            Milestone1_Time__c.Project_Task__c.getDescribe());
         currentTime.Project_Task__c = currentTask.ImportID__c;
         while(reader.hasNext())
         {
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Id') {
                 reader.next();
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Time__c.ImportID__c.getDescribe());
                 currentTime.ImportID__c = getDecodedString(reader);
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Description__c') {
                 reader.next();
+                Milestone1_Security_Utility.fieldCreateable(
+            		Milestone1_Time__c.Description__c.getDescribe());
                 currentTime.Description__c = getDecodedString(reader);
             }
             if (reader.getEventType() == XMLTag.START_ELEMENT && reader.getLocalName() == 'Hours__c') {
                 reader.next();
                 String val = getDecodedString(reader);
-                if(val != null || val != 'null'){
+                if(val != null || val != 'null') {
+                    Milestone1_Security_Utility.fieldCreateable(
+            			Milestone1_Time__c.Hours__c.getDescribe());
                     currentTime.Hours__c = Decimal.valueOf(val);
                 }
             }

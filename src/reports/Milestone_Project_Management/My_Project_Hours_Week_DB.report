@@ -41,10 +41,10 @@
     <filter>
         <criteriaItems>
             <column>Milestone1_Milestone__c.Project_Tasks__r.Project_Times__r$Incurred_By__c</column>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value></value>
         </criteriaItems>
-        <language>en_US</language>
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
@@ -65,6 +65,8 @@
     <reportType>Milestones_with_Tasks_with_Times__c</reportType>
     <scope>organization</scope>
     <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Milestone1_Milestone__c$CreatedDate</dateColumn>
         <interval>INTERVAL_LAST60</interval>

@@ -56,7 +56,7 @@
                 <height>450</height>
                 <page>Milestone1_Charts_GVMilestones</page>
                 <showLabel>false</showLabel>
-                <showScrollbars>false</showScrollbars>
+                <showScrollbars>true</showScrollbars>
                 <width>100%</width>
             </layoutItems>
         </layoutColumns>
@@ -69,7 +69,7 @@
         <label>Project Milestones Gantt View</label>
         <layoutColumns>
             <layoutItems>
-                <height>200</height>
+                <height>300</height>
                 <page>Milestone1_Charts_GanttMilestones</page>
                 <showLabel>false</showLabel>
                 <showScrollbars>true</showScrollbars>
@@ -229,7 +229,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h30000003wbHE</masterLabel>
+        <masterLabel>00h6g000000hHdf</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

@@ -102,8 +102,14 @@ public class Milestone1_Task_Trigger_Utility {
         }
         //Perform Inserts and Deletes of Subscriptions
         try{
-        	insert subscriptionsAddList;
-        	delete subscriptionsDeleteList;
+            
+            /*
+             * @Shae Selix, October 1, 2016:
+             * This is currently insecure, due to use of SObject container
+             */
+        	//insert subscriptionsAddList;
+
+        	//delete subscriptionsDeleteList;
         }
         catch(Exception e){
         	//TODO Validate the type of exception
@@ -140,7 +146,11 @@ public class Milestone1_Task_Trigger_Utility {
                 }
             }
         }
-        update successorsToUpdate;
+        if (Schema.sObjectType.Milestone1_Task__c.isUpdateable()) {
+            update successorsToUpdate;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
     }
     
     public static sObject getSubscriptionForUserAndRec(Milestone1_Task__c rec, List<sObject> existingSubscriptionList, Map<String,List<sObject>> userSubscriptionMap)
@@ -178,6 +188,7 @@ public class Milestone1_Task_Trigger_Utility {
     }
 
     public static void handleTaskBeforeTrigger(List<Milestone1_Task__c> recs){
+        
         Map<String,Milestone1_Milestone__c> taskMilestoneMap = Milestone1_Task_Trigger_Utility.retrieveParentMilestones(recs);
         
         for( Milestone1_Task__c rec : recs ){
@@ -214,13 +225,20 @@ public class Milestone1_Task_Trigger_Utility {
             }
             
         }
+        
     }
     
     public static Map<String,Milestone1_Milestone__c> retrieveParentMilestones(List<Milestone1_Task__c> recs)
     {
         Set<String> ids = new Set<String>();
         for(Milestone1_Task__c rec : recs) { ids.add(rec.Project_Milestone__c); }
-        List<Milestone1_Milestone__c> parentMilestones = [Select Id, Name, Deadline__c, KickOff__c from Milestone1_Milestone__c where Id in :ids];
+        List<Milestone1_Milestone__c> parentMilestones = new List<Milestone1_Milestone__c>();
+        
+        if (Schema.sObjectType.Milestone1_Milestone__c.isAccessible()) {
+            parentMilestones = [Select Id, Name, Deadline__c, KickOff__c from Milestone1_Milestone__c where Id in :ids];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         
         Map<String,Milestone1_Milestone__c> taskMilestoneMap = new Map<String,Milestone1_Milestone__c>();
         for( Milestone1_Milestone__c parentMilestone : parentMilestones ) {

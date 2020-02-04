@@ -26,7 +26,16 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page standardController="Milestone1_Project__c" sidebar="false">
-<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <apex:stylesheet value="{!URLFOR($Resource.SLDS203_MPM, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />    
+</head>
+<div class="milestone-pm">
+<script type='text/javascript' src='https://www.google.com/jsapi'>
+    </script>
     <apex:outputPanel >
     <table class="detailList" cellspacing="0" cellpadding="0" border="0" width="100%">
     <tr><td width="50%">    
@@ -41,6 +50,7 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
     </td></tr>    
     </table>
     <script>
+    console.log('Entered Graph Script.');
     var data;    
     google.load("visualization", "1", {packages:["corechart"]});
     
@@ -105,4 +115,6 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
      google.setOnLoadCallback(drawChart);
     </script>                          
     </apex:outputPanel>
+    </div>
+</html>
 </apex:page>

@@ -28,6 +28,15 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 <apex:page standardController="Milestone1_Task__c"
            tabStyle="Milestone1_Task__c"
            extensions="Milestone1_Move_Task_Extension">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <apex:stylesheet value="{!URLFOR($Resource.SLDS203_MPM, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />    
+</head>
+<div class="milestone-pm">
+
 <style>
     .moveError { color: red; font-weight: strong;}
 </style>
@@ -57,4 +66,6 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
         </apex:pageBlock>
     </apex:form>
 
+</div>
+</html>
 </apex:page>

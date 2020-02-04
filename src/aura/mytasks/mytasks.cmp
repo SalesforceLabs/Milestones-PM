@@ -1,0 +1,55 @@
+<!--
+* * File Name: mytasks.cmp
+* Description : Lightning Component for dislaying list of tasks
+* Copyright : salesforce.com, Inc. (c) 2016
+* * @author : Shae Selix
+* Modification Log =============================================================== 
+Ver Date Author Modification
+*  
+-->
+
+<aura:component controller="Milestone1_TaskTableController">
+
+    <aura:attribute name="tasks" type="Milestone1_Task__c[]"/>
+    
+    <!-- PAGE HEADER -->
+    <div class="slds-page-header" role="banner">
+      <div class="slds-grid slds-wrap slds-grid--pull-padded">
+        <div class="slds-col">
+
+          <h3 class="slds-text-heading--medium">My Tasks</h3>
+        </div>
+        <div class="slds-col">
+          <ui:button class="slds-button slds-button--neutral"
+                  press="{!c.incompleteTasks}">
+              Incomplete Tasks
+          </ui:button>
+        </div>
+        <div class="slds-col">
+          <ui:button class="slds-button slds-button--neutral"
+                  press="{!c.lateTasks}">
+              Late Tasks
+          </ui:button>
+        </div>
+        <div class="slds-col">
+          <ui:button class="slds-button slds-button--neutral"
+                  press="{!c.blockedTasks}">
+              Blocked Tasks
+          </ui:button>
+        </div>
+        <div class="slds-col">
+          <ui:button class="slds-button slds-button--neutral"
+                  press="{!c.deleteTasks}">
+              Close
+          </ui:button>
+        </div>
+      </div>
+    </div>
+    <!-- / PAGE HEADER -->
+    
+    <!-- TASK LIST -->
+    <c:tasklist tasks="{!v.tasks}"/>
+    <!-- / TASK LIST -->
+ 
+	
+</aura:component>

@@ -26,7 +26,7 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
-global class Milestone1_Email_Handler implements Messaging.InboundEmailHandler 
+global with sharing class Milestone1_Email_Handler implements Messaging.InboundEmailHandler 
 { 
     /*
     Email to Apex Class. Milestone Task Created with following mapping: 
@@ -74,21 +74,25 @@ global class Milestone1_Email_Handler implements Messaging.InboundEmailHandler
         String taskName = processedSubjectLine.get(1);
         Milestone1_Milestone__c milestone = Milestone1_Email_Handler.getMilestone(milestoneAliasName);
         
-        List<Milestone1_Task__c> matchingTasks = [Select Id from Milestone1_Task__c where Name =:taskName and
+        List<Milestone1_Task__c> matchingTasks = new List<Milestone1_Task__c>();
+            
+        if (Schema.sObjectType.Milestone1_Task__c.isAccessible()) {
+        	matchingTasks = [Select Id from Milestone1_Task__c where Name =:taskName and
         										  Project_Milestone__c =:milestone.Id limit 1];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         
-        if(matchingTasks == null || matchingTasks.size() == 0)
-        {	
+        if (matchingTasks == null || matchingTasks.size() == 0) {	
         	//As no task was found, assume that it is a forward
         	processNewEmail(email);	
-        }else
-        {
+        } else {
         	//otherwise it is a reply
             Milestone1_Email_Handler.insertNote(matchingTasks.get(0),email);
             Milestone1_Email_Handler.insertAttachments(matchingTasks.get(0),email);
             Milestone1_Email_Handler.updateMilestoneTask(matchingTasks.get(0),email);
         }
-        result.success =  true;
+        result.success = true;
         return result;
     }
     
@@ -99,28 +103,38 @@ global class Milestone1_Email_Handler implements Messaging.InboundEmailHandler
         Milestone1_Milestone__c milestone;
         system.debug('Email In Reply To: ' + email.inReplyTo);
         system.debug('Email Message Id: ' + email.messageId);
-        List<User> fromUsers = [Select Id from User where isActive = true and Email = :email.fromAddress];
+
+        List<User> fromUsers = new List<User>();  
+        if (Schema.sObjectType.User.isAccessible()) {
+        	fromUsers = [Select Id from User where isActive = true and Email = :email.fromAddress];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+         
         String firstEmail;
         if(email.toAddresses != null && email.toAddresses.size() > 0)
         {
             firstEmail = Milestone1_Email_Handler.parseAddress(email.toAddresses.get(0));
             system.debug('First Email == ' + firstEmail);
         }
-        List<User> toUsers = [Select Id from User where isActive = true and Email = :firstEmail];
         
-        if(fromUsers.size() == 0)
-        {
+        List<User> toUsers = new List<User>(); 
+        if (Schema.sObjectType.User.isAccessible()) {
+        	toUsers = [Select Id from User where isActive = true and Email = :firstEmail];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+         
+        if (fromUsers.size() == 0) {
             result.message = ERROR_FROM_USER_NOT_FOUND;
             result.success = false;
-        }else if(toUsers.size() == 0)
-        {
+        } else if(toUsers.size() == 0) {
             result.message = ERROR_TO_USER_NOT_FOUND;
             result.success = false;         
-        }else if(email.subject == null){
+        } else if (email.subject == null) {
         	result.message = ERROR_SUBJECT_MISSING;
         	result.success = false;
-        }else
-        {	
+        } else {	
         	//processing the subject
             List<String> processedSubjectLine = Milestone1_Email_Handler.processSubject(email.subject);
             String milestoneAliasName = processedSubjectLine.get(0); 
@@ -129,8 +143,7 @@ global class Milestone1_Email_Handler implements Messaging.InboundEmailHandler
             	//Reject code here as there is no task.
                 result.message = ERROR_SUBJECT_MISSING_TASK;
                 result.success = false;
-            }else
-            {	
+            } else {	
                 System.debug('Find the Milestone for Alias: ' + milestoneAliasName); 
                 if(milestoneAliasName == ''){
 					milestoneAliasName = Milestone1_Settings__c.getOrgDefaults().Default_Milestone_Alias__c;
@@ -175,7 +188,13 @@ global class Milestone1_Email_Handler implements Messaging.InboundEmailHandler
         newTask.Name = Milestone1_General_Utility.processTaskName(taskName.trim());
         newTask.Email_GUID__c = email.messageId;
         newTask.Last_Email_Received__c = Datetime.now();
-        insert newTask;
+        
+        if (Schema.sObjectType.Milestone1_Task__c.isCreateable()) {
+        	insert newTask;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+        
         system.debug('New Task ID == ' + newTask.Id);
         return newTask;
     }
@@ -185,7 +204,13 @@ global class Milestone1_Email_Handler implements Messaging.InboundEmailHandler
         msTask.Email_GUID__c = email.messageId;
         msTask.Complete__c = false;
         msTask.Last_Email_Received__c = Datetime.now();
-        update msTask;
+        
+        if (Schema.sObjectType.Milestone1_Task__c.isUpdateable()) {
+        	update msTask;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+        
         system.debug('The task ReplyTo chain: ' + msTask.Email_GUID__c);
         return msTask;
     }
@@ -196,7 +221,13 @@ global class Milestone1_Email_Handler implements Messaging.InboundEmailHandler
         newNote.parentId = msTask.Id;
         newNote.title = email.subject;
         newNote.body = email.plainTextBody;
-        insert newNote;
+        
+        if (Schema.sObjectType.Note.isCreateable()) {
+        	insert newNote;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+        
         system.debug('New Note ID == ' + newNote.Id);
         return newNote;
     }
@@ -219,7 +250,7 @@ global class Milestone1_Email_Handler implements Messaging.InboundEmailHandler
         returnEmail = addressTokens[addressTokens.size() -1];
         returnEmail = returnEmail.replace('<','');
         returnEmail = returnEmail.replace('>','');
-        system.debug('To adddress email == ' + returnEmail);
+        system.debug('To address email == ' + returnEmail);
         return returnEmail;
     }
     
@@ -275,10 +306,11 @@ global class Milestone1_Email_Handler implements Messaging.InboundEmailHandler
             }
         }
         system.debug('Insert the Attachments. Number is ' + insertAttachments.size());
-        if(insertAttachments.size() > 0)
-        {
+        if ((insertAttachments.size() > 0) && (Schema.sObjectType.Attachment.isCreateable())) {
             insert insertAttachments;
-        }
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
     }       
     
     /**
@@ -289,7 +321,14 @@ global class Milestone1_Email_Handler implements Messaging.InboundEmailHandler
     	if(milestoneAliasName == ''){
     		milestoneAliasName = Milestone1_Settings__c.getOrgDefaults().Default_Milestone_Alias__c;
     	}
-    	List<Milestone1_Milestone__c> milestones = [Select Id From Milestone1_Milestone__c where alias__c = :milestoneAliasName limit 1];
+        
+    	List<Milestone1_Milestone__c> milestones = new List<Milestone1_Milestone__c>();
+        if (Schema.sObjectType.Milestone1_Milestone__c.isAccessible()) {
+        	milestones = [Select Id From Milestone1_Milestone__c where alias__c = :milestoneAliasName limit 1];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+        
         if(!milestones.isEmpty()){
         	milestone = milestones.get(0);
         }        

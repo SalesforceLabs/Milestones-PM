@@ -32,13 +32,16 @@ public with sharing class Milestone1_Project_Trigger_Utility {
     //if the projects change or is that just when milestones change?
     //this is more of a general truing utility than something that needs to run
     //with every project update
-    public static void handleProjectUpdateTrigger( List<Milestone1_Project__c> recs ){
+    public static void handleProjectUpdateTrigger( List<Milestone1_Project__c> recs){
         
         //Milestone1_GoogleChartUtility googleChartUtility = new Milestone1_GoogleChartUtility();
          
         Map<Id, Milestone1_Project__c> projectsById = new Map<Id, Milestone1_Project__c>();
         
+
+        
         for( Milestone1_Project__c rec : recs ){
+            
             System.debug('*** Project "' + rec.Name + '" with Id ' + rec.Id + ' begin trigger');
             projectsById.put(rec.Id, rec);
             rec.Number_of_Incomplete_Top_Milestones__c = 0;
@@ -63,7 +66,10 @@ public with sharing class Milestone1_Project_Trigger_Utility {
         
         System.debug('*** project key set: ' + projectsById.keySet());
         
-        List<Milestone1_Milestone__c> milestones = [SELECT Id,
+        List<Milestone1_Milestone__c> milestones = new List<Milestone1_Milestone__c>();
+        
+        if (Schema.sObjectType.Milestone1_Milestone__c.isAccessible()) {
+                                            milestones = [SELECT Id,
                                                            Name,
                                                            Project__c,
                                                            Parent_Milestone__c,
@@ -82,6 +88,10 @@ public with sharing class Milestone1_Project_Trigger_Utility {
                                                     FROM Milestone1_Milestone__c
                                                     WHERE Project__c IN :projectsById.keySet()
                                                    ];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+
         System.debug('*** milestones queried for projects: ' + milestones.size());
         
         for(Milestone1_Milestone__c ms : milestones){
@@ -141,10 +151,16 @@ public with sharing class Milestone1_Project_Trigger_Utility {
             projectsById.put(rec.Id, rec);
         }
         
-        List<Milestone1_Milestone__c> milestones = [SELECT Id
+        List<Milestone1_Milestone__c> milestones = new List<Milestone1_Milestone__c>();
+        
+        if (Schema.sObjectType.Milestone1_Project__c.isAccessible()) {
+                                                milestones = [SELECT Id
                                                     FROM Milestone1_Milestone__c
                                                     WHERE Project__c IN :projectsById.keySet()
                                                    ];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         
         // Delete / Batch delete milestones
         if( milestones.size() > 0 ){
@@ -152,7 +168,12 @@ public with sharing class Milestone1_Project_Trigger_Utility {
 				Database.executeBatch( new Milestone1_Milestone_Batch_Delete(milestones) );
 			}
 			else{
-		        delete milestones;
+                DescribeSObjectResult dsr = Milestone1_Milestone__c.SObjectType.getDescribe();
+                if (!dsr.isDeletable()) {
+                    throw new Milestone1_Exception('Insufficient Privileges');
+                } else {
+		        	delete milestones;
+                }
 			}
         }
     }
@@ -164,7 +185,12 @@ public with sharing class Milestone1_Project_Trigger_Utility {
     */
     public static void handleProjectInsertTrigger( List<Milestone1_Project__c> triggerList ){
     	List<String> nameList = new List<String>();
-    	for( Milestone1_Project__c tm : triggerList ){ nameList.add( tm.Name ); }
+    	for( Milestone1_Project__c tm : triggerList ){ 
+            nameList.add( tm.Name );
+            
+        }
+
+        
     	Integer projectCount = [SELECT count() FROM Milestone1_Project__c WHERE Name IN: nameList limit 1];
     	
     	//TODO Flesh out to be more specific -- right now this flags every project as problematic even if only one has a duplicate name

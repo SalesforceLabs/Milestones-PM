@@ -27,6 +27,12 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */ 
 
+/*
+ * Shae Selix, October 2, 2016
+ * BUG Chatter follow and reassignment functionality
+ * CRUD and FLS Insecure. Removed for the time being.
+ * 
+ */
 
 @isTest
 private class Milestone1_Task_Chatter_Tst 
@@ -54,11 +60,12 @@ private class Milestone1_Task_Chatter_Tst
 	        testTask.Assigned_To__c = UserInfo.getUserId();
 	        testTask.Complete__c = false;
 	        insert testTask;
-	        
+	        /*
+
 	        sObject subscription = Database.query('Select Id, ParentId, SubscriberId from EntitySubscription where ParentId = \''+testTask.Id+'\'');
 	        //assert that the user is following this object
 	        system.assertEquals(UserInfo.getUserId(),(id) subscription.get('SubscriberId'));
-	        
+	        */
 	        testTask.Complete__c = true;
 	        update testTask;
 	        
@@ -91,14 +98,14 @@ private class Milestone1_Task_Chatter_Tst
         testTask.Assigned_To__c = UserInfo.getUserId();
         testTask.Complete__c = false;
         insert testTask;
-        
+        /*
         sObject subscription = Database.query('Select Id, ParentId, SubscriberId from EntitySubscription where ParentId = \''+testTask.Id+'\'');
         //assert that the user is following this object
         system.assertEquals(UserInfo.getUserId(),(id)subscription.get('SubscriberId'));
         system.debug('Other User Id == ' + userObj.Id + 'Task Assigned Id ==' + testTask.Assigned_To__c);
         testTask.Assigned_To__c = userObj.Id;
         update testTask;
-        
+        */
         List<sObject> subscriptionList = Database.query('Select Id, ParentId, SubscriberId from EntitySubscription where ParentId = \''+testTask.Id+'\' and SubscriberId = \''+UserInfo.getUserId()+'\'');
         //assert that no one is following this object after its marked as complete
         system.assertEquals(0,subscriptionList.size());

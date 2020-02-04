@@ -45,7 +45,7 @@ public with sharing class Milestone1_Summary2 {
     }
     
     public boolean hasSearchLengthError{
-    	get{
+    	get {
     		return searchLengthError != null && searchLengthError == true;
     	}
     }
@@ -116,7 +116,7 @@ public with sharing class Milestone1_Summary2 {
     public void initialize() {
 
         
-        if (isDeployed)
+        if (isDeployed) //isDeployed method checks CRUD/FLS
         {
             List<Milestone1_Project__c> recentProjects = [Select Id, Name from Milestone1_Project__c order by LastModifiedDate desc limit 5];
             List<Milestone1_Milestone__c> recentMilestones = [Select Id, Name from Milestone1_Milestone__c order by LastModifiedDate desc limit 50];
@@ -263,6 +263,7 @@ public with sharing class Milestone1_Summary2 {
         return new Pagereference('/' + targetProject);
     }
     
+    /*
     public Pagereference viewMyTasks() {
         return new Pagereference('/' + settings.Report_Id_My_tasks_by_project__c + '?pv0=' + String.valueOf(targetProject).substring(0,15) + '&pv1=' + UserInfo.getFirstName() + ' ' + UserInfo.getLastName());
     }
@@ -303,7 +304,7 @@ public with sharing class Milestone1_Summary2 {
    	
         return new Pagereference('/' + settings.Report_Id_My_Blocked_Tasks__c + '?pv0=' + Encodingutil.urlEncode(''+UserInfo.getName(), 'UTF-8' ) );
     }
-    
+    */
     class Pair {
         Pair(String key, String value) {
             this.key = key;
@@ -323,13 +324,13 @@ public with sharing class Milestone1_Summary2 {
         if (summary2.settings == null) {
             summary2.settings = new Milestone1_Settings__c();
         }
-        
+        /*
         if (summary2.settings.Report_Id_Blocked_Tasks_by_Project__c == null) {
             summary2.settings.Report_Id_Blocked_Tasks_by_Project__c = 'a';
             summary2.settings.Report_Id_My_tasks_by_project__c = 'b';
             summary2.settings.Report_Id_Overdue_Tasks_by_Project__c = 'c';
         }
-        
+        */
         Integer i = summary2.getProjects().size();
         
         Milestone1_Project__c p1 = Milestone1_Test_Utility.sampleProjectActive('Controller Test');
@@ -341,10 +342,11 @@ public with sharing class Milestone1_Summary2 {
         summary2.targetProject = p1.id;
         
         System.assert(summary2.view() != null);
+        /*
         System.assert(summary2.viewMyTasks() != null);
         System.assert(summary2.viewBlockedTasks() != null);
         System.assert(summary2.viewOverdueTasks() != null);
-        
+        */
         summary2.initialize();
         System.assert(summary2.recentItems != null);
         

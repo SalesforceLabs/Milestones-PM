@@ -74,6 +74,8 @@ public with sharing class Milestone1_Move_Milestone_Extension {
 	                recIds.add(rec.Id);
 	                topRecs.add(rec.Id);
 	            }
+
+                //checkPermissions() called at beginning of method
 	            recs = [SELECT Id,
 	                           Name,
 	                           Project__c,
@@ -83,6 +85,7 @@ public with sharing class Milestone1_Move_Milestone_Extension {
 	                   ];
 	    
 	            //query sub milestone records
+                //checkPermissions() called at beginning of method
 	            subMilestones = [SELECT Id,
 	                                    Name,
 	                                    Project__c,
@@ -117,51 +120,66 @@ public with sharing class Milestone1_Move_Milestone_Extension {
     public PageReference moveMilestones(){
         try
         {
-            Milestone1_Project__c proj = [SELECT Id FROM Milestone1_Project__c WHERE Id = :dummyMS.Project__c];
-            
-            //check to see if move candidates have successor tasks.  If so, they should fail.
-            List<Milestone1_Milestone__c> candidateSuccessors = [Select Id From Milestone1_Milestone__c Where 
-            	Predecessor_Milestone__c in :topRecs];
-            if (candidateSuccessors.size() > 0) {
-            	throw new Milestone1_Move_Exception(Milestone1_Move_Exception.ERROR_MILESTONE_HAS_SUCCESSORS);
-            }
-            
-            //check to see if move candidates have predecessor tasks.
-            List<Milestone1_Milestone__c> candidateWithPredecessors = [Select Predecessor_Milestone__c From Milestone1_Milestone__c Where 
-            	Id in :topRecs AND Predecessor_Milestone__c != null];
-            if (candidateWithPredecessors.size() > 0) {
-            	throw new Milestone1_Move_Exception(Milestone1_Move_Exception.ERROR_MILESTONE_HAS_PREDECESSOR);
-            }
-            
-            List<Milestone1_Milestone__c> topMilestones = new List<Milestone1_Milestone__c>();
-            List<Milestone1_Milestone__c> bottomMilestones = new List<Milestone1_Milestone__c>();
-            for(Milestone1_Milestone__c rec : recs){
-                system.debug(rec.Project__c + ' == ' + proj.Id);
-                if(rec.Project__c == proj.Id)
-                {
-                    throw new Milestone1_Move_Exception(Milestone1_Move_Exception.ERROR_MILESTONE_ALREADY_ASSIGNED_PROJECT);
+            if(checkPermissions()){
+                Milestone1_Project__c proj = [SELECT Id FROM Milestone1_Project__c WHERE Id = :dummyMS.Project__c];
+                
+                //check to see if move candidates have successor tasks.  If so, they should fail.
+                //checkPermissions() called at beginning of method
+                List<Milestone1_Milestone__c> candidateSuccessors = [Select Id From Milestone1_Milestone__c Where 
+                    Predecessor_Milestone__c in :topRecs];
+                if (candidateSuccessors.size() > 0) {
+                    throw new Milestone1_Move_Exception(Milestone1_Move_Exception.ERROR_MILESTONE_HAS_SUCCESSORS);
                 }
-                rec.Project__c = proj.Id;
-                if(rec.Parent_Milestone__c == null){
-                    topMilestones.add(rec);
-                } else {
-                    if(recsById.get(rec.Parent_Milestone__c) == null){
-                        rec.Parent_Milestone__c = null;
+                
+                //check to see if move candidates have predecessor tasks.
+                //checkPermissions() called at beginning of method
+                List<Milestone1_Milestone__c> candidateWithPredecessors = [Select Predecessor_Milestone__c From Milestone1_Milestone__c Where 
+                    Id in :topRecs AND Predecessor_Milestone__c != null];
+                if (candidateWithPredecessors.size() > 0) {
+                    throw new Milestone1_Move_Exception(Milestone1_Move_Exception.ERROR_MILESTONE_HAS_PREDECESSOR);
+                }
+                
+                List<Milestone1_Milestone__c> topMilestones = new List<Milestone1_Milestone__c>();
+                List<Milestone1_Milestone__c> bottomMilestones = new List<Milestone1_Milestone__c>();
+                for(Milestone1_Milestone__c rec : recs){
+                    system.debug(rec.Project__c + ' == ' + proj.Id);
+                    if(rec.Project__c == proj.Id)
+                    {
+                        throw new Milestone1_Move_Exception(Milestone1_Move_Exception.ERROR_MILESTONE_ALREADY_ASSIGNED_PROJECT);
                     }
-                    bottomMilestones.add(rec);
+                    if (Schema.sObjectType.Milestone1_Milestone__c.fields.Project__c.isUpdateable()) {
+                        rec.Project__c = proj.Id;
+                    } else {
+                        throw new Milestone1_Exception('Insufficient Privileges');
+                    }
+                    if(rec.Parent_Milestone__c == null){
+                        topMilestones.add(rec);
+                    } else {
+                        if(recsById.get(rec.Parent_Milestone__c) == null){
+                            if (Schema.sObjectType.Milestone1_Milestone__c.fields.Parent_Milestone__c.isUpdateable()) {
+                                rec.Parent_Milestone__c = null;
+                            } else {
+                                throw new Milestone1_Exception('Insufficient Privileges');
+                            }
+                        }
+                        bottomMilestones.add(rec);
+                    }
                 }
-            }
-            
-            System.debug('*** topMilestones: ' + topMilestones);
-            update topMilestones;
-            System.debug('*** bottomMilestones: ' + bottomMilestones);
-            update bottomMilestones;
-            if(milestoneId != null)
-            {
-                return new ApexPages.StandardController(new Milestone1_Milestone__c(Id=milestoneId)).view();
-            }else
-            {
-                return stc.cancel();
+                
+                System.debug('*** topMilestones: ' + topMilestones);
+                update topMilestones;
+                System.debug('*** bottomMilestones: ' + bottomMilestones);
+                update bottomMilestones;
+                if(milestoneId != null)
+                {
+                    return new ApexPages.StandardController(new Milestone1_Milestone__c(Id=milestoneId)).view();
+                }else
+                {
+                    return stc.cancel();
+                }
+            } else {
+                system.debug('Exception thrown!');
+            	return ApexPages.currentPage();
             }
         }
         catch(Exception e)

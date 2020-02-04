@@ -26,6 +26,33 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISE
 OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
+
+/* * NEW WITH VERSION 2
+ * Date : October 3, 2016
+ * Copyright : salesforce.com, Inc. (c) 2016
+ * * @author : Shae Selix
+ * 
+ * Lightning styling and compatibility
+ * -- Added SLDS css to all custom pages and components
+ * -- Replaced dynamic reports with Lightning component on Summary page
+ * 
+ * Increased security
+ * -- XML Import, Move and Clone tools only enabled for users with all 
+ *    field-level edit-access
+ * -- Safe deletions within triggers
+ * 
+ * Removed Deprecated/Non-functional Elements
+ * -- Add-task Homepage component
+ * -- Change chatter follow settings within Task trigger
+ * 
+ * * TODO
+ * Refactor Lightning component for individual projects
+ * Add simple 'create task' feature to Lightning component
+ * Replace Google charts with Charts.js Lightning components
+ * Refactor for Mobile-readiness / separate mobile app
+ * Eventually, replace all VF pages with Lightning pages
+ */ 
+
 public with sharing class Milestone1_GettingStartedController {
 
     public Boolean settingsReady {get;set;}
@@ -48,8 +75,15 @@ public with sharing class Milestone1_GettingStartedController {
             settings = getInitialSettingsWithoutSave();
             
 
+            Milestone1_Security_Utility.oneRecordFieldCreateable(
+                settings,
+                Milestone1_Settings__c.SObjectType.getDescribe());
             
-            insert settings;
+            if (Schema.sObjectType.Milestone1_Settings__c.isCreateable()) {
+            	insert settings;
+            } else {
+				ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+			}
             
             settingsReady = true;
             
@@ -68,8 +102,13 @@ public with sharing class Milestone1_GettingStartedController {
         
             Milestone1_Project__c project = null;
             
-
-            List<Document> docs = [Select d.Name, d.Id, d.Body From Document d Where d.Name = 'Starter Project (LPM1)'];
+        	List<Document> docs = new List<Document>();
+                
+			if (Schema.sObjectType.Document.isAccessible()) {
+            	docs = [Select d.Name, d.Id, d.Body From Document d Where d.Name = 'Starter Project (LPM1)'];
+            } else {
+				ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+			}
             
             if (docs.size() == 1) {
                 Document startProject = docs.get(0);
@@ -81,43 +120,106 @@ public with sharing class Milestone1_GettingStartedController {
                 
                 //now we need to go through and  update the project with start date and deadlines.
                 //Milestones
-                List<Milestone1_Milestone__c> milestonesRetrieved = [Select m.Name, m.Kickoff__c, m.Id, m.Alias__c, m.Deadline__c, m.Project__c,
+                List<Milestone1_Milestone__c> milestonesRetrieved = new List<Milestone1_Milestone__c>();
+                
+                if (Schema.sObjectType.Milestone1_Milestone__c.isAccessible() && Schema.sObjectType.Milestone1_Project__c.isAccessible()
+                && Schema.sObjectType.Milestone1_Task__c.isAccessible()) {
+                	milestonesRetrieved = [Select m.Name, m.Kickoff__c, m.Id, m.Alias__c, m.Deadline__c, m.Project__c,
                     (Select Id, Name, Blocked_Reason__c, Blocked__c, Complete__c, Due_Date__c, Priority__c, Start_Date__c 
                     From Project_Tasks__r) From Milestone1_Milestone__c m WHERE m.Project__c = :project.id Order By m.Name];
-                    
+                } else {
+					ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+				}    
                 
                 //start day = 3 days ago
-                project.Kickoff__c = Date.today().addDays(-5);
-                project.Deadline__c = Date.today().addDays(28);
-                project.Status__c = 'Active';
-                update project;
+                if (Schema.sObjectType.Milestone1_Project__c.fields.Kickoff__c.isUpdateable()) {
+                	project.Kickoff__c = Date.today().addDays(-5);
+                } else {
+                    throw new Milestone1_Exception('Insufficient Privileges');
+                }
+                
+                if (Schema.sObjectType.Milestone1_Project__c.fields.Deadline__c.isUpdateable()) {
+                	project.Deadline__c = Date.today().addDays(28);
+                } else {
+                    throw new Milestone1_Exception('Insufficient Privileges');
+                }
+                
+                if (Schema.sObjectType.Milestone1_Project__c.fields.Status__c.isUpdateable()) {
+                	project.Status__c = 'Active';
+                } else {
+                    throw new Milestone1_Exception('Insufficient Privileges');
+                }
+                
+                if (Schema.sObjectType.Milestone1_Project__c.isUpdateable()) {
+                	update project;
+                } else {
+					ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+				}
                 
                 Integer offset = -4;
                 Date max_Deadline_Date = Date.today();
+                
+                integer aliasCount;
                 //milestones
-                integer aliasCount = [Select count() from Milestone1_Milestone__c Where Alias__c LIKE 'DEMO_%'];
+                if (Schema.sObjectType.Milestone1_Milestone__c.isAccessible()) {    
+                	aliasCount = [Select count() from Milestone1_Milestone__c Where Alias__c LIKE 'DEMO_%'];
+                } else {
+					ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+				}    
+                    
                 for (Milestone1_Milestone__c current : milestonesRetrieved) {
                     aliasCount++;
                     Date max_Due_Date = Date.today();
-                    current.Kickoff__c = Date.today().addDays(offset);
+                    
+                    if (Schema.sObjectType.Milestone1_Milestone__c.fields.Kickoff__c.isUpdateable()) {
+                        current.Kickoff__c = Date.today().addDays(offset);
+                    } else {
+                        throw new Milestone1_Exception('Insufficient Privileges');
+                    }
+                    
                     for (Milestone1_Task__c task : current.Project_Tasks__r) {
-                        offset++;   
-                        task.Start_Date__c = Date.today().addDays(offset);
-                        task.Due_Date__c = Date.today().addDays(offset+1);
+                        offset++;
                         
-                        if (current.Name.startsWith('1')) {
-                            task.Complete__c = true;
+                        if (Schema.sObjectType.Milestone1_Task__c.fields.Start_Date__c.isUpdateable()) {
+                            task.Start_Date__c = Date.today().addDays(offset);
+                        } else {
+                            throw new Milestone1_Exception('Insufficient Privileges');
                         }
+                        
+                        if (Schema.sObjectType.Milestone1_Task__c.fields.Due_Date__c.isUpdateable()) {
+                            task.Due_Date__c = Date.today().addDays(offset+1);
+                        } else {
+                            throw new Milestone1_Exception('Insufficient Privileges');
+                        }
+                        
+                        if (Schema.sObjectType.Milestone1_Task__c.fields.Complete__c.isUpdateable()) {
+                            if (current.Name.startsWith('1')) {
+                                task.Complete__c = true;
+                            }
+                        } else {
+                            throw new Milestone1_Exception('Insufficient Privileges');
+                        }
+                        
                         if (max_Due_Date < task.Due_Date__c){
                             max_Due_Date = task.Due_Date__c;
                         }
                         tasks.add(task);
                     }
                     
-                    current.Deadline__c = max_Due_Date;
-                    if (current.Name.startsWith('1')) {
-                        current.Complete__c = true;
+                    if (Schema.sObjectType.Milestone1_Milestone__c.fields.Deadline__c.isUpdateable()) {
+                        current.Deadline__c = max_Due_Date;
+                    } else {
+                        throw new Milestone1_Exception('Insufficient Privileges');
                     }
+                    
+                    if (Schema.sObjectType.Milestone1_Milestone__c.fields.Complete__c.isUpdateable()) {
+                        if (current.Name.startsWith('1')) {
+                            current.Complete__c = true;
+                        }
+                    } else {
+                        throw new Milestone1_Exception('Insufficient Privileges');
+                    }
+
                     if (current.Deadline__c > max_Deadline_Date){
                         max_Deadline_Date = current.Deadline__c;
                     }
@@ -129,12 +231,27 @@ public with sharing class Milestone1_GettingStartedController {
                     if (aliasCount > 0) {
                         targetAlias = ''+(aliasCount+1);
                     }
-                    current.Alias__c = 'DEMO_' + targetAlias;
+                    
+                    if (Schema.sObjectType.Milestone1_Milestone__c.fields.Alias__c.isUpdateable()) {
+                        current.Alias__c = 'DEMO_' + targetAlias;
+                    } else {
+                        throw new Milestone1_Exception('Insufficient Privileges');
+                    }
+                    
                     milestones.add(current);
                 }
                 
-                update tasks;
-                update milestones;
+                if (Schema.sObjectType.Milestone1_Task__c.isUpdateable()) {
+                	update tasks;
+                } else {
+					ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+				}
+                
+                if (Schema.sObjectType.Milestone1_Milestone__c.isUpdateable()) {
+                	update milestones;
+                } else {
+					ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+				}
                 
             }
         
@@ -146,6 +263,8 @@ public with sharing class Milestone1_GettingStartedController {
         
             Milestone1_Settings__c settings = new Milestone1_Settings__c();
             
+        
+            /*
             List<Report> reports = [Select Id, Name from Report Where Name like '%(LPM1)'];
             
             Id blockedTasks;
@@ -195,7 +314,9 @@ public with sharing class Milestone1_GettingStartedController {
             settings.Report_Id_My_Tasks_By_Priority_Project__c = String.valueOf(reportMyTasksByPriority).substring(0,15);
             settings.Report_Id_My_Blocked_Tasks__c = String.valueOf(summaryBlockedTasks).substring(0,15);
             settings.Report_Id_My_Late_Tasks__c = String.valueOf(summaryLateTasks).substring(0,15);
+			*/
             
+
             settings.Auto_Follow_Task__c = false;
             settings.Auto_Unfollow_Reassignment__c = false;
             settings.Auto_Follow_Complete_Task__c = false;
@@ -209,7 +330,7 @@ public with sharing class Milestone1_GettingStartedController {
         Milestone1_GettingStartedController cont = new Milestone1_GettingStartedController();
         
         Milestone1_Settings__c settings = cont.getInitialSettingsWithoutSave();
-        
+        /*
         System.assert(settings.Report_Id_Blocked_Tasks_by_Project__c != null);
         System.assert(settings.Report_Id_My_tasks_by_project__c != null);
         System.assert(settings.Report_Id_Overdue_Tasks_by_Project__c != null);
@@ -220,7 +341,7 @@ public with sharing class Milestone1_GettingStartedController {
         System.assert(settings.Report_Id_My_Tasks_By_Priority_Project__c != null);
         System.assert(settings.Report_Id_My_Blocked_Tasks__c != null);
         System.assert(settings.Report_Id_My_Late_Tasks__c != null);
-        
+        */
         System.assert(!settings.Auto_Follow_Complete_Task__c);
         System.assert(!settings.Auto_Follow_Task__c);
         System.assert(!settings.Auto_Unfollow_Reassignment__c);
@@ -233,12 +354,13 @@ public with sharing class Milestone1_GettingStartedController {
         Test.startTest();
         
         Milestone1_GettingStartedController cont = new Milestone1_GettingStartedController();
-        
+            
         Milestone1_Project__c project = cont.handleGettingStartedProjectInitialization();
-        
+            
         System.assert(project != null);
         
         Test.stopTest();
+        
         
     }
 }

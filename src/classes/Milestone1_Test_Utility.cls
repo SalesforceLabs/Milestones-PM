@@ -182,12 +182,12 @@ public with sharing class Milestone1_Test_Utility {
         {
             testRule = new Milestone1_Settings__c();
             testRule.SetupOwnerId = UserInfo.getUserId();
-            insert testRule;
+            insert testRule; // test utility; shouldn't need CRUD/FLS check
         } 
             testRule.Auto_Follow_Task__c = autoFollowTasks;
             testRule.Auto_Follow_Complete_Task__c = autoFollowTasks;
             testRule.Auto_Unfollow_Reassignment__c = autoFollowTasks;
-            update testRule;
+            update testRule; // test utility; shouldn't need CRUD/FLS check
             System.debug(testRule);
         
         
@@ -335,7 +335,7 @@ public with sharing class Milestone1_Test_Utility {
          testUser.TimeZoneSidKey = 'America/Chicago';
          testUser.EmailEncodingKey = 'UTF-8';
         
-         insert testUser;  
+         insert testUser;  // test utility; shouldn't need CRUD/FLS check
          
          return testUser;
   } 

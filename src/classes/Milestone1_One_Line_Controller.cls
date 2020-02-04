@@ -43,7 +43,7 @@ public with sharing class Milestone1_One_Line_Controller {
         {
             String milestoneAlias = stringTokens.get(0).trim();
             Milestone1_Milestone__c milestone = getMilestoneByAlias(milestoneAlias);
-            if(milestone != null)
+            if((milestone != null) && (Schema.sObjectType.Milestone1_Task__c.isCreateable()))
             {
                 try
                 {
@@ -80,12 +80,16 @@ public with sharing class Milestone1_One_Line_Controller {
 
     
     private Milestone1_Milestone__c getMilestoneByAlias(String alias)
-    {
-        List<Milestone1_Milestone__c> milestones = [Select Id, Name, Alias__c from Milestone1_Milestone__c Where alias__c = :alias];
-        //Milestones - Alias field is Unique, so we should only have one return value.
-        if(milestones.size() > 0)
-        {
-            return milestones.get(0);
+    { 
+        List<Milestone1_Milestone__c> milestones = new List<Milestone1_Milestone__c>();
+        
+        if (Schema.sObjectType.Milestone1_Milestone__c.isAccessible()) {
+            milestones = [Select Id, Name, Alias__c from Milestone1_Milestone__c Where alias__c = :alias];
+            //Milestones - Alias field is Unique, so we should only have one return value.
+            if(milestones.size() > 0)
+            {
+                return milestones.get(0);
+            }
         }
         return null;
     }

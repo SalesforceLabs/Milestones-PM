@@ -34,15 +34,16 @@
     <filter>
         <criteriaItems>
             <column>Milestone1_Project__c.Project_Milestones__r.Project_Tasks__r$Assigned_To__c</column>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>Reid Carlberg</value>
         </criteriaItems>
         <criteriaItems>
             <column>Milestone1_Project__c.Project_Milestones__r.Project_Tasks__r$Blocked__c</column>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
-        <language>en_US</language>
     </filter>
     <format>Tabular</format>
     <name>My Blocked Tasks (DB)</name>
@@ -54,6 +55,8 @@
     <rowLimit>25</rowLimit>
     <scope>organization</scope>
     <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
     <sortColumn>Milestone1_Project__c$Name</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>

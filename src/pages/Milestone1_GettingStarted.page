@@ -25,16 +25,36 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
 OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
-<apex:page controller="Milestone1_GettingStartedController">
 
-    <apex:form > 
-        
-    <apex:pageBlock title="{!$Label.WelcomeToMilestonesPM}">
+<apex:page controller="Milestone1_GettingStartedController" applyBodyTag="false" docType="html-5.0">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <apex:stylesheet value="{!URLFOR($Resource.SLDS203_MPM, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />    
+</head>
+<div class="milestone-pm">
+
+
+    <apex:form >    
+        <div class="slds slds-p-around--small slds-container slds-grid slds-grid--frame" role="main"> 
+    <apex:pageBlock >
+        <div class="slds-page-header" role="banner">
+              <div class="slds-grid">
+                    <div class="slds-col slds-has-flexi-truncate">
+            
+        <h1 class="slds-page-header__title slds-truncate">{!$Label.WelcomeToMilestonesPM}</h1>
+                  </div>
+            </div>
+        </div>
     
     <apex:outputPanel id="mainpanel"> 
      <apex:outputPanel id="stepmain" rendered="{!settingsReady == false}">
-    
-    <h2>{!$Label.NextSteps}</h2>
+    <p>&nbsp;</p>
+         
+    <h2 class="slds-text-heading--small">{!$Label.NextSteps}</h2>
     
     
     <p>{!$Label.YourNextFewSteps}</p>
@@ -73,13 +93,12 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
         <apex:outputPanel id="step2panel">       
         
         <apex:outputPanel id="step2" rendered="{!settingsReady == true && projectReady != true}">
-        
             
-            <h2>{!$Label.InitializationComplete}</h2>
+            <h2 class="slds-text-heading--small">{!$Label.InitializationComplete}</h2>
             
             <p>{!$Label.YouCanNowGoTo}<br/>&nbsp;</p>
             
-            <h2>{!$Label.ImportantUpper}</h2>
+            <h2 class="slds-text-heading--small">{!$Label.ImportantUpper}</h2>
             
             <p>{!$Label.BeSureToExploreTheSampleProject} {!$Label.ThisSampleProjectIncludes}</p>
             
@@ -94,22 +113,26 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
     
      <p>&nbsp;</p>
     
-    <h2>{!$Label.GettingHelp}</h2>
+    <h2 class="slds-text-heading--small">{!$Label.GettingHelp}</h2>
     
     <p><apex:outputText value="{!$Label.MilestonesPMIsUnsupported}  {!$Label.ForCommunityAssistance}  
-    {!$Label.ToSubmitIdeasOrIssues}" escape="false" /></p>
+    {!$Label.ToSubmitIdeasOrIssues}"/></p>
 
     <p>&nbsp;</p>
     
-    <h2>{!$Label.Community}</h2>
+    <h2 class="slds-text-heading--small">{!$Label.Community}</h2>
 
-    <p><apex:outputText value="{!$Label.MilestonesPMISOpenSource}  {!$Label.WeWelcomeYourIssueReports} {!$Label.LearnMore}." escape="false" /></p>
+    <p><apex:outputText value="{!$Label.MilestonesPMISOpenSource}  {!$Label.WeWelcomeYourIssueReports} {!$Label.LearnMore}."/></p>
 
     <p>&nbsp;</p>
     
     
     
     </apex:pageBlock>
+            
+        </div>
     
     </apex:form>
+    </div>
+    </html>
 </apex:page>

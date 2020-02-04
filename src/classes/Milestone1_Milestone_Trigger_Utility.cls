@@ -38,11 +38,15 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
         //query for list of child milestones that are NOT part of the recs collection
         List<Milestone1_Milestone__c> extraChildren = new List<Milestone1_Milestone__c>();
 
+        if (Schema.sObjectType.Milestone1_Milestone__c.isAccessible()) {
             extraChildren = [SELECT Id
                              FROM Milestone1_Milestone__c
                              WHERE Parent_Milestone__c IN :oldMap.keySet()
                              AND Id NOT IN :oldMap.keySet()
                             ];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
 
         
         // Delete / Batch delete milestones
@@ -51,7 +55,13 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
 				Database.executeBatch( new Milestone1_Milestone_Batch_Delete(extraChildren) );
 			}
 			else{
-		        delete extraChildren;
+                
+				DescribeSObjectResult dsr = Milestone1_Milestone__c.SObjectType.getDescribe();
+                if (!dsr.isDeletable()) {
+                    throw new Milestone1_Exception('Insufficient Privileges');
+                } else {
+		        	delete extraChildren;
+                }
 			}
         }
         
@@ -96,11 +106,20 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
                         successor.Kickoff__c = successor.Kickoff__c.addDays(deadlineShift);
                         successor.Deadline__c = successor.Deadline__c.addDays(deadlineShift);
                     }
-                    successorsToUpdate.addAll(successorMap.get(newRec.Id));
+                    
+					if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+                    	successorsToUpdate.addAll(successorMap.get(newRec.Id));
+                    } else {
+						ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+					}
                 }
             }
         }
-        update successorsToUpdate;
+		if (Schema.sObjectType.Milestone1_Milestone__c.isUpdateable()) {
+        	update successorsToUpdate;
+		} else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
     }
     
     public static void checkChildDependencies(Map<Id, Milestone1_Milestone__c> oldMap, Map<Id, Milestone1_Milestone__c> newMap) {
@@ -122,7 +141,12 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
 	                    child.Kickoff__c = child.Kickoff__c.addDays(deadlineShift);
 	                    child.Deadline__c = child.Deadline__c.addDays(deadlineShift);
 	                }
-	                childrenToUpdate.addAll(childMap.get(newRec.Id));
+                    
+                    if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+	                	childrenToUpdate.addAll(childMap.get(newRec.Id));
+                    } else {
+						ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+					}    
 	            }
             }
         }
@@ -155,36 +179,47 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
                         	task.Due_Date__c = task.Due_Date__c.addDays(deadlineShift);
                     	}
                     }
-                    tasksToUpdate.addAll(taskMap.get(newRec.Id));
+                    
+                    if (Schema.sObjectType.Milestone1_Task__c.isCreateable()) {
+                    	tasksToUpdate.addAll(taskMap.get(newRec.Id));
+                    } else {
+						ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+					}
                 }
             }
         }
-        update tasksToUpdate;
+        
+        if (Schema.sObjectType.Milestone1_Task__c.isUpdateable()) {
+        	update tasksToUpdate;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
     }
 
 	public static void handleMilestoneBeforeTrigger(List<Milestone1_Milestone__c> recs, Map<Id, Milestone1_Milestone__c> recMapById){
        
-       	if(checkAccessRightLookUpFields(recs)){
+       	if(checkAccessRightLookUpFields(recs)) {
        		
 	        //create a map of records by parent milestone ID
 	        Map<Id, List<Milestone1_Milestone__c>> recMapByParentId = refreshRecordMapByParent(recs);
 	        
 	        //ensure parent project IDs for all records
 	        Set<Id> parentMilestoneIds = new Set<Id>();
-	        for(Milestone1_Milestone__c rec : recs){
-	        	//reset to false--only set to true temporarily.
-	            rec.Okay_to_Reparent__c = false;
-	            if(rec.Parent_Milestone__c != null){
-	                parentMilestoneIds.add(rec.Parent_Milestone__c);
-	            }
-	        }
+            
+            for(Milestone1_Milestone__c rec : recs){
+                //reset to false--only set to true temporarily.
+                rec.Okay_to_Reparent__c = false;
+                if(rec.Parent_Milestone__c != null){
+                    parentMilestoneIds.add(rec.Parent_Milestone__c);
+                }
+            }
+            
 	        if(parentMilestoneIds.size() > 0){
-	            List<Milestone1_Milestone__c> parentMilestones = [SELECT Id,
-	                                                                     Project__c,
-	                                                                     Parent_Milestone__c
-	                                                              FROM Milestone1_Milestone__c
-	                                                              WHERE Id IN :parentMilestoneIds
-	                                                             ];
+                
+                List<Milestone1_Milestone__c> parentMilestones = [SELECT Id, Project__c, Parent_Milestone__c
+	                                       FROM Milestone1_Milestone__c
+	                                       WHERE Id IN :parentMilestoneIds
+	                                   ];
 	
 	            Map<Id, Milestone1_Milestone__c> parentMilestonesMap = new Map<Id, Milestone1_Milestone__c>();
 	            for(Milestone1_Milestone__c parent : parentMilestones){
@@ -208,7 +243,8 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
 	        //query for list of child milestones that are NOT part of the recs collection
 	        List<Milestone1_Milestone__c> extraChildren = new List<Milestone1_Milestone__c>();
 	        if(recMapById != null && recMapById.size() > 0){
-	            extraChildren = [SELECT Id,
+                
+	            	extraChildren = [SELECT Id,
 	                                    Name,
 	                                    Parent_Milestone__c,
 	                                    Parent_Milestone__r.Name,
@@ -242,16 +278,17 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
 	        //query for late tasks
 	        //TODO do we need this here? Is there a better way to handle this?
 	        List<Milestone1_Task__c> lateTasks = new List<Milestone1_Task__c>();
-	        if(recMapById != null && recMapById.size() > 0){
-	            lateTasks = [SELECT Id,
-	                                Project_Milestone__c
-	                         FROM Milestone1_Task__c
-	                         WHERE Project_Milestone__c IN :recMapById.keySet()
-	                         AND Complete__c = false
-	                         AND Due_Date__c < :Date.today()
-	                        ];
-	        }
-	        
+            
+            if(recMapById != null && recMapById.size() > 0){
+                lateTasks = [SELECT Id,
+                             Project_Milestone__c
+                             FROM Milestone1_Task__c
+                             WHERE Project_Milestone__c IN :recMapById.keySet()
+                             AND Complete__c = false
+                             AND Due_Date__c < :Date.today()
+                            ];
+            } 
+
 	        //map late tasks by parent milestone
 	        Map<Id, List<Milestone1_Task__c>> lateTasksByMilestoneId = new Map<Id, List<Milestone1_Task__c>>();
 	        for(Milestone1_Task__c lateTask : lateTasks){
@@ -528,7 +565,11 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
 		// Create project
 		Milestone1_Project__c project = Milestone1_Test_Utility.sampleProject('My Project');
 		
-		insert project;
+        if (Schema.sObjectType.Milestone1_Project__c.isCreateable()) {
+			insert project;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
 		
 		// Create parent milestones
 		List<Milestone1_Milestone__c> pList = new List<Milestone1_Milestone__c>();
@@ -537,11 +578,15 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
 			pList.add( Milestone1_Test_Utility.sampleMilestone(project.Id, null, 'My Parent Milestone ' + i) ); 
 		}
 
-		try{
-			insert pList;
-		}
-		catch(Exception e){
-			system.assert( false, e.getMessage() );
+        if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+            try{
+                insert pList;
+            }
+            catch(Exception e){
+                system.assert( false, e.getMessage() );
+            }
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
 		}
 
 		// Create milestones
@@ -551,19 +596,27 @@ public with sharing class Milestone1_Milestone_Trigger_Utility {
 			mList.add( Milestone1_Test_Utility.sampleMilestone(project.Id, pList.get(j).Id, 'My Milestone ' + j ) );
 		}
 		
-		try{
-			insert mList;
-		}
-		catch(Exception e){
-			system.assert( false, e.getMessage() );
+        if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+            try{
+                insert mList;
+            }
+            catch(Exception e){
+                system.assert( false, e.getMessage() );
+            }
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
 		}
 		
-		try{
-			update [SELECT Id FROM Milestone1_Milestone__c WHERE Id IN :mList];
-			system.assert(true, 'Milestones update successful');
-		}
-		catch(Exception e){
-			system.assert( false, e.getMessage() );
+        if (Schema.sObjectType.Milestone1_Milestone__c.isUpdateable()) {
+            try{
+                update [SELECT Id FROM Milestone1_Milestone__c WHERE Id IN :mList];
+                system.assert(true, 'Milestones update successful');
+            }
+            catch(Exception e){
+                system.assert( false, e.getMessage() );
+            }
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
 		}
 	}
 }

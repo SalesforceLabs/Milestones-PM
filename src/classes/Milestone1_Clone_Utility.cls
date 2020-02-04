@@ -30,6 +30,8 @@ global with sharing class Milestone1_Clone_Utility {
 
     global static Milestone1_Project__c cloneProject(Milestone1_Project__c rec){
         Milestone1_Project__c newRec = rec.clone(false);
+        Milestone1_Security_Utility.fieldCreateable(
+        	Milestone1_Project__c.ImportID__c.getDescribe());
         newRec.ImportID__c = rec.Id;
         return newRec;
     }
@@ -38,29 +40,42 @@ global with sharing class Milestone1_Clone_Utility {
         Map<String, Milestone1_Milestone__c> recMap = new Map<String, Milestone1_Milestone__c>();
         for(Milestone1_Milestone__c rec : recs){
             Milestone1_Milestone__c newRec = rec.clone(false);
+            Milestone1_Security_Utility.fieldCreateable(
+        		Milestone1_Milestone__c.ImportID__c.getDescribe());
             newRec.ImportID__c = rec.Id;
             recMap.put(rec.Id, newRec);
         }
         return recMap;
     }
     
-    global static List<Milestone1_Task__c> cloneTasksIntoList(List<Milestone1_Task__c> recs){
+    global static List<Milestone1_Task__c> cloneTasksIntoList(List<Milestone1_Task__c> recs) {
         List<Milestone1_Task__c> newRecs = new List<Milestone1_Task__c>();
-        for(Milestone1_Task__c rec : recs){
-            Milestone1_Task__c newRec = rec.clone(false);
-            newRecs.add(newRec);
-        }
+        
+        if (Schema.sObjectType.Milestone1_Task__c.isCreateable()) {
+            for(Milestone1_Task__c rec : recs) {
+                Milestone1_Task__c newRec = rec.clone(false);
+                newRecs.add(newRec);
+            }
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         return newRecs;
     }
     
-    global static Map<String, Milestone1_Task__c> cloneTasksIntoMap(List<Milestone1_Task__c> recs){
+    global static Map<String, Milestone1_Task__c> cloneTasksIntoMap(List<Milestone1_Task__c> recs) {
         Map<String, Milestone1_Task__c> recMap = new Map<String, Milestone1_Task__c>();
-        for(Milestone1_Task__c rec : recs){
-            Milestone1_Task__c newRec = rec.clone(false);
-            newRec.ImportID__c = rec.Id;
-            recMap.put(rec.Id, newRec);
-        }
+        
+        if (Schema.sObjectType.Milestone1_Task__c.isCreateable()) {
+            for(Milestone1_Task__c rec : recs){
+                Milestone1_Task__c newRec = rec.clone(false);
+                Milestone1_Security_Utility.fieldCreateable(
+                    Milestone1_Task__c.ImportID__c.getDescribe());
+                newRec.ImportID__c = rec.Id;
+                recMap.put(rec.Id, newRec);
+            }
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         return recMap;
     }
-
 }

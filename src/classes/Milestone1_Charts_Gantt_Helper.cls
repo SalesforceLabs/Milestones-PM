@@ -41,7 +41,12 @@ public with sharing class Milestone1_Charts_Gantt_Helper {
 	static testMethod void testController() {
 		
 		Milestone1_Project__c proj = Milestone1_Test_Utility.sampleProject('Basic Sample For Test' + DateTime.now().getTime());
-		insert proj;
+        
+        if (Schema.sObjectType.Milestone1_Project__c.isCreateable()) {
+			insert proj;
+         } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}   
 		
 		ApexPages.StandardController stc = new ApexPages.StandardController(proj);
         Milestone1_Charts_Gantt_Helper cont = new Milestone1_Charts_Gantt_Helper(stc);

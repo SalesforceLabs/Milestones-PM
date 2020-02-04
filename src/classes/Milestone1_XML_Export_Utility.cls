@@ -47,37 +47,47 @@ global with sharing class Milestone1_XML_Export_Utility {
     }
 
     global Milestone1_Project__c lookup(ID targetId) {
-        Milestone1_Project__c project = [Select m.Kickoff__c,m.Deadline__c, m.Total_Hours_Budget__c, m.Total_Expense_Budget__c, m.Status__c, m.Name, m.Id, m.Description__c From Milestone1_Project__c m where Id = :targetId limit 1];
-        /**
-        *Bug # 44.
-        *Modified Date:04-18-2012.
-        *Owner: Persistent.
-        *Comments:Importing the project with all the relationships intact.
-        */
-        //Retrieve all the Milestones
-        milestones = [Select m1.Id, m1.Name, m1.Alias__c,m1.Predecessor_Milestone__c, m1.Deadline__c, m1.Kickoff__c, m1.Complete__c,m1.Description__c, m1.Expense_Budget__c,  m1.Project__c, m1.Hours_Budget__c From Milestone1_Milestone__c m1 where Project__c = :project.Id and Parent_Milestone__c = null];
-        for(Milestone1_Milestone__c milestone : milestones)
-        {
-            milestonesMap.put(milestone.Id,milestone);
-        }
-        //Retrieve all the Sub-Milestones
-        subMilestones = [Select m1.Id, m1.Name,m1.Predecessor_Milestone__c,m1.Alias__c, m1.Deadline__c, m1.Kickoff__c, m1.Complete__c,m1.Description__c, m1.Expense_Budget__c,  m1.Project__c, m1.Hours_Budget__c, Parent_Milestone__c From Milestone1_Milestone__c m1 where Parent_Milestone__c in :milestonesMap.keySet()];
-        for(Milestone1_Milestone__c subMilestone : subMilestones)
-        {
-            subMilestonesMap.put(subMilestone.Id,subMilestone);
-        }
-        //Retrieve all the Milestone Tasks
-        milestonesTasks = [Select m.Id, m.Name, m.Description__c,m.Predecessor_Task__c, m.Estimated_Hours__c, m.Estimated_Expense__c, m.Start_Date__c, m.Due_Date__c, m.Priority__c, m.Project_Milestone__c, m.Complete__c From Milestone1_Task__c m where m.Project_Milestone__c in : milestonesMap.keySet()];
-        for(Milestone1_Task__c task : milestonesTasks)
-        {
-            milestonesTasksMap.put(task.Id,task);
-        }
-        //Retreive all the Sub Miltestone Tasks
-        submilestonesTasks = [Select m.Id, m.Name, m.Description__c,m.Predecessor_Task__c,m.Estimated_Hours__c, m.Estimated_Expense__c,m.Start_Date__c, m.Due_Date__c, m.Priority__c, m.Project_Milestone__c ,m.Complete__c From Milestone1_Task__c m where m.Project_Milestone__c in : subMilestonesMap.keySet()];
-        for(Milestone1_Task__c task : submilestonesTasks)
-        {
-            subMilestonesTasksMap.put(task.Id,task);
-        }
+        
+        Milestone1_Project__c project;
+        
+        if (Schema.sObjectType.Milestone1_Project__c.isAccessible() 
+            && Schema.sObjectType.Milestone1_Milestone__c.isAccessible()
+            && Schema.sObjectType.Milestone1_Task__c.isAccessible()) {       
+            
+            project = [Select m.Kickoff__c,m.Deadline__c, m.Total_Hours_Budget__c, m.Total_Expense_Budget__c, m.Status__c, m.Name, m.Id, m.Description__c From Milestone1_Project__c m where Id = :targetId limit 1];
+            /**
+            *Bug # 44.
+            *Modified Date:04-18-2012.
+            *Owner: Persistent.
+            *Comments:Importing the project with all the relationships intact.
+            */
+            //Retrieve all the Milestones
+            milestones = [Select m1.Id, m1.Name, m1.Alias__c,m1.Predecessor_Milestone__c, m1.Deadline__c, m1.Kickoff__c, m1.Complete__c,m1.Description__c, m1.Expense_Budget__c,  m1.Project__c, m1.Hours_Budget__c From Milestone1_Milestone__c m1 where Project__c = :project.Id and Parent_Milestone__c = null];
+            for(Milestone1_Milestone__c milestone : milestones)
+            {
+                milestonesMap.put(milestone.Id,milestone);
+            }
+            //Retrieve all the Sub-Milestones
+            subMilestones = [Select m1.Id, m1.Name,m1.Predecessor_Milestone__c,m1.Alias__c, m1.Deadline__c, m1.Kickoff__c, m1.Complete__c,m1.Description__c, m1.Expense_Budget__c,  m1.Project__c, m1.Hours_Budget__c, Parent_Milestone__c From Milestone1_Milestone__c m1 where Parent_Milestone__c in :milestonesMap.keySet()];
+            for(Milestone1_Milestone__c subMilestone : subMilestones)
+            {
+                subMilestonesMap.put(subMilestone.Id,subMilestone);
+            }
+            //Retrieve all the Milestone Tasks
+            milestonesTasks = [Select m.Id, m.Name, m.Description__c,m.Predecessor_Task__c, m.Estimated_Hours__c, m.Estimated_Expense__c, m.Start_Date__c, m.Due_Date__c, m.Priority__c, m.Project_Milestone__c, m.Complete__c From Milestone1_Task__c m where m.Project_Milestone__c in : milestonesMap.keySet()];
+            for(Milestone1_Task__c task : milestonesTasks)
+            {
+                milestonesTasksMap.put(task.Id,task);
+            }
+            //Retreive all the Sub Miltestone Tasks
+            submilestonesTasks = [Select m.Id, m.Name, m.Description__c,m.Predecessor_Task__c,m.Estimated_Hours__c, m.Estimated_Expense__c,m.Start_Date__c, m.Due_Date__c, m.Priority__c, m.Project_Milestone__c ,m.Complete__c From Milestone1_Task__c m where m.Project_Milestone__c in : subMilestonesMap.keySet()];
+            for(Milestone1_Task__c task : submilestonesTasks)
+            {
+                subMilestonesTasksMap.put(task.Id,task);
+            }
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
       
         return project;
     }

@@ -43,12 +43,21 @@ global with sharing class Milestone1_Import_Project_Controller {
     global Milestone1_Import_Project_Controller(ApexPages.StandardSetController ssc)
     {
         docOptions = new List<SelectOption>();
-        docs = [Select Id, Name from Document where Name like: 'EXPORT %' ];
         
-        for (Document doc : docs)
-        {
-            docOptions.add(new SelectOption(doc.Id,doc.Name));
-        }
+        if (Schema.sObjectType.Document.isAccessible()) {
+        	docs = [Select Id, Name from Document where Name like: 'EXPORT %' ];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+        
+        if (Schema.sObjectType.Document.isCreateable()) {
+        	for (Document doc : docs) {
+            	docOptions.add(new SelectOption(doc.Id,doc.Name));
+        	}
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}    
+            
         docsSize = docs.size();
     }
     
@@ -90,11 +99,18 @@ global with sharing class Milestone1_Import_Project_Controller {
         }
         return new ApexPages.StandardController(project).view();
     }
+   
     
-    
-    global String getDocumentXMLString()
-    {
-        List<Document> docs = [Select Id, Body, ContentType From Document Where Id = :docId limit 1];
+    global String getDocumentXMLString() {
+        
+        List<Document> docs = new List<Document>();
+        
+        if (Schema.sObjectType.Document.isCreateable()) {
+        	docs = [Select Id, Body, ContentType From Document Where Id = :docId limit 1];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}    
+            
         if(docs.size() != 0)
         {
             String xml = docs.get(0).body.toString();

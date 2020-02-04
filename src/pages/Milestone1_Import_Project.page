@@ -27,7 +27,15 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page standardController="Milestone1_Project__c" 
             recordSetVar="projects" extensions="Milestone1_Import_Project_Controller"  
-            tabStyle="Milestone1_Import_Project_Template__tab">       
+            tabStyle="Milestone1_Import_Project_Template__tab">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <apex:stylesheet value="{!URLFOR($Resource.SLDS203_MPM, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />    
+</head>
+<div class="milestone-pm">
     <style>
     .xmlImportError { color: red; font-weight: strong;}
     </style>
@@ -45,4 +53,6 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
             </apex:pageBlockSection>
         </apex:form>
      </apex:pageBlock>
+</div>
+</html>
 </apex:page>

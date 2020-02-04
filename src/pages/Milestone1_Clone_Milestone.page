@@ -27,6 +27,14 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <apex:page standardController="Milestone1_Milestone__c"
            extensions="Milestone1_Clone_Milestone_Controller">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <apex:stylesheet value="{!URLFOR($Resource.SLDS203_MPM, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />    
+</head>
+<div class="milestone-pm">
     <apex:pageMessages id="CloneMessages" />
     <apex:form >
         <apex:pageBlock title="{!$Label.Milestone1_MilestoneClone}">
@@ -57,5 +65,6 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
             
         </apex:pageBlock>
     </apex:form>
-
+</div>
+</html>
 </apex:page>

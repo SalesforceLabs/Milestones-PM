@@ -72,7 +72,8 @@ public with sharing class Milestone1_Move_Task_Extension {
         }
         
         //query task records
-        recs = [SELECT Id,
+        if (Schema.sObjectType.Milestone1_Task__c.isAccessible()) {
+            recs = [SELECT Id,
                        Name,
                        Project_Milestone__c,
                        Assigned_To__c,
@@ -97,6 +98,9 @@ public with sharing class Milestone1_Move_Task_Extension {
                 FROM Milestone1_Task__c
                 WHERE Id IN :recIds
                ];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         
         hasChildren = false;
         hasPredecessorTasks = false;
@@ -134,7 +138,12 @@ public with sharing class Milestone1_Move_Task_Extension {
 		}
 		
 		//future parent.
-        Milestone1_Milestone__c ms = [SELECT Id, Complete__c FROM Milestone1_Milestone__c WHERE Id = :dummyTask.Project_Milestone__c];
+        Milestone1_Milestone__c ms; 
+        if (Schema.sObjectType.Milestone1_Milestone__c.isAccessible()) {
+            ms = [SELECT Id, Complete__c FROM Milestone1_Milestone__c WHERE Id = :dummyTask.Project_Milestone__c];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
 
 		//if we move tasks with successors, and we move ALL of those tasks, we're fine.
 		//however, if we have successors, and we don't move all of them, data gets terrible.      	
@@ -171,17 +180,38 @@ public with sharing class Milestone1_Move_Task_Extension {
             newTask.Project_Milestone__c = ms.Id;
         }
         
-        insert newTasksMap.values();
-        
-        List<Milestone1_Log__c> logs = [SELECT Id, Project_Task__c FROM Milestone1_Log__c WHERE Project_Task__c IN :newTasksMap.keySet()];
-        if(logs.size() > 0){
-            for(Milestone1_Log__c log : logs){
-                log.Project_Task__c = newTasksMap.get(log.Project_Task__c).Id;
+        if (Schema.sObjectType.Milestone1_Task__c.isCreateable()) {
+        	insert newTasksMap.values();
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+
+        List<Milestone1_Log__c> logs = new List<Milestone1_Log__c>();
+        if (Schema.sObjectType.Milestone1_Log__c.isAccessible()) {
+            logs = [SELECT Id, Project_Task__c FROM Milestone1_Log__c WHERE Project_Task__c IN :newTasksMap.keySet()];
+
+            if(logs.size() > 0){
+                for(Milestone1_Log__c log : logs){
+                    log.Project_Task__c = newTasksMap.get(log.Project_Task__c).Id;
+                }
             }
-        }
-        update logs;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         
-        delete recs;
+        if (Schema.sObjectType.Milestone1_Log__c.isUpdateable()) {
+        	update logs;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+        
+        DescribeSObjectResult dsr = Milestone1_Task__c.SObjectType.getDescribe();
+        if (!dsr.isDeletable()) {
+        	throw new Milestone1_Exception('Insufficient Privileges');
+        } else {
+            delete recs;
+        }
+            
         if(taskId != null)
         {
             //If the Task ID is not null, then this is a single move and we can grab the first (and only) new task created

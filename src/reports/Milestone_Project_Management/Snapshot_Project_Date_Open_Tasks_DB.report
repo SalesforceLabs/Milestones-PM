@@ -35,6 +35,8 @@
     <rowLimit>25</rowLimit>
     <scope>organization</scope>
     <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
     <sortColumn>Project_Snapshot__c.Date__c</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>

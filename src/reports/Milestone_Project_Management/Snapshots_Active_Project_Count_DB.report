@@ -46,6 +46,8 @@
     <reportType>CustomEntity$Project_Snapshot__c</reportType>
     <scope>organization</scope>
     <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Project_Snapshot__c.Date__c</dateColumn>
         <interval>INTERVAL_LAST60</interval>

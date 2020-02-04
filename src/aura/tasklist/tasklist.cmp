@@ -1,0 +1,79 @@
+<!--
+* * File Name: tasklist.cmp
+* Description : Inner Component of mytasks.cmp
+* Copyright : salesforce.com, Inc. (c) 2016
+* * @author : Shae Selix
+* Modification Log =============================================================== 
+Ver Date Author Modification
+*  
+-->
+
+<aura:component >
+
+    <aura:attribute name="tasks" type="Milestone1_Task__c[]"/>
+    
+    <div class="slds-card slds-p-top--medium"
+         style="{!v.tasks.length > 0 ? null : 'display: none'}">
+        
+        <section class="slds-card__body">
+            <table class="slds-table slds-table--bordered slds-table--fixed-layout" role="grid">
+              <thead>
+                <tr class="slds-text-title--caps">
+                    
+                  <th scope="col">
+                    <div class="slds-truncate slds-text-heading--label" title="Task Name">Task Name</div>
+                  </th>
+                  <th scope="col">
+                    <div class="slds-truncate slds-text-heading--label" title="Due Date">Due Date</div>
+                  </th>
+                  <th scope="col">
+                    <div class="slds-truncate slds-text-heading--label" title="Milestone Name">Milestone Name</div>
+                  </th>
+                  <th scope="col">
+                    <div class="slds-truncate slds-text-heading--label" title="Project Name">Project Name</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+              <aura:iteration items="{!v.tasks}" var="task">
+                <tr>
+                  <th scope="row" data-label="Task Name">
+                    <div class="slds-truncate" title="{!task.Name}">
+                      <a aura:id="task" href="{!'/' + task.Id}">
+                        {!task.Name}
+                      </a>
+                    </div>
+                  </th>
+                  <td data-label="Due Date">
+                    <div class="slds-truncate" title="{!task.Due_Date__c}">
+                      {!task.Due_Date__c}
+                    </div>
+                  </td>
+                  <td data-label="Milestone Name">
+                    <div class="slds-truncate" title="{!task.Project_Milestone__r.Name}">
+                      <a aura:id="task" href="{!'/' + task.Project_Milestone__c}">
+                        {!task.Project_Milestone__r.Name}
+                      </a>
+                    </div>
+                  </td>
+                  <td data-label="Project Name">
+                    <div class="slds-truncate" title="{!task.Project_Milestone__r.Project__r.Name}">
+                      <a aura:id="task" href="{!'/' + task.Project_Milestone__r.Project__c}">
+                        {!task.Project_Milestone__r.Project__r.Name}
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </aura:iteration>
+              </tbody>
+            </table>
+            
+            <div id="list" class="row">
+                <aura:iteration items="{!v.tasks}" var="task">
+                    
+                </aura:iteration>
+            </div>
+        </section>
+    </div>
+
+</aura:component>

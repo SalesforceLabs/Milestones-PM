@@ -48,10 +48,10 @@
     <filter>
         <criteriaItems>
             <column>Milestone1_Project__c$Status__c</column>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>Active</value>
         </criteriaItems>
-        <language>en_US</language>
     </filter>
     <format>Tabular</format>
     <name>Project Snapshot</name>
@@ -62,6 +62,8 @@
     <reportType>Milestone1_Projects__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Milestone1_Project__c$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

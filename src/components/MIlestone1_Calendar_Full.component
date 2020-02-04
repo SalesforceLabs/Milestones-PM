@@ -53,15 +53,17 @@ Comments:Calendar-move between months take a while so Processing pop-up has been
 <caption>
 <div class="calHeader"><apex:commandLink action="{!prev}"
 rerender="theCalendar" status="loadingstatus" >
-
+<!--
 <img title="Previous Month" class="prevCalArrow"
-alt="Previous Month" src="/s.gif" />
+alt="Previous Month" src="/s.gif" />-->
+    <b>&lt;</b>
 
 </apex:commandLink>
 &nbsp;&nbsp;{!month.monthname}&nbsp;&nbsp;{!month.yearname}&nbsp;&nbsp;
 <apex:commandLink action="{!next}" rerender="theCalendar" status="loadingstatus">
-<img title="Next Month" class="nextCalArrow" alt="Next Month"
-src="/s.gif" />
+<!--<img title="Next Month" class="nextCalArrow" alt="Next Month"
+src="/s.gif" />-->
+    <b>&gt;</b>
 </apex:commandLink></div>
 </caption>
 <tbody>

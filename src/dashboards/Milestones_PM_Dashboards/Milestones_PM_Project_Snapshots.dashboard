@@ -4,9 +4,11 @@
     <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
     <backgroundStartColor>#FFFFFF</backgroundStartColor>
     <dashboardType>SpecifiedUser</dashboardType>
+    <isGridLayout>false</isGridLayout>
     <leftSection>
         <columnSize>Medium</columnSize>
         <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <chartAxisRange>Auto</chartAxisRange>
             <componentType>Column</componentType>
             <displayUnits>Auto</displayUnits>
@@ -14,6 +16,7 @@
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>false</enableHover>
             <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
             <report>Milestone_Project_Management/Snapshot_Project_Date_Open_Tasks_DB</report>
             <showPercentage>false</showPercentage>
@@ -26,6 +29,7 @@
     <middleSection>
         <columnSize>Medium</columnSize>
         <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <chartAxisRange>Auto</chartAxisRange>
             <componentType>Column</componentType>
             <displayUnits>Auto</displayUnits>
@@ -33,6 +37,7 @@
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>false</enableHover>
             <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
             <report>Milestone_Project_Management/Snapshots_Active_Project_Count_DB</report>
             <showPercentage>false</showPercentage>
@@ -45,6 +50,7 @@
     <rightSection>
         <columnSize>Medium</columnSize>
         <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <chartAxisRange>Auto</chartAxisRange>
             <componentType>Column</componentType>
             <displayUnits>Auto</displayUnits>
@@ -52,6 +58,7 @@
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>false</enableHover>
             <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
             <report>Milestone_Project_Management/Snapshots_Total_Estimated_Task_Hours</report>
             <showPercentage>false</showPercentage>
@@ -61,7 +68,7 @@
             <useReportChart>false</useReportChart>
         </components>
     </rightSection>
-    <runningUser>labs@labs.266</runningUser>
+    <runningUser>bmariani@milestonespm.com</runningUser>
     <textColor>#000000</textColor>
     <title>Milestones PM Project Snapshots</title>
     <titleColor>#000000</titleColor>

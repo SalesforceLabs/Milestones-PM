@@ -41,16 +41,19 @@ global with sharing class Milestone1_Export_Project_Controller {
     {
     	errorMessage = null;
     	
-        rec = [SELECT Id,
+        if (Schema.sObjectType.Milestone1_Project__c.isAccessible()) {
+        	rec = [SELECT Id,
                       Name, 
                       Description__c 
                FROM Milestone1_Project__c
                WHERE Id = :stc.getId()
-              ];
+            ];
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}    
     }
     
-    global void createExportXML()
-    {
+    global void createExportXML() {
         Milestone1_XML_Export_Utility xmlUtil = new Milestone1_XML_Export_Utility();
         String xmlString = xmlUtil.buildProjectXmlString(rec.Id);
         
@@ -90,12 +93,28 @@ global with sharing class Milestone1_Export_Project_Controller {
     
     global Document saveToDocument(String name, String xml, String description) {
         Document d = new Document();
-        d.body = Blob.valueOf(xml);
+        Milestone1_Security_Utility.fieldCreateable(
+            Document.Body.getDescribe());
+        d.Body = Blob.valueOf(xml);
+        Milestone1_Security_Utility.fieldCreateable(
+            Document.ContentType.getDescribe());
         d.ContentType = 'text/xml';
-        d.name = 'Export - ' + name + ' - ' + System.now() + '.xml';
+        Milestone1_Security_Utility.fieldCreateable(
+            Document.Name.getDescribe());
+        d.Name = 'Export - ' + name + ' - ' + System.now() + '.xml';
+        Milestone1_Security_Utility.fieldCreateable(
+            Document.Description.getDescribe());
         d.Description = description;
+        Milestone1_Security_Utility.fieldCreateable(
+            Document.FolderId.getDescribe());
         d.FolderId = UserInfo.getUserId();
-        insert d;
+        
+        if (Schema.sObjectType.Document.isCreateable()) {
+        	insert d;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+        
         return d;
   }
 }

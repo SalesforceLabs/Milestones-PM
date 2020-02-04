@@ -52,8 +52,13 @@ public with sharing class Milestone1_General_Utility
     * @createDate 	January 19, 2011
     */
     public static Boolean isSysAdmin() {
-    	Profile pObj = [SELECT PermissionsModifyAllData, Id FROM Profile WHERE Id=:Userinfo.getProfileId() limit 1];
-		return pObj.PermissionsModifyAllData;
+        if (Schema.sObjectType.Profile.isAccessible()) {
+        	Profile pObj = [SELECT PermissionsModifyAllData, Id FROM Profile WHERE Id=:Userinfo.getProfileId() limit 1];
+        	return pObj.PermissionsModifyAllData;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+            return false;
+		}    
     }
     
     public static Integer truncateStringAtSpace(String inputString)
@@ -67,5 +72,6 @@ public with sharing class Milestone1_General_Utility
         String example = 'NEW DESCRIPTION 1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZ THIS IS LONG DESCRIPTION GREATER THAN 80 CHARACTER LIMIT FOR NAME TEST TRUNCATING';
         String nameString = Milestone1_General_Utility.processTaskName(example);
         system.AssertEquals('NEW DESCRIPTION 1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZ THIS IS LONG...',nameString);
-    } 
+    }
+    
 }

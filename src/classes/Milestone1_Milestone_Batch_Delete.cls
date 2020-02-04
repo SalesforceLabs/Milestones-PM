@@ -48,7 +48,16 @@ global with sharing class Milestone1_Milestone_Batch_Delete implements Database.
 	}
 
 	global void execute(Database.BatchableContext BC, List<sObject> milestoneScope){
-		delete milestoneScope;
+        
+        if (milestoneScope.size() > 0) {
+            DescribeSObjectResult dsr = milestoneScope[0].getSObjectType().getDescribe();
+            if (!dsr.isDeletable()) {
+        		throw new Milestone1_Exception('Insufficient Privileges');
+            } else {
+            	delete milestoneScope;
+            }
+        }
+        
 	}
 
 	global void finish(Database.BatchableContext BC){}
@@ -59,13 +68,21 @@ global with sharing class Milestone1_Milestone_Batch_Delete implements Database.
 		Milestone1_Project__c         project = Milestone1_Test_Utility.sampleProject('My Test Project'); 
 		List<Milestone1_Milestone__c> mList   = new List<Milestone1_Milestone__c>();
 		
-		insert project;
+        if (Schema.sObjectType.Milestone1_Project__c.isCreateable()) {
+			insert project;
+         } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}   
 		
 		for(Integer i = 0; i < 200; i++){
 			mList.add( Milestone1_Test_Utility.sampleMilestone(project.Id, null, 'My Test Milestone ' + i) );
 		}
 		
-		insert mList;
+        if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+			insert mList;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
 		
 		Test.StartTest();
 		Database.executeBatch( new Milestone1_Milestone_Batch_Delete(mList) );

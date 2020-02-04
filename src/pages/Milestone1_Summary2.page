@@ -25,17 +25,38 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
 OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
-<apex:page controller="Milestone1_Summary2" action="{!initialize}">
+<apex:page controller="Milestone1_Summary2" action="{!initialize}" applyBodyTag="false" docType="html-5.0">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <apex:stylesheet value="{!URLFOR($Resource.SLDS203_MPM, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />    
+</head>
+<div class="milestone-pm">
 
 <apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-1.4.4.min.js')}"/>
 <apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'date.js')}"/>
 <apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-ui-1.8.7.custom.min.js')}"/>
 <apex:includeScript value="{!URLFOR($Resource.Milestone1_Charts, 'jquery.ganttView.js')}"/>
+<apex:includeLightning />
 <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'jquery-ui-1.8.4.css')}"/>
 <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'reset.css')}"/>
 <apex:stylesheet value="{!URLFOR($Resource.Milestone1_Charts, 'jquery.ganttView.css')}"/>
 
 <style type="text/css">
+body,td {
+    color:#333;
+    margin:0;
+}
+body {
+    background-repeat:repeat-x;
+    background-position:left top;
+    font-size:75%;
+    font-family:Arial,Helvetica,sans-serif;
+    background-color:#fff;
+}
 .quickSearchText { 
     background: none repeat scroll 0 0 white;
     border: 2px solid #C3E5F7;
@@ -51,7 +72,9 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 </style>
 
 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+
 <script type="text/javascript">
+    
 var data;    
 google.load("visualization", "1", {packages:["corechart"]});
 
@@ -92,7 +115,7 @@ jQuery(document).ready(function() {
 </apex:outputPanel>
 
 <apex:outputPanel rendered="{!isDeployed == false}">
-	<h1>Please deploy Milestones PM first.  See Getting Started for more information.</h1>
+    <h1>Please deploy Milestones PM first.  See Getting Started for more information.</h1>
 </apex:outputPanel>
 
 
@@ -147,28 +170,21 @@ jQuery(document).ready(function() {
 
 </apex:outputPanel>
 
-<apex:outputPanel id="mySummary" >
+<apex:outputPanel >
+  <apex:pageBlock title="My Tasks Quickview" >
+  <div id="lightning" />
 
-
-<apex:pageBlock title="{!$Label.Milestone1_MyIncompleteTasks}" rendered="{!hasSettings}">
-
-    <apex:pageBlockButtons location="top">
-                <apex:commandButton action="{!incompleteTasksByProject}" value="{!$Label.Milestone1_IncompleteTasksByProjects}" >
-                    </apex:commandButton>                 
-                    &nbsp;
-                    <apex:commandButton action="{!incompleteTasksByPriority}" value="{!$Label.Milestone1_IncompleteTasksByPriority}" >
-                    </apex:commandButton>
-                                        &nbsp;
-                    <apex:commandButton action="{!summaryMyLateTasks}" value="{!$Label.Milestone1_LateTasks}" >
-                    </apex:commandButton> 
-                                        &nbsp;
-                    <apex:commandButton action="{!summaryMyBlockedTasks}" value="{!$Label.Milestone1_BlockedTasks}" >
-                    </apex:commandButton> 
-                    
-                     
-    </apex:pageBlockButtons>
-</apex:pageBlock>
-
+    <script>
+        $Lightning.use("c:vfApp", function() {
+          $Lightning.createComponent("c:mytasks",
+          {  },
+          "lightning",
+          function(cmp) {
+            // do some stuff
+          });
+        });
+    </script>
+    </apex:pageBlock>
 </apex:outputPanel>
 
 <apex:outputPanel id="projectSummary" rendered="{!projects.size != 0}" layout="none">
@@ -183,89 +199,70 @@ jQuery(document).ready(function() {
 <apex:repeat value="{!projects}" var="currentProject" id="projectList" >
 
 <apex:pageBlock title="{!currentProject.name}">
-	<apex:pageBlockButtons location="top">
+    <apex:pageBlockButtons location="top">
          <apex:commandLink action="{!view}" value="{!$Label.Milestone1_ProjectDetail}" >
              <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
              </apex:commandLink>                 
-             &nbsp;
-             <apex:commandLink action="{!viewMilestoneOpenTasks}" value="{!$Label.Milestone1_MilestonesOpenTasks}" >
-                 <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
-             </apex:commandLink> 
-             &nbsp;
-             <apex:commandLink action="{!viewOpenTasks}" value="{!$Label.Milestone1_AllOpenTasks}" >
-                 <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
-             </apex:commandLink> 
-             &nbsp;
-             <apex:commandLink action="{!viewMyTasks}" value="{!$Label.Milestone1_MyTasks}" >
-                 <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
-             </apex:commandLink>      
-             &nbsp;
-             <apex:commandLink action="{!viewBlockedTasks}" value="{!$Label.Milestone1_Blocked_Tasks}" >
-                 <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
-             </apex:commandLink>    
-             &nbsp;  
-             <apex:commandLink action="{!viewOverdueTasks}" value="{!$Label.Milestone1_OverdueTasks}" >
-                 <apex:param name="target" value="{!currentProject.id}" assignTo="{!targetProject}" />
-             </apex:commandLink>                      
+             &nbsp;                      
      </apex:pageBlockButtons>
 
     <table class="detailList" cellspacing="0" cellpadding="0" border="0">
     <tr><td width="25%">
         <div id="chart_div0_{!currentProject.id}"></div>
     </td><td width="25%">    
-	    <div id="chart_div1_{!currentProject.id}"></div>
-	</td><td width="25%">    
-	    <div id="chart_div2_{!currentProject.id}"></div>
-	</td><td width="25%">     
-	  <script>
-	      function drawChart_{!currentProject.id}() {
-			data = new google.visualization.DataTable();
-	        data.addColumn('string', 'Task Status');
-	        data.addColumn('number', 'No. of Tasks');
-	        data.addRows(2);
-	        data.setValue(0, 0, 'Open Tasks');
-	        data.setValue(0, 1, <apex:outputText value="{!currentProject.Total_Open_Task_Count__c}" />);
-	        data.setValue(1, 0, 'Complete Tasks');
-	        data.setValue(1, 1, <apex:outputText value="{!currentProject.Total_Complete_Task_Count__c}" />);
-	        var chart = new google.visualization.PieChart(document.getElementById('chart_div0_{!currentProject.id}'));
-	        chart.draw(data, {width: 400, height: 240, title: 'Task Analysis',pieSliceText:'value', colors:['eeaa66','2299bb'], chartArea:{left:30,top:30,width:"90%",height:"70%"}});
-	    
-	        data = new google.visualization.DataTable();
-	        data.addColumn('string', 'Task Status');
-	        data.addColumn('number', 'Open');
-	        data.addColumn('number', 'Late');
-	        data.addColumn('number', 'Blocked');
-	        data.addRows(1);
-	        data.setValue(0, 0, 'No. of Tasks');
-	        data.setValue(0, 1, <apex:outputText value="{!currentProject.Total_Open_Task_Count__c}" />);
-	        data.setValue(0, 2, <apex:outputText value="{!currentProject.Total_Late_Task_Count__c}" />);
-	        data.setValue(0, 3, <apex:outputText value="{!currentProject.Total_Blocked_Task_Count__c}" />);
-	        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div1_{!currentProject.id}'));
-	        chart.draw(data, {width: 400, height: 240, title: 'Open Task Analysis', colors:['eeaa66','2299bb','ee3322'], chartArea:{left:30,top:30,width:"70%",height:"80%"}});
-	    
-	        // we need a table to act as the datasource for the chart
-	        data = new google.visualization.DataTable();
-	        data.addColumn('string', 'Task Status');
-	        data.addColumn('number', 'Budget');
-	        data.addColumn('number', 'Planned');
-	        data.addColumn('number', 'Estimated');
-	        data.addColumn('number', 'Incurred');
-	        data.addRows(1);
-	        data.setValue(0, 0, 'Hours');
-	        data.setValue(0, 1, <apex:outputText value="{!currentProject.Total_Hours_Budget__c}" />);
-	        data.setValue(0, 2, <apex:outputText value="{!currentProject.Total_Hours_Budget_from_Milestones__c}" />);
-	        data.setValue(0, 3, <apex:outputText value="{!currentProject.Total_Hours_Estimate__c}" />);
-	        data.setValue(0, 4, <apex:outputText value="{!currentProject.Total_Hours_Incurred__c}" />);        
-	        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2_{!currentProject.id}'));
-	        chart.draw(data, {width: 400, height: 240, title: 'Task Time Budget Analysis', colors:['eeaa66','2299bb','ee3322','666666'], chartArea:{left:30,top:30,width:"70%",height:"80%"}});
-	     }
-	     
-	     google.setOnLoadCallback(drawChart_{!currentProject.id});
-		</script>  
-	</td></tr>
-	<tr><td colspan="4">
-		<c:Milestone1_Charts_GanttComponent readonly="true" target="{!currentProject.Id}" />
-	</td></tr>
+        <div id="chart_div1_{!currentProject.id}"></div>
+    </td><td width="25%">    
+        <div id="chart_div2_{!currentProject.id}"></div>
+    </td><td width="25%">     
+      <script>
+          function drawChart_{!currentProject.id}() {
+            data = new google.visualization.DataTable();
+            data.addColumn('string', 'Task Status');
+            data.addColumn('number', 'No. of Tasks');
+            data.addRows(2);
+            data.setValue(0, 0, 'Open Tasks');
+            data.setValue(0, 1, <apex:outputText value="{!currentProject.Total_Open_Task_Count__c}" />);
+            data.setValue(1, 0, 'Complete Tasks');
+            data.setValue(1, 1, <apex:outputText value="{!currentProject.Total_Complete_Task_Count__c}" />);
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div0_{!currentProject.id}'));
+            chart.draw(data, {width: 400, height: 240, title: 'Task Analysis',pieSliceText:'value', colors:['eeaa66','2299bb'], chartArea:{left:30,top:30,width:"90%",height:"70%"}});
+        
+            data = new google.visualization.DataTable();
+            data.addColumn('string', 'Task Status');
+            data.addColumn('number', 'Open');
+            data.addColumn('number', 'Late');
+            data.addColumn('number', 'Blocked');
+            data.addRows(1);
+            data.setValue(0, 0, 'No. of Tasks');
+            data.setValue(0, 1, <apex:outputText value="{!currentProject.Total_Open_Task_Count__c}" />);
+            data.setValue(0, 2, <apex:outputText value="{!currentProject.Total_Late_Task_Count__c}" />);
+            data.setValue(0, 3, <apex:outputText value="{!currentProject.Total_Blocked_Task_Count__c}" />);
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div1_{!currentProject.id}'));
+            chart.draw(data, {width: 400, height: 240, title: 'Open Task Analysis', colors:['eeaa66','2299bb','ee3322'], chartArea:{left:30,top:30,width:"70%",height:"80%"}});
+        
+            // we need a table to act as the datasource for the chart
+            data = new google.visualization.DataTable();
+            data.addColumn('string', 'Task Status');
+            data.addColumn('number', 'Budget');
+            data.addColumn('number', 'Planned');
+            data.addColumn('number', 'Estimated');
+            data.addColumn('number', 'Incurred');
+            data.addRows(1);
+            data.setValue(0, 0, 'Hours');
+            data.setValue(0, 1, <apex:outputText value="{!currentProject.Total_Hours_Budget__c}" />);
+            data.setValue(0, 2, <apex:outputText value="{!currentProject.Total_Hours_Budget_from_Milestones__c}" />);
+            data.setValue(0, 3, <apex:outputText value="{!currentProject.Total_Hours_Estimate__c}" />);
+            data.setValue(0, 4, <apex:outputText value="{!currentProject.Total_Hours_Incurred__c}" />);        
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2_{!currentProject.id}'));
+            chart.draw(data, {width: 400, height: 240, title: 'Task Time Budget Analysis', colors:['eeaa66','2299bb','ee3322','666666'], chartArea:{left:30,top:30,width:"70%",height:"80%"}});
+         }
+         
+         google.setOnLoadCallback(drawChart_{!currentProject.id});
+        </script>  
+    </td></tr>
+    <tr><td colspan="4">
+        <c:Milestone1_Charts_GanttComponent readonly="true" target="{!currentProject.Id}" />
+    </td></tr>
     </table>
 </apex:pageBlock>
 <br/>
@@ -276,4 +273,7 @@ jQuery(document).ready(function() {
 </apex:outputPanel>
 </apex:form>
 
+</div>
+    
+</html>
 </apex:page>

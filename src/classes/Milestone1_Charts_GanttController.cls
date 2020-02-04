@@ -116,8 +116,11 @@ public with sharing class Milestone1_Charts_GanttController {
     */
     private void retrieveData(){
     	
-    	String query = 'Select '+idFieldName+','+startDateFieldName+','+endDateFieldName+','+nameFieldName+','+completedFieldName+
-    				   ' from '+objectType+ ' where '+filterFieldName+'=\''+mytarget+'\' order by Name';
+    	String query = 'SELECT ' + String.valueOf(idFieldName) + ',' + String.valueOf(startDateFieldName) + ','
+            + String.valueOf(endDateFieldName) + ',' + String.valueOf(nameFieldName) + ',' + String.valueOf(completedFieldName) +
+    		' FROM ' + String.valueOf(objectType) + ' WHERE ' + String.valueOf(filterFieldName) + '=\'' + String.valueOf(mytarget) 
+            + '\' ORDER BY Name';
+        
     	sobjectList = Database.query(query);
     }
     
@@ -144,7 +147,9 @@ public with sharing class Milestone1_Charts_GanttController {
             }
             completed = Boolean.valueOf(current.get(completedFieldName));
             name = escapeDoubleQuotes(String.valueOf(current.get(nameFieldName)));
+            name = name.replaceAll('[^a-zA-Z0-9]', ' ');
             id = String.valueOf(current.get(idFieldName));
+            id = id.replaceAll('[^a-zA-Z0-9]', ' ');
             if (addComma) { ret += ','; }
             
             String color=COLOR_CURRENT;
@@ -178,10 +183,20 @@ public with sharing class Milestone1_Charts_GanttController {
     }
     
     static testMethod void TestProjectJson() {
-        Milestone1_Project__c p1 = Milestone1_Test_Utility.sampleProjectActive('Json');
-        insert p1;
-        Milestone1_Milestone__c m1 = Milestone1_Test_Utility.sampleMilestone(p1);
-        insert m1;
+        
+        Milestone1_Project__c p1 = Milestone1_Test_Utility.sampleProjectActive('Json');      
+        if (Schema.sObjectType.Milestone1_Project__c.isCreateable()) {      
+        	insert p1;
+        } else {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
+        
+        Milestone1_Milestone__c m1 = Milestone1_Test_Utility.sampleMilestone(p1);      
+        if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+        	insert m1;
+        } else {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         
         Milestone1_Charts_GanttController cls = new Milestone1_Charts_GanttController();
         cls.mytarget = p1.id;
@@ -196,15 +211,27 @@ public with sharing class Milestone1_Charts_GanttController {
     	System.assert(ret.indexOf(testDateString) > -1, 'expected: ' + testDateString + ': in: ' + ret);
     
         m1.Complete__c = true;
-        update m1;
+        if (Schema.sObjectType.Milestone1_Milestone__c.isUpdateable()) {
+        	update m1;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
     
         Milestone1_Milestone__c m2 = Milestone1_Test_Utility.sampleMilestone(p1);
         m2.Deadline__c = Date.today()-1;
-        insert m2;    
+        if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+        	insert m2;    
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         
         Milestone1_Milestone__c m3 = Milestone1_Test_Utility.sampleMilestone(p1);
-        m3.Kickoff__c = Date.today()+1;
-        insert m3;            
+        m3.Kickoff__c = Date.today()+1;     
+        if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+        	insert m3; 
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
     
         ret = cls.getProjectGanttJson();
         
@@ -215,15 +242,27 @@ public with sharing class Milestone1_Charts_GanttController {
     }
     
     static testMethod void TestMilestoneJson() {
-    	Milestone1_Project__c p1 = Milestone1_Test_Utility.sampleProjectActive('Json');
-        insert p1;
+    	Milestone1_Project__c p1 = Milestone1_Test_Utility.sampleProjectActive('Json');      
+        if (Schema.sObjectType.Milestone1_Project__c.isCreateable()) {
+        	insert p1;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         
       	Milestone1_Milestone__c m2 = Milestone1_Test_Utility.sampleMilestone(p1);
         m2.Deadline__c = Date.today()-1;
-        insert m2;   
+        if (Schema.sObjectType.Milestone1_Milestone__c.isCreateable()) {
+        	insert m2;   
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
     	
     	Milestone1_Task__c t1 = Milestone1_Test_Utility.sampleTask(m2.Id);
-        insert t1;
+        if (Schema.sObjectType.Milestone1_Task__c.isCreateable()) {
+        	insert t1;
+        } else {
+			ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error: User is unauthorized to act on this object/field.'));
+		}
         
         Milestone1_Charts_GanttController cls = new Milestone1_Charts_GanttController();
         cls.mytarget = m2.Id;

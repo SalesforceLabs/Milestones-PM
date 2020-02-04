@@ -28,7 +28,14 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
 <apex:page standardController="Milestone1_Project__c"
            extensions="Milestone1_Export_Project_Controller"
            action="{!createExportXML}">
-           
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <apex:stylesheet value="{!URLFOR($Resource.SLDS203_MPM, '/assets/styles/salesforce-lightning-design-system-vf.min.css')}" />    
+</head>
+<div class="milestone-pm">           
     <apex:pageBlock title="{!$Label.Milestone1_ProjectXML}">
         <table>
             <apex:outputPanel layout="none" rendered="{!NOT(ISNULL(errorMessage))}">
@@ -60,4 +67,6 @@ OF THE POSSIBILITY OF SUCH DAMAGE.
             </tr>
         </table> 
     </apex:pageBlock>
+</div>
+</html>
 </apex:page>

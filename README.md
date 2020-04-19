@@ -21,9 +21,15 @@ Contributors include:
 * Ganesh Mathrubootham, gmathrubootham@salesforce.com
 * Ron Hess, https://github.com/vnehess
 
-
-
 Get to know Milestones PM. https://github.com/ForceDotComLabs/Milestones-PM/wiki/HOW-TO-Get-to-Know-Milestones-PM
+
+
+Deployment
+----
+
+[![Deploy](https://deploy-to-sfdx.com/dist/assets/images/DeployToSFDX.svg)](https://deploy-to-sfdx.com)
+
+
 
 
 

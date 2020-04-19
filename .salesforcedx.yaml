@@ -1,0 +1,5 @@
+scratch-org-def: config/project-scratch-def.json
+assign-permset: false
+run-apex-tests: true
+delete-scratch-org: false
+show-scratch-org-url: true

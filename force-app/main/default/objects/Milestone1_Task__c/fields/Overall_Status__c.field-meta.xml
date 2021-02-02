@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Overall_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>if ( Complete__c == true, &apos;Complete&apos;,
+  if ( and( Days_Late_Formula__c &gt; 0,  Blocked__c  ),
+    if(Len( Text(Task_Stage__c))&gt;0 , &apos;Late &amp; Blocked &apos; &amp; Text(Task_Stage__c), &apos;Late &amp; Blocked&apos;),
+    if (Days_Late_Formula__c &gt; 0,  
+      if(Len( Text(Task_Stage__c))&gt;0, &apos;Late &apos; &amp; text(Task_Stage__c), &apos;Late&apos;),
+      if(Blocked__c == true, 
+        if(Len( Text(Task_Stage__c))&gt;0, &apos;Blocked &apos; &amp; text(Task_Stage__c), &apos;Blocked&apos;), 
+        if(Len( Text(Task_Stage__c))&gt;0, &apos;Open &apos; &amp; Text(Task_Stage__c), &apos;Open&apos;) 
+))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Calculated field indicating if the task is complete, open, late, blocked or late and blocked.</inlineHelpText>
+    <label>Overall Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

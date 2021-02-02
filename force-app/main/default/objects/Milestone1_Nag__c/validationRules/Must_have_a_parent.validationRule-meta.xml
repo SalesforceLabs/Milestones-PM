@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Must_have_a_parent</fullName>
+    <active>true</active>
+    <errorConditionFormula>Project__c == null &amp;&amp; Project_Milestone__c == null &amp;&amp; Project_Task__c == null</errorConditionFormula>
+    <errorMessage>There must be one parent record selected.</errorMessage>
+</ValidationRule>

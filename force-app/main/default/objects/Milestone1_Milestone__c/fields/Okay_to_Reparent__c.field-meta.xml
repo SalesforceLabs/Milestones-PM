@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Okay_to_Reparent__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>A hidden field used to prevent users from manually moving Milestones to different Projects</description>
+    <externalId>false</externalId>
+    <label>Okay to Reparent</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

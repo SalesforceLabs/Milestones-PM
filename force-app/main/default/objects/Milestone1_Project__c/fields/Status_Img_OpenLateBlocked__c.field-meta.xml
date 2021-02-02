@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Img_OpenLateBlocked__c</fullName>
+    <externalId>false</externalId>
+    <formula>IMAGE( Status_TasksOpenBlockedLate__c , &quot;Open, Late &amp; Blocked Tasks.&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Open, Late &amp; Blocked Tasks (chart) - Dep</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

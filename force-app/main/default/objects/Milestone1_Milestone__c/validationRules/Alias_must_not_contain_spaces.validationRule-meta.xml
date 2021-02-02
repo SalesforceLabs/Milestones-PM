@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Alias_must_not_contain_spaces</fullName>
+    <active>true</active>
+    <errorConditionFormula>CONTAINS(TRIM(Alias__c ),&quot; &quot;)</errorConditionFormula>
+    <errorDisplayField>Alias__c</errorDisplayField>
+    <errorMessage>The Milestone Alias cannot contain spaces.</errorMessage>
+</ValidationRule>

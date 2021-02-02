@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deadline_within_project_boundaries</fullName>
+    <active>false</active>
+    <errorConditionFormula>if ( and (Deadline__c &lt;&gt; null, Project__r.Deadline__c &lt;&gt;  null, Deadline__c &gt; Project__r.Deadline__c) , true, false)</errorConditionFormula>
+    <errorDisplayField>Deadline__c</errorDisplayField>
+    <errorMessage>Deadline must be less than or equal to the project deadline.</errorMessage>
+</ValidationRule>

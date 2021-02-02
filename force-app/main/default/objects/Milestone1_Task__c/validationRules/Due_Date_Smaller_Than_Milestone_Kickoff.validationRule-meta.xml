@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Due_Date_Smaller_Than_Milestone_Kickoff</fullName>
+    <active>false</active>
+    <errorConditionFormula>Due_Date__c &lt;  Project_Milestone__r.Kickoff__c</errorConditionFormula>
+    <errorDisplayField>Due_Date__c</errorDisplayField>
+    <errorMessage>Due Date should be greater than Milestone Kickoff Date</errorMessage>
+</ValidationRule>

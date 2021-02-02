@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_Follow_Complete_Task__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>When a Task is marked &apos;Complete&apos;, Automatically unsubscribe the Assigned User from the Chatter Feed for the Task.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>When a Task is marked &apos;Complete&apos;, Automatically unsubscribe the Assigned User from the Chatter Feed for the Task.</inlineHelpText>
+    <label>Auto UnFollow A Complete Task</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

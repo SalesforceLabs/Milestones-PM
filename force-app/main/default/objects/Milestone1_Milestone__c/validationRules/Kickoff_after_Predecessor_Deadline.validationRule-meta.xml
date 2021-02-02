@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Kickoff_after_Predecessor_Deadline</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISNULL(Kickoff__c)) &amp;&amp; NOT(ISNULL(Predecessor_Milestone__r.Deadline__c)) &amp;&amp; Kickoff__c &lt; Predecessor_Milestone__r.Deadline__c</errorConditionFormula>
+    <errorDisplayField>Kickoff__c</errorDisplayField>
+    <errorMessage>Milestone Kickoff must not be earlier than its Predecessor&apos;s Deadline.</errorMessage>
+</ValidationRule>

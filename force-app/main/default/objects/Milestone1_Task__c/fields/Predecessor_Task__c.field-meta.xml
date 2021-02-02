@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Predecessor_Task__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>The predecessor task for this task if applicable.</inlineHelpText>
+    <label>Predecessor Task</label>
+    <lookupFilter>
+        <active>true</active>
+        <developerName>nf_01IU00000000WpxMAE_00NU0000000IK2lMAG</developerName>
+        <filterItems>
+            <field>Milestone1_Task__c.Project_Milestone__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Project_Milestone__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Milestone1_Task__c</referenceTo>
+    <relationshipLabel>Successor Tasks</relationshipLabel>
+    <relationshipName>Successor_Tasks</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

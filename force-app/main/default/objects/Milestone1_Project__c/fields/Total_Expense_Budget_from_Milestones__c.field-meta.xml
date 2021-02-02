@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Expense_Budget_from_Milestones__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Calculated from the milestone expense budgets assigned to this project.</inlineHelpText>
+    <label>Total Expense Budget from Milestones</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

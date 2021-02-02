@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validation_Time_Hours_Less_Than_24_Hours</fullName>
+    <active>true</active>
+    <description>The time entered cannot be greater than one full day (24 hours).</description>
+    <errorConditionFormula>Hours__c  &gt; 24</errorConditionFormula>
+    <errorDisplayField>Hours__c</errorDisplayField>
+    <errorMessage>The hours cannot exceed 24.</errorMessage>
+</ValidationRule>

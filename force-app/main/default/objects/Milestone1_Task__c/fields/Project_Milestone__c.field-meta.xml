@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Project_Milestone__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>The milestone that this task is assigned to.</inlineHelpText>
+    <label>Milestone</label>
+    <referenceTo>Milestone1_Milestone__c</referenceTo>
+    <relationshipLabel>Tasks</relationshipLabel>
+    <relationshipName>Project_Tasks</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

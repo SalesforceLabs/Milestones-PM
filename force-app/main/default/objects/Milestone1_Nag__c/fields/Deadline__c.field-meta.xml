@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deadline__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Project__c &lt;&gt; null, Project__r.Deadline__c,
+IF( Project_Milestone__c &lt;&gt; null, Project_Milestone__r.Deadline__c,
+IF( Project_Task__c &lt;&gt; null, Project_Task__r.Due_Date__c,Today())))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Deadline</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

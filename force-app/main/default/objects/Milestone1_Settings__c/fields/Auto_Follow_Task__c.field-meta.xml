@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_Follow_Task__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>When a Task is Assigned to a User, automatically subscribe the user to follow the task.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>When a Task is Assigned to a User, automatically subscribe the user to follow the task.</inlineHelpText>
+    <label>Auto Follow A Task</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

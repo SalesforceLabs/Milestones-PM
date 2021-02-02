@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Milestones</fullName>
+    <columns>Project__c</columns>
+    <columns>NAME</columns>
+    <columns>Deadline__c</columns>
+    <columns>Total_Open_Tasks__c</columns>
+    <columns>Total_Late_Tasks__c</columns>
+    <columns>Total_Blocked_Tasks__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Parent_Milestone__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>My Milestones</label>
+</ListView>

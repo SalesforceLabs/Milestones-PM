@@ -1,0 +1,30 @@
+.mask{
+   position: relative;
+   overflow: hidden;
+   margin: 0px auto;
+   width: 100%;
+}
+.header{
+   float: left;
+   width: 100%;
+   padding: 2px;
+}
+.colleft{
+   position: relative;
+   width: 100%;
+   right: 50%;
+}
+.col1{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 48%;
+   left: 101%;
+}
+.col2{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 48%;
+   left: 3%;
+}

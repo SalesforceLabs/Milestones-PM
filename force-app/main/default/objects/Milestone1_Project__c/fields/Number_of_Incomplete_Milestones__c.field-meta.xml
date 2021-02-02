@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_Incomplete_Milestones__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Calculated sum of the number of incomplete milestones assigned to this project. This includes sub-milestones in the project.</inlineHelpText>
+    <label>Number of Incomplete Milestones</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

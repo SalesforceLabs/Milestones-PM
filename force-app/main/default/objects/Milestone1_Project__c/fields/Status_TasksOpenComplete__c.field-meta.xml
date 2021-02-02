@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_TasksOpenComplete__c</fullName>
+    <externalId>false</externalId>
+    <formula>&quot;http://chart.apis.google.com/chart?&quot;&amp;
+&quot;chtt=Task+Analysis&amp;&quot;&amp;
+&quot;chco=eeaa66,2299bb&amp;chs=300x225&amp;cht=p&amp;chd=t:&quot;&amp;Text(Total_Open_Task_Count__c)&amp;&quot;,&quot;&amp;Text(Total_Complete_Task_Count__c)&amp;&quot;&amp;chdl=&quot;&amp;
+&quot;Open%20Tasks (&quot; &amp; TEXT (Total_Open_Task_Count__c) &amp; &quot;)&quot;&amp;
+&quot;|Complete%20Tasks (&quot; &amp; TEXT (Total_Complete_Task_Count__c) &amp; &quot;)&quot;</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Open vs. Complete Tasks - Deprecated</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

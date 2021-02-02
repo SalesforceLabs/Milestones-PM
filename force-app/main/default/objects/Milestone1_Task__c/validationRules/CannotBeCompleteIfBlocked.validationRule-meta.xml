@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotBeCompleteIfBlocked</fullName>
+    <active>true</active>
+    <errorConditionFormula>if (and ( Complete__c == true,  Blocked__c ==true), true, false)</errorConditionFormula>
+    <errorDisplayField>Complete__c</errorDisplayField>
+    <errorMessage>You cannot complete a task marked as blocked.</errorMessage>
+</ValidationRule>

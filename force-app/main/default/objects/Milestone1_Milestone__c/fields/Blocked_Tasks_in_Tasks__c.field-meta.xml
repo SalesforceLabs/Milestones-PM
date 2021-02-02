@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Blocked_Tasks_in_Tasks__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>How many tasks are flagged as blocked?</inlineHelpText>
+    <label>Blocked Tasks (in Tasks)</label>
+    <summaryFilterItems>
+        <field>Milestone1_Task__c.Blocked__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Milestone1_Task__c.Project_Milestone__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

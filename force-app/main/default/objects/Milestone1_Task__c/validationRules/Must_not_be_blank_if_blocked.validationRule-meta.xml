@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Must_not_be_blank_if_blocked</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( and(Blocked__c == true, len( Blocked_Reason__c ) == 0) , True, False)</errorConditionFormula>
+    <errorDisplayField>Blocked_Reason__c</errorDisplayField>
+    <errorMessage>If this task is blocked you must enter a reason.</errorMessage>
+</ValidationRule>

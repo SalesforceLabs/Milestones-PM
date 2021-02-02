@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Project_Task__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>The task to charge the expense against.</inlineHelpText>
+    <label>Project Task</label>
+    <referenceTo>Milestone1_Task__c</referenceTo>
+    <relationshipLabel>Expenses</relationshipLabel>
+    <relationshipName>Project_Expenses</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

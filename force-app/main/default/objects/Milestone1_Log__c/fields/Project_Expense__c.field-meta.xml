@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Project_Expense__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>A project expense we want to log some information about.</inlineHelpText>
+    <label>Project Expense</label>
+    <referenceTo>Milestone1_Expense__c</referenceTo>
+    <relationshipLabel>Logs</relationshipLabel>
+    <relationshipName>Project_Logs</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

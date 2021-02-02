@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Milestone_must_have_parent_record</fullName>
+    <active>true</active>
+    <description>Milestone records must always have a parent Project and/or a parent Milestone</description>
+    <errorConditionFormula>ISBLANK(Project__c) &amp;&amp; ISBLANK(Parent_Milestone__c)</errorConditionFormula>
+    <errorMessage>Please select a parent Project, a parent Milestone, or both.</errorMessage>
+</ValidationRule>

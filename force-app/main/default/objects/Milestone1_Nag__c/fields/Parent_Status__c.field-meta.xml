@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Project_Milestone__c  &lt;&gt; null,  IF(Project_Milestone__r.Complete__c,&apos;True&apos;,&apos;False&apos;),
+     IF( Project_Task__c &lt;&gt; null, IF(Project_Milestone__r.Complete__c,&apos;True&apos;,&apos;False&apos;),&apos;false&apos;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Parent Complete Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

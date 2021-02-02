@@ -8,9 +8,6 @@ IlluminatedCloud
 
 # SFDX Related
 .sfdx/
-sfdx-source/untracked/*
-!sfdx-source/untracked/README.md
-sfdx-source/ops-nav/main/default
 
 # NPM Related
 package.json

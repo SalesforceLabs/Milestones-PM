@@ -25,6 +25,13 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
 OF THE POSSIBILITY OF SUCH DAMAGE.
 
+Modifications:
+- M.Smith, 03/23/2014: Update all queries of the User object to only UserType=Standard Users 
+	to avoid issues with trying to assign the record to a Portal User.
+- M.Smith, 03/23/2014: In addition, there are scenarios, especially when Portal are involved, that
+	multiple User records have the same email address, and some of those User records are Portal
+	Users. The unit test will fail if the task gets assigned to a Portal Users User. This change
+	forces the Email Address on the selected User record to be unique by changing the value.
 */
 @isTest
 private class Milestone1_Email_Handler_Tst {
@@ -39,8 +46,11 @@ private class Milestone1_Email_Handler_Tst {
         ms1.Alias__c = 'unit_test';
         insert ms1;
         
-        //We cannot create Users without using licenses, so query and grab first active user
-        List<User> users = [Select Id, Email from User where isActive = true limit 1];
+        //We cannot create Users without using licenses, so query and grab first active Standard user
+        List<User> users = [Select Id, Email from User where isActive = true 
+        	AND UserType = 'Standard'  AND ID != :UserInfo.getUserId() limit 1];
+        users[0].Email = 'UNITTEST.' + users[0].Email;
+        database.update(users[0]);
         
         Messaging.InboundEmail email = new Messaging.InboundEmail();
         Messaging.InboundEnvelope env = new Messaging.InboundEnvelope();
@@ -72,8 +82,12 @@ private class Milestone1_Email_Handler_Tst {
         ms1.Alias__c = 'unit_test';
         insert ms1;
         
-        //We cannot create Users without using licenses, so query and grab first active user
-        List<User> users = [Select Id, Email from User where isActive = true limit 1];
+        //We cannot create Users without using licenses, so query and grab first active Standard user
+        //	and update the Users Email Address to be unique for this Unit Test
+        List<User> users = [Select Id, Email from User where isActive = true 
+        	AND UserType = 'Standard'  AND ID != :UserInfo.getUserId() limit 1];
+        users[0].Email = 'UNITTEST.' + users[0].Email;
+        database.update(users[0]);
         
         Messaging.InboundEmail email = new Messaging.InboundEmail();
         Messaging.InboundEnvelope env = new Messaging.InboundEnvelope();
@@ -147,8 +161,9 @@ private class Milestone1_Email_Handler_Tst {
         ms1.Alias__c = 'unit_test';
         insert ms1;
         
-        //We cannot create Users without using licenses, so query and grab first active user
-        List<User> users = [Select Id, Email from User where isActive = true limit 1];
+        //We cannot create Users without using licenses, so query and grab first active Standard user
+        List<User> users = [Select Id, Email from User where isActive = true 
+	        AND UserType = 'Standard' limit 1];
         
         Messaging.InboundEmail email = new Messaging.InboundEmail();
         Messaging.InboundEnvelope env = new Messaging.InboundEnvelope();
@@ -175,8 +190,9 @@ private class Milestone1_Email_Handler_Tst {
         ms1.Alias__c = 'unit_test';
         insert ms1;
         
-        //We cannot create Users without using licenses, so query and grab first active user
-        List<User> users = [Select Id, Email from User where isActive = true limit 1];
+        //We cannot create Users without using licenses, so query and grab first active Standard user
+        List<User> users = [Select Id, Email from User where isActive = true 
+	        AND UserType = 'Standard' limit 1];
         
         Messaging.InboundEmail email = new Messaging.InboundEmail();
         Messaging.InboundEnvelope env = new Messaging.InboundEnvelope();
@@ -211,8 +227,9 @@ private class Milestone1_Email_Handler_Tst {
         msTask1.Email_GUID__c = 'UNIQUE_TEST123' + Date.today();
         insert msTask1;
         
-        //We cannot create Users without using licenses, so query and grab first active user
-        List<User> users = [Select Id, Email from User where isActive = true limit 1];
+        //We cannot create Users without using licenses, so query and grab first active Standard user
+        List<User> users = [Select Id, Email from User where isActive = true 
+	        AND UserType = 'Standard' limit 1];
         
         Messaging.InboundEmail email = new Messaging.InboundEmail();
         Messaging.InboundEnvelope env = new Messaging.InboundEnvelope();
@@ -247,8 +264,9 @@ private class Milestone1_Email_Handler_Tst {
         msTask1.Email_GUID__c = 'UNIQUE_TEST123' + Date.today();
         insert msTask1;
         
-        //We cannot create Users without using licenses, so query and grab first active user
-        List<User> users = [Select Id, Email from User where isActive = true limit 1];
+        //We cannot create Users without using licenses, so query and grab first active Standard user
+        List<User> users = [Select Id, Email from User where isActive = true 
+	        AND UserType = 'Standard' limit 1];
         
         Messaging.InboundEmail email = new Messaging.InboundEmail();
         Messaging.InboundEnvelope env = new Messaging.InboundEnvelope();
@@ -286,8 +304,12 @@ private class Milestone1_Email_Handler_Tst {
         setting.Default_Milestone_Alias__c = ms1.Alias__c; 
         upsert setting;
         
-        //We cannot create Users without using licenses, so query and grab first active user
-        List<User> users = [Select Id, Email from User where isActive = true limit 1];
+        //We cannot create Users without using licenses, so query and grab first active Standard user
+        //	and update the Users Email Address to be unique for this Unit Test
+        List<User> users = [Select Id, Email from User where isActive = true 
+        	AND UserType = 'Standard'  AND ID != :UserInfo.getUserId() limit 1];
+        users[0].Email = 'UNITTEST.' + users[0].Email;
+        database.update(users[0]);
         
         Messaging.InboundEmail email = new Messaging.InboundEmail();
         Messaging.InboundEnvelope env = new Messaging.InboundEnvelope();
@@ -322,8 +344,9 @@ private class Milestone1_Email_Handler_Tst {
         ms1.Alias__c = milestoneAlias;
         insert ms1;
         
-        //We cannot create Users without using licenses, so query and grab first active user
-        List<User> users = [Select Id, Email from User where isActive = true limit 1];
+        //We cannot create Users without using licenses, so query and grab first active Standard user
+        List<User> users = [Select Id, Email from User where isActive = true 
+	        AND UserType = 'Standard' limit 1];
         
         Messaging.InboundEmail email = new Messaging.InboundEmail();
         Messaging.InboundEnvelope env = new Messaging.InboundEnvelope();
@@ -354,8 +377,9 @@ private class Milestone1_Email_Handler_Tst {
         ms1.Alias__c = milestoneAlias;
         insert ms1;
         
-        //We cannot create Users without using licenses, so query and grab first active user
-        List<User> users = [Select Id, Email from User where isActive = true limit 1];
+        //We cannot create Users without using licenses, so query and grab first active Standard user
+        List<User> users = [Select Id, Email from User where isActive = true 
+	        AND UserType = 'Standard' limit 1];
         
         Messaging.InboundEmail email = new Messaging.InboundEmail();
         Messaging.InboundEnvelope env = new Messaging.InboundEnvelope();

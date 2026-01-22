@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KickoffDeadlineWithinParentBoundaries</fullName>
+    <active>false</active>
+    <errorConditionFormula>(NOT(ISNULL(Kickoff__c)) &amp;&amp; NOT(ISNULL(Parent_Milestone__r.Kickoff__c)) &amp;&amp; Kickoff__c &lt; Parent_Milestone__r.Kickoff__c) || (NOT(ISNULL(Deadline__c)) &amp;&amp; NOT(ISNULL(Parent_Milestone__r.Deadline__c)) &amp;&amp; Deadline__c &gt; Parent_Milestone__r.Deadline__c)</errorConditionFormula>
+    <errorDisplayField>Kickoff__c</errorDisplayField>
+    <errorMessage>Milestone Kickoff must not be earlier than Parent Kickoff and Milestone Deadline must not be later than Parent Deadline.</errorMessage>
+</ValidationRule>

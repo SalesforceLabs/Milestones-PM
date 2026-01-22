@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Start_Date_More_Than_Due_Date</fullName>
+    <active>false</active>
+    <errorConditionFormula>if (and(!isblank(Start_Date__c), !isblank(Due_Date__c)), true, false)</errorConditionFormula>
+    <errorDisplayField>Due_Date__c</errorDisplayField>
+    <errorMessage>Due Date should be greater than Start Date</errorMessage>
+</ValidationRule>

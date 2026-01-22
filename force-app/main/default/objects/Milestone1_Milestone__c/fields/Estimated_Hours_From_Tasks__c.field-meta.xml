@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimated_Hours_From_Tasks__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Calculated from tasks on this milestone</inlineHelpText>
+    <label>Estimated Hours From Tasks</label>
+    <summarizedField>Milestone1_Task__c.Estimated_Hours__c</summarizedField>
+    <summaryForeignKey>Milestone1_Task__c.Project_Milestone__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

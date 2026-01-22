@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Milestone__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>The parent milestone for this milestone if applicable.</inlineHelpText>
+    <label>Parent Milestone</label>
+    <lookupFilter>
+        <active>true</active>
+        <developerName>nf_01I300000022xdvEAA_00N30000007czjLEAQ</developerName>
+        <filterItems>
+            <field>Milestone1_Milestone__c.Project__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Project__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>Milestone1_Milestone__c.Parent_Milestone__c</field>
+            <operation>equals</operation>
+            <value/>
+        </filterItems>
+        <infoMessage>Parent Milestones must be part of the same project as the child milestone.  Also, Parent Milestone cannot also be a Child Milestone.</infoMessage>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Milestone1_Milestone__c</referenceTo>
+    <relationshipLabel>Child Milestones</relationshipLabel>
+    <relationshipName>Child_Milestones</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

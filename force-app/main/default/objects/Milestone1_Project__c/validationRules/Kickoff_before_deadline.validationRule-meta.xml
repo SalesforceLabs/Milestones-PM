@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Kickoff_before_deadline</fullName>
+    <active>false</active>
+    <description>Kickoff must be less or equal than the deadline</description>
+    <errorConditionFormula>NOT(ISNULL(Kickoff__c)) &amp;&amp; NOT(ISNULL(Deadline__c)) &amp;&amp; Deadline__c &lt; Kickoff__c</errorConditionFormula>
+    <errorDisplayField>Kickoff__c</errorDisplayField>
+    <errorMessage>Kickoff must be less or equal than the deadline</errorMessage>
+</ValidationRule>

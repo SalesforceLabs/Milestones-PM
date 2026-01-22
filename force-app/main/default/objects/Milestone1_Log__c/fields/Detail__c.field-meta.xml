@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Detail__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>The details about the log. This is freeform text for user to capture whatever data they want to keep track of in the log.</inlineHelpText>
+    <label>Detail</label>
+    <length>32000</length>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>10</visibleLines>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Owner_Id__c</fullName>
+    <description>Bring down the Owner of the Parent Record. Check Project, then Milestone, then Task. Validation rules only allow us to have one Parent Lookup from those three lookups.</description>
+    <externalId>false</externalId>
+    <formula>IF( Project__c &lt;&gt; null, Project__r.OwnerId,
+IF( Project_Milestone__c &lt;&gt; null,  Project_Milestone__r.OwnerId, 
+IF( Project_Task__c &lt;&gt; null, Project_Task__r.OwnerId__c,null)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Parent Owner Id</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

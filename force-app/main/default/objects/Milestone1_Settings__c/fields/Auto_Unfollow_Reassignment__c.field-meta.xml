@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_Unfollow_Reassignment__c</fullName>
+    <defaultValue>true</defaultValue>
+    <externalId>false</externalId>
+    <inlineHelpText>Automatically unsubscribe the currently assigned user from the task when it is reassigned to another user.</inlineHelpText>
+    <label>Auto Unfollow Reassignment</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,179 @@
+.mCalendarPopup {
+    width: 15.1em;
+    margin: 2px;
+}
+
+.mCalendar {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.home .mCalendar {
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.mCalendar .topLeft {
+  height: 3px;
+  font-size: 0;
+  background-image: url(/img/cornerTopLeft.gif);
+	background-position: left top;
+  background-repeat: no-repeat;
+}
+
+.mCalendar .topRight {
+  float: right;
+  width: 5px;
+  height: 3px;
+  font-size: 0;
+  background-image: url(/img/cornerTopRight.gif);
+	background-position: left top;
+  background-repeat: no-repeat;
+}
+
+.mCalendar .bottomLeft {
+  height: 3px;
+  font-size: 0;
+  background-image: url(/img/cornerBottomLeft.gif);
+	background-position: left top;
+  background-repeat: no-repeat;
+}
+
+.mCalendar .bottomRight {
+  float: right;
+  width: 5px;
+  height: 3px;
+  font-size: 0;
+  background-image: url(/img/cornerBottomRight.gif);
+	background-position: left top;
+  background-repeat: no-repeat;
+}
+
+.mCalendar .body {
+  margin: 0;
+  padding: 5px 12px 10px 12px;
+  background-color:#F9F9EF;
+  border-right: 1px solid #999999;
+  border-left: 1px solid #999999;
+}
+
+.mCalendar .body table {
+    margin: 0 auto;
+}
+
+.mCalendar .header td {
+  color: #506749;
+  font-family: 'Verdana', 'Arial', 'Helvetica', sans-serif;
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #506749;
+  vertical-align: top;
+}
+
+.mCalendar .header .prevCalArrow {
+  background-image: url(/img/cal/btnLeft.gif);
+	background-position: 0px 0px;width:19px;
+	height:13px;
+  display:block;
+}
+
+.mCalendar .header .nextCalArrow {
+  background-image: url(/img/cal/btnRight.gif);
+	background-position: 0px 0px;width:19px;
+	height:13px;
+  display:block;
+}
+
+.mCalendar td  a.calActive, .mCalendar .calActive{
+  color: #666666;
+  text-decoration: none;
+}
+
+.mCalendar td a.calInactive, .mCalendar .calInactive {
+  color: #CCCCCC;
+  text-decoration: none;
+}
+
+.mCalendar td  a.calToday, .mCalendar tr td.calToday   {
+  font-weight: bold;
+  background-color: #FFF;
+  border: 1px solid #999;
+}
+.mCalendar tr td.calToday  a {
+  text-decoration: none;
+}
+
+.mCalendar .calDays {
+  font-size: 0.81em;
+  color: #506749;
+}
+
+.mCalendar .days {
+  font-size: 0.81em;
+  color: #666666;
+}
+
+
+
+.mCalendar .highlight {
+  font-size: 0.81em;
+  background-color:#D4E9D4;
+  color:#666666;
+}
+
+.homeCalendarEvents {
+  padding: 0;
+  margin: .5em 0 0 0;
+}
+
+.homeCalendarEvents .date {
+  padding: 4px 2px 4px 5px;
+  margin:0;
+  list-style: none;
+  font-weight: bold;
+  color:#474545;
+}
+
+.homeCalendarEvents .event {
+  border-top: 1px solid #E3DEB8;
+  padding: 4px 2px 4px 5px;
+  margin: 0;
+  list-style: none;
+}
+
+/* Get rid of small extra rule right above the event time on the home page */
+.homeCalendarEvents span.event {
+  border-top: none;
+}
+
+.homeClientUpdate {
+    padding: 4px 2px 4px 8px;
+    margin: 0;
+    background-color: #FFFF99;
+}
+
+.homeClientUpdate .msg {
+   padding: 0px 8px 0px 0px;
+   font-weight: bold;
+   font-size: 115%;
+   color: #CC0000;
+}
+
+.mCalendar .calendarHeader {
+    background-image: none;
+    margin: 6px auto auto .5em;
+}
+
+.mCalendar .calendarHeader .userIcons,
+.mCalendar .calendarHeader .dwmIcons {
+    float: none;
+    display: block;
+    margin: 0;
+}
+
+.mCalendar .calendarHeader .listViewIconOn,
+.mCalendar .calendarHeader .listViewIcon {
+    margin-right: 10px;
+}
+
+

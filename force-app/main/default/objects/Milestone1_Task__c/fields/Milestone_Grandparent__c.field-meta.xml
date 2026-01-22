@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Milestone_Grandparent__c</fullName>
+    <externalId>false</externalId>
+    <formula>if (
+ Project_Milestone__r.Parent_Milestone__c != null, 
+ Project_Milestone__r.Parent_Milestone__r.Name , &apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Milestone Grandparent</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

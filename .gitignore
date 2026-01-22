@@ -1,0 +1,15 @@
+# VS Code IDE Related
+.vscode/
+.history/
+
+# Illuminated Cloud Related
+.idea/
+IlluminatedCloud
+
+# SFDX Related
+.sfdx/
+
+# NPM Related
+package.json
+/node_modules
+package-lock.json

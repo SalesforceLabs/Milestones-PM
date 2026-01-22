@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotBeCompleteWithOpenTasks</fullName>
+    <active>true</active>
+    <errorConditionFormula>if( and(Complete__c == true, Total_Open_Tasks__c &gt; 0), true, false)</errorConditionFormula>
+    <errorDisplayField>Complete__c</errorDisplayField>
+    <errorMessage>You cannot mark a milestone as complete if it has open tasks.</errorMessage>
+</ValidationRule>

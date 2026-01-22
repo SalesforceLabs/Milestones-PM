@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Default_Milestone_Alias__c</fullName>
+    <description>Default milestone for email to task.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Insert a valid alias milestone by default to receive the mail about task&apos;s creation when a alias is not specified in the mail&apos;s subject.</inlineHelpText>
+    <label>Default Milestone Alias</label>
+    <length>30</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

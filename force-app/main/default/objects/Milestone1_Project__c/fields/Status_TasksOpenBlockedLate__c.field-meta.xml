@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_TasksOpenBlockedLate__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ) &gt; 0 , 
+&quot;http://chart.apis.google.com/chart?chtt=Open+Task+Analysis&amp;chxt=y&amp;chbh=a&amp;chs=300x225&amp;cht=bvg&amp;&quot;&amp;
+&quot;chxr=0,0,&quot; &amp; Text(max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ))&amp;&quot;&amp;&quot;&amp;
+&quot;chco=2299bb,eeaa66,ee3322&amp;chdl=&quot;&amp;
+&quot;Open (&quot; &amp; TEXT(Total_Open_Task_Count__c) &amp; &quot;)&quot;&amp;
+&quot;|Late (&quot; &amp; TEXT(Total_Late_Task_Count__c) &amp; &quot;)&quot;&amp;
+&quot;|Blocked (&quot; &amp; TEXT(Total_Blocked_Task_Count__c) &amp; &quot;)&quot;&amp;
+&quot;&amp;chd=t:&quot;&amp; TEXT(Total_Open_Task_Count__c / max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ) *100)&amp;&quot;|&quot;&amp; TEXT(Total_Late_Task_Count__c/ max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ) *100) &amp;&quot;|&quot; &amp; TEXT(Total_Blocked_Task_Count__c/ max(  Total_Open_Task_Count__c ,  Total_Late_Task_Count__c  , Total_Blocked_Task_Count__c ) *100), &apos;/s.gif&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Open, Late &amp; Blocked Tasks - Deprecated</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Project_Milestone__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>A milestone we want to log about.</inlineHelpText>
+    <label>Project Milestone</label>
+    <referenceTo>Milestone1_Milestone__c</referenceTo>
+    <relationshipLabel>Logs</relationshipLabel>
+    <relationshipName>Project_Logs</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

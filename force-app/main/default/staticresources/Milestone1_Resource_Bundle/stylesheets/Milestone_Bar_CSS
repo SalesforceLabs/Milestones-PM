@@ -1,0 +1,214 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949\cocoasubrtf540
+{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww20620\viewh12480\viewkind0
+\deftab720
+\pard\pardeftab720\ql\qnatural
+
+\f0\fs24 \cf0 \
+#milestoneBarContent iframe\{\
+	border: none;\
+	height: 140px;\
+	width: 100%;\
+\}\
+\
+#sidebarDiv\{\
+	z-index: 100;/* To exceed body .bodyDiv #bd_b #bd_bl - 11; .x-layout-collapsed - 20 */\
+\}\
+\
+#milestoneBarPanel\{\
+	z-index: 100;/* To exceed #sidebarDiv .indicator  - 6; .x-layout-collapsed - 20 */\
+\}\
+\
+#milestoneBarPanel\{\
+	display: block;\
+	min-height: 20px;\
+	position: fixed;\
+	bottom: 0;\
+	left: 0;\
+	width: 100%;\
+\}\
+\
+#milestoneBarTab\{\
+	background: #1797C0;\
+	border-bottom: 0px;\
+	-moz-border-radius-topright: 8px;\
+	padding: 8px 0px;\
+	-moz-box-shadow: 0px 1px 10px #333;\
+	font-weight: bold;\
+	color: #fff;\
+	width: 120px;\
+	text-align: center;\
+\}\
+\
+#milestoneBarTab:hover\{\
+	cursor: pointer;\
+\}\
+\
+#milestoneBarContent\{\
+	display: none;\
+	height: 140px;\
+	background: white;\
+\}\
+\
+#milestoneBarContentShadow\{\
+	height: 140px;\
+	background: transparent;\
+	border-top: 1px solid #333;\
+	-moz-box-shadow: 0px 1px 10px #333;\
+	position: absolute;\
+	z-index: -1;\
+	width: 100%;\
+\}\
+\
+#nav\{\
+	background: #1797C0;\
+	position: fixed;\
+	left: 0;\
+	top: 0;\
+	width: 120px;\
+	height: 100%;\
+	padding: 10px 0;\
+\}\
+\
+#nav .navItem, .subNavItem\{\
+	cursor: pointer;\
+	font-weight: bold;\
+	color: #fff;\
+	position: relative;\
+	padding: 8px 14px;\
+	text-transform: lowercase;\
+	text-align: right;\
+\}\
+\
+#nav .navItem:hover\{\
+	color: #fff;\
+	// text-shadow: 0 0 2px #666;\
+\}\
+\
+#nav .current, #nav .current:hover\{\
+	background: white;\
+	color: #333;\
+	text-shadow: 0 0 0 #fff;\
+\}\
+\
+#milestoneBarterBarContent\{\
+	position: absolute;\
+	left: 120px;\
+\}\
+\
+	.section\{\
+		padding: 10px;\
+	\}\
+	\
+	#welcomeLine\{\
+		color: #333;\
+		font-size: 16px;\
+		padding-bottom: 6px;\
+	\}\
+\
+	#people .highlight, #groups .highlight\{\
+		position: absolute;\
+		top: 40px;\
+		width: 120px;\
+		height: 31px;\
+		background: white;\
+	\}\
+	\
+	#groups .highlight\{\
+		height: 30px;\
+		top: 71px;\
+	\}\
+\
+	.subNavContainer\{\
+		background: #1797C0;\
+		position: absolute;\
+		left: 0;\
+		top: 0;\
+		width: 120px;\
+		height: 120px;\
+		padding: 10px 0;\
+		overflow: hidden;\
+	\}\
+	\
+		.subNav\{\
+			position: absolute;\
+			right: 0;\
+			top: 10px;\
+		\}\
+		\
+		#groups .subNav\{\
+			top: 40px;\
+		\}\
+		\
+		.subNav .subNavItem:hover\{\
+			color: #fff;\
+			// text-shadow: 0 0 6px #000;\
+		\}\
+		\
+		.subNav .current, .subNav .current:hover\{\
+			color: #333;\
+			text-shadow: 0 0 0 #fff;\
+		\}\
+		\
+		.quote\{\
+			color: #1797C0;\
+			font-size: 20px;\
+		\}\
+	\
+	#people, #groups\{\
+		padding-left: 130px; /* For subMenu + 10px padding*/\
+	\}\
+\
+	#people select, #groups select\{\
+		color: #333;\
+		font-size: 16px;\
+		float: left;\
+		margin-right: 10px;\
+		max-height: 120px;\
+		display: block;\
+		width: 160px;\
+	\}\
+	\
+	div[id*="selectedPerson"], div[id*="selectedSubscriber"],\
+	div[id*="selectedGroup"]\{\
+		float: left;\
+		border: 1px solid #ccc;\
+		height: 78px;\
+		width: 200px;\
+		margin-right: 10px;\
+		padding: 10px;\
+	\}\
+	\
+		div[id*="selectedPerson"] img, div[id*="selectedSubscriber"] img\{\
+			border: 1px solid #ccc;\
+			float: left;\
+			margin: 0 10px 10px 0;\
+			height: 64px;\
+			width: 64px;\
+		\}\
+	\
+	.publisher\{\
+		float: left;\
+	\}\
+\
+\
+/* DRAG DROP */\
+#dropbox \{\
+	width: 425px;\
+	height: 80px;\
+	border: 2px solid #DDD;\
+	-moz-border-radius: 8px;\
+	-webkit-border-radius: 8px;\
+	background-color: #FEFFEC;\
+	text-align: center;\
+	color: #BBB;\
+	font-size: 2em;\
+	font-family: Arial, sans-serif;\
+\}\
+ \
+#droplabel \{\
+	position: relative;\
+	top: 40%;\
+\}\
+}

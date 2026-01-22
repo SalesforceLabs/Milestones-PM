@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Project__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>The project this milestone is assigned to. If this is a sub-milestone this field is empty.</inlineHelpText>
+    <label>Project</label>
+    <referenceTo>Milestone1_Project__c</referenceTo>
+    <relationshipLabel>Milestones</relationshipLabel>
+    <relationshipName>Project_Milestones</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

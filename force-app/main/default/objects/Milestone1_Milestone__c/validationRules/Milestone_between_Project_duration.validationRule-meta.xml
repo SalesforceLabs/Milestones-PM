@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Milestone_between_Project_duration</fullName>
+    <active>false</active>
+    <description>Milestone kickoff must be grater or equal than project kickoff and milestone deadline must be less or equal than project deadline</description>
+    <errorConditionFormula>(NOT(ISNULL(Kickoff__c)) &amp;&amp; NOT(ISNULL(Project__r.Kickoff__c )) &amp;&amp; Kickoff__c&lt; Project__r.Kickoff__c ) 
+|| 
+(NOT(ISNULL(Deadline__c)) &amp;&amp; NOT(ISNULL(Project__r.Deadline__c)) &amp;&amp; Deadline__c &gt; Project__r.Deadline__c)</errorConditionFormula>
+    <errorMessage>Milestone kickoff must be grater or equal than project kickoff and milestone deadline must be less or equal than project deadline</errorMessage>
+</ValidationRule>

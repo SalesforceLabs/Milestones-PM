@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_BudgetMiletoneEstimate__c</fullName>
+    <externalId>false</externalId>
+    <formula>&quot;http://chart.apis.google.com/chart?chtt=Task+Time+Budget+Analysis&amp;&quot;&amp;
+&quot;chxr=0,0,&quot; &amp; Text(max( Total_Hours_Budget__c,Total_Hours_Budget_from_Milestones__c,Total_Hours_Estimate__c, Total_Hours_Incurred__c)) &amp; &quot;&amp;&quot; &amp;
+&quot;chxt=y&amp;chbh=a&amp;chs=300x225&amp;cht=bvg&amp;&quot;&amp;
+&quot;chco=2299bb,eeaa66,ee3322,666666&amp;&quot;&amp;
+&quot;chdl=&quot;&amp;
+&quot;Budget (&quot; &amp; TEXT(Total_Hours_Budget__c) &amp; &quot;)&quot;&amp;
+&quot;|Planned (&quot; &amp; TEXT(Total_Hours_Budget_from_Milestones__c) &amp; &quot;)&quot;&amp;
+&quot;|Estimated (&quot; &amp; TEXT(Total_Hours_Estimate__c) &amp; &quot;)&quot;&amp;
+&quot;|Incurred (&quot; &amp; TEXT(Total_Hours_Incurred__c) &amp; &quot;)&quot;&amp;
+&quot;&amp;chd=t:&quot;&amp;
+TEXT( Total_Hours_Budget__c / max( Total_Hours_Budget__c,Total_Hours_Budget_from_Milestones__c,Total_Hours_Estimate__c, Total_Hours_Incurred__c) * 100 )&amp;&quot;|&quot;&amp; 
+TEXT( Total_Hours_Budget_from_Milestones__c / max( Total_Hours_Budget__c,Total_Hours_Budget_from_Milestones__c,Total_Hours_Estimate__c, Total_Hours_Incurred__c) * 100)  &amp;&quot;|&quot; &amp; 
+TEXT( Total_Hours_Estimate__c / max( Total_Hours_Budget__c,Total_Hours_Budget_from_Milestones__c,Total_Hours_Estimate__c, Total_Hours_Incurred__c) * 100 ) &amp;&quot;|&quot; &amp; 
+TEXT(  Total_Hours_Incurred__c / max( Total_Hours_Budget__c,Total_Hours_Budget_from_Milestones__c,Total_Hours_Estimate__c, Total_Hours_Incurred__c) * 100)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Hours Summary - Deprecated</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

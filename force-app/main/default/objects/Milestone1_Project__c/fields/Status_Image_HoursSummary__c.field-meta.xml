@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Image_HoursSummary__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Total_Hours_Budget__c &gt; 0, 
+IMAGE(Status_BudgetMiletoneEstimate__c, &quot;Hours Summary: Budgeted, Planned, Estimated and Incurred.&quot;),&apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Hours Summary (chart) - Deprecated</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

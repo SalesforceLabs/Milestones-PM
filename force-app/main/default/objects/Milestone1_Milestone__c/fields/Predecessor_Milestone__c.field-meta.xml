@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Predecessor_Milestone__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>The milestone which must be complete before you start this one. The Predecessor Milestone end date must be before the current Milestone start date.</inlineHelpText>
+    <label>Predecessor Milestone</label>
+    <lookupFilter>
+        <active>true</active>
+        <developerName>nf_01IE0000000HT73MAG_00NE0000000nwUIMAY</developerName>
+        <filterItems>
+            <field>Milestone1_Milestone__c.Project__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Project__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Milestone1_Milestone__c</referenceTo>
+    <relationshipLabel>Successor Milestones</relationshipLabel>
+    <relationshipName>Successor_Milestones</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

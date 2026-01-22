@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Task_Number__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Unique number for each task and across all projects.</inlineHelpText>
+    <label>Task Short ID</label>
+    <trackTrending>false</trackTrending>
+    <type>AutoNumber</type>
+</CustomField>

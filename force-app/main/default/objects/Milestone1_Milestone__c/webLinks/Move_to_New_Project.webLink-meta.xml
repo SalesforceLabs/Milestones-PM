@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Move_to_New_Project</fullName>
+    <availability>online</availability>
+    <description>Move a Milestone to a New Project</description>
+    <displayType>button</displayType>
+    <linkType>page</linkType>
+    <masterLabel>Move to New Project</masterLabel>
+    <openType>replace</openType>
+    <page>Milestone1_Move_Milestone_Detail</page>
+    <protected>false</protected>
+</WebLink>
